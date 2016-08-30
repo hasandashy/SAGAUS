@@ -1,0 +1,110 @@
+﻿@using System.Web.Mvc;
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>SkillsGap Analysis Admin</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    
+    <link href="@Url.Content("~/webadmin/css/esourcing.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" language="javascript" src="@Url.Content("~/webadmin/js/jquery.min.js")"></script>
+    <script src="@Url.Content("~/highchart/highcharts.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/highchart/highcharts-more.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/highchart/modules/exporting.js")" type="text/javascript"></script>
+   
+    
+    @*<link href="@Url.Content("~/css/style.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/pro_drop_1.css")" />
+    <script src="@Url.Content("~/js/stuHover.js")" type="text/javascript"></script>*@
+
+</head>
+<body>
+    <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="202"><img src="../images/logo.gif"  alt="" /></td>
+    <td style="vertical-align:top;padding-top:10px"><table width="215" border="0" align="right" cellpadding="0" cellspacing="0">
+      <tr>
+        
+        <td style="vertical-align:top;" class="ttxt">
+        <b>Welcome SGA
+        <a href="@Url.Action("Logout", "Home")" >Logout</a></b>
+        </td>
+        
+      </tr>
+    </table></td>
+  </tr>
+</table></td>
+  </tr>
+  <tr >
+    <td class="pagbg"><table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="53"><img src="http://demo.skillsgapanalysis.com/webadmin/images/arrow.jpg" width="53" height="50" alt="" /></td>
+          <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td colspan="2" height="3px"></td>
+            </tr>
+            <tr>
+              <td width="25"><img src="http://demo.skillsgapanalysis.com/webadmin/images/home.jpg" width="21" height="21" alt="" /></td>
+              <td class="bread"><a href="#" class="active">Home</a> / Dashboard</td>
+            </tr>
+          </table></td>
+          <td align="right" ><table width="200" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td >
+      &nbsp;</td>
+  </tr>
+</table>
+</td>
+        </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  @RenderBody()
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+    
+    <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="copy">© Copyright @DateTime.Now.Year www.skillsgapanalysis.com</td>
+  </tr>
+</table>
+</body>
+
+
+
+</html>

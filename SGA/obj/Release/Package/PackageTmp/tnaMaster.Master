@@ -1,0 +1,69 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="tnaMaster.master.cs" Inherits="SGA.tnaMaster" %>
+<%@ Register TagName="header" TagPrefix="sga" Src="~/controls/ctrlHeader.ascx"   %>
+<%@ Register TagName="footer" TagPrefix="sga" Src="~/controls/ctrlFooter.ascx"   %>
+
+<!DOCTYPE HTML>
+<html>
+	<head id="Head1" runat="server">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Critical Skills Boost Program</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- Favicons -->
+		<link rel="shortcut icon" href="favicon.ico" />
+		
+		<!-- Stylesheet -->
+		<link rel="stylesheet" href="~/css/style.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="~/css/mediaquery.css" type="text/css" media="screen" />
+		
+		<!--[if lt IE 9]>
+			<script src="<%# Page.ResolveClientUrl("~/js/html5.js")%>"></script>
+		<![endif]-->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> 
+        
+	</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+     </asp:ScriptManager>
+     <script type="text/javascript">
+         var prm = Sys.WebForms.PageRequestManager.getInstance();
+
+         function EndRequestHandler(sender, args) {
+             window.scrollTo(0, 0)
+         }
+         prm.add_endRequest(EndRequestHandler);
+    </script>
+    <!-- Outer start -->
+		<div id="outer">
+			<!-- Wrapper start -->
+			<div id="wrapper">
+				<!-- Header start -->
+				<sga:header id="header1" runat="server"></sga:header>
+				<!-- Header end // -->
+				<!-- Content Area start -->
+				<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+				<!-- Content Area end // -->
+				<sga:footer id="footer" runat="server"></sga:footer>
+			</div>
+			<!-- Wrapper end // -->
+		</div>
+		<div id="outer-btm">&nbsp;</div>
+		<!-- Outer end // -->
+    
+    </form>
+</body>
+</html>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+  m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-41955815-1', 'skillsgapanlaysis.com');
+    ga('send', 'pageview');
+ 
+</script>

@@ -1,0 +1,104 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminMaster.master.cs" Inherits="SGA.webadmin.AdminMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Critical Skills Boost Program Admin</title>
+    <link href="css/esourcing.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" language="javascript" src="../js/jquery.min.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+   <asp:ScriptManager ID="ScriptManager1" runat="server">
+     </asp:ScriptManager>
+    <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="343"><img src="../images/logo.png"  alt="" /></td>
+    <td style="vertical-align:top;padding-top:10px"><table width="215" border="0" align="right" cellpadding="0" cellspacing="0">
+      <tr>
+        
+        <td style="vertical-align:top;" class="ttxt">
+        <b>Welcome <asp:Label ID="lblName" runat="server"></asp:Label>
+        <asp:LinkButton ID="lnkLogout" runat="server" style="text-decoration:none;" CausesValidation="false" 
+                  Text="Log out" onclick="lnkLogout_Click"  ></asp:LinkButton></b>
+        </td>
+        
+      </tr>
+    </table></td>
+  </tr>
+</table></td>
+  </tr>
+  <tr >
+    <td class="pagbg"><table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="53"><img src="images/arrow.jpg" width="53" height="50" alt="" /></td>
+          <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td colspan="2" height="3px"></td>
+            </tr>
+            <tr>
+              <td width="25"><img src="images/home.jpg" width="21" height="21" alt="" /></td>
+              <td class="bread"><a href="#" class="active">Home</a> / Dashboard</td>
+            </tr>
+          </table></td>
+          <td align="right" ><table width="200" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td >
+      &nbsp;</td>
+  </tr>
+</table>
+</td>
+        </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+  </asp:ContentPlaceHolder>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+    
+    <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="copy">© Copyright <%= DateTime.Now.Year %> www.criticalskillsboost.com/</td>
+  </tr>
+</table>
+    </form>
+</body>
+</html>

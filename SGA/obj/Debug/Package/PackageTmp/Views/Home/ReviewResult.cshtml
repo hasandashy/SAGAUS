@@ -1,0 +1,143 @@
+﻿@model DotNet.Highcharts.Highcharts
+@using System.Data;
+@{
+    Layout = "~/Views/Shared/_TnaLayout.cshtml";
+    ViewBag.Title = "Compare Result page";
+}
+<script type="text/javascript" src="../../js/custom-form-elements-load.js"></script>
+<article id="container">
+					<section class="welcome-test">
+						<p class="title40 floatL">Compare Reviewed Results</p>
+						<br>
+						<div class="clear"></div>
+					</section>
+					<div class="dot-line">&nbsp;</div>
+					@using (Html.BeginForm())
+     {
+					<section class="color-box">
+						<article class="info-box-shdw editdashboard">
+						  <table width="100%" border="0" cellspacing="2" cellpadding="5">
+						    <tr>
+						      <td width="70%"><strong>Select User </strong></td>
+						      <td width="30%" align="left"><strong>Assessment Type</strong></td>
+					        </tr>
+						    <tr>
+						      <td>
+                                <select name="user" id="user" >
+                                        @{
+         DataSet ds = (DataSet)ViewData["ds"];
+         for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+         {
+                                        <option Value="@ds.Tables[0].Rows[i]["Id"].ToString()">@ds.Tables[0].Rows[i]["name"].ToString()</option>
+         }
+     }
+                                    </select>
+                                  </td>
+						      <td align="left">
+                              <select id="AssessmentType" name="AssessmentType">
+                                <option Value="0">Select Assessment</option>
+                                <option Value="1">Skills Self Assessment</option>
+                                <option Value="2">Behavioural Assessment</option>
+                                <option Value="3">Negotiation Profile Assessment</option>
+                                <option Value="4">Department Maturity Profile Assessment</option>
+                                <option Value="5">Contract Management Assessment</option>
+                              </select>
+                              </td>
+					        </tr>
+                            <tr>
+						      <td colspan="2"><strong>Job Role </strong>
+                              <br />
+                               <select id="jobRole" name="jobRole">
+                                <option Value="0">Job role best described as ...</option>
+                            <option Value="1">Analyst</option>
+                            <option Value="2">Procurement Support</option>
+                            <option Value="3">Strategic Sourcing</option>
+                            <option Value="4">Vendor Manager/ Supplier Relationship Manager</option>
+                            <option Value="5">Category Manager</option>
+                            <option Value="6">Procurement Leader</option>
+                            <option Value="7">Supply Chain</option>
+                            <option Value="8">Non-Procurement: CXO</option>
+                            <option Value="9">Non-Procurement: Director</option>
+                            <option Value="10">Non-Procurement: Manager</option>
+                            <option Value="11">Non-Procurement: Professional</option>
+                            <option Value="12">Non-Procurement: Trainee</option>
+                               </select>
+                               
+                              </td>
+					        </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <span class="error">@ViewData["message"]</span>
+                                    <br />
+                                    <input type="submit" name="btnSubmit" id="btnSubmit" value="Compare" class="btn-next" /> 
+                                    
+                                </td>
+                            </tr>
+					      </table>
+						 
+					  </article>
+                      
+					</section>
+                    }
+                    <section class="color-box">
+						<article class="info-box-shdw editdashboard">
+                            @(Model)
+                        </article>
+					</section>
+					<div class="dot-line">&nbsp;</div>
+				</article>
+<script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+        var directSelected = "@ViewData["users"]";
+        var assessment = "@ViewData["assessment"]";
+        var jobrole="@ViewData["jobrole"]";
+
+
+        if(directSelected!=null){
+            $('select#user').val(directSelected);
+        }
+
+        if(assessment!=null){
+            $('select#AssessmentType').val(assessment);
+        }
+        
+        if(jobrole!=null){
+            $('select#jobRole').prop(jobrole);
+        }
+
+        $('table.styled input:radio').addClass("styled");
+        Custom.init();
+
+        
+        
+
+        /*$(function () {
+            $("select#AssessmentType").change(function (evt) {
+
+                if ($("select#AssessmentType").val() != "0") {
+
+                    $.ajax({
+                        url: "@Url.Action("GetTopicsByTest", "Home")",
+                        type: 'POST',
+                        data: { id: $("select#AssessmentType").val() },
+                        success: function(data) {
+                            alert(data.length);
+                            // states is your JSON array
+                            var $select = $('#Topics');
+                            $.each(data, function(i, state) {
+                                $('<option>', {
+                                    value: state.topicId
+                                }).html(state.topicTitle).appendTo($select);
+                            });
+                        },
+                        error: function (xhr) { alert("Something seems Wrong"); }
+                    });
+                }
+            });
+        });*/
+
+    });
+</script>
+
+
+

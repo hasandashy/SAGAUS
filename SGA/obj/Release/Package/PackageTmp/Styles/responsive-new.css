@@ -1,0 +1,385 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+@media only screen and (max-width:992px) {
+.menu ul li{ font-size:16px;}
+.heading-block h1, .heading-block h2 { font-size:36px; line-height:38px;}	
+.heading-block p{ font-size:26px;}
+.info-col-1 .tittle1, .info-col-2 .tittle1{ font-size:18px;}
+.txt5{ font-size:20px;}
+.portal-here{ font-size:26px;}
+.intro1 p{ font-size:16px;}
+ul.stand-offer li {font-size:16px;}
+.leadership-action span.tittle1{font-size:20px;}
+#container .standing-form .title28-1 {font-size:26px;}
+.role {font-size: 28px;line-height: 28px;}
+.especially{font-size: 28px;line-height: 28px;}
+.non-professionals{ font-size:20px;}
+.learn-button a{ font-size:16px; padding:10px 20px}
+.nego{ font-size:32px; line-height:32px;}
+.negotiation{font-size:32px; line-height:32px;}
+.negotiation span{ font-size:16px;}
+.plus-Advanced{font-size:22px; line-height:24px;}
+}
+
+
+@media only screen and (max-width:910px) {
+.menu ul li{ font-size:16px;}	
+.menu ul li a{ padding:12px 14px 8px;}
+}
+
+
+@media only screen and (max-width:950px) {
+.menu ul li a{ padding:12px 10px 8px;}
+}
+
+@media only screen and (max-width:800px) {
+.menu ul li a{ padding:12px 12px 8px; font-size:15px;}
+.heading-block h1, .heading-block h2 { font-size:32px; line-height:34px;}	
+.heading-block p{ font-size:22px;}
+.txt5{ font-size:18px;}
+.portal-here{ font-size:22px;}
+.heading-block {padding: 10px 0 30px;}
+.leadership-action span.tittle1{font-size:18px;}
+#container .standing-form .title28-1 {font-size:24px;}
+#container .standing-form .cnt-us-form .radio-txt {
+  margin-bottom: 15px;
+}
+.standing-form .cnt-us-form input.txt-field1{ font-size:14px;}
+.standing-form .cnt-us-form .txt-area{font-size:14px;}
+.role {font-size: 22px;line-height: 22px;}
+.especially{font-size: 22px;line-height: 22px; margin:5px 0;}
+.non-professionals{ font-size:16px; line-height:20px;}
+.learn-button { padding-top:5px;}
+.learn-button a{ font-size:12px; padding:8px 20px}
+.bannerwidth1 {width: 350px;}
+
+.nego{ font-size:26px; line-height:26px;}
+.negotiation{font-size:26px; line-height:26px;}
+.negotiation span{ font-size:14px;}
+.plus-Advanced{font-size:18px; line-height:20px;}
+
+
+
+@media only screen and (max-width:767px) {
+.info-col-1 { width: 100%; padding:0 0 25px 0; }	
+.info-col-2 {padding:0 0 25px 0;width: 100%; text-align:center;}	
+.template {  text-align: center;}
+.learning-list{ margin-top:0;}
+.top1 {
+  display: block;
+  margin-bottom: 20px !important;
+  margin-top: 20px;
+}
+.learning-list ul li:last-child{ padding-bottom:0;}
+
+.heading-block h1, .heading-block h2 { font-size:24px; line-height:28px;}	
+.heading-block p{ font-size:18px;}
+.heading-block p br{ display:none;}
+.portal-here{ font-size:16px;}
+.computer-vector p{ font-size:15px;}
+.heading-block {
+  padding: 10px 0 16px;
+}
+.info-col-1 .tittle1, .info-col-2 .tittle1 {
+  font-size: 16px;
+}
+.intro1 p {
+  font-size: 15px;
+}
+.txt5 {
+  font-size: 16px;
+}
+.leadership-action span.tittle1{font-size:16px;}
+.learning-list ul li{ font-size:15px;}
+.orange-bar{ font-size:24px;}
+.dw-bt{ font-size:16px;}
+.txt2 {
+  padding: 0 0 0 0;
+  width: 100%;
+}
+.lead-program .info-col-1 {
+  width: 100%;
+}
+.lead-program .info-col-2 {
+  width: 100%;
+}
+ul.stand-offer li {font-size:15px;}
+#container .standing-form .title28-1 {font-size:18px;}
+
+#container .standing-form .cnt-bx {width: 100%; margin-bottom:25px;}
+#container .standing-form .cnt-rt {margin-left: 0;}
+#container .standing-form .equal_height{ height:auto !important;}
+#container .standing-form .cnt-rt {
+  padding-bottom: 50px;
+}
+.standing-form .cnt-us-form input.txt-field1{ font-size:13px;}
+.standing-form .cnt-us-form .txt-area{font-size:13px;}
+
+.role {font-size:18px;line-height: 20px;}
+.especially{font-size: 18px;line-height: 20px; margin:5px 0;}
+.non-professionals{ font-size:14px; line-height:18px;}
+.learn-button { padding-top:5px;}
+.learn-button a{ font-size:12px; padding:8px 20px}
+.non-professionals p{ padding:0;}
+
+.nego{ font-size:20px; line-height:20px;}
+.negotiation{font-size:20px; line-height:20px; margin:5px 0;}
+.negotiation span{ font-size:13px;}
+.plus-Advanced{font-size:16px; line-height:20px; margin-bottom:5px;}
+
+
+/*************mobile-menu-start***************/
+.menuImage {
+	
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	left: 0px;
+	top: 99px;
+width:100%;
+	z-index: 9;
+}
+.menuImage img {
+	background: none;
+	display:  inline-block;
+	padding: 5px;
+}
+a.menuImage{ color:#fff; text-decoration:none; outline:none;}
+.iphon_navigation {
+	background: #b5a991 ;
+	border-top: medium none;
+	margin: 0;
+	position: absolute;
+	top: 123px;
+	width: 100%;
+	z-index: 3000;
+	left: 0px;
+	right: 0px;
+	text-shadow: none;
+		font-family: 'cleargothic-regularregular', Arial, Helvetica, sans-serif;
+}
+.iphon_navigation ul {
+	margin: 0px;
+	padding: 0px;
+}
+.iphon_navigation ul li {
+	background: none repeat scroll 0 0 transparent;
+	border-bottom: 1px solid #c2b7a1;
+	margin: 0;
+	padding: 0 !important;
+	text-align: left;
+	width: 100%;
+}
+.iphon_navigation ul li:first-child {
+	border-top: none;
+}
+.parentMenu > div.subItem {
+	width: 50px;
+	height: 32px;
+	float: right;
+	background: url(../images/faq-arrowup.png) no-repeat center;
+	cursor: pointer;
+}
+.parentMenuActive > div.subItem {
+	background: url(../images/faq-arrowdown.png) no-repeat scroll right center transparent!important;
+	cursor: pointer;
+	float: none;
+	height: 32px;
+	position: absolute;
+	width: 100%;
+	z-index: 3;
+}
+.parentMenu > div.subItem {
+	background: url(../images/faq-arrowup.png) no-repeat scroll right center transparent;
+	cursor: pointer;
+	float: right;
+	height: 32px;
+	position: relative;
+	width: 50px;
+	z-index: 3;
+}
+.iphon_navigation ul li a {
+    background: none repeat scroll 0 0 #b5a991;
+    color: #ffffff;
+    display: block;
+    font-size: 14px;
+    font-weight: normal;
+    list-style: outside none none;
+    margin: 0 0 0px;
+    padding: 8px 10px;
+    text-decoration: none;
+  
+}
+.iphon_navigation ul li a:hover {
+	color: #e73f1a;
+	text-shadow: inherit;
+	text-decoration: none;
+}
+.iphon_navigation > ul ul {
+	padding: 0px 0px 0 0px;
+	width: 100%;
+	display: none;
+	margin: 0px;
+}
+.iphon_navigation ul ul li {
+	background: none repeat scroll 0 0 transparent;
+	border-bottom: none;
+	margin: 0;
+	padding: 0 !important;
+	text-align: left;
+	width: 100%;
+}
+.iphon_navigation ul ul li a {
+	background: #978d78;
+	color: #ffffff;
+    display: block;
+    font-size: 13px;
+    font-weight: normal;
+    list-style: outside none none;
+    margin: 0 0 1px;
+    padding: 8px 10px 8px 15px;
+    text-decoration: none;
+}
+.iphon_navigation ul ul li a:hover {
+	color: #e73f1a;
+	text-shadow: inherit;
+	text-decoration: none;
+}
+.iphon_navigation ul ul ul {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	width: 100%;
+	list-style: none;
+}
+.iphon_navigation ul ul ul li a {
+	background: #9a0b11;
+	color: #ffffff;
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    list-style: outside none none;
+    margin: 0 0 1px;
+    padding: 8px 10px 8px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.iphon_navigation ul ul ul ul li a {
+	background: #c62128;
+	color: #ffffff;
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    list-style: outside none none;
+    margin: 0 0 1px;
+    padding: 8px 10px 8px 25px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.iphon_navigation ul ul ul li a:hover {
+	color: #000;
+	text-shadow: inherit;
+	text-decoration: none;
+}
+.sub-menu.subMenu {
+	background: none repeat scroll 0 0 #000000;
+}
+.menu-bg{ background:#b4a991; float:left; width:100%; display:block; height:28px; margin-top:8px;}
+/*************mobile-menu-end***************/
+
+}
+
+
+@media only screen and (max-width:639px) {
+.role {
+  font-size: 16px;
+  line-height: 18px;
+}
+.especially {
+  font-size: 16px;
+  line-height: 18px;
+  margin: 2px 0 0;
+}
+.non-professionals span {
+  padding: 0 0 5px;
+}	
+
+.non-professionals span br { display:none;}
+.newtag img {
+  width: 32px;
+}
+.abs1 {
+  left: 41px;
+
+}	
+.bannerwidth1 {
+  width: 80%;
+}
+
+.nego{ font-size:16px; line-height:normal;}
+.negotiation{font-size:16px; line-height:normal; margin:5px 0;}
+.negotiation span{ font-size:12px;}
+.plus-Advanced{font-size:14px; line-height:normal; margin-bottom:5px;}
+}
+
+@media only screen and (max-width:479px) {
+.role {
+  font-size: 13px;
+  line-height: normal;
+}
+.especially {
+  font-size: 13px;
+  line-height: normal;
+  margin: 4px 0;
+}
+.non-professionals {
+  font-size: 12px;
+  line-height: normal;
+}
+.learn-button a {
+  font-size: 11px;
+  padding: 6px 10px;
+}
+.non-professionals p i img {
+  width: 16px;
+}	
+	
+	
+}	
+	
+	
+@media only screen and (max-width:390px) {
+	.non-professionals {
+  font-size: 11px;
+  line-height: normal;
+}
+.non-professionals p i img {
+  width: 12px;
+}
+.non-professionals span {
+  padding: 0;
+}
+.especially {
+  font-size: 12px;
+  line-height: normal;
+  margin: 0;
+}
+.role {
+  font-size: 12px;
+  line-height: normal;
+}
+.learn-button a {
+  font-size: 10px;
+  padding: 5px 10px;
+}
+.bannerwidth1 {
+  width: 100%;
+}
+.nego{ font-size:13px; line-height:normal;}
+.negotiation{font-size:13px; line-height:normal; margin:2px 0;}
+.negotiation span{ font-size:11px;}
+.plus-Advanced{font-size:13px; line-height:normal; margin-bottom:2px;}
+}	
+	
