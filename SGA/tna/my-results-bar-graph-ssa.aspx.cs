@@ -12,17 +12,15 @@ namespace SGA.tna
 {
     public partial class my_results_bar_graph_ssa : Page
     {
-        
 
-        protected bool isSgaResult = false;
+
+        protected bool isPkeResult = false;
 
         protected bool isTnaResult = false;
 
-        protected bool isPmpResult = false;
+        protected bool isCaaResult = false;
 
-        protected bool isDmpResult = false;
-
-        protected bool isNpResult = false;
+        protected bool isCmkResult = false;
 
         protected bool isCMAResult = false;
 
@@ -39,18 +37,19 @@ namespace SGA.tna
                 {
                     if (dsPermission.Tables.Count > 0 && dsPermission.Tables[0].Rows.Count > 0)
                     {
-                        this.isSgaResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewSgaResult"].ToString());
+                        this.isPkeResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewPkeResult"].ToString());
                         this.isTnaResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewTnaResult"].ToString());
-                        this.isPmpResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewPMPResult"].ToString());
-                        this.isDmpResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewDMPResult"].ToString());
-                        this.isNpResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewNPResult"].ToString());
-                        this.isCMAResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCMAResult"].ToString());
+                        this.isCaaResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCaaResult"].ToString());
+                        this.isCmkResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCmkPResult"].ToString());
+                        this.isCMAResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCmaResult"].ToString());
                     }
                 }
+                this.spCategory.Attributes["class"] = (this.isPkeResult ? "" : "lock");
                 this.spSkills.Attributes["class"] = (this.isTnaResult ? "" : "lock");
-                this.spBehaviour.Attributes["class"] = (this.isPmpResult ? "" : "lock");
+                this.spBehaviour.Attributes["class"] = (this.isCmkResult ? "" : "lock");
+                this.spNegotiation.Attributes["class"] = (this.isCaaResult ? "" : "lock");
                 this.spCMA.Attributes["class"] = (this.isCMAResult ? "" : "lock");
-                this.spNegotiation.Attributes["class"] = (this.isNpResult ? "" : "lock");
+
                 base.Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
                 if (this.Session["ssaTestId"] != null)
                 {

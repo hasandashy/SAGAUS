@@ -248,7 +248,7 @@ namespace SGA
 		}
 
 		[WebMethod]
-		public static string RegisterUser(string fname, string lname, string email, int jobId, int jobLevel, string managerFirstname, string managerLastName, string managerEmail, int agencyId)
+		public static string RegisterUser(string fname, string lname, string email, int jobId, int jobLevel, int agencyId)
 		{
 			SqlParameter[] param = new SqlParameter[]
 			{
@@ -268,7 +268,7 @@ namespace SGA
 					string plainpassword = SGACommon.generatePassword(8);
 					string passwordSalt = SGACommon.CreateSalt(5);
 					string passwordHash = SGACommon.CreatePasswordHash(plainpassword, passwordSalt);
-					param = new SqlParameter[15];
+					param = new SqlParameter[12];
 					param[0] = new SqlParameter("@action", SqlDbType.VarChar);
 					param[0].Value = "Insert";
 					param[1] = new SqlParameter("@password", SqlDbType.VarChar);
@@ -290,15 +290,9 @@ namespace SGA
 					param[9] = new SqlParameter("@isAdminAdded", SqlDbType.Bit);
 					param[9].Value = 0;
 					param[10] = new SqlParameter("@jobLevel", SqlDbType.Int);
-					param[10].Value = jobLevel;
-					param[11] = new SqlParameter("@managerFirstname", SqlDbType.VarChar);
-					param[11].Value = managerFirstname;
-					param[12] = new SqlParameter("@managerLastName", SqlDbType.VarChar);
-					param[12].Value = managerLastName;
-					param[13] = new SqlParameter("@managerEmail", SqlDbType.VarChar);
-					param[13].Value = managerEmail;
-					param[14] = new SqlParameter("@agencyId", SqlDbType.Int);
-					param[14].Value = agencyId;
+					param[10].Value = jobLevel;				
+					param[11] = new SqlParameter("@agencyId", SqlDbType.Int);
+					param[11].Value = agencyId;
 					int result = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spUserMaster", param));
 					if (result == 0)
 					{
@@ -310,25 +304,7 @@ namespace SGA
 						{
 							"Id"
 						};
-						XmlRpcStruct[] resultFound = isdnAPI.findByEmail(managerEmail, strField);
-						XmlRpcStruct Contact = new XmlRpcStruct();
-						if (resultFound.Length > 0)
-						{
-							int userId = System.Convert.ToInt32(resultFound[0]["Id"].ToString());
-							bool isAdded = isdnAPI.addToGroup(userId, 756);
-						}
-						else
-						{
-							Contact.Add("FirstName", managerFirstname);
-							Contact.Add("LastName", managerLastName);
-							Contact.Add("Email", managerEmail);
-							Contact.Add("OwnerID", "50036");
-							Contact.Add("ContactType", "Customer");
-							int userId = isdnAPI.add(Contact);
-							bool isAdded = isdnAPI.addToGroup(userId, 756);
-							isdnAPI.optIn(managerEmail, "Sending emails is allowed");
-						}
-						resultFound = isdnAPI.findByEmail(email, strField);
+						XmlRpcStruct[] resultFound = isdnAPI.findByEmail(email, strField);
 						if (resultFound.Length > 0)
 						{
 							int userId = System.Convert.ToInt32(resultFound[0]["Id"].ToString());
@@ -351,18 +327,6 @@ namespace SGA
 								{
 									"OwnerID",
 									"50036"
-								},
-								{
-									"_StudentsManagersFirstName",
-									managerFirstname
-								},
-								{
-									"_StudentsManagersLastName",
-									managerLastName
-								},
-								{
-									"_StudentsManagersEmail",
-									managerEmail
 								},
 								{
 									"_CSBPassword",
@@ -405,19 +369,7 @@ namespace SGA
 								{
 									"OwnerID",
 									"50036"
-								},
-								{
-									"_StudentsManagersFirstName",
-									managerFirstname
-								},
-								{
-									"_StudentsManagersLastName",
-									managerLastName
-								},
-								{
-									"_StudentsManagersEmail",
-									managerEmail
-								},
+								},								
 								{
 									"_CSBPassword",
 									plainpassword

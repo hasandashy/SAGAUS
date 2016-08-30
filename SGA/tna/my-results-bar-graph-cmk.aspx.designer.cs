@@ -10,87 +10,105 @@
 namespace SGA.tna {
     
     
-    public partial class _default {
+    public partial class my_results_bar_graph_cmk {
         
         /// <summary>
-        /// lblName control.
+        /// lblPercentage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblName;
+        protected global::System.Web.UI.WebControls.Label lblPercentage;
         
         /// <summary>
-        /// pnlSga control.
+        /// spCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlSga;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spCategory;
         
         /// <summary>
-        /// hylSga control.
+        /// lnkAverage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hylSga;
+        protected global::System.Web.UI.WebControls.LinkButton lnkAverage;
         
         /// <summary>
-        /// pnlTNA control.
+        /// lnkLower control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlTNA;
+        protected global::System.Web.UI.WebControls.LinkButton lnkLower;
         
         /// <summary>
-        /// hylTna control.
+        /// lnkMiddle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hylTna;
+        protected global::System.Web.UI.WebControls.LinkButton lnkMiddle;
         
         /// <summary>
-        /// pnlCMA control.
+        /// lnkUpper control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlCMA;
+        protected global::System.Web.UI.WebControls.LinkButton lnkUpper;
         
         /// <summary>
-        /// hylCMA control.
+        /// spSkills control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hylCMA;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spSkills;
         
         /// <summary>
-        /// pnlCMK control.
+        /// spBehaviour control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlCMK;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spBehaviour;
         
         /// <summary>
-        /// hylCMK control.
+        /// spNegotiation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hylCMK;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spNegotiation;
+        
+        /// <summary>
+        /// spCMA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spCMA;
+        
+        /// <summary>
+        /// graph1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::SGA.controls.ctrlCMKGraph graph1;
     }
 }

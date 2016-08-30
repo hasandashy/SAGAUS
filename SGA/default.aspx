@@ -1,51 +1,52 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="SGA._default" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<script type="text/javascript">
-    
-    /*function gup(name) {
-        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-			results = regex.exec(location.search);
-        return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-    }
-    var backUrl = gup("id");
-    $("#register").focus();
-    */
-    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    var alertHtml = '';
-    $(document).ready(function () {
-        
-        $('#btnSend').colorbox({
-            href: "Popup.aspx",
-            width: "492px",
-            height: "300px",
-            onComplete: function () {
-                //$("#register").unmask();
-                $('#alertMessage').text(alertHtml);
-            }
-        });
 
-        $('#btnSend').click(function () {
-            //$('#colorbox').css({ "display": "block" });
-            
-            var error = 0;
-            var emptyFields = new Array();
-            var name = $('#FName').val();
-            if (name == '' || name == 'First name') {
-                error = 1;
-                emptyFields.push('First name');
-            }
-            var surname = $('#LName').val();
-            if (surname == '' || surname == 'Last name') {
-                error = 1;
-                emptyFields.push('Last name');
-            }
-            var email = $('#Email').val();
-            if (email == '' || email == 'Email address') {
-                error = 1;
-                emptyFields.push('Email');
-            }
-            var agency = $("#<%=ddlAgency.ClientID %>").val();
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <script type="text/javascript">
+
+        /*function gup(name) {
+            name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+        var backUrl = gup("id");
+        $("#register").focus();
+        */
+        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        var alertHtml = '';
+        $(document).ready(function () {
+
+            $('#btnSend').colorbox({
+                href: "Popup.aspx",
+                width: "492px",
+                height: "300px",
+                onComplete: function () {
+                    //$("#register").unmask();
+                    $('#alertMessage').text(alertHtml);
+                }
+            });
+
+            $('#btnSend').click(function () {
+                //$('#colorbox').css({ "display": "block" });
+
+                var error = 0;
+                var emptyFields = new Array();
+                var name = $('#FName').val();
+                if (name == '' || name == 'First name') {
+                    error = 1;
+                    emptyFields.push('First name');
+                }
+                var surname = $('#LName').val();
+                if (surname == '' || surname == 'Last name') {
+                    error = 1;
+                    emptyFields.push('Last name');
+                }
+                var email = $('#Email').val();
+                if (email == '' || email == 'Email address') {
+                    error = 1;
+                    emptyFields.push('Email');
+                }
+                var agency = $("#<%=ddlAgency.ClientID %>").val();
             if (agency == 0) {
                 error = 1;
                 emptyFields.push('Your Organisation');
@@ -64,22 +65,6 @@
                 emptyFields.push('Level of role best described as');
             }
 
-            var MfirstName = $('#MfirstName').val();
-            if (MfirstName == '' || MfirstName == "Your manager's first name") {
-                error = 1;
-                emptyFields.push("Your manager's first name");
-            }
-            var MlastName = $('#MlastName').val();
-            if (MlastName == '' || MlastName == "Your manager's last name") {
-                error = 1;
-                emptyFields.push("Your manager's last name");
-            }
-            var Memail = $('#Memail').val();
-            if (Memail == '' || Memail == "Your manager's email address") {
-                error = 1;
-                emptyFields.push("Your manager's email address");
-            }
-            //Memail
 
             if (($("#terms").is(':checked')) == false) {
                 error = 1;
@@ -96,93 +81,32 @@
             }
             else {
                 var emailpass = 0;
-                var memailpass = 0;
-                var manageDomain = Memail.replace(/.*@/, "");
                 var domain = email.replace(/.*@/, "");
 
 
-                if (domain.toLowerCase() == 'qld.gov.au') {
+                if (domain.toLowerCase() == 'sa.gov.au') {
                     emailpass = 1;
                 } else {
-                    if (domain.toLowerCase() == 'translink.com.au') {
+                    if (domain.toLowerCase() == 'courts.sa.gov.au') {
                         emailpass = 1;
                     }
-                    else if (domain.toLowerCase() == 'tafeqld.edu.au')
-                    {
+                    else if (domain.toLowerCase() == 'police.sa.gov.au') {
                         emailpass = 1;
                     }
-                    else if (domain.toLowerCase() == 'usq.edu.au') {
+                    else if (domain.toLowerCase() == 'tafesa.edu.au') {
                         emailpass = 1;
                     }
-                    else if (domain.toLowerCase() == 'qcaa.qld.edu.au') {
+                    //for testing purpose
+                    else if (domain.toLowerCase() == 'gmail.com') {
                         emailpass = 1;
-                    }
-                    else {
-                        if ((domain.substr(domain.length - 10).toLowerCase()) == 'qld.gov.au') {
-                            emailpass = 1;
-                        }
-                        else if ((domain.substr(domain.length - 14).toLowerCase()) == 'tafeqld.edu.au') {
-                            emailpass = 1;
-                        }
-                        else if ((domain.substr(domain.length - 10).toLowerCase()) == 'usq.edu.au') {
-                            emailpass = 1;
-                        }
-                        else if ((domain.substr(domain.length - 15).toLowerCase()) == 'qcaa.qld.edu.au') {
-                            emailpass = 1;
-                        }
-                        else {
-                            if ((domain.substr(domain.length - 16).toLowerCase()) == 'translink.com.au') {
-                                emailpass = 1;
-                            }
-                        }
                     }
                 }
 
-
-                if (manageDomain.toLowerCase() == 'qld.gov.au') {
-                    memailpass = 1;
-                } else {
-                    if (manageDomain.toLowerCase() == 'translink.com.au') {
-                        memailpass = 1;
-                    }
-                    else if (manageDomain.toLowerCase() == 'tafeqld.edu.au') {
-                        memailpass = 1;
-                    }
-                    else if (manageDomain.toLowerCase() == 'usq.edu.au') {
-                        memailpass = 1;
-                    }
-                    else if (manageDomain.toLowerCase() == 'qcaa.qld.edu.au') {
-                        memailpass = 1;
-                    }
-                    else {
-                        if ((manageDomain.substr(manageDomain.length - 10).toLowerCase()) == 'qld.gov.au') {
-                            memailpass = 1;
-                        }
-                        else if ((manageDomain.substr(manageDomain.length - 14).toLowerCase()) == 'tafeqld.edu.au') {
-                            memailpass = 1;
-                        }
-                        else if ((manageDomain.substr(manageDomain.length - 10).toLowerCase()) == 'usq.edu.au') {
-                            memailpass = 1;
-                        }
-                        else if ((manageDomain.substr(manageDomain.length - 15).toLowerCase()) == 'qcaa.qld.edu.au') {
-                            memailpass = 1;
-                        }
-                        else {
-                            if ((manageDomain.substr(manageDomain.length - 16).toLowerCase()) == 'translink.com.au') {
-                                memailpass = 1;
-                            }
-                        }
-                    }
-                }
 
                 if (parseInt(emailpass) == 0) {
                     $('#colorbox').css({ "display": "block" });
-                    alertHtml = 'The email should only be registered with one of these \n(qld.gov.au,\ntranslink.com.au,\ntafeqld.edu.au,\nusq.edu.au,\nqcaa.qld.edu.au)';
-                }
-                else if (parseInt(memailpass) == 0) {
-                    $('#colorbox').css({ "display": "block" });
-                    alertHtml = 'The Manager email should only be registered with one of these \n(qld.gov.au,\ntranslink.com.au,\ntafeqld.edu.au,\nusq.edu.au,\nqcaa.qld.edu.au)';
-                }
+                    alertHtml = 'The email should only be registered with one of these \n(sa.gov.au,\ncourts.sa.gov.au,\npolice.sa.gov.au,\ntafesa.edu.au)';
+                }                
                 else {
                     //$("#register").mask("Processing ...");
                     var json =
@@ -190,7 +114,7 @@
                             type: "POST",
                             async: false,
                             url: "About_us.aspx/RegisterUser",
-                            data: JSON.stringify({ 'fname': name, 'lname': surname, 'email': email, 'jobId': $("#<%=ddlJobRole.ClientID %>").val(), 'jobLevel': $("#<%=ddlJobLevel.ClientID %>").val(), 'managerFirstname': MfirstName, 'managerLastName': MlastName, 'managerEmail': Memail, 'agencyId': agency }),
+                            data: JSON.stringify({ 'fname': name, 'lname': surname, 'email': email, 'jobId': $("#<%=ddlJobRole.ClientID %>").val(), 'jobLevel': $("#<%=ddlJobLevel.ClientID %>").val(), 'agencyId': agency }),
                             dataType: "json",
                             contentType: "application/json; charset=utf-8",
                             success: function (data) {
@@ -199,10 +123,7 @@
                                     alertHtml = "Thank you for registering. Your registration has been approved and in the next few minutes a confirmation email will be sent to your inbox. The email contains your username and password to login. Note: You may need to check your junk mail folder if this doesn't reach your inbox.";
                                     $('#FName').val('');
                                     $('#LName').val('');
-                                    $('#Email').val('');
-                                    $('#MfirstName').val('');
-                                    $('#MlastName').val('');
-                                    $('#Memail').val('');
+                                    $('#Email').val('');                                  
                                 } else if (data.d == 'e') {
                                     $('#colorbox').css({ "display": "block" });
                                     alertHtml = 'Some error occured in the process, Please try again.';
@@ -215,72 +136,80 @@
                                 }
                             }
                         });
-                }
+                    }
 
             }
         });
 
     });
-</script>
-<!-- Banner start -->
-<div id="banner-home">
-					<ul class="bxslider">
-						<li><img src="images/img-banner-01.jpg" /></li>
-						<li>
-            <img src="images/banner2.jpg" />
-            
-            <div class="newtag"><img src="images/newtag.png"  alt="" /></div>
-            <div class="abs1">
-            <div class="bannerwidth1">
-            <div class="role">Is procurement a small part of your overall role?</div>
-            
-            <div class="especially">We have something <span>especially </span>for YOU!</div>
-            
-            <div class="non-professionals">
-            <span>Procurement for <br />Non-procurement Professionals </span> 
-            
-            <p><i><img src="images/tickicon.png"  alt="" /></i>E-learning</p>
-            <p><i><img src="images/tickicon.png"  alt="" /></i>1/2 day workshop, or </p>
-            <p><i><img src="images/tickicon.png"  alt="" /></i>Full day workshop</p>
-            </div>
-            
-            <div class="learn-button"><a href="http://demoevents.criticalskillsboost.com/workshops/contract-management/procurement-for-non-procurement-practitioners/">LEARN MORE >></a></div>
-                   </div>     
-            </div>
-            </li>
-            
-            
-            
+    </script>
+    <!-- Banner start -->
+    <div id="banner-home">
+        <ul class="bxslider">
             <li>
-            <img src="images/banner3.jpg" />
-            <div class="newtag"><img src="images/newtag.png"  alt="" /></div>
-            <div class="abs1">
-            <div class="bannerwidth1">
-            <div class="nego">What type of negotiator are you?</div>
-            
-            <div class="negotiation">Take the Negotiation Assessment <span><a href="/negotiation_assessment">Read more ...</a></span></div>
-            
-            <div class="plus-Advanced">
-            <i>PLUS</i> Access to Advanced Negotiation Training
-            </div>
-            
-            <div class="learn-button"><a href="http://demoevents.criticalskillsboost.com/workshops/sourcing/advanced-negotiation/">LEARN MORE >></a></div>
-                   </div>     
-            </div>
-            
-            
-            
+                <img src="images/img-banner-01.jpg" /></li>
+            <li>
+                <img src="images/banner2.jpg" />
+
+                <div class="newtag">
+                    <img src="images/newtag.png" alt="" /></div>
+                <div class="abs1">
+                    <div class="bannerwidth1">
+                        <div class="role">Is procurement a small part of your overall role?</div>
+
+                        <div class="especially">We have something <span>especially </span>for YOU!</div>
+
+                        <div class="non-professionals">
+                            <span>Procurement for
+                                <br />
+                                Non-procurement Professionals </span>
+
+                            <p><i>
+                                <img src="images/tickicon.png" alt="" /></i>E-learning</p>
+                            <p><i>
+                                <img src="images/tickicon.png" alt="" /></i>1/2 day workshop, or </p>
+                            <p><i>
+                                <img src="images/tickicon.png" alt="" /></i>Full day workshop</p>
+                        </div>
+
+                        <div class="learn-button"><a href="http://demoevents.criticalskillsboost.com/workshops/contract-management/procurement-for-non-procurement-practitioners/">LEARN MORE >></a></div>
+                    </div>
+                </div>
             </li>
-                        <li><img src="images/img-banner-06.jpg" /></li>
-					</ul>
-                    <img src="images/banner-bottom.png" alt="banner" style="width:100%;height:100%" />
-					<%--<div class="banner-caption">Critical Skills Boost Program</div>--%>
-                    
-				</div>
-				<!-- Banner end // -->
-                 
-				<!-- Content Area start -->
-                <article id="container">
+
+
+
+            <li>
+                <img src="images/banner3.jpg" />
+                <div class="newtag">
+                    <img src="images/newtag.png" alt="" /></div>
+                <div class="abs1">
+                    <div class="bannerwidth1">
+                        <div class="nego">What type of negotiator are you?</div>
+
+                        <div class="negotiation">Take the Negotiation Assessment <span><a href="/negotiation_assessment">Read more ...</a></span></div>
+
+                        <div class="plus-Advanced">
+                            <i>PLUS</i> Access to Advanced Negotiation Training
+                        </div>
+
+                        <div class="learn-button"><a href="http://demoevents.criticalskillsboost.com/workshops/sourcing/advanced-negotiation/">LEARN MORE >></a></div>
+                    </div>
+                </div>
+
+
+
+            </li>
+            <li>
+                <img src="images/img-banner-06.jpg" /></li>
+        </ul>
+        <img src="images/banner-bottom.png" alt="banner" style="width: 100%; height: 100%" />
+        <%--<div class="banner-caption">Critical Skills Boost Program</div>--%>
+    </div>
+    <!-- Banner end // -->
+
+    <!-- Content Area start -->
+    <article id="container">
                           <p>This program is designed to offer you real-world training across core procurement competencies.</p>
 <p>Conducting your Training Needs Analysis is the first step. This  will provide you with a tailored report detailing your procurement learning plan and your opportunity to cross high-impact e-Learning information and industry-leading workshops.</p>
 <p><strong>With this program, we're delivering the skills boost you've been waiting for!</strong></p>
@@ -378,9 +307,6 @@
 <asp:ListItem Value="7">Executive Level</asp:ListItem> 
                             </asp:DropDownList></li>
                         	
-                        	<li><span>*</span><input type="text" value="Your manager's first name" title="Your manager's first name" class="txt-field2" id="MfirstName"/></li>
-                        	<li><span>*</span><input type="text" value="Your manager's last name" title="Your manager's last name" class="txt-field2" id="MlastName"/></li>
-                        	<li><span>*</span><input type="text" value="Your manager's email address" title="Your manager's email address" class="txt-field2" id="Memail"/></li>
                             <li><input type="checkbox" id="terms" name="terms" /> By ticking this box, I acknowledge that my manager will be notified of my registration to this program. I agree to the terms of the website and I understand that the information (including my personal information) entered is held offshore. Note:  
                             The Training Needs Analysis and e-Learning is FREE for Queensland Government departments to access until 30 June 2017 (fully funded by Office of the Chief Adviser, Queensland Government Procurement, Department of Housing and Public Works).</li>
                             <li class="txtRgt"><input type="submit" value="" class="btn-go2" id="btnSend" /></li>
@@ -423,12 +349,12 @@
                   <p class="hide">&nbsp;</p>
                 </article>
 
-<script>
-    $(document).ready(function () {
-        $(".iphonNav ul li").removeClass("active");
-        //alert($(".iphonNav ul li").eq(4));
-        $(".iphonNav ul li:eq(0)").addClass("active");
-    });
-</script>
+    <script>
+        $(document).ready(function () {
+            $(".iphonNav ul li").removeClass("active");
+            //alert($(".iphonNav ul li").eq(4));
+            $(".iphonNav ul li:eq(0)").addClass("active");
+        });
+    </script>
 </asp:Content>
 

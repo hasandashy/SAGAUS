@@ -1,5 +1,5 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/tnaMaster.Master" AutoEventWireup="true" CodeBehind="my-results-bar-graph-ssa.aspx.cs" Inherits="SGA.tna.my_results_bar_graph_ssa" %>
-<%@ Register Src="~/controls/ctrlSSAGraph.ascx" TagName="ssaGragh" TagPrefix="sga" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/tnaMaster.Master" AutoEventWireup="true" CodeBehind="my-results-bar-graph-cmk.aspx.cs" Inherits="SGA.tna.my_results_bar_graph_cmk" %>
+<%@ Register Src="~/controls/ctrlCMKGraph.ascx" TagName="baGragh" TagPrefix="sga" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <script type="text/javascript" src="../js/ddaccordion.js"></script>
 <script type="text/javascript" language="javascript">
@@ -9,10 +9,10 @@
         revealtype: "click", //Reveal content when user clicks or onmouseover the header? Valid value: "click", "clickgo", or "mouseover"
         mouseoverdelay: 200, //if revealtype="mouseover", set delay in milliseconds before header expands onMouseover
         collapseprev: false, //Collapse previous content (so only one open at any time)? true/false 
-        defaultexpanded: [0, 1, 2], //index of content(s) open by default [index1, index2, etc] [] denotes no content
+        defaultexpanded: [2], //index of content(s) open by default [index1, index2, etc] [] denotes no content
         onemustopen: true, //Specify whether at least one header should be open always (so never all headers closed)
         animatedefault: false, //Should contents open by default be animated into view?
-        persiststate: false, //persist state of opened contents within browser session?
+        persiststate: true, //persist state of opened contents within browser session?
         toggleclass: ["", ""], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
         togglehtml: ["suffix", "<img src='/innerimages/arw-rt.gif' class='statusicon' />", "<img src='/innerimages/arw-bt.gif' class='statusicon' />"], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
         animatespeed: "fast", //speed of animation: integer in milliseconds (ie: 200), or keywords "fast", "normal", or "slow"
@@ -30,10 +30,10 @@
 					<section class="welcome-test">
 						<p class="title40 floatL orange">Congratulations! <span class="txt20">You have completed your assessment.</span></p>
 						<div class="score-ur">
-							<%--<div class="percent">
+							<div class="percent">
                             <asp:Label ID="lblPercentage" runat="server"></asp:Label>
                             </div>
-							<div class="content">IS YOUR<br />TOTAL SCORE</div>--%>
+							<div class="content">IS YOUR<br />RATING</div>
 							<div class="clear"></div>
 						</div>
 						<div class="clear"></div>
@@ -43,12 +43,12 @@
 						<article class="test-info-box">
 							<p class="title orange">My Results and Reports</p>
 							<p>&nbsp;</p>
-							<p><span class="dark">INSTRUCTIONS:</span> Below you will find the results and reports for each challenge and assessment you have taken. In the left hand column you will note the menu where you can easily navigate. If you would like to access your reports, simply navigate through the links. </p>
+							<p><span class="dark">INSTRUCTIONS:</span> Below you will find the results and report for each assessment you have taken. In the left hand column you will note the menu where you can easily navigate. If you would like to access your reports or compare your results, simply navigate through the links. We encourage you to share the 'Negotiation Profile Assessment' since aggregate data from this challenge will provide an important insight into 'Category Management Capability' in Australia. The richer the data - the greater the insights.</p>
 						</article>
 					</section>
 					<section class="my-result-box">
 						<article class="breadcrumb">
-							<a href="#">Report Centre</a>&nbsp; &gt; &nbsp;<a href="#">Procurement Assessment Results</a>&nbsp; <span>&gt; &nbsp;Bar Graph</span>
+							<a href="#">Report Centre</a>&nbsp; &gt; &nbsp;<a href="#">Contract Management Assessment Results</a>&nbsp; <span>&gt; &nbsp;Bar Graph</span>
 						</article>
 						<p>&nbsp;</p>
 						<p>&nbsp;</p>
@@ -191,8 +191,7 @@
 									<p>&nbsp;</p>
 								</div>
 								<p class="txtCtr">
-                                 <!-- Graph comes here -->
-                                 <sga:ssaGragh id="graph1" runat="server"></sga:ssaGragh>
+                                 <sga:baGragh id="graph1" runat="server"></sga:baGragh>
                                  </p>
 								<p>&nbsp;</p>
 								<hr class="divider-line" />

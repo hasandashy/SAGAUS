@@ -115,6 +115,8 @@
     <Content Include="controls\ctrlBAPDF.ascx" />
     <Content Include="controls\ctrlCMAGraph.ascx" />
     <Content Include="controls\ctrlCMAPdf.ascx" />
+    <Content Include="controls\ctrlCMCGraph.ascx" />
+    <Content Include="controls\ctrlCMKGraph.ascx" />
     <Content Include="controls\ctrlFooter.ascx" />
     <Content Include="controls\ctrlHeader.ascx" />
     <Content Include="controls\ctrlHelp.ascx" />
@@ -907,11 +909,16 @@
     <Content Include="tna\behavioural-assessment-test.aspx" />
     <Content Include="tna\cma-assessment-instructions.aspx" />
     <Content Include="tna\cma-relationsip-context.aspx" />
+    <Content Include="tna\cmk-assessment-instructions.aspx" />
+    <Content Include="tna\cmk-relationsip-context.aspx" />
     <Content Include="tna\contract-management-assessment-test.aspx" />
+    <Content Include="tna\contract-management-knowledge-evaluation.aspx" />
     <Content Include="tna\default.aspx" />
     <Content Include="tna\Help.aspx" />
+    <Content Include="tna\my-result-bar-graph.aspx" />
     <Content Include="tna\my-results-bar-graph-ba.aspx" />
     <Content Include="tna\my-results-bar-graph-cma.aspx" />
+    <Content Include="tna\my-results-bar-graph-cmk.aspx" />
     <Content Include="tna\my-results-bar-graph-np.aspx" />
     <Content Include="tna\my-results-bar-graph-ssa.aspx" />
     <Content Include="tna\my-results-reports-ba.aspx" />
@@ -921,6 +928,8 @@
     <Content Include="tna\MyProfile.aspx" />
     <Content Include="tna\negotiation-profile-test.aspx" />
     <Content Include="tna\np-assessment-instructions.aspx" />
+    <Content Include="tna\pk-evaluation-instructions.aspx" />
+    <Content Include="tna\procurement-knowledge-evaluation-test.aspx" />
     <Content Include="tna\ResultDenied.aspx" />
     <Content Include="tna\share-the-challenge.aspx" />
     <Content Include="tna\showBAPDF.aspx" />
@@ -1121,6 +1130,20 @@
     </Compile>
     <Compile Include="controls\ctrlCMAPdf.ascx.designer.cs">
       <DependentUpon>ctrlCMAPdf.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\ctrlCMCGraph.ascx.cs">
+      <DependentUpon>ctrlCMCGraph.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\ctrlCMCGraph.ascx.designer.cs">
+      <DependentUpon>ctrlCMCGraph.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\ctrlCMKGraph.ascx.cs">
+      <DependentUpon>ctrlCMKGraph.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\ctrlCMKGraph.ascx.designer.cs">
+      <DependentUpon>ctrlCMKGraph.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\ctrlFooter.ascx.cs">
       <DependentUpon>ctrlFooter.ascx</DependentUpon>
@@ -1392,12 +1415,33 @@
     <Compile Include="tna\cma-relationsip-context.aspx.designer.cs">
       <DependentUpon>cma-relationsip-context.aspx</DependentUpon>
     </Compile>
+    <Compile Include="tna\cmk-assessment-instructions.aspx.cs">
+      <DependentUpon>cmk-assessment-instructions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tna\cmk-assessment-instructions.aspx.designer.cs">
+      <DependentUpon>cmk-assessment-instructions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tna\cmk-relationsip-context.aspx.cs">
+      <DependentUpon>cmk-relationsip-context.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tna\cmk-relationsip-context.aspx.designer.cs">
+      <DependentUpon>cmk-relationsip-context.aspx</DependentUpon>
+    </Compile>
     <Compile Include="tna\contract-management-assessment-test.aspx.cs">
       <DependentUpon>contract-management-assessment-test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="tna\contract-management-assessment-test.aspx.designer.cs">
       <DependentUpon>contract-management-assessment-test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tna\contract-management-knowledge-evaluation.aspx.cs">
+      <DependentUpon>contract-management-knowledge-evaluation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tna\contract-management-knowledge-evaluation.aspx.designer.cs">
+      <DependentUpon>contract-management-knowledge-evaluation.aspx</DependentUpon>
     </Compile>
     <Compile Include="tna\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
@@ -1413,6 +1457,13 @@
     <Compile Include="tna\Help.aspx.designer.cs">
       <DependentUpon>Help.aspx</DependentUpon>
     </Compile>
+    <Compile Include="tna\my-result-bar-graph.aspx.cs">
+      <DependentUpon>my-result-bar-graph.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tna\my-result-bar-graph.aspx.designer.cs">
+      <DependentUpon>my-result-bar-graph.aspx</DependentUpon>
+    </Compile>
     <Compile Include="tna\my-results-bar-graph-ba.aspx.cs">
       <DependentUpon>my-results-bar-graph-ba.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1426,6 +1477,13 @@
     </Compile>
     <Compile Include="tna\my-results-bar-graph-cma.aspx.designer.cs">
       <DependentUpon>my-results-bar-graph-cma.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tna\my-results-bar-graph-cmk.aspx.cs">
+      <DependentUpon>my-results-bar-graph-cmk.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tna\my-results-bar-graph-cmk.aspx.designer.cs">
+      <DependentUpon>my-results-bar-graph-cmk.aspx</DependentUpon>
     </Compile>
     <Compile Include="tna\my-results-bar-graph-np.aspx.cs">
       <DependentUpon>my-results-bar-graph-np.aspx</DependentUpon>
@@ -1489,6 +1547,20 @@
     </Compile>
     <Compile Include="tna\np-assessment-instructions.aspx.designer.cs">
       <DependentUpon>np-assessment-instructions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tna\pk-evaluation-instructions.aspx.cs">
+      <DependentUpon>pk-evaluation-instructions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tna\pk-evaluation-instructions.aspx.designer.cs">
+      <DependentUpon>pk-evaluation-instructions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tna\procurement-knowledge-evaluation-test.aspx.cs">
+      <DependentUpon>procurement-knowledge-evaluation-test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tna\procurement-knowledge-evaluation-test.aspx.designer.cs">
+      <DependentUpon>procurement-knowledge-evaluation-test.aspx</DependentUpon>
     </Compile>
     <Compile Include="tna\ResultDenied.aspx.cs">
       <DependentUpon>ResultDenied.aspx</DependentUpon>

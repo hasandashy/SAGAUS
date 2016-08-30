@@ -9,7 +9,14 @@
 					</section>
 					<div class="dot-line">&nbsp;</div>
 					<section class="color-box">
-						
+						<article id="pnlSga" runat="server" visible="false" class="info-box-shdw">
+							<div class="icon"><img src="../innerimages/img-category-management-challenge.gif" alt="Procurement Knowledge Evaluation" /></div>
+							<div class="head">Procurement Knowledge Evaluation</div>
+							<div class="desc">This assessment focuses on the skills required to perform procurement. It focuses on eight dimensions typically used in an end-to-end procurement process. For each dimension you will be asked nine questions.</div>
+							<div class="info">
+					        <asp:HyperLink ID="hylSga" runat="server"></asp:HyperLink></div>
+							<div class="clear"></div>
+						</article>
 						<article id="pnlTNA" runat="server" visible="false" class="info-box-shdw">
 							<div class="icon"><img src="../innerimages/img-skills-self-assessment.gif" alt="Skills Self Assessment" /></div>
 							<div class="head">Procurement Training Needs Analysis</div>
@@ -26,6 +33,15 @@
 							<div class="desc">An online self-assessment survey designed to explore the capability required to perform commercial contract management. Based on your responses to 72 questions, across the 8 categories of contract management, a profile of your capability will be built and recommendations for future development will be made.</div>
 							<div class="info">
 							<asp:HyperLink ID="hylCMA" runat="server"></asp:HyperLink></div>
+							<div class="clear"></div>
+						</article>
+
+                         <article id="pnlCMK" runat="server" class="info-box-shdw">
+							<div class="icon"><img src="../innerimages/img-contract-management-assessment.png" alt="Contract Management Assessment" /></div>
+							<div class="head">Contract Management Knowledge Evaluation</div>
+							<div class="desc">This assessment targets contract and commercial managers. The diagnostic profiles capability in managing suppliers and contracts. The feedback uses 70:20:10 framework for extending traditional learning into the workplace to support you in managing commercial contracts more effectively. </div>
+							<div class="info">
+							<asp:HyperLink ID="hylCMK" runat="server"></asp:HyperLink></div>
 							<div class="clear"></div>
 						</article>
 

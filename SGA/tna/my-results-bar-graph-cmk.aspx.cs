@@ -1,19 +1,18 @@
 ﻿using DataTier;
 using SGA.App_Code;
-using SGA.controls;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
 
 namespace SGA.tna
 {
-    public partial class my_results_bar_graph_cma : Page
+    public partial class my_results_bar_graph_cmk : System.Web.UI.Page
     {
-
-
         protected bool isPkeResult = false;
 
         protected bool isTnaResult = false;
@@ -26,7 +25,7 @@ namespace SGA.tna
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
-            SGACommon.IsViewResult("viewCMAResult");
+            SGACommon.IsViewResult("viewCmkResult");
             if (!base.IsPostBack)
             {
                 DataSet dsPermission = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetPremission", new SqlParameter[]
@@ -49,7 +48,7 @@ namespace SGA.tna
                 this.spBehaviour.Attributes["class"] = (this.isCmkResult ? "" : "lock");
                 this.spNegotiation.Attributes["class"] = (this.isCaaResult ? "" : "lock");
                 this.spCMA.Attributes["class"] = (this.isCMAResult ? "" : "lock");
-         
+
                 base.Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
                 if (this.Session["cmaTestId"] != null)
                 {
@@ -58,11 +57,12 @@ namespace SGA.tna
 						new SqlParameter("@userId", SGACommon.LoginUserInfo.userId),
 						new SqlParameter("@testId", this.Session["cmaTestId"].ToString())
 					};
+                    this.lblPercentage.Text = System.Convert.ToDecimal(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetCMAPrecentage", param)).ToString("#.##");
                     this.graph1.testId = System.Convert.ToInt32(this.Session["cmaTestId"].ToString());
                 }
                 else
                 {
-                    base.Response.Redirect("my-results-reports-cma.aspx", false);
+                    base.Response.Redirect("my-results-reports-cmk.aspx", false);
                 }
             }
         }

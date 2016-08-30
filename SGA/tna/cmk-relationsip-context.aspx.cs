@@ -1,24 +1,24 @@
 ﻿using DataTier;
 using SGA.App_Code;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace SGA.tna
 {
-    public partial class ssa_assessment_instructions : Page
+    public partial class cmk_relationsip_context : System.Web.UI.Page
     {
         protected int directSend = 0;
 
-       
-
         protected void Page_Load(object sender, System.EventArgs e)
         {
-            SGACommon.AddPageTitle(this.Page, "Procurement Assessment Instructions Page", "");
-            SGACommon.IsTakeTest("viewTnaTest");
+            SGACommon.AddPageTitle(this.Page, "Commercial Contract Management Assessment Instructions Page", "");
+            SGACommon.IsTakeTest("takeCMATest");
             if (!base.IsPostBack)
             {
                 this.lblName.Text = "Hi " + SGACommon.GetName() + "!";
@@ -28,11 +28,11 @@ namespace SGA.tna
 
         private void PassProfile()
         {
-            int count = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spUserProfileComplete", new SqlParameter[]
+            int count = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spProfileComplete", new SqlParameter[]
 			{
 				new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
 			}));
-            this.directSend = count;
+            this.directSend = ((count <= 0) ? 0 : 1);
         }
     }
 }

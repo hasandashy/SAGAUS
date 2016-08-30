@@ -96,7 +96,7 @@ namespace SGA.tna
                     }
                 }
             }
-            SGACommon.IsTakeTest("viewTNATest");
+            SGACommon.IsTakeTest("viewTnaTest");
             if (!base.IsPostBack)
             {
                 this.testId = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spInitalizeSsaTest", new SqlParameter[]

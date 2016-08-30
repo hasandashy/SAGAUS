@@ -389,7 +389,7 @@ namespace SGA.tna
             this.testId = 0;
             SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spRestrictTest", new SqlParameter[]
 			{
-				new SqlParameter("@flag", "5"),
+				new SqlParameter("@flag", "4"),
 				new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
 			});
             base.Response.Redirect("~/tna/my-results-bar-graph-cma.aspx", false);
