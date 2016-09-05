@@ -358,7 +358,7 @@ namespace SGA.tna
 				new SqlParameter("@flag", "0"),
 				new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
 			});
-            base.Response.Redirect("~/tna/my-results-bar-graph.aspx", false);
+            base.Response.Redirect("~/tna/my-result-bar-graph.aspx", false);
         }
 
         protected void Cronometro1_TimeOut(object sender, System.EventArgs e)
@@ -444,7 +444,7 @@ namespace SGA.tna
 				new SqlParameter("@flag", "0"),
 				new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
 			});
-            base.Response.Redirect("~/tna/my-results-bar-graph.aspx", false);
+            base.Response.Redirect("~/tna/my-result-bar-graph.aspx", false);
         }
 
         protected void btnNextNoForward_Click(object sender, System.EventArgs e)

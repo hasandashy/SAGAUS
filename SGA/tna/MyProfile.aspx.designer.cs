@@ -76,33 +76,6 @@ namespace SGA.tna {
         protected global::System.Web.UI.WebControls.DropDownList ddlJobLevel;
         
         /// <summary>
-        /// MfirstName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText MfirstName;
-        
-        /// <summary>
-        /// MlastName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText MlastName;
-        
-        /// <summary>
-        /// Memail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Memail;
-        
-        /// <summary>
         /// email control.
         /// </summary>
         /// <remarks>

@@ -53,135 +53,76 @@
 						<p>&nbsp;</p>
 						<p>&nbsp;</p>
 						<div class="my-result-container">
-							<div class="col-lft">
+						<div class="col-lft">
 
-                    <p class="title18"><span id="spCategory" runat="server">Procurement Knowledge Evaluation</span></p>
-                    <% if (isPkeResult)
-                       { %>
-                    <div class="acrd-menu">
-                        <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
-                        <div class="submenu">
-                            <ul>
-                                <li><a href="my-results-bar-graph.aspx" class="active">&bull; Bar Graph</a></li>
-                                <li><a href="my-results-reports.aspx">&bull; Reports</a></li>
-                            </ul>
-                        </div>
-                        <p><a href="#" class="menuitem submenuheader">Compare Results</a></p>
-                        <div class="submenu">
-                            <ul>
-                                <li>
-                                    <asp:LinkButton ID="lnkAverage" runat="server" CommandArgument="4" OnClick="lnkLower_Click">&bull; Average</asp:LinkButton></li>
-                                <li>
-                                    <asp:LinkButton ID="lnkLower" runat="server" CommandArgument="1" OnClick="lnkLower_Click">&bull; Lower Quartile</asp:LinkButton></li>
-                                <li>
-                                    <asp:LinkButton ID="lnkMiddle" runat="server" CommandArgument="2" OnClick="lnkLower_Click">&bull; Median</asp:LinkButton></li>
-                                <li>
-                                    <asp:LinkButton ID="lnkUpper" runat="server" CommandArgument="3" OnClick="lnkLower_Click">&bull; Upper Quartile</asp:LinkButton></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <% }
-                       else
-                       { %>
-                    <div class="result-info icon-score">
-                        <p>Your results are restricted of this assessment.</p>
-                    </div>
-                    <%} %>
-                    <p class="title18">
-                        <span id="spSkills" runat="server">Procurement Training Needs 
-                        <br />
-                            Analysis</span>
-                    </p>
-                    <% if (isTnaResult)
-                       { %>
-                    <div class="acrd-menu">
-                        <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
-                        <div class="submenu">
-                            <ul>
-                                <li><a href="my-results-bar-graph-ssa.aspx">&bull; Bar Graph</a></li>
-                                <li><a href="my-results-reports-ssa.aspx">&bull; Reports</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <% }
-                       else
-                       { %>
-                    <div class="result-info icon-graf">
-                        <p>Your results are restricted of this assessment.</p>
-                    </div>
-                    <%} %>
-                    <p class="title18">
-                        <span id="spBehaviour" runat="server">Contract Management Knowledge 
-                        <br />
-                            Evaluation</span>
-                    </p>
-                    <% if (isCmkResult)
-                       { %>
-                    <div class="acrd-menu">
-                        <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
-                        <div class="submenu">
-                            <ul>
-                                <li><a href="my-results-bar-graph-ba.aspx">&bull; Bar Graph</a></li>
-                                <li><a href="my-results-reports-ba.aspx">&bull; Reports</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <% }
-                       else
-                       { %>
-                    <div class="result-info icon-bulb">
-                        <p>Your results are restricted of this assessment.</p>
-                    </div>
-                    <%} %>
-                    <p class="title18">
-                        <span id="spNegotiation" runat="server">Commercial Awareness<br />
-                            Assessment</span>
-                    </p>
-                    <% if (isCaaResult)
-                       { %>
-                    <div class="acrd-menu">
-                        <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
-                        <div class="submenu">
-                            <ul>
-                                <li><a href="my-results-bar-graph-np.aspx">&bull; Bar Graph</a></li>
-                                <li><a href="my-results-reports-np.aspx">&bull; Reports</a></li>
-                            </ul>
-                        </div>
-                        <p><a href="share-the-challenge.aspx" class="menuitem">Share the Assessment</a></p>
-                    </div>
-                    <% }
-                       else
-                       { %>
-                    <div class="result-info icon-calcualtor">
-                        <p>Your results are restricted of this assessment.</p>
-                    </div>
-                    <%} %>
-
-                    <p class="title18">
-                        <span id="spCMA" runat="server">Contract Management
-                        <br />
-                            Assessment</span>
-                    </p>
-                    <% if (isCMAResult)
-                       { %>
-                    <div class="acrd-menu">
-                        <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
-                        <div class="submenu">
-                            <ul>
-                                <li><a href="my-results-bar-graph-cma.aspx">&bull; Bar Graph</a></li>
-                                <li><a href="my-results-reports-cma.aspx">&bull; Reports</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <% }
-                       else
-                       { %>
-                    <div class="result-info icon-copy">
-                        <p>Your results are restricted of this assessment.</p>
-                    </div>
-                    <%} %>
-                </div>
+                                <p class="title18"><span id="spSkills" runat="server">Procurement Skills Self  <br />Assessment</span></p>
+                                <% if(isTnaResult) { %>
+                                
+                                <div class="acrd-menu">
+                                <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
+								<div class="submenu">
+										<ul>
+											<li><a href="my-results-bar-graph-ssa.aspx" >&bull; Bar Graph</a></li>
+										</ul>
+									</div>
+                                </div>
+                                <% } else { %>
+                                <div class="result-info icon-graf">
+									<p>This assessment is locked and no results are available.</p>
+								</div>
+                                <%} %>
+                                
+                                <p class="title18"><span id="spCMA" runat="server">Contract Management Self <br />Assessment</span></p>
+                                <% if (isCMAResult)
+                                   { %>
+                                
+                                <div class="acrd-menu">
+                                <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
+								<div class="submenu">
+										<ul>
+											<li><a href="my-results-bar-graph-cma.aspx"   >&bull; Bar Graph</a></li>
+										</ul>
+									</div>
+                                </div>
+                                <% } else { %>
+                                <div class="result-info icon-copy">
+									<p>This assessment is locked and no results are available.</p>
+								</div>
+                                <%} %>
+                                
+                                <p class="title18"><span id="spPKE" runat="server">Procurement Knowledge   <br />Evaluation</span></p>
+                                <% if(isPkeResult) { %>
+                                
+                                <div class="acrd-menu">
+                                <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
+								<div class="submenu">
+										<ul>
+											<li><a href="my-result-bar-graph.aspx"  >&bull; Bar Graph</a></li>
+										</ul>
+									</div>
+                                </div>
+                                <% } else { %>
+                                <div class="result-info icon-bulb">
+									<p>This assessment is locked and no results are available.</p>
+								</div>
+                                <%} %>
+                                <p class="title18"><span id="spCMK" runat="server">Contract Management Knowledge <br /> Evaluation</span></p>
+								<% if (isCmkResult)
+                                { %>
+                                <div class="acrd-menu">
+									<p><a href="#" class="menuitem submenuheader">Display Results</a></p>
+									<div class="submenu">
+										<ul>
+											<li><a href="my-results-bar-graph-cmk.aspx" >&bull; Bar Graph</a></li>
+										</ul>
+									</div>
+								</div>
+								<% } else { %>
+                                <div class="result-info icon-calcualtor">
+									<p>Your results are restricted of this assessment.</p>
+								</div>
+                                <%} %>
+							</div>
 							<div class="col-cnt">
 								<div class="wide578">
 									<p class="txt28 orange mrg-bt-5">Bar Graph</p>

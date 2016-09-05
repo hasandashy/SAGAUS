@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("input[type='text'],input[type='password']").focus(function () {
+$("input[type='text'],input[type='password']").focus(function() {
 		if(this.value == this.defaultValue) {
 			this.value = "";
 		}
@@ -14,7 +14,7 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$('.bxslider').bxSlider({
 		auto: true,
-		controls: true
+		controls: false
 	});
 });
 

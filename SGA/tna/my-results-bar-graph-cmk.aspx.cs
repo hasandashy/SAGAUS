@@ -13,9 +13,9 @@ namespace SGA.tna
 {
     public partial class my_results_bar_graph_cmk : System.Web.UI.Page
     {
-        protected bool isPkeResult = false;
-
         protected bool isTnaResult = false;
+
+        protected bool isPkeResult = false;
 
         protected bool isCaaResult = false;
 
@@ -38,16 +38,15 @@ namespace SGA.tna
                     {
                         this.isPkeResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewPkeResult"].ToString());
                         this.isTnaResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewTnaResult"].ToString());
-                        this.isCaaResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCaaResult"].ToString());
-                        this.isCmkResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCmkPResult"].ToString());
                         this.isCMAResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCmaResult"].ToString());
+                        this.isCmkResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCmkResult"].ToString());
+                        this.isCaaResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCaaResult"].ToString());
                     }
                 }
-                this.spCategory.Attributes["class"] = (this.isPkeResult ? "" : "lock");
                 this.spSkills.Attributes["class"] = (this.isTnaResult ? "" : "lock");
-                this.spBehaviour.Attributes["class"] = (this.isCmkResult ? "" : "lock");
-                this.spNegotiation.Attributes["class"] = (this.isCaaResult ? "" : "lock");
                 this.spCMA.Attributes["class"] = (this.isCMAResult ? "" : "lock");
+                this.spCMK.Attributes["class"] = (this.isCmkResult ? "" : "lock");
+                this.spPKE.Attributes["class"] = (this.isPkeResult ? "" : "lock");
 
                 base.Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
                 if (this.Session["cmaTestId"] != null)

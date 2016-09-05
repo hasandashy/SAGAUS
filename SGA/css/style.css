@@ -116,14 +116,14 @@ header {border-bottom:10px solid #e6e1d6; min-height:129px; padding-top:16px; po
 	text-align: center;
 	width: 343px;
 }
-#logo a, #logo a:hover {
-	background: url(../images/logo.png) no-repeat left top;
-	display: block;
-	height: 92px;
-	text-decoration: none;
-	text-indent: -999em;
-	width: 343px;
-}
+    #logo a, #logo a:hover {
+        background: url(../images/logo.png) no-repeat left top;
+        display: block;
+        height: 107px;
+        text-decoration: none;
+        text-indent: -999em;
+        width: 226px;
+    }
 
 .main-navigation {
 	clear: both;
@@ -431,8 +431,8 @@ input.btn-share {font-family:'helvetica_neueregular', Arial, Helvetica, sans-ser
 
 /* Footer */
 footer {padding:18px 0; position:relative}
-#footer-logo {margin:0 auto; width:256px; height:69px; text-align:center; font-size:10px}
-#footer-logo a, #footer-logo a:hover {display:block; width:256px; height:69px; background:url(../innerimages/logo-footer.png) top left no-repeat; text-decoration:none; text-indent:-999em}
+#footer-logo {margin:0 auto; width:256px; height:77px; text-align:center; font-size:10px}
+#footer-logo a, #footer-logo a:hover {display:block; width:256px; height:77px; background:url(../images/logo-footer.png) top left no-repeat; text-decoration:none; text-indent:-999em}
 .powered {position:absolute; top:18px; right:55px; font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#58595b; text-align:right; line-height:50px}
 /* -- -- -- -- */
 

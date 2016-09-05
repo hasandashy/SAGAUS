@@ -16,7 +16,7 @@ using System.Web.UI.WebControls;
 
 namespace SGA.tna
 {
-    public partial class my_results_reports_cma : Page
+    public partial class my_results_reports_cmk : System.Web.UI.Page
     {
         private const int LeftAlign = 0;
 
@@ -25,7 +25,6 @@ namespace SGA.tna
         private const int RightAlign = 2;
 
         
-
         private Document doc;
 
         private string imagepath;
@@ -105,8 +104,8 @@ namespace SGA.tna
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
-            SGACommon.AddPageTitle(this.Page, "Contract Management Assessment Result Page", "");
-            SGACommon.IsViewResult("viewCMAResult");
+            SGACommon.AddPageTitle(this.Page, "Contract Management Knowledge Evaluation Result Page", "");
+            SGACommon.IsViewResult("viewCmkResult");
             if (!base.IsPostBack)
             {
                 DataSet dsPermission = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetPremission", new SqlParameter[]
@@ -138,7 +137,7 @@ namespace SGA.tna
 
         private void BindResults()
         {
-            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCMATests", new SqlParameter[]
+            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCMKTests", new SqlParameter[]
 			{
 				new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
 			});
@@ -196,7 +195,7 @@ namespace SGA.tna
             if (e.CommandName == "bar")
             {
                 this.Session["cmaTestId"] = e.CommandArgument;
-                base.Response.Redirect("my-results-bar-graph-cma.aspx", false);
+                base.Response.Redirect("my-results-bar-graph-cmk.aspx", false);
             }
         }
 
@@ -216,7 +215,7 @@ namespace SGA.tna
                 for (int i = 0; i < strArray.Length; i++)
                 {
                     string strMail = "";
-                    DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCMAGraph", new SqlParameter[]
+                    DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCMKGraph", new SqlParameter[]
 					{
 						new SqlParameter("@testId", strArray[i])
 					});
@@ -259,22 +258,22 @@ namespace SGA.tna
         {
             this.imagepath = base.Server.MapPath("~/pdfBgImages/");
             string pdfPath = "~/pdfReports/";
-            string newFile = base.Server.MapPath(string.Concat(new string[]
-			{
-				pdfPath,
-				SGACommon.GetName(SGACommon.LoginUserInfo.userId),
-				"_",
-				testId,
-				"_cmatest.pdf"
-			}));
+            string newFile = base.Server.MapPath(string.Concat(new object[]
+            {
+                    pdfPath,
+                    SGACommon.GetName(SGACommon.LoginUserInfo.userId),
+                    "_",
+                    testId,
+                    "_cmatest.pdf"
+            }));
             DataSet dsPages = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageCMAText", new SqlParameter[]
-			{
-				new SqlParameter("@flag", 2)
-			});
+            {
+                    new SqlParameter("@flag", 2)
+            });
             SqlParameter[] param = new SqlParameter[]
-			{
-				new SqlParameter("@userId", SqlDbType.Int)
-			};
+            {
+                    new SqlParameter("@userId", SqlDbType.Int)
+            };
             param[0].Value = SGACommon.LoginUserInfo.userId;
             DataSet dsProfile = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetProfileDetails", param);
             System.DateTime dtEnd = System.Convert.ToDateTime(SqlHelper.ExecuteScalar(CommandType.Text, "select testDate from tbluserCmaTest where testId=" + testId));
@@ -286,34 +285,45 @@ namespace SGA.tna
             DataSet dspercentage = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spAvgValuesTests", param);
             this.doc = new Document(PageSize.A4, 0f, 0f, 0f, 0f);
             DataSet dsJob = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageJobRoleSuggestion", new SqlParameter[]
-			{
-				new SqlParameter("@id", System.Convert.ToInt32(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["jobRole"].ToString()))),
-				new SqlParameter("@jobSuggestion", ""),
-				new SqlParameter("@flag", "4")
-			});
+            {
+                    new SqlParameter("@id", System.Convert.ToInt32(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["jobRole"].ToString()))),
+                    new SqlParameter("@jobSuggestion", ""),
+                    new SqlParameter("@flag", "4")
+            });
+            iTextSharp.text.Image imgBG = iTextSharp.text.Image.GetInstance(this.imagepath + "/img3_footer.jpg");
+            imgBG.ScaleToFit(this.doc.PageSize.Width, this.doc.PageSize.Height);
+            imgBG.Alignment = 8;
+            imgBG.SetAbsolutePosition(1f, 3f);
             PdfWriter writer = PdfWriter.GetInstance(this.doc, new System.IO.FileStream(newFile, System.IO.FileMode.Create));
             HTMLWorker hw = new HTMLWorker(this.doc);
-            string result;
             try
             {
                 this.doc.Open();
-                iTextSharp.text.Image imgBG = iTextSharp.text.Image.GetInstance(this.imagepath + "/mainbg.jpg");
-                imgBG.ScaleToFit(this.doc.PageSize.Width, this.doc.PageSize.Height);
-                imgBG.Alignment = 8;
                 this.doc.NewPage();
-                this.doc.Add(imgBG);
                 this.doc.SetMargins(0f, 0f, 0f, 0f);
-                iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(this.imagepath + "/logo.png");
-                img.ScaleToFit(200f, 78f);
-                img.Alignment = 4;
-                img.SetAbsolutePosition(30f, 715f);
+                //SkillsGapReportCoverpage1.jpeg
+                iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(this.imagepath + "/ContractManagementSelfAssessment.jpg");
+                img.ScaleToFit(this.doc.PageSize.Width, this.doc.PageSize.Height);
+                img.Alignment = 5;
+                img.SetAbsolutePosition(0, 0);
                 this.doc.Add(img);
+
+                /*iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(this.imagepath + "/logo.gif");
+                img.ScaleToFit(142f, 68f);
+                img.Alignment = 5;
+                img.SetAbsolutePosition(250f, 740f);
+                this.doc.Add(img);
+
+                this.AddBlankParagraph(8);
+                this.AddParagraph("Commercial Contract Management", 0, this.arial24Bold);
+                this.AddBlankParagraphLowHeight(2);
+                this.AddParagraph("Assessment Report", 0, this.arial24Bold);*/
                 PdfContentByte cb = writer.DirectContent;
-                BaseFont f_cn = BaseFont.CreateFont("Helvetica", "Cp1252", false);
+                BaseFont f_cn = BaseFont.CreateFont("c:/windows/fonts/arial.ttf", BaseFont.WINANSI, false);
                 cb.BeginText();
                 cb.SetFontAndSize(f_cn, 12f);
                 cb.SetTextMatrix(80f, 380f);
-                cb.SetRGBColorFill(0, 0, 0);
+                cb.SetRGBColorFill(112, 112, 112);
                 cb.ShowText("Prepared for:");
                 cb.EndText();
                 if (dsProfile != null)
@@ -322,51 +332,151 @@ namespace SGA.tna
                     {
                         cb.BeginText();
                         cb.SetFontAndSize(f_cn, 24f);
-                        cb.SetTextMatrix(80f, 340f);
+                        cb.SetTextMatrix(80f, 350f);
                         cb.SetRGBColorFill(234, 66, 31);
                         cb.ShowText(SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["firstname"].ToString()) + " " + SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["lastname"].ToString()));
                         cb.EndText();
                         cb.BeginText();
                         cb.SetFontAndSize(f_cn, 12f);
-                        cb.SetTextMatrix(80f, 310f);
+                        cb.SetTextMatrix(80f, 320f);
                         cb.SetRGBColorFill(0, 0, 0);
-                        cb.ShowText("Contract Management");
+                        cb.ShowText(SGACommon.ToTitleCase(dsProfile.Tables[0].Rows[0]["jobtitle"].ToString()));
                         cb.EndText();
                         cb.BeginText();
                         cb.SetFontAndSize(f_cn, 12f);
-                        cb.SetTextMatrix(80f, 290f);
-                        cb.SetRGBColorFill(0, 0, 0);
-                        cb.ShowText("Training Needs Analysis");
-                        cb.EndText();
-                        cb.BeginText();
-                        cb.SetFontAndSize(f_cn, 12f);
-                        cb.SetTextMatrix(80f, 200f);
-                        cb.SetRGBColorFill(0, 0, 0);
-                        cb.ShowText("Date completed: ");
+                        cb.SetTextMatrix(80f, 300f);
+                        cb.SetRGBColorFill(112, 112, 112);
+                        cb.ShowText(SGACommon.ToTitleCase(dsProfile.Tables[0].Rows[0]["company"].ToString()));
                         cb.EndText();
                         cb.BeginText();
                         cb.SetFontAndSize(f_cn, 12f);
                         cb.SetTextMatrix(80f, 180f);
-                        cb.SetRGBColorFill(0, 0, 0);
-                        cb.ShowText(SGACommon.ToAusTimeZone(dtEnd).ToString("dddd, dd MMMM yyyy"));
+                        cb.SetRGBColorFill(112, 112, 112);
+                        cb.ShowText("Date completed: ");
                         cb.EndText();
                         cb.BeginText();
                         cb.SetFontAndSize(f_cn, 12f);
                         cb.SetTextMatrix(80f, 160f);
                         cb.SetRGBColorFill(0, 0, 0);
-                        cb.ShowText("Email : skills2procure@hpw.qld.gov");
+                        cb.ShowText(SGACommon.ToAusTimeZone(dtEnd).ToString("dddd, dd MMMM yyyy"));
+                        cb.EndText();
+                        cb.BeginText();
+                        cb.SetFontAndSize(f_cn, 12f);
+                        cb.SetTextMatrix(80f, 130f);
+                        cb.SetRGBColorFill(0, 0, 0);
+                        cb.ShowText("Email : info@comprara.com.au");
                         cb.EndText();
                         cb.BeginText();
                         cb.SetFontAndSize(f_cn, 16f);
-                        cb.SetTextMatrix(80f, 130f);
+                        cb.SetTextMatrix(80f, 110f);
                         cb.SetRGBColorFill(234, 66, 31);
-                        cb.ShowText("www.criticalskillsboost.com");
+                        cb.ShowText("www.comprara.com.au");
                         cb.EndText();
                     }
                 }
+
+                /*if (dsProfile != null)
+                {
+                    if (dsProfile.Tables.Count > 0 && dsProfile.Tables[0].Rows.Count > 0)
+                    {
+                        this.AddBlankParagraph(2);
+                        this.AddParagraph("Prepared for", 0, FontFactory.GetFont("Arial", 10f, new BaseColor(0, 0, 0)));
+                        this.AddBlankParagraphLowHeight(2);
+                        this.AddParagraph(SGACommon.ToTitleCase(dsProfile.Tables[0].Rows[0]["firstname"].ToString()) + " " + SGACommon.ToTitleCase(dsProfile.Tables[0].Rows[0]["lastname"].ToString()), 0, FontFactory.GetFont("Arial", 24f, 1, new BaseColor(234, 66, 31)));
+                        this.AddBlankParagraphLowHeight(2);
+                        this.AddParagraph(SGACommon.ToTitleCase(dsProfile.Tables[0].Rows[0]["jobtitle"].ToString()), 0, FontFactory.GetFont("Arial", 14f, 1, new BaseColor(0, 0, 0)));
+                        this.AddBlankParagraphLowHeight(1);
+                        this.AddParagraph(SGACommon.ToTitleCase(dsProfile.Tables[0].Rows[0]["company"].ToString()), 0, FontFactory.GetFont("Arial", 14f, 1, new BaseColor(0, 0, 0)));
+                        this.AddBlankParagraph(1);
+                    }
+                }
+                this.AddParagraph("Date completed", 0, FontFactory.GetFont("Arial", 10f, 1, new BaseColor(0, 0, 0)));
+                this.AddParagraph(SGACommon.ToAusTimeZone(dtEnd).ToString("dddd, dd MMMM yyyy"), 0, FontFactory.GetFont("Arial", 10f, 1, new BaseColor(0, 0, 0)));*/
+                /*img = iTextSharp.text.Image.GetInstance(this.imagepath + "/cmapdf1.jpg");
+                img.SetAbsolutePosition(0f, 0f);
+                img.ScaleToFit(600f, 600f);
+                img.Alignment = 4;
+                img.SetAbsolutePosition(0f, 25f);
+                this.doc.Add(img);
+                this.AddBlankParagraph(41);
+                this.AddParagraph("Powered by Comprara", 2, FontFactory.GetFont("Arial", 10f, new BaseColor(0, 0, 0)));*/
+                this.doc.SetMargins(0f, 0f, 0f, 0f);
+                this.doc.NewPage();
+                this.AddBlankParagraph(2);
                 PdfPTable table = this.GetTable(1, 560f);
+                this.Addrow(ref table, "", " ", "", "", "");
+                this.Addrow(ref table, "", " ", "", "", "");
+                this.Addrow(ref table, "", " ", "", "", "");
+                Chunk tc = new Chunk("  Table of contents", FontFactory.GetFont("Arial", 24f, 1, this.hcolor));
+                PdfPCell cell = new PdfPCell(new Phrase
+                    {
+                        tc
+                    });
+                cell.BackgroundColor = this.tablebackcolor;
+                cell.BorderColor = this.tableborcolor;
+                cell.PaddingBottom = 10f;
+                cell.PaddingLeft = 0f;
+                cell.PaddingTop = 4f;
+                table.AddCell(cell);
+                this.doc.Add(table);
+                table = this.GetTable(3, 560f);
+                float[] colwidth = new float[]
+                {
+                        50f,
+                        45f,
+                        5f
+                };
+                table.SetWidths(colwidth);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   Introduction", ".........................................................", "3", true, true, false);
+                this.Addrow(ref table, "   The outputs of your report", "", "3", false, true, false);
+                this.Addrow(ref table, "   Your organisation and you", ".........................................................", "4", true, true, false);
+                this.Addrow(ref table, "    ", "", "", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   Your assessment summary", ".........................................................", "5", true, true, false);
+                this.Addrow(ref table, "  1. Planning and Governance", ".........................................................", "6", false, true, false);
+                this.Addrow(ref table, "  2. Measuring Performance", ".........................................................", "7", false, true, false);
+                this.Addrow(ref table, "  3. Building Relationships", ".........................................................", "8", false, true, false);
+                this.Addrow(ref table, "  4. Reviewing Performance", ".........................................................", "9", false, true, false);
+                this.Addrow(ref table, "  5. Sponsor Improvement", ".........................................................", "10", false, true, false);
+                this.Addrow(ref table, "  6. Administer Contract", ".........................................................", "11", false, true, false);
+                this.Addrow(ref table, "  7. Managing Risk", ".........................................................", "12", false, true, false);
+                this.Addrow(ref table, "  8. Commercial Awareness", ".........................................................", "13", false, true, false);
+                this.Addrow(ref table, "    ", "", "", true, true, false);
+                this.Addrow(ref table, "    ", "", "", true, true, false);
+                this.Addrow(ref table, "  Your personal development plan", ".........................................................", "14", true, true, false);
+                this.Addrow(ref table, "    Your top three priorities", ".........................................................", "14", false, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   E-Learning", ".........................................................", "16", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   Report contributors", ".........................................................", "18", true, true, false);
+                this.Addrow(ref table, "    ", "", "", true, true, false);
+                this.Addrow(ref table, "    ", "", "", true, true, false);
+                this.Addrow(ref table, "    ", "", "", true, true, false);
+                this.Addrow(ref table, "   Disclaimer", ".........................................................", "19", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.Addrow(ref table, "   ", "", "", true, true, false);
+                this.doc.Add(table);
                 this.doc.SetMargins(55f, 55f, 25f, 25f);
                 this.doc.NewPage();
+                this.doc.Add(imgBG);
                 this.AddBlankParagraphLowHeight(1);
                 if (dsPages != null)
                 {
@@ -379,104 +489,86 @@ namespace SGA.tna
                 }
                 this.doc.SetMargins(55f, 55f, 55f, 55f);
                 this.doc.NewPage();
+                this.doc.Add(imgBG);
                 string str = "Your organisation and you";
-                this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 24f, 1, new BaseColor(0, 0, 0)));
-                this.AddBlankParagraphLowHeight(2);
-                this.AddParagraph("During your registration process at criticalskillsboost.com you provided information to us. This information is displayed below for your reference. ", 0, FontFactory.GetFont("Arial", 10f, 0, new BaseColor(0, 0, 0)));
+                this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 24f, 1, this.hcolor));
                 this.AddBlankParagraph(2);
-                str = "YOUR REGISTRATION INFORMATION";
-                this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 10f, 1, this.hcolor));
+                string strTable = "<p style=\"font-family:Arial;font-size:10px;\">During your registration process at skillsgapanalysis.com you provided information to us. This information is displayed below for your reference.</p>";
+                hw.Parse(new System.IO.StringReader(strTable));
+                this.AddBlankParagraph(2);
+                this.AddBoldParagraph("ABOUT YOUR ORGANISATION");
                 this.AddBlankParagraph(1);
                 table = this.GetTable(2);
                 if (dsProfile != null)
                 {
                     if (dsProfile.Tables.Count > 0 && dsProfile.Tables[0].Rows.Count > 0)
                     {
-                        this.Addrow(ref table, "First Name", SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["firstname"].ToString()));
-                        this.Addrow(ref table, "Last Name", SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["lastname"].ToString()));
-                        this.Addrow(ref table, "Email Address", SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["email"].ToString()));
-                        this.Addrow(ref table, "Manager's First Name", SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["managerFirstname"].ToString()));
-                        this.Addrow(ref table, "Manager's Last Name", SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["managerLastName"].ToString()));
-                        this.Addrow(ref table, "Manager's Email Address", SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["managerEmail"].ToString()));
+                        this.Addrow(ref table, "Your industry", Profile.GetIndustry(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["industry"].ToString())));
+                        this.Addrow(ref table, "Your organization's annualized revenues:", Profile.GetAnnualRevenue(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["arevenue"].ToString())));
                         this.doc.Add(table);
+                        this.AddBlankParagraph(1);
+                        this.AddBlankParagraph(1);
+                        this.AddBoldParagraph("ABOUT YOUR PROCUREMENT FUNCTION");
+                        this.AddBlankParagraph(1);
                         table = this.GetTable(2);
-                        this.AddBlankParagraph(2);
-                        this.AddBoldParagraph("YOUR DETAILS");
-                        this.AddBlankParagraph(2);
-                        this.Addrow(ref table, "Organisation", Profile.GetOrganisation(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["agencyId"].ToString())));
-                        this.Addrow(ref table, "Division", SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["Division"].ToString()));
-                        this.Addrow(ref table, "Location", Profile.GetLocation(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["locationId"].ToString())));
-                        this.Addrow(ref table, "Role", Profile.GetJobRole(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["jobRole"].ToString())));
-                        this.Addrow(ref table, "Level", Profile.GetJobLevel(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["jobLevel"].ToString())));
-                        this.Addrow(ref table, "Position", SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["Position"].ToString()));
-                        this.Addrow(ref table, "The nature of the goods/services that you most commonly procure, or manage contracts for?", Profile.GetGoodsLevel(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["goodsId"].ToString())));
-                        this.Addrow(ref table, "Phone number", SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["phone"].ToString()));
+                        this.Addrow(ref table, "Procurement model:", Profile.GetProcurementModel(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["pmodel"].ToString())));
+                        this.Addrow(ref table, "Reporting line:", Profile.GetReportLineTo(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["reportline"].ToString())));
+                        this.Addrow(ref table, "Number of employees:", Profile.GetNoOfEmployee(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["noemployee"].ToString())));
+                        this.Addrow(ref table, "Geographical influence:", Profile.GetGeoInfluence(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["geoInfluence"].ToString())));
+                        this.doc.Add(table);
+                        this.AddBlankParagraph(1);
+                        this.AddBlankParagraph(1);
+                        this.AddBoldParagraph("ABOUT YOU");
+                        this.AddBlankParagraph(1);
+                        table = this.GetTable(2);
+                        this.Addrow(ref table, "Your role is best described as:", Profile.GetJobRole(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["jobRole"].ToString())));
+                        this.Addrow(ref table, "The category you currently manage:", Profile.GetCategory(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["categoryId"].ToString())));
+                        this.Addrow(ref table, "The spend under your influence:", Profile.GetAnnualRevenue(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["spendunder"].ToString())));
+                        this.Addrow(ref table, "Geographical influence:", Profile.GetGeoInfluence(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["geoInfluence"].ToString())));
+                        this.Addrow(ref table, "Your previous specialist category knowledge:", "Indirects Generalist");
+                        this.Addrow(ref table, "Your procurement qualifications:", Profile.GetProcurementLevel(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["proLevel"].ToString())));
+                        this.Addrow(ref table, "Your level of education:", Profile.GetEducation(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["education"].ToString())));
                         this.doc.Add(table);
                     }
                 }
                 this.AddBlankParagraph(1);
-                float[] expr_BA4 = new float[]
-				{
-					50f,
-					45f,
-					5f
-				};
                 this.doc.SetMargins(55f, 55f, 55f, 55f);
                 this.doc.NewPage();
+                this.doc.Add(imgBG);
                 str = "Your assessment summary";
-                this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 24f, 1, new BaseColor(0, 0, 0)));
-                hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page5Text"].ToString().Replace("@v0", dspercentage.Tables[3].Rows[0]["totalValue"].ToString()).Replace("@v1", System.Convert.ToDecimal(dspercentage.Tables[3].Rows[0]["totalAvg"].ToString()).ToString("#.##"))));
+                this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 24f, 1, this.hcolor));
+                this.AddBlankParagraph(3);
+                hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page5Text"].ToString().Replace("@v0", dspercentage.Tables[3].Rows[0]["totalValue"].ToString()).Replace("@v1", System.Convert.ToDecimal(dspercentage.Tables[3].Rows[0]["percentage"].ToString()).ToString("#.##"))));
+                this.AddBlankParagraph(3);
                 table = this.GetTable(3);
-                float[] colwidth = new float[]
-				{
-					25f,
-					20f,
-					55f
-				};
+                colwidth = new float[]
+                {
+                        30f,
+                        20f,
+                        50f
+                };
                 table.SetWidths(colwidth);
-                this.AddrowHeader(ref table, "Phase", "Average", " Level");
+                this.AddrowHeader(ref table, "Category Phase", "Your rating", " Your Level");
                 DataSet dsSummary = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCMAGraph", new SqlParameter[]
-				{
-					new SqlParameter("@testId", testId)
-				});
+                {
+                        new SqlParameter("@testId", testId)
+                });
                 if (dsSummary != null)
                 {
                     if (dsSummary.Tables.Count > 0 && dsSummary.Tables[0].Rows.Count > 0)
                     {
                         for (int i = 0; i < dsSummary.Tables[0].Rows.Count; i++)
                         {
-                            this.Addrow(ref table, " " + dsSummary.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " "), dsSummary.Tables[0].Rows[i]["marksAvg"].ToString(), "  " + dsSummary.Tables[0].Rows[i]["Level"].ToString(), false, false, true);
+                            this.Addrow(ref table, " " + dsSummary.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " "), dsSummary.Tables[0].Rows[i]["percentage"].ToString() + "%", "  " + dsSummary.Tables[0].Rows[i]["Level"].ToString(), false, false, true);
                         }
                     }
                 }
                 this.doc.Add(table);
-                cb.BeginText();
-                cb.SetFontAndSize(f_cn, 10f);
-                cb.SetTextMatrix(55f, 320f);
-                cb.SetRGBColorFill(0, 0, 0);
-                cb.ShowText("Note");
-                cb.EndText();
-                cb.BeginText();
-                cb.SetFontAndSize(f_cn, 10f);
-                cb.SetTextMatrix(55f, 300f);
-                cb.SetRGBColorFill(0, 0, 0);
-                cb.ShowText("The level column describes the average rating received and aligns to the wording of the assessment scale");
-                cb.EndText();
-                cb.BeginText();
-                cb.SetFontAndSize(f_cn, 10f);
-                cb.SetTextMatrix(55f, 280f);
-                cb.SetRGBColorFill(0, 0, 0);
-                cb.ShowText("below");
-                cb.EndText();
-                img = iTextSharp.text.Image.GetInstance(this.imagepath + "/scoringguide.jpg");
-                img.ScaleToFit(800f, 116f);
-                img.SetAbsolutePosition(0f, 150f);
-                this.doc.Add(img);
                 this.AddBlankParagraph(1);
                 DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSuggestions", new SqlParameter[]
-				{
-					new SqlParameter("@flag", "6")
-				});
+                {
+                        new SqlParameter("@flag", "6")
+                });
                 if (ds != null)
                 {
                     if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -485,22 +577,23 @@ namespace SGA.tna
                         {
                             this.doc.SetMargins(55f, 55f, 55f, 55f);
                             this.doc.NewPage();
+                            this.doc.Add(imgBG);
                             this.AddParagraph(j + 1 + ". " + ds.Tables[0].Rows[j]["topicName"].ToString().Replace("<br />", " "), 0, FontFactory.GetFont("Arial", 24f, 1, new BaseColor(0, 0, 0)));
                             this.AddBlankParagraph(1);
-                            hw.Parse(new System.IO.StringReader(ds.Tables[0].Rows[j]["SuggestionText"].ToString().Replace("@level", dsSummary.Tables[0].Rows[j]["Level"].ToString()).Replace("@score", dsSummary.Tables[0].Rows[j]["Marksavg"].ToString())));
-                            this.AddBlankParagraph(1);
-                            this.AddParagraph("RECOMMENDATIONS", 0, FontFactory.GetFont("Arial", 10f, 1, new BaseColor(234, 66, 31)));
+                            hw.Parse(new System.IO.StringReader(ds.Tables[0].Rows[j]["SuggestionText"].ToString().Replace("@level", dsSummary.Tables[0].Rows[j]["Level"].ToString()).Replace("@score", dsSummary.Tables[0].Rows[j]["topicMarks"].ToString())));
                             this.AddBlankParagraphLowHeight(1);
                             hw.Parse(new System.IO.StringReader(dsSummary.Tables[0].Rows[j]["training"].ToString()));
                         }
                     }
                 }
-                this.doc.SetMargins(0f, 0f, 0f, 0f);
+                this.doc.SetMargins(55f, 55f, 150f, 55f);
                 this.doc.NewPage();
-                imgBG = iTextSharp.text.Image.GetInstance(this.imagepath + "/sizzer_bg.jpg");
-                imgBG.ScaleToFit(this.doc.PageSize.Width, this.doc.PageSize.Height);
-                imgBG.Alignment = 8;
                 this.doc.Add(imgBG);
+                img = iTextSharp.text.Image.GetInstance(this.imagepath + "/img3_sizzer.jpg");
+                img.ScaleToFit(this.doc.PageSize.Width, this.doc.PageSize.Height);
+                img.Alignment = 8;
+                img.SetAbsolutePosition(1f, 0f);
+                this.doc.Add(img);
                 if (dsPages != null)
                 {
                     if (dsPages.Tables.Count > 0 && dsPages.Tables[0].Rows.Count > 0)
@@ -509,119 +602,156 @@ namespace SGA.tna
                         {
                             if (dsProfile.Tables.Count > 0 && dsProfile.Tables[0].Rows.Count > 0)
                             {
-                                this.AddBlankParagraph(12);
-                                hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page14Text"].ToString().Replace("@v0", SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["firstname"].ToString())).Replace("@v1", SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["lastname"].ToString()))));
+                                this.AddParagraph(SGACommon.ToTitleCase(dsProfile.Tables[0].Rows[0]["firstname"].ToString()) + " " + SGACommon.ToTitleCase(dsProfile.Tables[0].Rows[0]["lastname"].ToString()), 0, FontFactory.GetFont("Arial", 24f, 1, new BaseColor(0, 0, 0)));
+                                this.AddBlankParagraph(1);
                             }
                         }
+                        this.AddParagraph(dsPages.Tables[0].Rows[0]["page14Heading"].ToString(), 0, FontFactory.GetFont("Arial", 24f, 1, this.hcolor));
+                        this.AddBlankParagraph(1);
+                        hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page14Text"].ToString()));
                     }
                 }
-                img = iTextSharp.text.Image.GetInstance(this.imagepath + "/comprarawelcome.jpg");
-                img.SetAbsolutePosition(0f, 0f);
-                img.ScaleToFit(600f, 600f);
-                img.Alignment = 4;
-                img.SetAbsolutePosition(0f, 25f);
-                this.doc.Add(img);
                 DataRow[] foundRows = dsSummary.Tables[0].Select("1=1", "topicMarks asc");
+                this.AddBlankParagraph(1);
                 int k = 0;
-                this.doc.SetMargins(55f, 55f, 55f, 55f);
-                this.doc.NewPage();
-                if (dsPages != null)
+                DataRow[] array = foundRows;
+                for (int l = 0; l < array.Length; l++)
                 {
-                    if (dsPages.Tables.Count > 0 && dsPages.Tables[0].Rows.Count > 0)
+                    DataRow dr = array[l];
+                    if (k < 3)
                     {
-                        this.AddParagraph(dsPages.Tables[0].Rows[0]["page17Heading"].ToString(), 0, FontFactory.GetFont("Arial", 24f, 1, new BaseColor(0, 0, 0)));
-                        this.AddBlankParagraph(1);
-                        hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page17Text"].ToString().Replace("@v0", Profile.GetJobRole(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["jobRole"].ToString()))).Replace("@v1", dsJob.Tables[0].Rows[0]["page14Para1"].ToString()).Replace("@v2", dsJob.Tables[0].Rows[0]["page14Para2"].ToString())));
+                        if (k == 0)
+                        {
+                            this.AddParagraph("TOP THREE PRIORITIES", 0, FontFactory.GetFont("Arial", 12f, 1, new BaseColor(234, 66, 31)));
+                            this.AddBlankParagraphLowHeight(1);
+                        }
+                        if (k == 1)
+                        {
+                            this.doc.SetMargins(55f, 55f, 30f, 45f);
+                            this.doc.NewPage();
+                            this.doc.Add(imgBG);
+                        }
+                        this.AddBlankParagraphLowHeight(1);
+                        this.AddParagraph(k + 1 + ".   " + dr["mgtHeading"].ToString().Replace("<br />", " "), 0, FontFactory.GetFont("Arial", 10f, 1, new BaseColor(0, 0, 0)));
+                        this.AddBlankParagraphLowHeight(1);
+                        hw.Parse(new System.IO.StringReader(string.Concat(new object[]
+                        {
+                                "<p style=\"font-family:Arial;font-size:10px;color:#000000;\">",
+                                dr["mgttraining"].ToString(),
+                                " </p><br/><a href=\"",
+                                dr["mgtmorelink"],
+                                "\" target=\"_blank\" style=\"font-family:Arial;font-size:12px;text-decoration:none;color:#F33078;\">More</a>"
+                        })));
+                        this.AddBlankParagraphLowHeight(1);
+                        k++;
                     }
                 }
-                img = iTextSharp.text.Image.GetInstance(this.imagepath + "/elearning.jpg");
-                img.ScaleToFit(600f, 600f);
-                img.Alignment = 4;
-                img.SetAbsolutePosition(0f, 25f);
-                this.doc.Add(img);
-                this.doc.SetMargins(55f, 55f, 55f, 55f);
-                this.doc.NewPage();
-                hw.Parse(new System.IO.StringReader(dsJob.Tables[0].Rows[0]["jobSuggestion"].ToString()));
-                this.doc.SetMargins(55f, 55f, 55f, 55f);
-                this.doc.NewPage();
+
                 if (dsPages != null)
                 {
                     if (dsPages.Tables.Count > 0 && dsPages.Tables[0].Rows.Count > 0)
                     {
-                        this.AddParagraph(dsPages.Tables[0].Rows[0]["page16Heading"].ToString(), 0, FontFactory.GetFont("Arial", 24f, 1, new BaseColor(0, 0, 0)));
+                        this.doc.SetMargins(55f, 55f, 55f, 55f);
+                        this.doc.NewPage();
+                        this.doc.Add(imgBG);
+                        this.AddParagraph(dsPages.Tables[0].Rows[0]["page24Heading"].ToString(), 0, FontFactory.GetFont("Arial", 24f, 1, new BaseColor(0, 0, 0)));
                         this.AddBlankParagraph(1);
-                        hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page16Text"].ToString()));
-                        this.AddBlankParagraph(2);
-                        DataRow[] array = foundRows;
-                        for (int l = 0; l < array.Length; l++)
+                        hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page24Text"].ToString().Replace("@v0", Profile.GetJobRole(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["jobRole"].ToString()))).Replace("@v1", dsJob.Tables[0].Rows[0]["page14Para1"].ToString()).Replace("@v2", dsJob.Tables[0].Rows[0]["page14Para2"].ToString())));
+                    }
+                }
+
+                DataSet dsPlans = DataTier.SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetPlansByPercentageForCMA", new SqlParameter[] {
+                        new SqlParameter("@tableType","2"),
+                        new SqlParameter("@testId",testId),
+                    });
+
+                if (dsPlans != null)
+                {
+                    if (dsPlans.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                    {
+                        string strPageCode = dsPlans.Tables[0].Rows[0]["planDetails"].ToString();
+                        this.doc.SetMargins(30f, 30f, 30f, 10f);
+                        this.doc.NewPage();
+                        this.doc.Add(imgBG);
+                        string[] strArr = dsPlans.Tables[0].Rows[0]["timeweek"].ToString().Split(':');
+                        DateTime dt = Convert.ToDateTime(dsPlans.Tables[0].Rows[0]["testDate"].ToString());
+                        if (strArr.Length > 0)
                         {
-                            DataRow dr = array[l];
-                            if (k < 3)
+                            for (int i = 0; i < strArr.Length; i++)
                             {
-                                if (k == 1)
-                                {
-                                    this.doc.SetMargins(55f, 55f, 55f, 55f);
-                                    this.doc.NewPage();
-                                }
-                                this.AddParagraph(dr["mgtHeading"].ToString().Replace("<br />", " ").ToUpper(), 0, FontFactory.GetFont("Arial", 12f, 1, new BaseColor(234, 66, 31)));
-                                this.AddBlankParagraphLowHeight(1);
-                                hw.Parse(new System.IO.StringReader(dr["mgtTraining"].ToString()));
-                                this.AddBlankParagraphLowHeight(2);
-                                hw.Parse(new System.IO.StringReader("<p style=\"padding-left:140px;\">&nbsp;<a href=\"" + dr["mgtmorelink"] + "\" target=\"_blank\" style=\"font-family:Arial;font-size:12px;color:#FF7C00;\">CLICK HERE TO LEARN MORE ABOUT THIS WORKSHOP ></a></p>"));
-                                this.AddBlankParagraphLowHeight(6);
-                                k++;
+                                int hours = Convert.ToInt32(strArr[i].ToString());
+                                double months = (((1.0 / 30.0) * (hours * 60.0)) / 4.0 + 1);
+                                dt = dt.AddMonths(Convert.ToInt32(months));
+                                strPageCode = strPageCode.Replace("@v" + i.ToString(), dt.ToString("dd MMM yyyy")).Replace("@per", Convert.ToDecimal(dsPlans.Tables[0].Rows[0]["percentage"].ToString()).ToString("#.##") + "%");
+                                //strPageCode = strPageCode.Replace("@v" + i.ToString(), Convert.ToDateTime(dsPlans.Tables[0].Rows[0]["testDate"].ToString()).AddMonths(months).ToString("dd/MM/yyyy"));
+
                             }
                         }
+                        hw.Parse(new System.IO.StringReader(strPageCode.ToString()));
                     }
                 }
-                this.doc.SetMargins(55f, 55f, 55f, 55f);
+                /*
+                this.doc.SetMargins(55f, 55f, 85f, 55f);
                 this.doc.NewPage();
-                img = iTextSharp.text.Image.GetInstance(this.imagepath + "/page20.jpg");
-                img.ScaleToFit(530f, 510f);
-                img.Alignment = 4;
-                img.Annotation = new Annotation(0f, 0f, 0f, 0f, "http://events.criticalskillsboost.com/booking/");
-                img.SetAbsolutePosition(30f, 550f);
-                this.doc.Add(img);
-                if (dsPages != null)
-                {
-                    if (dsPages.Tables.Count > 0 && dsPages.Tables[0].Rows.Count > 0)
-                    {
-                        this.AddBlankParagraph(23);
-                        this.AddParagraph(dsPages.Tables[0].Rows[0]["page20heading"].ToString(), 0, FontFactory.GetFont("Arial", 20f, 1, new BaseColor(0, 0, 0)));
-                        hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page20text"].ToString()));
-                        this.AddBlankParagraph(1);
-                    }
-                }
-                this.doc.SetMargins(55f, 55f, 55f, 55f);
-                this.doc.NewPage();
-                img = iTextSharp.text.Image.GetInstance(this.imagepath + "/page21.jpg");
-                img.ScaleToFit(500f, 510f);
-                img.Alignment = 4;
-                img.SetAbsolutePosition(45f, 350f);
-                this.doc.Add(img);
-                if (dsPages != null)
-                {
-                    if (dsPages.Tables.Count > 0 && dsPages.Tables[0].Rows.Count > 0)
-                    {
-                        this.AddBlankParagraph(2);
-                        this.AddParagraph(dsPages.Tables[0].Rows[0]["page21heading"].ToString(), 0, FontFactory.GetFont("Arial", 20f, 1, new BaseColor(234, 67, 32)));
-                        hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page21text"].ToString()));
-                        this.AddBlankParagraph(1);
-                    }
-                }
-                this.doc.SetMargins(55f, 55f, 55f, 55f);
-                this.doc.NewPage();
-                imgBG = iTextSharp.text.Image.GetInstance(this.imagepath + "/page18bg.jpg");
-                imgBG.ScaleToFit(this.doc.PageSize.Width, this.doc.PageSize.Height);
-                imgBG.Alignment = 8;
-                imgBG.SetAbsolutePosition(0f, 0f);
                 this.doc.Add(imgBG);
                 if (dsPages != null)
                 {
                     if (dsPages.Tables.Count > 0 && dsPages.Tables[0].Rows.Count > 0)
                     {
+                        this.AddParagraph(dsPages.Tables[0].Rows[0]["page17Heading"].ToString(), 0, FontFactory.GetFont("Arial", 24f, 1, this.hcolor));
+                        this.AddBlankParagraph(1);
+                        string topic = "";
+                        string topic2 = "";
+                        string topic3 = "";
+                        string suggestion = "";
+                        string suggestion2 = "";
+                        string suggestion3 = "";
+                        k = 0;
+                        array = foundRows;
+                        for (int l = 0; l < array.Length; l++)
+                        {
+                            DataRow dr = array[l];
+                            if (k < 3)
+                            {
+                                if (k == 0)
+                                {
+                                    topic = dr["topicTitle"].ToString().Replace("<br />", " ");
+                                    suggestion = dr["suggestion"].ToString();
+                                }
+                                if (k == 1)
+                                {
+                                    topic2 = dr["topicTitle"].ToString().Replace("<br />", " ");
+                                    suggestion2 = dr["suggestion"].ToString();
+                                }
+                                if (k == 2)
+                                {
+                                    topic3 = dr["topicTitle"].ToString().Replace("<br />", " ");
+                                    suggestion3 = dr["suggestion"].ToString();
+                                }
+                                k++;
+                            }
+                        }
+                        hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page17Text"].ToString().Replace("@v0", dsProfile.Tables[0].Rows[0]["firstname"].ToString() + " " + dsProfile.Tables[0].Rows[0]["lastname"].ToString()).Replace("@v1", dsProfile.Tables[0].Rows[0]["company"].ToString()).Replace("@v2", dsProfile.Tables[0].Rows[0]["email"].ToString()).Replace("@topic1", topic).Replace("@topic2", topic2).Replace("@topic3", topic3).Replace("@suggestion1", suggestion).Replace("@suggestion2", suggestion2).Replace("@suggestion3", suggestion3)));
                         this.AddBlankParagraph(2);
-                        this.AddParagraph(dsPages.Tables[0].Rows[0]["page18Heading"].ToString(), 0, FontFactory.GetFont("Arial", 24f, 1, new BaseColor(0, 0, 0)));
+                    }
+                }
+                */
+
+
+                this.doc.SetMargins(55f, 55f, 55f, 55f);
+                this.doc.NewPage();
+                this.doc.Add(imgBG);
+                if (dsPages != null)
+                {
+                    if (dsPages.Tables.Count > 0 && dsPages.Tables[0].Rows.Count > 0)
+                    {
+                        this.AddParagraph(dsPages.Tables[0].Rows[0]["page18Heading"].ToString(), 0, FontFactory.GetFont("Arial", 24f, 1, this.hcolor));
+                        this.AddBlankParagraph(1);
+                        img = iTextSharp.text.Image.GetInstance(this.imagepath + "/compraralogo.png");
+                        img.ScaleToFit(200f, 130f);
+                        img.Alignment = 4;
+                        this.doc.Add(img);
+                        this.AddBlankParagraph(9);
                         hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page18SubPara1"].ToString()));
                         this.AddBlankParagraph(1);
                     }
@@ -637,7 +767,7 @@ namespace SGA.tna
                         img.Alignment = 8;
                         img.SetAbsolutePosition(1f, 3f);
                         this.doc.Add(img);
-                        img = iTextSharp.text.Image.GetInstance(this.imagepath + "/compraralogo.png");
+                        img = iTextSharp.text.Image.GetInstance(this.imagepath + "/logo.png");
                         img.SetAbsolutePosition(170f, 610f);
                         img.ScaleToFit(222f, 108f);
                         img.Alignment = 5;
@@ -648,7 +778,6 @@ namespace SGA.tna
                         hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["Disclaimer"].ToString()));
                     }
                 }
-                result = newFile;
             }
             catch (System.Exception ex)
             {
@@ -661,7 +790,7 @@ namespace SGA.tna
                     this.doc.Close();
                 }
             }
-            return result;
+            return newFile;
         }
 
         protected PdfPTable GetTable(int columns)
@@ -698,7 +827,7 @@ namespace SGA.tna
 
         protected void Addrow(ref PdfPTable tab, string lefttext, string righttext)
         {
-            Chunk tc = new Chunk(lefttext, FontFactory.GetFont("Arial", 10f, 0, this.bcolor));
+            Chunk tc = new Chunk(lefttext, FontFactory.GetFont("Arial", 11f, 0, this.bcolor));
             PdfPCell cell = new PdfPCell(new Phrase
 			{
 				tc
@@ -709,7 +838,7 @@ namespace SGA.tna
             cell.PaddingLeft = 5f;
             cell.PaddingTop = 4f;
             tab.AddCell(cell);
-            tc = new Chunk(righttext, FontFactory.GetFont("Arial", 10f, 0, this.bcolor));
+            tc = new Chunk(righttext, FontFactory.GetFont("Arial", 11f, 0, this.bcolor));
             cell = new PdfPCell(new Phrase
 			{
 				tc
@@ -720,7 +849,7 @@ namespace SGA.tna
 
         protected void AddNormalrow(ref PdfPTable tab, string lefttext, string righttext)
         {
-            Chunk tc = new Chunk(lefttext, FontFactory.GetFont("Arial", 10f, 0, this.bcolor));
+            Chunk tc = new Chunk(lefttext, FontFactory.GetFont("Arial", 11f, 0, this.bcolor));
             PdfPCell cell = new PdfPCell(new Phrase
 			{
 				tc
@@ -730,7 +859,7 @@ namespace SGA.tna
             cell.PaddingLeft = 5f;
             cell.PaddingTop = 2f;
             tab.AddCell(cell);
-            tc = new Chunk(righttext, FontFactory.GetFont("Arial", 10f, 0, this.bcolor));
+            tc = new Chunk(righttext, FontFactory.GetFont("Arial", 11f, 0, this.bcolor));
             cell = new PdfPCell(new Phrase
 			{
 				tc
@@ -741,7 +870,7 @@ namespace SGA.tna
 
         protected void Addrow(ref PdfPTable tab, string lefttext, string middletext, string righttext, bool isBold = true, bool isBackground = true, bool isPadding = false)
         {
-            Chunk tc = new Chunk(lefttext, FontFactory.GetFont("Arial", 10f, isBold ? 1 : 0, this.bcolor));
+            Chunk tc = new Chunk(lefttext, FontFactory.GetFont("Arial", 11f, isBold ? 1 : 0, this.bcolor));
             PdfPCell cell = new PdfPCell(new Phrase
 			{
 				tc
@@ -757,7 +886,7 @@ namespace SGA.tna
                 cell.BackgroundColor = this.tablebackcolor;
             }
             tab.AddCell(cell);
-            tc = new Chunk(middletext, FontFactory.GetFont("Arial", 10f, isBold ? 1 : 0, this.bcolor));
+            tc = new Chunk(middletext, FontFactory.GetFont("Arial", 11f, isBold ? 1 : 0, this.bcolor));
             cell = new PdfPCell(new Phrase
 			{
 				tc
@@ -774,7 +903,7 @@ namespace SGA.tna
             }
             cell.HorizontalAlignment = 1;
             tab.AddCell(cell);
-            tc = new Chunk(righttext, FontFactory.GetFont("Arial", 10f, isBold ? 1 : 0, this.bcolor));
+            tc = new Chunk(righttext, FontFactory.GetFont("Arial", 11f, isBold ? 1 : 0, this.bcolor));
             cell = new PdfPCell(new Phrase
 			{
 				tc
@@ -794,7 +923,7 @@ namespace SGA.tna
 
         protected void Addrow(ref PdfPTable tab, string lefttext1, string lefttext2, string middletext, string righttext1, string righttext2)
         {
-            Chunk tc = new Chunk(lefttext1, FontFactory.GetFont("Arial", 10f, 1, this.bcolor));
+            Chunk tc = new Chunk(lefttext1, FontFactory.GetFont("Arial", 11f, 1, this.bcolor));
             PdfPCell cell = new PdfPCell(new Phrase
 			{
 				tc
@@ -802,7 +931,7 @@ namespace SGA.tna
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             tab.AddCell(cell);
-            tc = new Chunk(lefttext2, FontFactory.GetFont("Arial", 10f, 1, this.bcolor));
+            tc = new Chunk(lefttext2, FontFactory.GetFont("Arial", 11f, 1, this.bcolor));
             cell = new PdfPCell(new Phrase
 			{
 				tc
@@ -810,7 +939,7 @@ namespace SGA.tna
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             tab.AddCell(cell);
-            tc = new Chunk(middletext, FontFactory.GetFont("Arial", 10f, 1, this.bcolor));
+            tc = new Chunk(middletext, FontFactory.GetFont("Arial", 11f, 1, this.bcolor));
             cell = new PdfPCell(new Phrase
 			{
 				tc
@@ -818,7 +947,7 @@ namespace SGA.tna
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             tab.AddCell(cell);
-            tc = new Chunk(righttext1, FontFactory.GetFont("Arial", 10f, 0, this.bcolor));
+            tc = new Chunk(righttext1, FontFactory.GetFont("Arial", 11f, 0, this.bcolor));
             cell = new PdfPCell(new Phrase
 			{
 				tc
@@ -826,7 +955,7 @@ namespace SGA.tna
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             tab.AddCell(cell);
-            tc = new Chunk(righttext2, FontFactory.GetFont("Arial", 10f, 0, this.bcolor));
+            tc = new Chunk(righttext2, FontFactory.GetFont("Arial", 11f, 0, this.bcolor));
             cell = new PdfPCell(new Phrase
 			{
 				tc

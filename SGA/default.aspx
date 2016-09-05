@@ -47,18 +47,18 @@
                     emptyFields.push('Email');
                 }
                 var agency = $("#<%=ddlAgency.ClientID %>").val();
-            if (agency == 0) {
-                error = 1;
-                emptyFields.push('Your Organisation');
-            }
+                if (agency == 0) {
+                    error = 1;
+                    emptyFields.push('Your Organisation');
+                }
 
 
-            var jobRole = $("#<%=ddlJobRole.ClientID %>").val();
+                var jobRole = $("#<%=ddlJobRole.ClientID %>").val();
             if (jobRole == 0) {
                 error = 1;
                 emptyFields.push('Your Job ROLE is best described as');
             }
-            //ddlJobLevel--- Job level best described as -
+                //ddlJobLevel--- Job level best described as -
             var jobLevel = $("#<%=ddlJobLevel.ClientID %>").val();
             if (jobLevel == 0) {
                 error = 1;
@@ -96,8 +96,11 @@
                     else if (domain.toLowerCase() == 'tafesa.edu.au') {
                         emailpass = 1;
                     }
-                    //for testing purpose
+                        //for testing purpose
                     else if (domain.toLowerCase() == 'gmail.com') {
+                        emailpass = 1;
+                    }
+                    else if (domain.toLowerCase() == 'comprara.com.au') {
                         emailpass = 1;
                     }
                 }
@@ -106,7 +109,7 @@
                 if (parseInt(emailpass) == 0) {
                     $('#colorbox').css({ "display": "block" });
                     alertHtml = 'The email should only be registered with one of these \n(sa.gov.au,\ncourts.sa.gov.au,\npolice.sa.gov.au,\ntafesa.edu.au)';
-                }                
+                }
                 else {
                     //$("#register").mask("Processing ...");
                     var json =
@@ -123,7 +126,7 @@
                                     alertHtml = "Thank you for registering. Your registration has been approved and in the next few minutes a confirmation email will be sent to your inbox. The email contains your username and password to login. Note: You may need to check your junk mail folder if this doesn't reach your inbox.";
                                     $('#FName').val('');
                                     $('#LName').val('');
-                                    $('#Email').val('');                                  
+                                    $('#Email').val('');
                                 } else if (data.d == 'e') {
                                     $('#colorbox').css({ "display": "block" });
                                     alertHtml = 'Some error occured in the process, Please try again.';
@@ -138,10 +141,10 @@
                         });
                     }
 
-            }
-        });
+                }
+            });
 
-    });
+        });
     </script>
     <!-- Banner start -->
     <div id="banner-home">
@@ -149,62 +152,9 @@
             <li>
                 <img src="images/img-banner-01.jpg" /></li>
             <li>
-                <img src="images/banner2.jpg" />
-
-                <div class="newtag">
-                    <img src="images/newtag.png" alt="" /></div>
-                <div class="abs1">
-                    <div class="bannerwidth1">
-                        <div class="role">Is procurement a small part of your overall role?</div>
-
-                        <div class="especially">We have something <span>especially </span>for YOU!</div>
-
-                        <div class="non-professionals">
-                            <span>Procurement for
-                                <br />
-                                Non-procurement Professionals </span>
-
-                            <p><i>
-                                <img src="images/tickicon.png" alt="" /></i>E-learning</p>
-                            <p><i>
-                                <img src="images/tickicon.png" alt="" /></i>1/2 day workshop, or </p>
-                            <p><i>
-                                <img src="images/tickicon.png" alt="" /></i>Full day workshop</p>
-                        </div>
-
-                        <div class="learn-button"><a href="http://demoevents.criticalskillsboost.com/workshops/contract-management/procurement-for-non-procurement-practitioners/">LEARN MORE >></a></div>
-                    </div>
-                </div>
-            </li>
-
-
-
-            <li>
-                <img src="images/banner3.jpg" />
-                <div class="newtag">
-                    <img src="images/newtag.png" alt="" /></div>
-                <div class="abs1">
-                    <div class="bannerwidth1">
-                        <div class="nego">What type of negotiator are you?</div>
-
-                        <div class="negotiation">Take the Negotiation Assessment <span><a href="/negotiation_assessment">Read more ...</a></span></div>
-
-                        <div class="plus-Advanced">
-                            <i>PLUS</i> Access to Advanced Negotiation Training
-                        </div>
-
-                        <div class="learn-button"><a href="http://demoevents.criticalskillsboost.com/workshops/sourcing/advanced-negotiation/">LEARN MORE >></a></div>
-                    </div>
-                </div>
-
-
-
-            </li>
-            <li>
                 <img src="images/img-banner-06.jpg" /></li>
         </ul>
         <img src="images/banner-bottom.png" alt="banner" style="width: 100%; height: 100%" />
-        <%--<div class="banner-caption">Critical Skills Boost Program</div>--%>
     </div>
     <!-- Banner end // -->
 
@@ -215,41 +165,33 @@
 <p><strong>With this program, we're delivering the skills boost you've been waiting for!</strong></p>
 
                   <div class="stepBoxes">
-                  	<ul>
+            <ul>
               <li>
                 <h2>Step 1</h2>
-                <p><strong>REGISTER below to access your online Training Needs Analysis.</strong></p>
-                <p><img src="Images/imgStep1.jpg" alt="Step1" /></p>
-                <p>This self-assessment, is a simple tool for you to evaluate yourself in a systemised and constructive manner. Allow for around 30-40 minutes to complete your assessment/s.</p>
-<p>On completion you will receive a report of your results with personal recommendations for you.</p>
+                <p><strong>REGISTER yourself as a project participant.</strong></p>
+                <p class="txtCtr"><img src="Images/imgStep1.jpg" alt="Step1" /></p>
+                <p>Below is a Registration box. This is where you register to complete your Assessments.</p>
               </li>
               <li>
                 <h2>Step 2</h2>
-                <p><strong>REVIEW your personalised report and consider the recommendations.</strong></p>
-                <p><img src="Images/imgStep2.jpg" alt="Step2" /></p>
-                <p>It details your e-Learning plan and high-priority workshops.The report is based on the 70:20:10 model of learning.</p>
-<p>Discuss your training plan with your line manager.</p>
+                <p><strong>COMPLETE your Assessment Pack.</strong></p>
+                <p class="txtCtr"><img src="Images/imgStep2.jpg" alt="Step2" /></p>
+                <p>You will be assigned between 1-3 Assessments to complete based on your Role.</p>
               </li>
               <li>
                 <h2>Step 3</h2>
-                <p><strong>ACCESS your e-Learning program by clicking on the button below.</strong></p>
-                <p><img src="Images/imgStep3.jpg" alt="Step3" /></p>
-                <p>Using your login credentials, access your e-Learning plan, videos, materials, articles and templates.</p>
-<p>Applying what you have learnt will improve your skills.</p>
-<p>&nbsp;</p>
-<p><a href="http://sipm.upsidelms.com/sipmlive/login/ad_MC_CS63_LRN.jsp" target="_blank" title="Access e-Learning" class="learnmore">Access e-Learning</a></p>
+                <p><strong>RECEIVE your Individual Feedback Report.</strong></p>
+                <p class="txtCtr"><img src="Images/imgStep3.jpg" alt="Step3" /></p>
+                <p>In it you will find suggestions to help you develop skills and knowledge in the areas identified for you.</p>
               </li>
               <li>
                 <h2>Step 4</h2>
-                <p><strong>BOOK your training workshop.</strong></p>
-                <p><img src="Images/imgStep4.jpg" alt="Step4" /></p>
-                <p>Discuss with your line manager your training recommendations and agree which options will best meet you and your agencies needs and objectives.</p>
-<p>Either your manager/agency will book the entire team on a particular course OR you can book yourself onto your recommended workshop.<br/>
-<a href="http://demoevents.criticalskillsboost.com " title="More Info">More info&gt;</a>
-</p>
+                <p><strong>REVIEW your 70:20:10 recommendations.</strong></p>
+                <p class="txtCtr"><img src="Images/imgStep4.jpg" alt="Step4" /></p>
+                <p>Consider the suggestions made in your report and consider how you can apply them in your workplace.</p>
               </li>
             </ul>
-                  </div>
+          </div>
                    
                   <div class="dot-line clear">&nbsp;</div>
                    
@@ -292,9 +234,14 @@
                         	
                         	<li><span>*</span><asp:DropDownList ID="ddlJobRole" style="color:Red;"  runat="server">
                             <asp:ListItem Value="0">- Your Job ROLE is best described as. (**Please consider carefully)</asp:ListItem>
-                            <asp:ListItem Value="1">Full Time Procurement Manager</asp:ListItem>
-<asp:ListItem Value="2">Full Time Contract Manager</asp:ListItem>
-<asp:ListItem Value="3">Other</asp:ListItem>
+                            <asp:ListItem Value="1">Purchasing Officer</asp:ListItem>
+<asp:ListItem Value="2">Procurement/ Purchasing Support</asp:ListItem>
+<asp:ListItem Value="3">Procurement/ Purchasing Analyst</asp:ListItem>
+<asp:ListItem Value="4">Procurement Officer/ Advisor</asp:ListItem>
+<asp:ListItem Value="5">Procurement Specialist</asp:ListItem>
+<asp:ListItem Value="6">Contract Manager</asp:ListItem>
+ <asp:ListItem Value="7">Category Manager</asp:ListItem>
+<asp:ListItem Value="8">Procurement Manager/ Director</asp:ListItem>
                             </asp:DropDownList> </li>
                         	<li><span>*</span><asp:DropDownList ID="ddlJobLevel" runat="server">
                             <asp:ListItem Value="0">- Level of role best described as -</asp:ListItem>
@@ -307,8 +254,7 @@
 <asp:ListItem Value="7">Executive Level</asp:ListItem> 
                             </asp:DropDownList></li>
                         	
-                            <li><input type="checkbox" id="terms" name="terms" /> By ticking this box, I acknowledge that my manager will be notified of my registration to this program. I agree to the terms of the website and I understand that the information (including my personal information) entered is held offshore. Note:  
-                            The Training Needs Analysis and e-Learning is FREE for Queensland Government departments to access until 30 June 2017 (fully funded by Office of the Chief Adviser, Queensland Government Procurement, Department of Housing and Public Works).</li>
+                            <li><input type="checkbox" id="terms" name="terms" />  By ticking this box, I agree to the terms of the website and I understand that the information (including my personal information) entered may be held offshore.</li>
                             <li class="txtRgt"><input type="submit" value="" class="btn-go2" id="btnSend" /></li>
                         </ul>
                    
@@ -319,34 +265,23 @@
                    
                    
                    <div class="getBoard">
-<p>&nbsp;</p>
-<img src="images/imgNote.png" alt="" />
-<p>&nbsp;</p>
-            
-            <p>The selections you make are really important as they effect the training you get recommended.</p>
-<p>&nbsp;</p>
-<p>The most important of these is selecting the correct role descriptor. Select the one that is the closest to your current role, considering the key activities you normally do.</p>
-<p>&nbsp;</p>
-<a href="/role_guidelines" title="">Click here first for further guidelines before selecting your role descriptor &gt;</a>
-<div class="clear">&nbsp;</div>
-<div class="light-orange-bar">Is Procurement just a small part of your role?</div>
-<p style="text-align:center;line-height: 20px;font-size:18px;"><b><a style="color:#000;" href="http://demoevents.criticalskillsboost.com/workshops/contract-management/procurement-for-non-procurement-practitioners/">CLICK HERE</a> to learn about</b></p>
-<p style="text-align:center;line-height: 20px;font-size:18px;">Procurement for <br />non-procurement Professionals</p>            
-                
-               
-              
-              </div>
+              <p></p>
+              <img src="images/imgNote.png" alt="" />
+              <p>&nbsp;</p>
+              <p>The selections you make are really important as they effect the training you get recommended.</p>
+              <p>&nbsp;</p>
+              <p>The most important of these is selecting the correct role descriptor. Select the  one that is the closest to your current role, considering the key activities you normally do.</p>
+              <p>&nbsp;</p>
+              <a href="/role_guidelines" title="">Click here first for further guidelines before selecting your role descriptor &gt;</a> </div>
                    
                    
                    </div>
                    
                    
                    
-                  <div class="clear">&nbsp;</div>
-                   
-                   
-                  <div class="orange-bar">Your learning, your way, your future.</div>
-                  <p class="hide">&nbsp;</p>
+                <div class="clear">&nbsp;</div>
+          <div class="orange-bar">Your individual assessment report will come packed with lots of ideas!</div>
+          <p class="hide">&nbsp;</p>
                 </article>
 
     <script>

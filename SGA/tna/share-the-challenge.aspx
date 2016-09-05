@@ -134,15 +134,15 @@
 						<p>&nbsp;</p>
 						<div class="my-result-container">
 							<div class="col-lft">
-								
-								<p class="title18"><span id="spSkills" runat="server">Skills Self <br />Assessment</span></p>
+
+                                <p class="title18"><span id="spSkills" runat="server">Procurement Skills Self  <br />Assessment</span></p>
                                 <% if(isTnaResult) { %>
+                                
                                 <div class="acrd-menu">
                                 <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
 								<div class="submenu">
 										<ul>
 											<li><a href="my-results-bar-graph-ssa.aspx" >&bull; Bar Graph</a></li>
-											<li><a href="my-results-reports-ssa.aspx"  >&bull; Reports</a></li>
 										</ul>
 									</div>
                                 </div>
@@ -151,15 +151,16 @@
 									<p>This assessment is locked and no results are available.</p>
 								</div>
                                 <%} %>
-                                <p class="title18"><span id="spCMA" runat="server">Contract Management <br />Assessment</span></p>
+                                
+                                <p class="title18"><span id="spCMA" runat="server">Contract Management Self <br />Assessment</span></p>
                                 <% if (isCMAResult)
                                    { %>
+                                
                                 <div class="acrd-menu">
                                 <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
 								<div class="submenu">
 										<ul>
 											<li><a href="my-results-bar-graph-cma.aspx"   >&bull; Bar Graph</a></li>
-											<li><a href="my-results-reports-cma.aspx"  >&bull; Reports</a></li>
 										</ul>
 									</div>
                                 </div>
@@ -168,14 +169,15 @@
 									<p>This assessment is locked and no results are available.</p>
 								</div>
                                 <%} %>
-                                <p class="title18"><span id="spBehaviour" runat="server">Leadership <br />Assessment</span></p>
-                                <% if(isPmpResult) { %>
+                                
+                                <p class="title18"><span id="spPKE" runat="server">Procurement Knowledge   <br />Evaluation</span></p>
+                                <% if(isPkeResult) { %>
+                                
                                 <div class="acrd-menu">
                                 <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
 								<div class="submenu">
 										<ul>
-											<li><a href="my-results-bar-graph-ba.aspx"  >&bull; Bar Graph</a></li>
-											<li><a href="my-results-reports-ba.aspx" class="active" >&bull; Reports</a></li>
+											<li><a href="my-result-bar-graph.aspx"  >&bull; Bar Graph</a></li>
 										</ul>
 									</div>
                                 </div>
@@ -184,7 +186,22 @@
 									<p>This assessment is locked and no results are available.</p>
 								</div>
                                 <%} %>
-                                
+                                <p class="title18"><span id="spCMK" runat="server">Contract Management Knowledge <br /> Evaluation</span></p>
+								<% if (isCmkResult)
+                                { %>
+                                <div class="acrd-menu">
+									<p><a href="#" class="menuitem submenuheader">Display Results</a></p>
+									<div class="submenu">
+										<ul>
+											<li><a href="my-results-bar-graph-cmk.aspx" >&bull; Bar Graph</a></li>
+										</ul>
+									</div>
+								</div>
+								<% } else { %>
+                                <div class="result-info icon-calcualtor">
+									<p>Your results are restricted of this assessment.</p>
+								</div>
+                                <%} %>
 							</div>
 							<div class="col-cnt">
 								<div class="share-challange-2">

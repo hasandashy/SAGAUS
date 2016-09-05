@@ -13,13 +13,13 @@ namespace SGA.tna
 {
     public partial class my_result_bar_graph : System.Web.UI.Page
     {
-        protected bool isPkeResult = false;
-
         protected bool isTnaResult = false;
+
+        protected bool isPkeResult = false;
 
         protected bool isCaaResult = false;
 
-        protected bool isCmkResult = false;     
+        protected bool isCmkResult = false;
 
         protected bool isCMAResult = false;
 
@@ -36,17 +36,16 @@ namespace SGA.tna
                 {
                     this.isPkeResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewPkeResult"].ToString());
                     this.isTnaResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewTnaResult"].ToString());
-                    this.isCaaResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCaaResult"].ToString());
-                    this.isCmkResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCmkPResult"].ToString());                   
                     this.isCMAResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCmaResult"].ToString());
+                    this.isCmkResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCmkResult"].ToString());
+                    this.isCaaResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCaaResult"].ToString());
                 }
             }
-            this.spCategory.Attributes["class"] = (this.isPkeResult ? "" : "lock");
             this.spSkills.Attributes["class"] = (this.isTnaResult ? "" : "lock");
-            this.spBehaviour.Attributes["class"] = (this.isCmkResult ? "" : "lock");
-            this.spNegotiation.Attributes["class"] = (this.isCaaResult ? "" : "lock");
             this.spCMA.Attributes["class"] = (this.isCMAResult ? "" : "lock");
-         
+            this.spCMK.Attributes["class"] = (this.isCmkResult ? "" : "lock");
+            this.spPKE.Attributes["class"] = (this.isPkeResult ? "" : "lock");
+
 
             if (!base.IsPostBack)
             {
@@ -72,9 +71,7 @@ namespace SGA.tna
         {
             LinkButton lnk = sender as LinkButton;
             this.graph1.CompareResult(System.Convert.ToInt32(lnk.CommandArgument));
-            this.lnkLower.Attributes["class"] = "";
-            this.lnkMiddle.Attributes["class"] = "";
-            this.lnkUpper.Attributes["class"] = "";
+           
             if (lnk != null)
             {
                 lnk.Attributes["class"] = "active";

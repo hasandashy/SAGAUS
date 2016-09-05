@@ -56,9 +56,6 @@ namespace SGA.tna
                     this.fname.Value = ds.Tables[0].Rows[0]["firstname"].ToString();
                     this.lname.Value = ds.Tables[0].Rows[0]["lastname"].ToString();
                     this.email.Value = ds.Tables[0].Rows[0]["email"].ToString();
-                    this.MfirstName.Value = ds.Tables[0].Rows[0]["managerFirstname"].ToString();
-                    this.MlastName.Value = ds.Tables[0].Rows[0]["managerLastName"].ToString();
-                    this.Memail.Value = ds.Tables[0].Rows[0]["managerEmail"].ToString();
                     this.txtDivision.Value = ((ds.Tables[0].Rows[0]["Division"].ToString() == "") ? "Division" : ds.Tables[0].Rows[0]["Division"].ToString());
                     this.txtPhoneNo.Value = ((ds.Tables[0].Rows[0]["phone"].ToString() == "") ? "Phone" : ds.Tables[0].Rows[0]["phone"].ToString());
                     this.txtPosition.Value = ((ds.Tables[0].Rows[0]["Position"].ToString() == "") ? "Position" : ds.Tables[0].Rows[0]["Position"].ToString());
@@ -73,11 +70,11 @@ namespace SGA.tna
         }
 
         [WebMethod]
-        public static string UpdateProfile(string fname, string lname, string managerFirstname, string managerLastName, string managerEmail, int agencyId, string phone, string division, int locationId, string position, int goodsId, string password)
+        public static string UpdateProfile(string fname, string lname, int agencyId, string phone, string division, int locationId, string position, int goodsId, string password)
         {
             string passwordSalt = SGACommon.CreateSalt(5);
             string passwordHash = SGACommon.CreatePasswordHash(password, passwordSalt);
-            SqlParameter[] param = new SqlParameter[15];
+            SqlParameter[] param = new SqlParameter[12];
             param[0] = new SqlParameter("@password", SqlDbType.VarChar);
             param[0].Value = password;
             param[1] = new SqlParameter("@firstName", SqlDbType.VarChar);
@@ -88,26 +85,20 @@ namespace SGA.tna
             param[3].Value = passwordHash;
             param[4] = new SqlParameter("@passwordSalt", SqlDbType.VarChar);
             param[4].Value = passwordSalt;
-            param[5] = new SqlParameter("@managerFirstname", SqlDbType.VarChar);
-            param[5].Value = managerFirstname;
-            param[6] = new SqlParameter("@managerLastName", SqlDbType.VarChar);
-            param[6].Value = managerLastName;
-            param[7] = new SqlParameter("@managerEmail", SqlDbType.VarChar);
-            param[7].Value = managerEmail;
-            param[8] = new SqlParameter("@agencyId", SqlDbType.Int);
-            param[8].Value = agencyId;
-            param[9] = new SqlParameter("@phone", SqlDbType.VarChar);
-            param[9].Value = phone;
-            param[10] = new SqlParameter("@division", SqlDbType.VarChar);
-            param[10].Value = division;
-            param[11] = new SqlParameter("@locationId", SqlDbType.Int);
-            param[11].Value = locationId;
-            param[12] = new SqlParameter("@position", SqlDbType.VarChar);
-            param[12].Value = position;
-            param[13] = new SqlParameter("@goodsId", SqlDbType.Int);
-            param[13].Value = goodsId;
-            param[14] = new SqlParameter("@userId", SqlDbType.Int);
-            param[14].Value = SGACommon.LoginUserInfo.userId;
+            param[5] = new SqlParameter("@agencyId", SqlDbType.Int);
+            param[5].Value = agencyId;
+            param[6] = new SqlParameter("@phone", SqlDbType.VarChar);
+            param[6].Value = phone;
+            param[7] = new SqlParameter("@division", SqlDbType.VarChar);
+            param[7].Value = division;
+            param[8] = new SqlParameter("@locationId", SqlDbType.Int);
+            param[8].Value = locationId;
+            param[9] = new SqlParameter("@position", SqlDbType.VarChar);
+            param[9].Value = position;
+            param[10] = new SqlParameter("@goodsId", SqlDbType.Int);
+            param[10].Value = goodsId;
+            param[11] = new SqlParameter("@userId", SqlDbType.Int);
+            param[11].Value = SGACommon.LoginUserInfo.userId;
             int result = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spUpdateProfileSelf", param));
             string[] strField = new string[]
 			{
@@ -135,19 +126,7 @@ namespace SGA.tna
 						"OwnerID",
 						"50036"
 					},
-					{
-						"_StudentsManagersFirstName",
-						managerFirstname
-					},
-					{
-						"_StudentsManagersLastName",
-						managerLastName
-					},
-					{
-						"_StudentsManagersEmail",
-						managerEmail
-					},
-					{
+                    {
 						"_CSBPassword",
 						password
 					},

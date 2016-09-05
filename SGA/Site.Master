@@ -3,43 +3,43 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head id="Head1" runat="server">
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Critical Skills Boost Program</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-		
-		<!-- Favicons -->
-		<link rel="shortcut icon" href="favicon.ico" />
-		
-		<!-- Stylesheet -->
-		<link rel="stylesheet" href="Styles/style.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="Styles/mediaquery.css" type="text/css" media="screen" />
-		<link href="Styles/jquery.loadmask.css" rel="stylesheet" type="text/css" />
-		<!--[if lt IE 9]>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Critical Skills Boost Program</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="Styles/style.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="Styles/mediaquery.css" type="text/css" media="screen" />
+    <link href="Styles/jquery.loadmask.css" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 9]>
 			<script src="Scripts/html5.js"></script>
 		<![endif]-->
-		<script type="text/javascript" src="js/javascript_cookies.js"></script>
+    <script type="text/javascript" src="js/javascript_cookies.js"></script>
 
-		<script type="text/javascript" src="Scripts/jquery.min.js"></script>
-		
-		<!-- Custom Form -->
-		<script type="text/javascript" src="Scripts/custom-form-elements.js"></script>
-		
-		<!-- Banner Slider -->
-		<script type="text/javascript" src="Scripts/jquery.bxslider.min.js"></script>
-		
-		<!-- Popup -->
-		<script type="text/javascript" src="Scripts/jquery.colorbox.js"></script>
-		
-		<script type="text/javascript" src="Scripts/custom.js"></script>
-        <script type='text/javascript' src='Scripts/jquery.loadmask.min.js'></script>
-        <script type="text/javascript" src="Scripts/iphone-menu.js"></script>
-        <link rel="stylesheet" href="Styles/responsive-new.css" type="text/css" media="screen" />
-        
+    <script type="text/javascript" src="Scripts/jquery.min.js"></script>
+
+    <!-- Custom Form -->
+    <script type="text/javascript" src="Scripts/custom-form-elements.js"></script>
+
+    <!-- Banner Slider -->
+    <script type="text/javascript" src="Scripts/jquery.bxslider.min.js"></script>
+
+    <!-- Popup -->
+    <script type="text/javascript" src="Scripts/jquery.colorbox.js"></script>
+
+    <script type="text/javascript" src="Scripts/custom.js"></script>
+    <script type='text/javascript' src='Scripts/jquery.loadmask.min.js'></script>
+    <script type="text/javascript" src="Scripts/iphone-menu.js"></script>
+    <link rel="stylesheet" href="Styles/responsive-new.css" type="text/css" media="screen" />
+
 </head>
 <script type="text/javascript">
     //window.onload = checkCookie;
     $(function () {
-        
+
         var details = Get_Cookie('logindetails');
         if (details != null) {
             var strArr = details.split(':');
@@ -77,7 +77,7 @@
             }
         });
         $('#<%=btnSubmit.ClientID %>').click(function () {
-            
+
             var error = 0;
             var emptyFields = new Array();
             var uname = $('#<%=txtUserName.ClientID %>').val();
@@ -109,7 +109,7 @@
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
-                        
+
                         if (data.d == 's') {
                             if (checked == true) {
                                 Set_Cookie('logindetails', uname + ':' + password, '', '/', '', '');
@@ -132,19 +132,19 @@
             }
         });
     });
-        </script>
-	<body>
-	    <form id="Form1" runat="server">
-		<!-- Outer start -->
-		<div id="outer">
-			<!-- Wrapper start -->
-			<div id="wrapper">
-				<!-- Header start -->
-				<header>
-					<!-- Logo start -->
-					<div id="logo">
-						<a href="Default.aspx" title="Critical Skills Boost Program">Critical Skills Boost Program</a>
-					</div>
+</script>
+<body>
+    <form id="Form1" runat="server">
+        <!-- Outer start -->
+        <div id="outer">
+            <!-- Wrapper start -->
+            <div id="wrapper">
+                <!-- Header start -->
+                <header>
+					
+					 <!-- Logo start -->
+        <div id="logo"> <a href="Default.aspx" title="Skill Gap Analysis">Skill Gap Analysis</a> </div>
+        
 					<!-- Logo end // -->
 					<!-- Top Navigation start -->
 					<%--<a id="top-nav-mob" href="#nogo"><span>Menu</span></a>
@@ -177,7 +177,7 @@
                             <li><a href="http://sipm.upsidelms.com/sipmlive/login/ad_MC_CS63_LRN.jsp" target="_blank" title="e-Learning">Access your e-Learning here!</a></li>
 						</ul>
 					</nav>--%>
-                    <div class="menu-bg"><a style="display:none;" href="javascript:void(0)" class="menuImage"><img src="images/top-nav-mob-bg.gif" alt=""> Menu</a></div>
+                     <div class="menu-bg"><a style="display:none;" href="javascript:void(0)" class="menuImage"><img src="images/top-nav-mob-bg.gif" alt=""> Menu</a></div>
         
   <div class="menu iphonNav">
   <ul>
@@ -200,7 +200,7 @@
 					<a id="login-mob" href="#nogo"><span>Login</span></a>
 					<div id="login">
 					 <%--<p><strong>Existing learners login here!</strong></p>--%>
-                     <p><strong>Complete your TNA here!</strong></p>
+                     <p><strong>Existing participants login here!</strong></p>
 						<p>
                         <asp:TextBox ID="txtUserName" runat="server"  MaxLength="100" CssClass="txt-field" onfocus="if(this.value==&#39;Username&#39;)this.value=&#39;&#39;" onblur="if(this.value==&#39;&#39;) {this.value = &#39;Username&#39;}" Text="Username" ></asp:TextBox>
                         </p>
@@ -224,75 +224,51 @@
 					</div>
 					<!-- Login end // -->
 				</header>
-				<!-- Header end // -->
-				<!-- Content Area start // -->
-              <div>
-                    <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+                <!-- Header end // -->
+                <!-- Content Area start // -->
+                <div>
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server" />
                 </div>
 
-				<!-- Content Area end // -->
-				<!-- Footer start -->
-				<footer>
-					<div class="col-1">
-						<ul class="footer-link">
-							<li class="title">Background</li>
-							<li><a href="/help.aspx" title="help">Help</a></li>
-                            <li><a href="/Terms" title="Terms of use">Terms of use</a></li>
-                            <li><a href="/PrivacyPolicy" title="Privacy Policy">Privacy Policy</a></li>
-                            <li><a href="/role_guidelines" title="Role Guidelines">Role Guidelines</a></li>
-                            <li><a href="/standing-offer-arrangement" title="Standing offer arrangement">Standing Offer</a></li>
-						</ul>
-					</div>
-					<div class="col-2">
-						<ul class="footer-link">
-							<li class="title">Assessments</li>
-                          <li><a href="/Procurement_TNA">Procurement TNA</a></li>
-                                    <li><a href="/Contract_Management_TNA">Contract Management TNA</a></li>
-									<li><a href="/Leadership">Leadership TNA</a></li>
-                                    <li><a href="/negotiation_assessment" title="Negotiation Assessment">Negotiation Assessment</a></li>
-                                    
-						</ul>
-					</div>
-					<div class="col-2">
-                  <ul class="footer-link">
-                    <li class="title">Workshops</li>
-                    <li><a href="http://demoevents.criticalskillsboost.com/booking/" title="See the Calendar">See the Calendar</a></li>
-                    <li><a href="http://demoevents.criticalskillsboost.com/workshops/contract-management/procurement-for-non-procurement-practitioners/" title="Procurement for Non Procurement Practitioners">Procurement for Non Procurement Practitioners</a></li>
-                      <li><a href="http://demoevents.criticalskillsboost.com/workshops/contract-management/contract-management-essentials/">Contract Management Essentials</a></li>
-                                    <li><a href="http://demoevents.criticalskillsboost.com/workshops/sourcing/procurement-essentials/">Procurement Essentials</a></li>
-                      
-									<li><a href="http://demoevents.criticalskillsboost.com/workshops/contract-management/contract-management-essentials/">Category Management Essentials</a></li>
-                                    <li><a title="Procurement Leadership Program" href="http://criticalskillsboost.com/LeadershipAction.aspx">Procurement Leadership Program</a></li>
-                  </ul>
-                </div>
-					<div class="col-3">
-						<ul class="footer-link">
-							<li class="title">Contact Us</li>
-							<li>To find out more about boosting your skills or to register your interest, talk to your manager or email: 
-							<br /><br /><a href="mailto:skills2procure@hpw.qld.gov.au " class="orange-link">skills2procure@hpw.qld.gov.au </a>
-                            <br /><br />03 6111 0751
-							</li>
-						</ul>
-					</div>
-					<div class="col-4">
-						<div id="footer-logo">
-							<a href="index.aspx" title="Critical Skills Boost Program">Critical Skills Boost Program</a>
-						</div>
-						<p>&nbsp;</p>
-						<p class="hide">&nbsp;</p>
-						<p class="powered">Powered by Comprara</p>
-					</div>
-					<div class="clear"></div>
-					<p>&nbsp;</p>
-				</footer>
-				<!-- Footer end // -->
-			</div>
-			<!-- Wrapper end // -->
-		</div>
-		<div id="outer-btm">&nbsp;</div>
-		<!-- Outer end // -->
-        </form>
-	</body>
+                <!-- Content Area end // -->
+                <!-- Footer start -->
+                <footer>
+        <div class="col-1">
+          <ul class="footer-link">
+            <li class="title">Home</li>
+            <li><a href="/help.aspx" title="Support">Support</a></li>
+            <li><a href="/role_guidelines" title="Role Guidelines">Role Guidelines</a></li>
+            <li><a href="About_us.aspx" title="About Comprara">About Comprara</a></li>
+          </ul>
+        </div>
+        <div class="col-3">
+          <ul class="footer-link">
+            <li class="title">Assessments</li>
+            <li><a href="/Procurement_TNA" title="">Procurement – Knowledge Evaluation</a></li>
+            <li><a href="/Procurement_TNA" title="">Procurement – Self Assessment</a></li>
+            <li><a href="/Contract_Management_TNA" title="">Contract Management – Knowledge Evaluation</a></li>
+            <li><a href="/Contract_Management_TNA" title="">Contract Management – Self Assessment</a></li>
+            <li><a href="#" title="">Commercial Awareness – Knowledge Evaluation</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-4">
+          <div id="footer-logo"> <a href="index.aspx" title="Skill Gap Analysis"></a> </div>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p class="powered">Powered by Comprara</p>
+        </div>
+        <div class="clear"></div>
+        <p>&nbsp;</p>
+      </footer>
+                <!-- Footer end // -->
+            </div>
+            <!-- Wrapper end // -->
+        </div>
+        <div id="outer-btm">&nbsp;</div>
+        <!-- Outer end // -->
+    </form>
+</body>
 </html>
 <script>
     (function (i, s, o, g, r, a, m) {
@@ -304,6 +280,6 @@
 
     ga('create', 'UA-41955815-1', 'skillsgapanlaysis.com');
     ga('send', 'pageview');
- 
+
 </script>
 

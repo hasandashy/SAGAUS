@@ -31,22 +31,22 @@ namespace SGA.tna {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl spCMA;
         
         /// <summary>
-        /// spBehaviour control.
+        /// spPKE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spBehaviour;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spPKE;
         
         /// <summary>
-        /// spNegotiation control.
+        /// spCMK control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spNegotiation;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spCMK;
         
         /// <summary>
         /// rptSgaTest control.

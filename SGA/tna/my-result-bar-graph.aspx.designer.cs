@@ -22,51 +22,6 @@ namespace SGA.tna {
         protected global::System.Web.UI.WebControls.Label lblPercentage;
         
         /// <summary>
-        /// spCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spCategory;
-        
-        /// <summary>
-        /// lnkAverage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkAverage;
-        
-        /// <summary>
-        /// lnkLower control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkLower;
-        
-        /// <summary>
-        /// lnkMiddle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkMiddle;
-        
-        /// <summary>
-        /// lnkUpper control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkUpper;
-        
-        /// <summary>
         /// spSkills control.
         /// </summary>
         /// <remarks>
@@ -76,24 +31,6 @@ namespace SGA.tna {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl spSkills;
         
         /// <summary>
-        /// spBehaviour control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spBehaviour;
-        
-        /// <summary>
-        /// spNegotiation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spNegotiation;
-        
-        /// <summary>
         /// spCMA control.
         /// </summary>
         /// <remarks>
@@ -101,6 +38,24 @@ namespace SGA.tna {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl spCMA;
+        
+        /// <summary>
+        /// spPKE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spPKE;
+        
+        /// <summary>
+        /// spCMK control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spCMK;
         
         /// <summary>
         /// graph1 control.

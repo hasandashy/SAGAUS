@@ -159,6 +159,7 @@
 			
 			bookmark.blur(); // Remove the focus from the calling element.
 			
+
 			// Set Navigation Key Bindings
 			$().bind("keydown.cbox_close", function (e) {
 				if (e.keyCode === 27) {

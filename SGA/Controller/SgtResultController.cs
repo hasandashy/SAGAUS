@@ -16,7 +16,7 @@ namespace SGA.Controller
     {
         public ActionResult Index(int? id)
         {
-            SGACommon.IsViewResult("viewSgaResult");
+            SGACommon.IsViewResult("viewPkeResult");
             DataSet Topic = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetTestTopics", new SqlParameter[]
 			{
 				new SqlParameter("@testId", id.Value),

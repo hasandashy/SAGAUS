@@ -851,7 +851,7 @@ namespace SGA.webadmin
                     string plainpassword = SGACommon.generatePassword(8);
                     string passwordSalt = SGACommon.CreateSalt(5);
                     string passwordHash = SGACommon.CreatePasswordHash(plainpassword, passwordSalt);
-                    param = new SqlParameter[15];
+                    param = new SqlParameter[12];
                     param[0] = new SqlParameter("@action", SqlDbType.VarChar);
                     param[0].Value = "Insert";
                     param[1] = new SqlParameter("@password", SqlDbType.VarChar);
@@ -874,14 +874,8 @@ namespace SGA.webadmin
                     param[9].Value = true;
                     param[10] = new SqlParameter("@jobLevel", SqlDbType.Int);
                     param[10].Value = System.Convert.ToInt32(this.ddlJobLevel.SelectedValue);
-                    param[11] = new SqlParameter("@managerFirstname", SqlDbType.VarChar);
-                    param[11].Value = this.MfirstName.Value.Trim();
-                    param[12] = new SqlParameter("@managerLastName", SqlDbType.VarChar);
-                    param[12].Value = this.MlastName.Value.Trim();
-                    param[13] = new SqlParameter("@managerEmail", SqlDbType.VarChar);
-                    param[13].Value = this.Memail.Value.Trim();
-                    param[14] = new SqlParameter("@agencyId", SqlDbType.Int);
-                    param[14].Value = System.Convert.ToInt32(this.ddlAgency.SelectedValue);
+                    param[11] = new SqlParameter("@agencyId", SqlDbType.Int);
+                    param[11].Value = System.Convert.ToInt32(this.ddlAgency.SelectedValue);
                     int result = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spUserMaster", param));
                     if (result == 0)
                     {
@@ -1181,7 +1175,7 @@ namespace SGA.webadmin
                                         string plainpassword = SGACommon.generatePassword(8);
                                         string passwordSalt = SGACommon.CreateSalt(5);
                                         string passwordHash = SGACommon.CreatePasswordHash(plainpassword, passwordSalt);
-                                        param = new SqlParameter[18];
+                                        param = new SqlParameter[15];
                                         param[0] = new SqlParameter("@action", SqlDbType.VarChar);
                                         param[0].Value = "Insert";
                                         param[1] = new SqlParameter("@password", SqlDbType.VarChar);
@@ -1204,20 +1198,14 @@ namespace SGA.webadmin
                                         param[9].Value = 1;
                                         param[10] = new SqlParameter("@jobLevel", SqlDbType.Int);
                                         param[10].Value = jobLevelId;
-                                        param[11] = new SqlParameter("@managerFirstname", SqlDbType.VarChar);
-                                        param[11].Value = mFirstName;
-                                        param[12] = new SqlParameter("@managerLastName", SqlDbType.VarChar);
-                                        param[12].Value = mLastName;
-                                        param[13] = new SqlParameter("@managerEmail", SqlDbType.VarChar);
-                                        param[13].Value = mEmail;
-                                        param[14] = new SqlParameter("@agencyId", SqlDbType.Int);
-                                        param[14].Value = agencyId;
-                                        param[15] = new SqlParameter("@phone", SqlDbType.VarChar);
-                                        param[15].Value = phone;
-                                        param[16] = new SqlParameter("@division", SqlDbType.VarChar);
-                                        param[16].Value = division;
-                                        param[17] = new SqlParameter("@locationId", SqlDbType.Int);
-                                        param[17].Value = locationId;
+                                        param[11] = new SqlParameter("@agencyId", SqlDbType.Int);
+                                        param[11].Value = agencyId;
+                                        param[12] = new SqlParameter("@phone", SqlDbType.VarChar);
+                                        param[12].Value = phone;
+                                        param[13] = new SqlParameter("@division", SqlDbType.VarChar);
+                                        param[13].Value = division;
+                                        param[14] = new SqlParameter("@locationId", SqlDbType.Int);
+                                        param[14].Value = locationId;
 
                                         int result = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spUserMaster", param));
                                         if (result > 0)

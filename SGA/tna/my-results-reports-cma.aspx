@@ -53,7 +53,8 @@
 						<p>&nbsp;</p>
 						<div class="my-result-container">
 							<div class="col-lft">
-								<p class="title18"><span id="spSkills" runat="server">Procurement <br />Assessment</span></p>
+
+                                <p class="title18"><span id="spSkills" runat="server">Procurement Skills Self  <br />Assessment</span></p>
                                 <% if(isTnaResult) { %>
                                 
                                 <div class="acrd-menu">
@@ -61,7 +62,6 @@
 								<div class="submenu">
 										<ul>
 											<li><a href="my-results-bar-graph-ssa.aspx" >&bull; Bar Graph</a></li>
-											<li><a href="my-results-reports-ssa.aspx"  >&bull; Reports</a></li>
 										</ul>
 									</div>
                                 </div>
@@ -71,16 +71,15 @@
 								</div>
                                 <%} %>
                                 
-                                <p class="title18"><span id="spCMA" runat="server">Contract Management <br />Assessment</span></p>
+                                <p class="title18"><span id="spCMA" runat="server">Contract Management Self <br />Assessment</span></p>
                                 <% if (isCMAResult)
                                    { %>
-                                   
+                                
                                 <div class="acrd-menu">
                                 <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
 								<div class="submenu">
 										<ul>
 											<li><a href="my-results-bar-graph-cma.aspx"   >&bull; Bar Graph</a></li>
-											<li><a href="my-results-reports-cma.aspx" class="active"  >&bull; Reports</a></li>
 										</ul>
 									</div>
                                 </div>
@@ -90,15 +89,14 @@
 								</div>
                                 <%} %>
                                 
-                                <p class="title18"><span id="spBehaviour" runat="server">Leadership <br />Assessment</span></p>
-                                <% if(isPmpResult) { %>
+                                <p class="title18"><span id="spPKE" runat="server">Procurement Knowledge   <br />Evaluation</span></p>
+                                <% if(isPkeResult) { %>
                                 
                                 <div class="acrd-menu">
                                 <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
 								<div class="submenu">
 										<ul>
-											<li><a href="my-results-bar-graph-ba.aspx"  >&bull; Bar Graph</a></li>
-											<li><a href="my-results-reports-ba.aspx"  >&bull; Reports</a></li>
+											<li><a href="my-result-bar-graph.aspx"  >&bull; Bar Graph</a></li>
 										</ul>
 									</div>
                                 </div>
@@ -107,15 +105,14 @@
 									<p>This assessment is locked and no results are available.</p>
 								</div>
                                 <%} %>
-                                <p class="title18"><span id="spNegotiation" runat="server">Negotiation Profile</span></p>
-								<% if (isNpResult)
+                                <p class="title18"><span id="spCMK" runat="server">Contract Management Knowledge <br /> Evaluation</span></p>
+								<% if (isCmkResult)
                                 { %>
                                 <div class="acrd-menu">
 									<p><a href="#" class="menuitem submenuheader">Display Results</a></p>
 									<div class="submenu">
 										<ul>
-											<li><a href="my-results-bar-graph-np.aspx" >&bull; Bar Graph</a></li>
-											<li><a href="my-results-reports-np.aspx" >&bull; Reports</a></li>
+											<li><a href="my-results-bar-graph-cmk.aspx" >&bull; Bar Graph</a></li>
 										</ul>
 									</div>
 								</div>
@@ -149,9 +146,7 @@
 											<td width="30%"><span class="dark">Rating</span><br />
                                             <%#Eval("marks") %>
                                             </td>
-											<td width="10%">
-                                            <a target="_blank" href="showCMAPdf.aspx?id=<%#Eval("emailLink") %>">
-                                            <img src="../innerimages/icon-pdf.gif" alt="" /></a></td>
+											
                                             <td width="10%">
                                             <asp:ImageButton ID="ibtnGraph" runat="server" CommandArgument='<%#Eval("testId") %>' CommandName="bar" ImageUrl="~/innerimages/img-graph-icon.gif" />
                                             </td>

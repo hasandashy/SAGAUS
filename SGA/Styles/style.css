@@ -40,7 +40,8 @@ li {
 img {
 	border: 0 none;
 	outline: none;
-	vertical-align: middle
+	vertical-align: middle;
+    max-width: 100%;
 }
 p {
 	margin: 0;
@@ -211,10 +212,10 @@ header {
 #logo a, #logo a:hover {
 	background: url(../images/logo.png) no-repeat left top;
 	display: block;
-	height: 92px;
+	height: 107px;
 	text-decoration: none;
 	text-indent: -999em;
-	width: 343px;
+	width: 226px;
 }
 a#top-nav-mob {
 	display: none
@@ -228,7 +229,7 @@ nav {
 	color: #231f20
 }
 nav li {
-	width: 194px;
+	width: 195px;
 	margin-bottom: 6px
 }
 nav li a {
@@ -282,17 +283,17 @@ nav li:hover > a {
 	padding-bottom: 0
 }
 a#login-mob {
-	display: none
+	display: none;
+	z-index:10;
 }
 #login {
-	position: absolute;
-	width: 195px;
-	top: 0px;
-	right: 0px;
-	font-size: 12px;
-	background: #e5e1d6;
-	
-	padding:30px 30px 10px 20px;
+  background: #e5e1d6 none repeat scroll 0 0;
+  font-size: 12px;
+  padding: 30px 30px 10px 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 195px;
 }
 #login p {
 	margin-bottom: 7px
@@ -413,47 +414,7 @@ a#login-mob {
 	border-radius: 8px
 }
 .bx-wrapper .bx-pager.bx-default-pager a:hover, .bx-wrapper .bx-pager.bx-default-pager a.active {
-	background: #e6e1d6;
-	width: 12px;
-	height: 12px;
-	line-height: 16px;
-	-moz-border-radius: 6px;
-	-webkit-border-radius: 6px;
-	border-radius: 6px
-}
-/* DIRECTION CONTROLS (NEXT / PREV) */
-
-.bx-wrapper .bx-prev {
-	left: 10px;
-	background: url(../images/controls.png) no-repeat 0 -32px;
-}
-
-.bx-wrapper .bx-next {
-	right: 10px;
-	background: url(../images/controls.png) no-repeat -43px -32px;
-}
-
-.bx-wrapper .bx-prev:hover {
-	background-position: 0 0;
-}
-
-.bx-wrapper .bx-next:hover {
-	background-position: -43px 0;
-}
-
-.bx-wrapper .bx-controls-direction a {
-	position: absolute;
-	top: 50%;
-	margin-top: -16px;
-	outline: 0;
-	width: 32px;
-	height: 32px;
-	text-indent: -9999px;
-	z-index: 9999;
-}
-
-.bx-wrapper .bx-controls-direction a.disabled {
-	display: none;
+	background: #E9421F;
 }
 .banner-caption {
 	background: #414042;
@@ -1042,38 +1003,6 @@ ol.list1 > li:before {
 }
 /* -- -- -- -- */
 
-/* Negotiation Assessment */
-.banner-inner-np {
-	background: url(../images/Banner2B.jpg) top left no-repeat;
-	background-size: cover;
-}
-.banner-inner-np .banner-cnt {
-	min-height: 322px;
-}
-.banner-inner-np .banner-cnt .banner-heading {
-	font-family: 'cleargothic-mediumregular', Arial, Helvetica, sans-serif;
-	font-size: 45px;
-	line-height: 70px;
-	color: #231f20;
-	margin: 0 0 10px 65px;
-	padding-top: 10px
-}
-.banner-inner-np .banner-cnt .banner-heading span {
-	color: #ea4320
-}
-.banner-inner-np .banner-cnt .banner-icn {
-	float: left;
-	width: 156px
-}
-.banner-inner-np .banner-cnt .banner-txt {
-	float: left;
-	width: 844px;
-	font-family: 'cleargothic-lightregular', Arial, Helvetica, sans-serif;
-	font-size: 20px;
-	line-height: 23px;
-	color: #231f20
-}
-/* -- -- -- -- */
 
 /* Category Management Challenge */
 .banner-inner1 {
@@ -1104,6 +1033,7 @@ ol.list1 > li:before {
 	border: 1px solid #df7e9b;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
+
 	border-radius: 6px;
 	-moz-box-shadow: 1px 1px 2px #999;
 	-webkit-box-shadow: 1px 1px 2px #999;
@@ -1292,6 +1222,7 @@ ol.list2 > li:before {
 }
 .cnt-lt {
 	margin-right: 10px;
+
 	padding: 20px 0 20px 30px;
 	background: #f79548;
 }
@@ -1412,10 +1343,10 @@ footer .col-2 {
 	width: 17%;
 }
 footer .col-3 {
-	border-right: 1px solid #e8e8e8;
+	border-right: 0px solid #e8e8e8;
 	float: left;
 	min-height: 132px;
-	width: 20%;
+	width: 50%;
 }
 footer .col-4 {
 	float: right;
@@ -1453,23 +1384,26 @@ footer a.orange-link:hover {
 }
 #footer-logo {
 	font-size: 10px;
-	height: 69px;
-	text-align: center;
-	width: 256px;
+	float: right;
+	width: 165px;
+	height: 77px;
+    text-align: center;
 }
 #footer-logo a, #footer-logo a:hover {
 	background: url(../images/logo-footer.png) no-repeat left top;
-	display: block;
-	height: 69px;
+	display: inline-block;
 	text-decoration: none;
 	text-indent: -999em;
-	width: 256px;
+	width: 165px;
+	height: 77px;
 }
 .powered {
 	color: #58595b;
 	font-size: 14px;
-	padding: 0 20px;
+	padding: 10px 0px 0 0;
 	text-align: center;
+    width: 165px;
+    float: right;
 }
 /* -- -- -- -- */
 
@@ -1807,7 +1741,7 @@ ol.list3 > li:before {
 	margin: 0px 5px;
 	text-align: left;
 	padding: 10px;
-	min-height: 416px;
+	min-height: 320px;
 	vertical-align: top;
 }
 .stepBoxes li:first-child {
@@ -2004,6 +1938,9 @@ input[type=image] {
     padding: 5px;
     width: 95%;
 }
+
+
+
 
 /*22 july*/
 
@@ -2314,10 +2251,12 @@ font-family: 'HelveticaBold';
   font-weight: normal;
   text-align: center;
 }
-.computer-vector p {
+.computer-vector p a {
   color: #e9421f; text-decoration:none;
 }
-
+.computer-vector p a:hover {
+  color: #000000;
+}
 .redtick .txt5 {
   color: #231f20;
   margin-bottom: 30px !important;
@@ -2372,6 +2311,8 @@ font-family: 'HelveticaBold';
 }
 .dw-bt a:hover{ background:#000;}
 /*leadership page css end*/
+
+
 /*standing offer page css start*/
 .orange-color{color:#E9421F !important; display:block ;}
 ul.stand-offer{float:left; width:100%; padding:8px 0 35px 18px; box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;}
@@ -2409,68 +2350,5 @@ ul.stand-offer li{float:left; width:100%; padding:0 0 8px 0; box-sizing:border-b
 #container .standing-form .cnt-us-form .radio-txt {
   margin-bottom: 20px;
 }
-#container .standing-form .cnt-rt{ padding-bottom:0;padding-top:0px;}
+#container .standing-form .cnt-rt{ padding-bottom:0;}
 /*standing offer page css end*/
-
-.light-orange-bar {
-	background: #F7944C;
-	color: #fff;
-	font-family: "cleargothic-lightregular", Arial, Helvetica, sans-serif;
-	font-size: 21px;
-	line-height: 35px;
-	margin: 16px 0;
-	padding: 8px 0;
-	text-transform:uppercase;
-	text-align: center;
-}
-/*banner  css 30 july start*/
-@font-face {
-font-family: 'Helvetica Neue bold';
-src: url('../fonts/HelveticaNeue-Bold.eot');
-src: url('../fonts/HelveticaNeue-Bold.eot?#iefix') format('embedded-opentype'),
-url('../fonts/HelveticaNeue-Bold.woff2') format('woff2'),
-url('../fonts/HelveticaNeue-Bold.woff') format('woff'),
-url('../fonts/HelveticaNeue-Bold.ttf') format('truetype'),
-url('../fonts/HelveticaNeue-Bold.svg#HelveticaNeue-Bold') format('svg');
-font-weight: bold;
-font-style: normal;
-}
-
-@font-face {
-font-family: 'Helvetica Neue italic';
-src: url('../fonts/HelveticaNeue-BoldItalic.eot');
-src: url('../fonts/HelveticaNeue-BoldItalic.eot?#iefix') format('embedded-opentype'),
-url('../fonts/HelveticaNeue-BoldItalic.woff2') format('woff2'),
-url('../fonts/HelveticaNeue-BoldItalic.woff') format('woff'),
-url('../fonts/HelveticaNeue-BoldItalic.ttf') format('truetype'),
-url('../fonts/HelveticaNeue-BoldItalic.svg#HelveticaNeue-BoldItalic') format('svg');
-font-weight: bold;
-font-style: italic;
-}
-
-.abs1 {left: 75px;position: absolute;top:7%;}
-.role{font-family: 'Helvetica Neue bold'; font-size:38px; font-weight:normal; text-shadow:0px 0px 1px rgba(64,64,64,0.5); color:#000; line-height:38px;}
-.bannerwidth1{width:450px; float:left;}
-.especially{ font-size:38px; font-weight:normal; text-shadow:0px 0px 1px rgba(64,64,64,0.5); color:#E9421F; line-height:38px; margin:10px 0 15px 0;}
-.especially span {font-family: 'Helvetica Neue italic';}
-.non-professionals{font-family: 'Helvetica Neue bold'; font-size:24px; font-weight:normal; text-shadow:0px 0px 1px rgba(64,64,64,0.5); color:#000; line-height:24px;}
-.non-professionals span {display:block; float:left; width:100%; padding:0 0px 7px 0;}
-.non-professionals p {font-family: 'HelveticaRegular'; display:block; float:left; width:100%; padding:0 0 3px 0;}
-.non-professionals p i {
-  display: inline-block;
-  padding-right: 5px;
-}
-.learn-button{display:block; float:left; width:100%; padding:10px 0 0 0; font-family: 'helvetica_neueregular';}
-.learn-button a {background:#ea421e; text-transform:uppercase; font-size:20px; color:#fff; padding:12px  30px; display:inline-block; text-decoration:none; border:1px solid #fff;}
-.learn-button a:hover{ background:#000;}
-.newtag{ position:absolute; left:0; top:0;}
-.nego{font-family: 'Helvetica Neue bold'; font-size:42px; font-weight:normal; text-shadow:0px 0px 1px rgba(64,64,64,0.5); color:#000; line-height:42px;}
-
-.negotiation{ font-size:42px; font-weight:normal; text-shadow:0px 0px 1px rgba(64,64,64,0.5); color:#E9421F; line-height:42px; margin:10px 0 15px 0;}
-.negotiation span { font-size:18px;  font-family: 'helvetica_lightregular'; }
-.negotiation span a { text-decoration:underline; color:#E9421F;}
-.negotiation span a:hover{ text-decoration:none; color:#000;}
-.plus-Advanced{font-family: 'HelveticaRegular'; font-size:32px; font-weight:normal;  text-shadow:0px 0px 1px rgba(64,64,64,0.5); color:#000; line-height:32px; margin-bottom:15px;}
-.plus-Advanced i{font-family: 'Helvetica Neue italic'; color:#E9421F;}
-
-/*banner  css 30 july end*/

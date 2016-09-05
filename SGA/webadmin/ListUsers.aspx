@@ -976,15 +976,14 @@
                                                                 <td class="txtrht">Your Job ROLE</td>
                                                                 <td>
                                                                     <asp:DropDownList ID="ddlJobRole" CssClass="styled" runat="server">
-                                                                        <asp:ListItem Value="0">- Your Job ROLE is best described as -</asp:ListItem>
-                                                                        <asp:ListItem Value="1">Procurement Officer</asp:ListItem>
-                                                                        <asp:ListItem Value="2">Procurement Analyst</asp:ListItem>
-                                                                        <asp:ListItem Value="3">Procurement Advisor</asp:ListItem>
-                                                                        <asp:ListItem Value="4">Procurement Specialist</asp:ListItem>
-                                                                        <asp:ListItem Value="5">Contract Manager</asp:ListItem>
-                                                                        <asp:ListItem Value="6">Contract Manager (including procurement)</asp:ListItem>
+                                                                        <asp:ListItem Value="1">Purchasing Officer</asp:ListItem>
+                                                                        <asp:ListItem Value="2">Procurement/ Purchasing Support</asp:ListItem>
+                                                                        <asp:ListItem Value="3">Procurement/ Purchasing Analyst</asp:ListItem>
+                                                                        <asp:ListItem Value="4">Procurement Officer/ Advisor</asp:ListItem>
+                                                                        <asp:ListItem Value="5">Procurement Specialist</asp:ListItem>
+                                                                        <asp:ListItem Value="6">Contract Manager</asp:ListItem>
                                                                         <asp:ListItem Value="7">Category Manager</asp:ListItem>
-                                                                        <asp:ListItem Value="8">Procurement Director</asp:ListItem>
+                                                                        <asp:ListItem Value="8">Procurement Manager/ Director</asp:ListItem>
                                                                     </asp:DropDownList>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" SetFocusOnError="true" ControlToValidate="ddlJobRole" InitialValue="0" CssClass="error" ValidationGroup="add" Text="*"></asp:RequiredFieldValidator>
                                                                 </td>

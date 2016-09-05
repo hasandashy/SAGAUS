@@ -22,24 +22,6 @@ namespace SGA.tna {
         protected global::System.Web.UI.WebControls.Label lblName;
         
         /// <summary>
-        /// pnlSga control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlSga;
-        
-        /// <summary>
-        /// hylSga control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hylSga;
-        
-        /// <summary>
         /// pnlTNA control.
         /// </summary>
         /// <remarks>
@@ -56,6 +38,24 @@ namespace SGA.tna {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hylTna;
+        
+        /// <summary>
+        /// pnlSga control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlSga;
+        
+        /// <summary>
+        /// hylSga control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hylSga;
         
         /// <summary>
         /// pnlCMA control.

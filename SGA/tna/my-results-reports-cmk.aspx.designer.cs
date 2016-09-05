@@ -10,7 +10,7 @@
 namespace SGA.tna {
     
     
-    public partial class my_results_bar_graph_cma {
+    public partial class my_results_reports_cmk {
         
         /// <summary>
         /// spSkills control.
@@ -49,12 +49,30 @@ namespace SGA.tna {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl spCMK;
         
         /// <summary>
-        /// graph1 control.
+        /// rptSgaTest control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SGA.controls.ctrlCMAGraph graph1;
+        protected global::System.Web.UI.WebControls.Repeater rptSgaTest;
+        
+        /// <summary>
+        /// btnprev control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnprev;
+        
+        /// <summary>
+        /// btnnext control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnnext;
     }
 }
