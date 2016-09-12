@@ -111,7 +111,7 @@ namespace SGA.tna
                 this.hylTna.NavigateUrl = (isTnaTest ? "~\\tna\\ssa-assessment-instructions.aspx" : "#");
                 this.hylSga.NavigateUrl = (isPkeTest ? "~\\tna\\pk-evaluation-instructions.aspx" : "#");
                 this.hylCMA.NavigateUrl = (isCMAtest ? "~\\tna\\cma-assessment-instructions.aspx" : "#");
-                this.hylCMK.NavigateUrl = (isCmkTest ? "~\\tna\\cma-assessment-instructions.aspx" : "#");
+                this.hylCMK.NavigateUrl = (isCmkTest ? "~\\tna\\cmk-assessment-instructions.aspx" : "#");
 
 
 

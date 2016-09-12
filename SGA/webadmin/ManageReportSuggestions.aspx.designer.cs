@@ -218,5 +218,320 @@ namespace SGA.webadmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton imgCMACancel;
+        
+        /// <summary>
+        /// pnlAdvisorList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlAdvisorList;
+        
+        /// <summary>
+        /// grdAdvisorSuggestions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataGrid grdAdvisorSuggestions;
+        
+        /// <summary>
+        /// pnlAdvisorEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlAdvisorEdit;
+        
+        /// <summary>
+        /// txtAdvisorDefination control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtAdvisorDefination;
+        
+        /// <summary>
+        /// txtAdvisorConsidration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtAdvisorConsidration;
+        
+        /// <summary>
+        /// ImgAdvisorEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgAdvisorEdit;
+        
+        /// <summary>
+        /// ImgAdvisorCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgAdvisorCancel;
+        
+        /// <summary>
+        /// pnlSpecialistList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlSpecialistList;
+        
+        /// <summary>
+        /// grdSpecialistSuggetions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataGrid grdSpecialistSuggetions;
+        
+        /// <summary>
+        /// pnlSpecialistEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlSpecialistEdit;
+        
+        /// <summary>
+        /// txtSpecialistDefination control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtSpecialistDefination;
+        
+        /// <summary>
+        /// txtSpecialistConsidration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtSpecialistConsidration;
+        
+        /// <summary>
+        /// ImgSpecialistEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgSpecialistEdit;
+        
+        /// <summary>
+        /// ImgSpecialistCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgSpecialistCancel;
+        
+        /// <summary>
+        /// pnlContractManagerList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlContractManagerList;
+        
+        /// <summary>
+        /// grdContractManagerSuggestions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataGrid grdContractManagerSuggestions;
+        
+        /// <summary>
+        /// pnlContractManagerEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlContractManagerEdit;
+        
+        /// <summary>
+        /// txtContractManagerDefination control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtContractManagerDefination;
+        
+        /// <summary>
+        /// txtContractManagerConsidration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtContractManagerConsidration;
+        
+        /// <summary>
+        /// ImgContractManagerEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgContractManagerEdit;
+        
+        /// <summary>
+        /// ImgContractManagerCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgContractManagerCancel;
+        
+        /// <summary>
+        /// pnlCategoryManagerList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlCategoryManagerList;
+        
+        /// <summary>
+        /// grdCategoryManagerSuggestions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataGrid grdCategoryManagerSuggestions;
+        
+        /// <summary>
+        /// pnlCategoryManagerEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlCategoryManagerEdit;
+        
+        /// <summary>
+        /// txtCategoryManagerDefination control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtCategoryManagerDefination;
+        
+        /// <summary>
+        /// txtCategoryManagerConsidration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtCategoryManagerConsidration;
+        
+        /// <summary>
+        /// ImgCatManagerEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgCatManagerEdit;
+        
+        /// <summary>
+        /// ImgCatManagerCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgCatManagerCancel;
+        
+        /// <summary>
+        /// pnlDirectorList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlDirectorList;
+        
+        /// <summary>
+        /// grdDirectorSuggetsions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataGrid grdDirectorSuggetsions;
+        
+        /// <summary>
+        /// pnlDirectorEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlDirectorEdit;
+        
+        /// <summary>
+        /// txtDirectorDefination control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtDirectorDefination;
+        
+        /// <summary>
+        /// txtDirectorConsidration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtDirectorConsidration;
+        
+        /// <summary>
+        /// ImgDirectorEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgDirectorEdit;
+        
+        /// <summary>
+        /// ImgDirectorCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgDirectorCancel;
     }
 }

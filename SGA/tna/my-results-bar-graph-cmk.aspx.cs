@@ -49,15 +49,15 @@ namespace SGA.tna
                 this.spPKE.Attributes["class"] = (this.isPkeResult ? "" : "lock");
 
                 base.Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
-                if (this.Session["cmaTestId"] != null)
+                if (this.Session["cmkTestId"] != null)
                 {
                     SqlParameter[] param = new SqlParameter[]
 					{
 						new SqlParameter("@userId", SGACommon.LoginUserInfo.userId),
-						new SqlParameter("@testId", this.Session["cmaTestId"].ToString())
+						new SqlParameter("@testId", this.Session["cmkTestId"].ToString())
 					};
-                    this.lblPercentage.Text = System.Convert.ToDecimal(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetCMAPrecentage", param)).ToString("#.##");
-                    this.graph1.testId = System.Convert.ToInt32(this.Session["cmaTestId"].ToString());
+                    this.lblPercentage.Text = System.Convert.ToDecimal(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetCMKPrecentage", param)).ToString("#.##");
+                    this.graph1.testId = System.Convert.ToInt32(this.Session["cmkTestId"].ToString());
                 }
                 else
                 {

@@ -68,37 +68,41 @@
                     <div style="border: 1px solid #ed1165; margin-left: 30px; width: 98%;">
                     </div>
                     <br />
-                    <ul>
-                        
-                       
-                        <li><a href="ListUsers.aspx?tabId=4">
+                    <ul>  
+                        <li><a href="ListUsers.aspx?tabId=5">
                             <div class="fl num_dashboard">
                                 <asp:Label ID="lblSSA" runat="server"></asp:Label></div>
                             <div class="fl hdtxt pt15">
-                                Procurement TNA<br />
-                                taken</div>
+                               Procurement Skills Self Assessment taken</div>
                             <div class="clr">
                             </div>
                         </a></li>
-                        <li><a href="ListUsers.aspx?tabId=6">
+                         <li><a href="ListUsers.aspx?tabId=6">
+                            <div class="fl num_dashboard">
+                                <asp:Label ID="lblSga" runat="server"></asp:Label></div>
+                            <div class="fl hdtxt pt15">
+                               Procurement Knowledge Evaluation taken</div>
+                            <div class="clr">
+                            </div>
+                        </a></li>
+                        <li><a href="ListUsers.aspx?tabId=7">
                             <div class="fl num_dashboard">
                                 <asp:Label ID="lblCMA" runat="server"></asp:Label></div>
                             <div class="fl hdtxt pt15">
-                                Contract Assess<br />
-                                TNA taken</div>
+                                Contract Management Self Assessment taken</div>
+                            <div class="clr">
+                            </div>
+                        </a></li>
+                         <li><a href="ListUsers.aspx?tabId=10">
+                            <div class="fl num_dashboard">
+                                <asp:Label ID="lblCmk" runat="server"></asp:Label></div>
+                            <div class="fl hdtxt pt15">
+                                Contract Management Knowledge Evaluation taken</div>
                             <div class="clr">
                             </div>
                         </a></li>
                         
-                        <li><a href="ListUsers.aspx?tabId=5">
-                            <div class="fl num_dashboard">
-                                <asp:Label ID="lblBA" runat="server"></asp:Label></div>
-                            <div class="fl hdtxt pt15">
-                                Leadership Assess<br />
-                                taken</div>
-                            <div class="clr">
-                            </div>
-                        </a></li>
+                       
                     </ul>
                     <br />
                 </td>

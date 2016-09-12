@@ -10,7 +10,7 @@
 namespace SGA.webadmin {
     
     
-    public partial class EditNPtest {
+    public partial class EditSGAtest {
         
         /// <summary>
         /// menu1 control.
@@ -47,15 +47,6 @@ namespace SGA.webadmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTopic;
-        
-        /// <summary>
-        /// lblDescription control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDescription;
         
         /// <summary>
         /// hdCount control.
@@ -119,6 +110,15 @@ namespace SGA.webadmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFinal;
+        
+        /// <summary>
+        /// btnNextNoForward control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNextNoForward;
         
         /// <summary>
         /// btnSubmit control.

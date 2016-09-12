@@ -34,9 +34,9 @@
                 $("[id$=selected_tab]").val(selected_tab);
             });
 
-            $('a#<%=lnkSearch.ClientID %>,a#<%=lnkBASearch.ClientID %>,a#<%=lnkSSASearch.ClientID %>,a#<%=lnkNPSearch.ClientID %>').click(function () {
+          <%--  $('a#<%=lnkSearch.ClientID %>,a#<%=lnkBASearch.ClientID %>,a#<%=lnkSSASearch.ClientID %>,a#<%=lnkNPSearch.ClientID %>').click(function () {
                 $("[id$=selected_tab]").val(selected_tab);
-            });
+            });--%>
 
             $('.pager a,.gridHeader a,.gridHeaderASC a,.gridHeaderSortDESC a').click(function () {
                 $("[id$=selected_tab]").val(selected_tab);
@@ -70,12 +70,12 @@
                                     <div id="tabs">
                                         <ul>
                                             <li><a href="#tabs-1">List User</a></li>
-                                            <li><a href="#tabs-2">View/Edit User </a></li>
+                                           <%-- <li><a href="#tabs-2">View/Edit User </a></li>--%>
                                             <li><a href="#tabs-3">Permissions </a></li>
                                             <li><a href="#tabs-4">User Assess</a></li>
-                                            <li><a href="#tabs-5">Procurement Assess</a></li>
-                                            <li><a href="#tabs-6">Leadership Assess</a></li>
-                                            <li><a href="#tabs-10">NP Test</a></li>
+                                            <li><a href="#tabs-5">Procurement self Assess</a></li>
+                                            <li><a href="#tabs-6">Procurement Knowledge</a></li>
+                                            <li><a href="#tabs-10">CMK Assess</a></li>
                                             <li><a href="#tabs-7">CMA Assess</a></li>
                                             <li><a href="#tabs-8">Add User</a></li>
                                             <li><a href="#tabs-9">Import</a></li>
@@ -196,7 +196,8 @@
                                                                         <Columns>
                                                                             <asp:TemplateColumn HeaderText="Name" SortExpression="firstname" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Left" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Width="10%">
                                                                                 <ItemTemplate>
-                                                                                    <a href="UserDetails.aspx?Id=<%#Eval("Id") %>&KeepThis=true&TB_iframe=true&height=500&width=1070" class="thickbox"><%# Eval("firstname") +" "+ Eval("lastname") %></a>
+                                                                                    <%--<a href="UserDetails.aspx?Id=<%#Eval("Id") %>&KeepThis=true&TB_iframe=true&height=500&width=1070" class="thickbox"><%# Eval("firstname") +" "+ Eval("lastname") %></a>--%>
+                                                                                    <a href="#"><%# Eval("firstname") +" "+ Eval("lastname") %></a>
                                                                                 </ItemTemplate>
                                                                             </asp:TemplateColumn>
                                                                             <asp:TemplateColumn HeaderText="Email" SortExpression="email" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Left" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Width="10%">
@@ -284,7 +285,7 @@
                                                 </tr>
                                             </table>
                                         </div>
-                                        <div id="tabs-2">
+                                        <%--<div id="tabs-2">
 
                                             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                 <tr>
@@ -341,36 +342,21 @@
                                                                 <td>
                                                                     <asp:DropDownList ID="ddlEditJobRole" CssClass="styled" runat="server">
                                                                         <asp:ListItem Value="0">- Your Job ROLE is best described as -</asp:ListItem>
-                                                                        <asp:ListItem Value="1">Full Time Procurement Manager</asp:ListItem>
-                                                                        <asp:ListItem Value="2">Full Time Contract Manager</asp:ListItem>
-                                                                        <asp:ListItem Value="3">Other</asp:ListItem>
+                                                                       <asp:ListItem Value="1">Purchasing Officer</asp:ListItem>
+                                                                        <asp:ListItem Value="2">Procurement/ Purchasing Support</asp:ListItem>
+                                                                        <asp:ListItem Value="3">Procurement/ Purchasing Analyst</asp:ListItem>
+                                                                        <asp:ListItem Value="4">Procurement Officer/ Advisor</asp:ListItem>
+                                                                        <asp:ListItem Value="5">Procurement Specialist</asp:ListItem>
+                                                                        <asp:ListItem Value="6">Contract Manager</asp:ListItem>
+                                                                        <asp:ListItem Value="7">Category Manager</asp:ListItem>
+                                                                        <asp:ListItem Value="8">Procurement Manager/ Director</asp:ListItem>
+                                                                    
                                                                     </asp:DropDownList></td>
-                                                                <td class="txtrht">Job level</td>
-                                                                <td>
-                                                                    <asp:DropDownList ID="ddlEditJobLevel" CssClass="styled" runat="server">
-                                                                        <asp:ListItem Value="0">- Level of role best described as -</asp:ListItem>
-                                                                        <asp:ListItem Value="1">Graduate</asp:ListItem>
-                                                                        <asp:ListItem Value="2">Officer</asp:ListItem>
-                                                                        <asp:ListItem Value="3">Advisor</asp:ListItem>
-                                                                        <asp:ListItem Value="4">Senior advisor</asp:ListItem>
-                                                                        <asp:ListItem Value="5">Operational Leader</asp:ListItem>
-                                                                        <asp:ListItem Value="6">Director</asp:ListItem>
-                                                                        <asp:ListItem Value="7">Executive Level</asp:ListItem>
-                                                                    </asp:DropDownList></td>
+                                                              
                                                             </tr>
+                                                           
                                                             <tr>
-                                                                <td class="txtrht">Manager First name</td>
-                                                                <td>
-                                                                    <asp:TextBox name="MEditfirstName" ID="MEditfirstName" runat="server" MaxLength="20" /></td>
-                                                                <td class="txtrht">Manager Last name</td>
-                                                                <td>
-                                                                    <asp:TextBox name="MEditlastName" ID="MEditlastName" runat="server" MaxLength="100" /></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="txtrht">Manager Email</td>
-                                                                <td>
-                                                                    <asp:TextBox name="MEditemail" ID="MEditemail" runat="server" MaxLength="20" /></td>
-                                                                <td class="txtrht">Division</td>
+                                                                 <td class="txtrht">Division</td>
                                                                 <td>
                                                                     <asp:TextBox name="txtDivision" ID="txtDivision" runat="server" MaxLength="100" /></td>
                                                             </tr>
@@ -455,7 +441,7 @@
                                                     </td>
                                                 </tr>
                                             </table>
-                                        </div>
+                                        </div>--%>
                                         <div id="tabs-3">
                                             <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
                                                 <tr>
@@ -558,11 +544,11 @@
 
                                                                 <asp:BoundColumn DataField="email" HeaderText="Email" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="20%" HeaderStyle-Width="20%"></asp:BoundColumn>
 
-                                                                <asp:BoundColumn DataField="SSAtest" HeaderText="Procurement TNA" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" ItemStyle-Width="10%" HeaderStyle-Width="10%"></asp:BoundColumn>
-                                                                <asp:BoundColumn DataField="BAtest" HeaderStyle-HorizontalAlign="Center" HeaderText="Leadership TNA" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="10%" HeaderStyle-Width="10%"></asp:BoundColumn>
+                                                                <asp:BoundColumn DataField="SSAtest" HeaderText="Procurement Self Assess" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" ItemStyle-Width="10%" HeaderStyle-Width="10%"></asp:BoundColumn>
+                                                                <asp:BoundColumn DataField="Sgatest" HeaderStyle-HorizontalAlign="Center" HeaderText="Procurement Knowledge Evaluation" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="10%" HeaderStyle-Width="10%"></asp:BoundColumn>
 
-                                                                <asp:BoundColumn DataField="CMAtest" HeaderStyle-HorizontalAlign="Center" HeaderText="Contract Management" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="10%" HeaderStyle-Width="10%"></asp:BoundColumn>
-                                                                <asp:BoundColumn DataField="NPtest" HeaderStyle-HorizontalAlign="Center" HeaderText="Negotiation Profile" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="10%" HeaderStyle-Width="10%"></asp:BoundColumn>
+                                                                <asp:BoundColumn DataField="CMAtest" HeaderStyle-HorizontalAlign="Center" HeaderText="Contract Management Self Assess" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="10%" HeaderStyle-Width="10%"></asp:BoundColumn>
+                                                                <asp:BoundColumn DataField="Cmktest" HeaderStyle-HorizontalAlign="Center" HeaderText="Contract Management Knowledge Evaluation" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="10%" HeaderStyle-Width="10%"></asp:BoundColumn>
                                                             </Columns>
                                                         </asp:DataGrid>
                                                     </td>
@@ -574,7 +560,7 @@
                                         <div id="tabs-5">
                                             <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
                                                 <tr>
-                                                    <td class="hd20">Procurement Assessment
+                                                    <td class="hd20">Procurement Skills Self Assessment
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -683,7 +669,7 @@
                                         <div id="tabs-6">
                                             <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
                                                 <tr>
-                                                    <td class="hd20">Leadership Assessment
+                                                    <td class="hd20">Procurement Knowledge Evaluation
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -693,12 +679,12 @@
                                                                 <td class="txtrht">First Name
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtBAFname" runat="server" maxlength="100" />
+                                                                    <input type="text" id="txtSGAfname" runat="server" maxlength="100" />
                                                                 </td>
                                                                 <td class="txtrht">Last Name
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtBALname" runat="server" maxlength="100" />
+                                                                    <input type="text" id="txtSGAlname" runat="server" maxlength="100" />
                                                                 </td>
                                                             </tr>
 
@@ -707,19 +693,19 @@
                                                                 <td class="txtrht">Assessment date
                                                                 </td>
                                                                 <td colspan="3">From : 
-                                                    <asp:TextBox runat="server" ID="txtBAFrom" Style="width: 100px"></asp:TextBox>
-                                                                    <asp:ImageButton ID="ImageButton5" runat="server" Height="16px" ImageUrl="~/Images/cal.gif"
+                                                    <asp:TextBox runat="server" ID="txtSGAFrom" Style="width: 100px"></asp:TextBox>
+                                                                    <asp:ImageButton ID="ImageButton1" runat="server" Height="16px" ImageUrl="~/Images/cal.gif"
                                                                         Width="16px" ImageAlign="Bottom" />
-                                                                    <ajaxToolkit:CalendarExtender ID="CalendarExtender7" runat="server" PopupButtonID="ImageButton5"
-                                                                        TargetControlID="txtBAFrom" Format="dd/MM/yyyy">
+                                                                    <ajaxToolkit:CalendarExtender ID="CalendarExtender3" runat="server" PopupButtonID="ImageButton3"
+                                                                        TargetControlID="txtSGAFrom" Format="dd/MM/yyyy">
                                                                     </ajaxToolkit:CalendarExtender>
                                                                     &nbsp;&nbsp;&nbsp;
                                                     To: 
-                                                        <asp:TextBox ID="txtBATo" runat="server" Style="width: 100px"></asp:TextBox>
-                                                                    <asp:ImageButton ID="ImageButton6" runat="server" Height="16px" ImageUrl="~/Images/cal.gif"
+                                                        <asp:TextBox ID="txtSGATo" runat="server" Style="width: 100px"></asp:TextBox>
+                                                                    <asp:ImageButton ID="ImageButton2" runat="server" Height="16px" ImageUrl="~/Images/cal.gif"
                                                                         Width="16px" ImageAlign="Bottom" />
-                                                                    <ajaxToolkit:CalendarExtender ID="CalendarExtender8" runat="server" Format="dd/MM/yyyy"
-                                                                        PopupButtonID="ImageButton6" TargetControlID="txtBATo">
+                                                                    <ajaxToolkit:CalendarExtender ID="CalendarExtender4" runat="server" Format="dd/MM/yyyy"
+                                                                        PopupButtonID="ImageButton4" TargetControlID="txtSGATo">
                                                                     </ajaxToolkit:CalendarExtender>
                                                                 </td>
                                                             </tr>
@@ -727,10 +713,10 @@
                                                             <tr>
                                                                 <td></td>
                                                                 <td>
-                                                                    <asp:LinkButton ID="lnkBASearch" runat="server" CausesValidation="false"
-                                                                        Text="Search" CssClass="rdbut" OnClick="lnkBASearch_Click"></asp:LinkButton>
-                                                                    <asp:LinkButton ID="lnkBADownload" runat="server" CausesValidation="false"
-                                                                        Text="Export to excel" CssClass="rdbut" Visible="false" OnClick="lnkBADownload_Click"></asp:LinkButton>
+                                                                    <asp:LinkButton ID="lnkSGASearch" runat="server" CausesValidation="false"
+                                                                        Text="Search" CssClass="rdbut" OnClick="lnkSGASearch_Click"></asp:LinkButton>
+                                                                    <asp:LinkButton ID="lnkSGADownload" runat="server" CausesValidation="false"
+                                                                        Text="Export to excel" CssClass="rdbut" Visible="false" OnClick="lnkSGADownload_Click"></asp:LinkButton>
                                                                 </td>
                                                                 <td></td>
                                                                 <td></td>
@@ -745,9 +731,9 @@
                                                 <tr>
                                                     <td>
 
-                                                        <asp:DataGrid ID="grdBA" runat="server" AllowPaging="True" AllowSorting="true"
+                                                        <asp:DataGrid ID="grdSGA" runat="server" AllowPaging="True" AllowSorting="true"
                                                             AutoGenerateColumns="False" CssClass="grdMain"
-                                                            OnItemDataBound="grdBA_ItemDataBound" OnItemCommand="grdBA_ItemCommand" OnSortCommand="grdBA_SortCommand" OnPageIndexChanged="grdBA_PageIndexChanged"
+                                                            OnItemDataBound="grdSGA_ItemDataBound" OnItemCommand="grdSGA_ItemCommand" OnSortCommand="grdSGA_SortCommand" OnPageIndexChanged="grdSGA_PageIndexChanged"
                                                             Width="100%" GridLines="None" PageSize="20">
                                                             <HeaderStyle CssClass="gridHeader" />
                                                             <PagerStyle Mode="NumericPages" CssClass="pager" HorizontalAlign="Center" />
@@ -768,13 +754,11 @@
                                                                         <asp:Label ID="lblAssesmentDate" runat="server"></asp:Label>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateColumn>
-                                                                <asp:TemplateColumn ItemStyle-Width="22%" HeaderStyle-Width="22%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderText="Action">
+                                                                <asp:TemplateColumn ItemStyle-Width="19%" HeaderStyle-Width="19%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderText="Action">
                                                                     <ItemTemplate>
                                                                         <asp:ImageButton ID="iBtnDelete" runat="server" CausesValidation="false" AlternateText="Delete" Style="height: 25px; width: 25px;" OnClientClick="return confirm('Are you sure you want to delete this record?');" CommandArgument='<%#Eval("testId") %>' CommandName="Delete" ToolTip="Delete" ImageUrl="~/webadmin/images/disapprove_icon.png" />
                                                                         &nbsp;
-                                                            <a target="_blank" href="ShowBAPdf.aspx?id=<%#Eval("emailLink") %>">
-                                                                <img src="../innerimages/icon-pdf.gif" style="height: 25px; width: 25px;" alt="" /></a>
-                                                                        &nbsp;
+                                                            
                                                             <asp:ImageButton ID="iBtnGraph" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Graph" ToolTip="Graph" ImageUrl="~/webadmin/images/img-graph-icon.gif" />
                                                                         &nbsp;
                                                             <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" AlternateText="Edit" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Edit" ToolTip="Edit" ImageUrl="~/webadmin/images/edit.png" />
@@ -792,7 +776,7 @@
                                         <div id="tabs-7">
                                             <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
                                                 <tr>
-                                                    <td class="hd20">Contract Management Assessment
+                                                    <td class="hd20"> Contract Management Knowledge Evaluation
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -958,21 +942,7 @@
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" SetFocusOnError="true" InitialValue="0" CssClass="error" ControlToValidate="ddlAgency" ValidationGroup="add" Text="*"></asp:RequiredFieldValidator>
                                                                 </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td class="txtrht">Your Job level</td>
-                                                                <td>
-                                                                    <asp:DropDownList ID="ddlJobLevel" CssClass="styled" runat="server">
-                                                                        <asp:ListItem Value="0">- Level of role best described as -</asp:ListItem>
-                                                                        <asp:ListItem Value="1">Graduate</asp:ListItem>
-                                                                        <asp:ListItem Value="2">Officer</asp:ListItem>
-                                                                        <asp:ListItem Value="3">Advisor</asp:ListItem>
-                                                                        <asp:ListItem Value="4">Senior advisor</asp:ListItem>
-                                                                        <asp:ListItem Value="5">Operational Leader</asp:ListItem>
-                                                                        <asp:ListItem Value="6">Director</asp:ListItem>
-                                                                        <asp:ListItem Value="7">Executive Level</asp:ListItem>
-                                                                    </asp:DropDownList>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" SetFocusOnError="true" ControlToValidate="ddlJobLevel" CssClass="error" InitialValue="0" ValidationGroup="add" Text="*"></asp:RequiredFieldValidator>
-                                                                </td>
+                                                            <tr>                                                                
                                                                 <td class="txtrht">Your Job ROLE</td>
                                                                 <td>
                                                                     <asp:DropDownList ID="ddlJobRole" CssClass="styled" runat="server">
@@ -987,30 +957,8 @@
                                                                     </asp:DropDownList>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" SetFocusOnError="true" ControlToValidate="ddlJobRole" InitialValue="0" CssClass="error" ValidationGroup="add" Text="*"></asp:RequiredFieldValidator>
                                                                 </td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td class="txtrht">Manager's First Name</td>
-                                                                <td>
-                                                                    <input type="text" name="MfirstName" id="MfirstName" runat="server" maxlength="100" />
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" SetFocusOnError="true" CssClass="error" ControlToValidate="MfirstName" ValidationGroup="add" Text="*"></asp:RequiredFieldValidator>
-                                                                </td>
-                                                                <td class="txtrht">Manager's Last Name</td>
-                                                                <td>
-                                                                    <input type="text" name="MlastName" id="MlastName" runat="server" maxlength="100" />
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" SetFocusOnError="true" CssClass="error" ControlToValidate="MlastName" ValidationGroup="add" Text="*"></asp:RequiredFieldValidator>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="txtrht">Manager's Email</td>
-                                                                <td colspan="3">
-                                                                    <input type="text" name="Memail" id="Memail" runat="server" maxlength="100" />
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" SetFocusOnError="true" CssClass="error" ControlToValidate="Memail" ValidationGroup="add" Text="*"></asp:RequiredFieldValidator>
-                                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="Memail" CssClass="error"
-                                                                        ErrorMessage="Invalid email address." ForeColor="Red" Display="Dynamic" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">*</asp:RegularExpressionValidator>
-                                                                </td>
-
-                                                            </tr>
+                                                            </tr>                                                          
+                                                           
                                                             <tr>
                                                                 <td colspan="4" align="center">
                                                                     <asp:Label ID="lblError" runat="server" CssClass="error"></asp:Label>
@@ -1077,7 +1025,7 @@
                                         <div id="tabs-10">
                                             <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
                                                 <tr>
-                                                    <td class="hd20">Negotiation Profile Assessment
+                                                    <td class="hd20">Contract Management Assessment
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -1087,12 +1035,12 @@
                                                                 <td class="txtrht">First Name
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtNPFname" runat="server" maxlength="100" />
+                                                                    <input type="text" id="txtCMKfname" runat="server" maxlength="100" />
                                                                 </td>
                                                                 <td class="txtrht">Last Name
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtNPLname" runat="server" maxlength="100" />
+                                                                    <input type="text" id="txtCMKlname" runat="server" maxlength="100" />
                                                                 </td>
                                                             </tr>
 
@@ -1101,19 +1049,19 @@
                                                                 <td class="txtrht">Assessment date
                                                                 </td>
                                                                 <td colspan="3">From : 
-                                                    <asp:TextBox runat="server" ID="txtNPFrom" Style="width: 100px"></asp:TextBox>
-                                                                    <asp:ImageButton ID="ImageButton15" runat="server" Height="16px" ImageUrl="~/Images/cal.gif"
+                                                    <asp:TextBox runat="server" ID="txtCMKFrom" Style="width: 100px"></asp:TextBox>
+                                                                    <asp:ImageButton ID="ImageButton5" runat="server" Height="16px" ImageUrl="~/Images/cal.gif"
                                                                         Width="16px" ImageAlign="Bottom" />
-                                                                    <ajaxToolkit:CalendarExtender ID="CalendarExtender12" runat="server" PopupButtonID="ImageButton15"
-                                                                        TargetControlID="txtNPFrom" Format="dd/MM/yyyy">
+                                                                    <ajaxToolkit:CalendarExtender ID="CalendarExtender7" runat="server" PopupButtonID="ImageButton18"
+                                                                        TargetControlID="txtCMKFrom" Format="dd/MM/yyyy">
                                                                     </ajaxToolkit:CalendarExtender>
                                                                     &nbsp;&nbsp;&nbsp;
                                                     To: 
-                                                        <asp:TextBox ID="txtNPTo" runat="server" Style="width: 100px"></asp:TextBox>
-                                                                    <asp:ImageButton ID="ImageButton16" runat="server" Height="16px" ImageUrl="~/Images/cal.gif"
+                                                        <asp:TextBox ID="txtCMKTo" runat="server" Style="width: 100px"></asp:TextBox>
+                                                                    <asp:ImageButton ID="ImageButton6" runat="server" Height="16px" ImageUrl="~/Images/cal.gif"
                                                                         Width="16px" ImageAlign="Bottom" />
-                                                                    <ajaxToolkit:CalendarExtender ID="CalendarExtender13" runat="server" Format="dd/MM/yyyy"
-                                                                        PopupButtonID="ImageButton16" TargetControlID="txtNPTo">
+                                                                    <ajaxToolkit:CalendarExtender ID="CalendarExtender8" runat="server" Format="dd/MM/yyyy"
+                                                                        PopupButtonID="ImageButton19" TargetControlID="txtCMATo">
                                                                     </ajaxToolkit:CalendarExtender>
                                                                 </td>
                                                             </tr>
@@ -1121,8 +1069,8 @@
                                                             <tr>
                                                                 <td></td>
                                                                 <td>
-                                                                    <asp:LinkButton ID="lnkNPSearch" runat="server" CausesValidation="false"
-                                                                        Text="Search" CssClass="rdbut" OnClick="lnkNPSearch_Click"></asp:LinkButton>
+                                                                    <asp:LinkButton ID="lnkCMKSearch" runat="server" CausesValidation="false"
+                                                                        Text="Search" CssClass="rdbut" OnClick="lnkCMKSearch_Click"></asp:LinkButton>
 
                                                                 </td>
                                                                 <td></td>
@@ -1138,9 +1086,9 @@
                                                 <tr>
                                                     <td>
 
-                                                        <asp:DataGrid ID="grdNP" runat="server" AllowPaging="True" AllowSorting="true"
+                                                        <asp:DataGrid ID="grdCMK" runat="server" AllowPaging="True" AllowSorting="true"
                                                             AutoGenerateColumns="False" CssClass="grdMain"
-                                                            OnItemDataBound="grdNP_ItemDataBound" OnItemCommand="grdNP_ItemCommand" OnSortCommand="grdNP_SortCommand" OnPageIndexChanged="grdNP_PageIndexChanged"
+                                                            OnItemDataBound="grdCMK_ItemDataBound" OnItemCommand="grdCMK_ItemCommand" OnSortCommand="grdCMK_SortCommand" OnPageIndexChanged="grdCMK_PageIndexChanged"
                                                             Width="100%" GridLines="None" PageSize="20">
                                                             <HeaderStyle CssClass="gridHeader" />
                                                             <PagerStyle Mode="NumericPages" CssClass="pager" HorizontalAlign="Center" />
@@ -1156,19 +1104,16 @@
                                                                     </ItemTemplate>
                                                                 </asp:TemplateColumn>
 
-                                                                <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate" HeaderText="Assesment<br>Date">
+                                                                <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate" HeaderText="Assesment Date">
                                                                     <ItemTemplate>
                                                                         <asp:Label ID="lblAssesmentDate" runat="server"></asp:Label>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateColumn>
-                                                                <asp:TemplateColumn ItemStyle-Width="22%" HeaderStyle-Width="22%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderText="Action">
+                                                                <asp:TemplateColumn ItemStyle-Width="19%" HeaderStyle-Width="19%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderText="Action">
                                                                     <ItemTemplate>
                                                                         <asp:ImageButton ID="iBtnDelete" runat="server" CausesValidation="false" AlternateText="Delete" Style="height: 25px; width: 25px;" OnClientClick="return confirm('Are you sure you want to delete this record?');" CommandArgument='<%#Eval("testId") %>' CommandName="Delete" ToolTip="Delete" ImageUrl="~/webadmin/images/disapprove_icon.png" />
                                                                         &nbsp;
-                                                            <a target="_blank" href="ShowNPPdf.aspx?id=<%#Eval("testId") %>&userId=<%#Eval("userId") %>">
-                                                                <img src="../innerimages/icon-pdf.gif" style="height: 25px; width: 25px;" alt="" /></a>
-                                                                        &nbsp;
-                                                            <asp:ImageButton ID="iBtnGraph" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Graph" ToolTip="Graph" ImageUrl="~/webadmin/images/img-graph-icon.gif" />
+                                                             <asp:ImageButton ID="iBtnGraph" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Graph" ToolTip="Graph" ImageUrl="~/webadmin/images/img-graph-icon.gif" />
                                                                         &nbsp;
                                                             <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" AlternateText="Edit" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Edit" ToolTip="Edit" ImageUrl="~/webadmin/images/edit.png" />
                                                                         &nbsp;

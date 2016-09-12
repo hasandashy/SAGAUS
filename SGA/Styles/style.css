@@ -597,6 +597,13 @@ a#more-info-mob {
 	margin: 16px 0;
 	padding: 8px 0
 }
+.banner-inner-pke {background:url(../images/Businessmen.jpg) top no-repeat; background-size:cover}
+.banner-inner-pke .banner-cnt {min-height:508px;}
+.banner-inner-pke .banner-cnt .banner-heading {font-family:'cleargothic-mediumregular', Arial, Helvetica, sans-serif; font-size:50px; line-height:70px; color:#231f20; margin:0 0 10px 30px; padding-top:10px}
+.banner-inner-pke .banner-cnt .banner-heading span {color:#ea4320}
+.banner-inner-pke .banner-cnt .banner-icn {float:left; width:156px}
+.banner-inner-pke .banner-cnt .banner-txt {float:left; width:844px; font-family:'cleargothic-lightregular', Arial, Helvetica, sans-serif; font-size:20px; line-height:23px; color:#231f20}
+
 /* About Us */
 .banner-inner {
 }
@@ -887,6 +894,9 @@ ol.list1 > li:before {
 }
 .pad-lt-rt-10 {
 	padding: 0 10px
+}
+.pad-lt-rt-30 {
+	padding: 0 30px
 }
 .btn-register-here {
 	background: url(../images/btn-register-here.png) left top no-repeat;

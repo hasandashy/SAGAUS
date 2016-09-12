@@ -10,7 +10,7 @@
 namespace SGA.webadmin {
     
     
-    public partial class EditBAtest {
+    public partial class EditCMKtest {
         
         /// <summary>
         /// menu1 control.
@@ -76,6 +76,15 @@ namespace SGA.webadmin {
         protected global::System.Web.UI.WebControls.Repeater parentRepeater;
         
         /// <summary>
+        /// lblPercentage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPercentage;
+        
+        /// <summary>
         /// lnkPrev control.
         /// </summary>
         /// <remarks>
@@ -94,15 +103,6 @@ namespace SGA.webadmin {
         protected global::System.Web.UI.WebControls.Button lnkNext;
         
         /// <summary>
-        /// btnSubmit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit;
-        
-        /// <summary>
         /// btnSubmitNext control.
         /// </summary>
         /// <remarks>
@@ -119,5 +119,14 @@ namespace SGA.webadmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFinal;
+        
+        /// <summary>
+        /// btnSubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
     }
 }

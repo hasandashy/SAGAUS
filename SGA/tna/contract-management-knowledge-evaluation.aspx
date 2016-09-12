@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/tnaMaster.Master" AutoEventWireup="true" CodeBehind="contract-management-knowledge-evaluation.aspx.cs" Inherits="SGA.tna.contract_management_knowledge_evaluation" %>
+<%@ Register TagPrefix="cc1" Namespace="Flanders.Componentes" Assembly="Cronometro" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!-- Custom Form -->
 		<script type="text/javascript" src="../js/custom-form-elements-load.js"></script>
@@ -10,6 +11,11 @@
         <script type="text/javascript" language="javascript">
             var alertHtml = '';
             var lastpage='n';
+            function timeOut(){
+                StyleRadio();
+                alert('Thank you for completing the Contract Management Evaluation.Your results have been saved and submitted.');
+                window.location='/tna/default.aspx';
+            }
             function FinalSubmit(){
                 document.getElementById("<%=btnFinal.ClientID %>").click();
             }
@@ -191,8 +197,10 @@
 <!-- Content Area start -->
 				<article id="container">
 					<section class="welcome-test">
-						<p class="title40 floatL">Contract Management Assessment</p>
-						<div class="timer"></div>
+						<p class="title40 floatL">Contract Management Evaluation</p>
+						<div class="timer"><cc1:Cronometro ID="Cronometro1" runat="server" OnTimeOut="Cronometro1_TimeOut" Height="35px"
+                                                    Width="22px" CausaPostBack="true"  Ascendente="False" Mensaje="" Duracion="00:01:00">
+                                                </cc1:Cronometro></div>
 						<div class="clear"></div>
 					</section>
 					<div class="dot-line">&nbsp;</div>

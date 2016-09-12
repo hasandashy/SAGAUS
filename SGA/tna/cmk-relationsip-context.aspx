@@ -51,7 +51,7 @@
             } else {
                 // show confirmation
                 lastpage = 'y';
-                alertHtml = 'You are about to begin the Commercial Contract Management Assessment. This assessment must be taken in a single sitting. Are you ready to begin?';
+                alertHtml = 'You are about to begin the Contract Management Knowledge Evaluation. This is a timed event and must be taken in a single sitting. Are you ready to begin?';
             }
         });
     });
@@ -60,7 +60,7 @@
 				<article id="container">
 					<section class="welcome">
 						<p class="title40-orange"><asp:Label ID="lblName" runat="server"></asp:Label></p>
-						<p class="title40">Welcome to the Commercial Contract Management Assessment</p>
+						<p class="title40">Welcome to the Contract Management Knowledge Evaluation</p>
 					</section>
 					<div class="dot-line">&nbsp;</div>
 					<section class="color-box">
@@ -93,6 +93,13 @@
                             <a  id="hylProfile" runat="server" href="#" class="my-profile">BEGIN NOW</a></div>
 							<div class="clear"></div>
 							<p>&nbsp;</p>
+							<div class="timed-task">
+								<p class="title"><span>THIS IS A<br /><font class="orange">TIMED TASK!</font></span></p>
+								<p>&nbsp;</p>
+								<p>You are given 60 minutes to complete the evaluation. There are eight sections with three questions each. We recommend that you allocate no more than 5 minutes for each section. This gives you 10 minutes to go back to the answers that you may want to revisit. When you click 'Next' you will be taken to 'My Profile' page.  Once you have completed your profile, click 'Next' and then the clock will start!  
+                                <br /><br />
+You will see the clock throughout the evaluation in the top right hand side of the page in orange! </p>
+							</div>
 							
 							
 						</article>

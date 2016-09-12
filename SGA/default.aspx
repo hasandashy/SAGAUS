@@ -57,13 +57,7 @@
             if (jobRole == 0) {
                 error = 1;
                 emptyFields.push('Your Job ROLE is best described as');
-            }
-                //ddlJobLevel--- Job level best described as -
-            var jobLevel = $("#<%=ddlJobLevel.ClientID %>").val();
-            if (jobLevel == 0) {
-                error = 1;
-                emptyFields.push('Level of role best described as');
-            }
+            }          
 
 
             if (($("#terms").is(':checked')) == false) {
@@ -117,7 +111,7 @@
                             type: "POST",
                             async: false,
                             url: "About_us.aspx/RegisterUser",
-                            data: JSON.stringify({ 'fname': name, 'lname': surname, 'email': email, 'jobId': $("#<%=ddlJobRole.ClientID %>").val(), 'jobLevel': $("#<%=ddlJobLevel.ClientID %>").val(), 'agencyId': agency }),
+                            data: JSON.stringify({ 'fname': name, 'lname': surname, 'email': email, 'jobId': $("#<%=ddlJobRole.ClientID %>").val(), 'jobLevel': 1, 'agencyId': agency }),
                             dataType: "json",
                             contentType: "application/json; charset=utf-8",
                             success: function (data) {
@@ -160,9 +154,9 @@
 
     <!-- Content Area start -->
     <article id="container">
-                          <p>This program is designed to offer you real-world training across core procurement competencies.</p>
+                         <%-- <p>This program is designed to offer you real-world training across core procurement competencies.</p>
 <p>Conducting your Training Needs Analysis is the first step. This  will provide you with a tailored report detailing your procurement learning plan and your opportunity to cross high-impact e-Learning information and industry-leading workshops.</p>
-<p><strong>With this program, we're delivering the skills boost you've been waiting for!</strong></p>
+<p><strong>With this program, we're delivering the skills boost you've been waiting for!</strong></p>--%>
 
                   <div class="stepBoxes">
             <ul>
@@ -176,7 +170,7 @@
                 <h2>Step 2</h2>
                 <p><strong>COMPLETE your Assessment Pack.</strong></p>
                 <p class="txtCtr"><img src="Images/imgStep2.jpg" alt="Step2" /></p>
-                <p>You will be assigned between 1-3 Assessments to complete based on your Role.</p>
+                <p>Depending on your role you may need to take three assesments.</p>
               </li>
               <li>
                 <h2>Step 3</h2>
@@ -242,17 +236,7 @@
 <asp:ListItem Value="6">Contract Manager</asp:ListItem>
  <asp:ListItem Value="7">Category Manager</asp:ListItem>
 <asp:ListItem Value="8">Procurement Manager/ Director</asp:ListItem>
-                            </asp:DropDownList> </li>
-                        	<li><span>*</span><asp:DropDownList ID="ddlJobLevel" runat="server">
-                            <asp:ListItem Value="0">- Level of role best described as -</asp:ListItem>
-                            <asp:ListItem Value="1">Graduate</asp:ListItem> 
-<asp:ListItem Value="2">Officer</asp:ListItem>
-<asp:ListItem Value="3">Advisor</asp:ListItem>
-<asp:ListItem Value="4">Senior advisor</asp:ListItem> 
-<asp:ListItem Value="5">Operational Leader</asp:ListItem> 
-<asp:ListItem Value="6">Director</asp:ListItem>
-<asp:ListItem Value="7">Executive Level</asp:ListItem> 
-                            </asp:DropDownList></li>
+                            </asp:DropDownList> </li>                        	
                         	
                             <li><input type="checkbox" id="terms" name="terms" />  By ticking this box, I agree to the terms of the website and I understand that the information (including my personal information) entered may be held offshore.</li>
                             <li class="txtRgt"><input type="submit" value="" class="btn-go2" id="btnSend" /></li>
@@ -268,9 +252,9 @@
               <p></p>
               <img src="images/imgNote.png" alt="" />
               <p>&nbsp;</p>
-              <p>The selections you make are really important as they effect the training you get recommended.</p>
+              <p>The selections you make when registering are important as they directly affect the assesments you will gain access to.</p>
               <p>&nbsp;</p>
-              <p>The most important of these is selecting the correct role descriptor. Select the  one that is the closest to your current role, considering the key activities you normally do.</p>
+              <p>The most important is to select the ROLE that best describes your current role.</p>
               <p>&nbsp;</p>
               <a href="/role_guidelines" title="">Click here first for further guidelines before selecting your role descriptor &gt;</a> </div>
                    

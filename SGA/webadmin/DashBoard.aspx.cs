@@ -27,7 +27,8 @@ namespace SGA.webadmin
                         this.lblUnApproved.Text = ds.Tables[0].Rows[0]["totalUnApproved"].ToString();
                         this.lblDeactive.Text = ds.Tables[0].Rows[0]["totalExpired"].ToString();
                         this.lblSSA.Text = ds.Tables[0].Rows[0]["totalssa"].ToString();
-                        this.lblBA.Text = ds.Tables[0].Rows[0]["totalba"].ToString();
+                        this.lblSga.Text = ds.Tables[0].Rows[0]["totaltna"].ToString();
+                        this.lblCmk.Text = ds.Tables[0].Rows[0]["totalcmk"].ToString();
                         this.lblContact.Text = ds.Tables[0].Rows[0]["totalContact"].ToString();
                         this.lblEmailTemplate.Text = ds.Tables[0].Rows[0]["totalemail"].ToString();
                         this.lblFromFront.Text = ds.Tables[0].Rows[0]["frontusers"].ToString();

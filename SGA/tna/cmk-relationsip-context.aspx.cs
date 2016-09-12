@@ -13,16 +13,16 @@ namespace SGA.tna
 {
     public partial class cmk_relationsip_context : System.Web.UI.Page
     {
-        protected int directSend = 0;
+        protected int directSend = 1;
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
-            SGACommon.AddPageTitle(this.Page, "Commercial Contract Management Assessment Instructions Page", "");
-            SGACommon.IsTakeTest("takeCMATest");
+            SGACommon.AddPageTitle(this.Page, "Contract Management Knowledge Evaluation Instructions Page", "");
+            SGACommon.IsTakeTest("viewCmkTest");
             if (!base.IsPostBack)
             {
                 this.lblName.Text = "Hi " + SGACommon.GetName() + "!";
-                this.PassProfile();
+               // this.PassProfile();
             }
         }
 

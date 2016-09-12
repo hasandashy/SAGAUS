@@ -13,7 +13,7 @@ namespace SGA.tna
         
         protected void Page_Load(object sender, System.EventArgs e)
         {
-            SGACommon.AddPageTitle(this.Page, "Commercial Contract Management Assessment Instructions Page", "");
+            SGACommon.AddPageTitle(this.Page, "Contract Management Self Assessment Instructions Page", "");
             SGACommon.IsTakeTest("takeCMATest");
             if (!base.IsPostBack)
             {

@@ -1,17 +1,9 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/webadmin/AdminMaster.Master" AutoEventWireup="true" CodeBehind="EditNPtest.aspx.cs" Inherits="SGA.webadmin.EditNPtest" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/webadmin/AdminMaster.Master" AutoEventWireup="true" CodeBehind="EditCMKtest.aspx.cs" Inherits="SGA.webadmin.EditCMKtest" %>
 <%@ Register TagName="left" TagPrefix="sga" Src="~/controls/ctrlLeftMenu.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-<!-- Stylesheet -->
-		<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" />
-		
-		<!--[if lt IE 9]>
-			<script src="<%# Page.ResolveClientUrl("../js/html5.js")%>"></script>
-		<![endif]-->
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<!-- Custom Form -->
+    <!-- Custom Form -->
 		<script type="text/javascript" src="../js/custom-form-elements-load.js"></script>
-		
+		<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" />
 		<!-- Accordion Menu -->
 		<script type="text/javascript" src="../js/jquery.min.js"></script>
 		<script type="text/javascript" src="../Scripts/jquery.colorbox.js"></script>
@@ -19,6 +11,7 @@
         <script type="text/javascript" language="javascript">
             var alertHtml = '';
             var lastpage='n';
+           
             function FinalSubmit(){
                 document.getElementById("<%=btnFinal.ClientID %>").click();
             }
@@ -48,14 +41,14 @@
                 $(".color").click(function () {
                     var topicId = this.id.substr(this.id.length-1);
                     var currentTopicId = <%=PageNumber %>;
-                    
+                    //$("#<%=pgNumber.ClientID %>").val(topicId);
                     if(topicId > currentTopicId){
                         // check for validation and press next
                         var ct = $("#<%=hdCount.ClientID %>").val();
                         var unsq = "";
                         var pt = "";
                         for (j = 0; j < ct; j++) {
-                            if (j <= 9) {
+                            if (j <= 3) {
                                 pt = '0' + j;
                             } else {
                                 pt = j;
@@ -81,8 +74,8 @@
                             return true;
                         }
                     }else{
-                        $("#<%=pgNumber.ClientID %>").val(topicId);
                         // back button pressed
+                        $("#<%=pgNumber.ClientID %>").val(topicId);
                         alertHtml="b";
                         return true;
                     }
@@ -120,7 +113,7 @@
                     var unsq = "";
                     var pt = "";
                     for (j = 0; j < ct; j++) {
-                        if (j <= 9) {
+                        if (j <= 3) {
                             pt = '0' + j;
                         } else {
                             pt = j;
@@ -156,7 +149,8 @@
                         } else {
                             $('#colorbox').css({ "display": "none" });
                             document.getElementById("<%=btnSubmitNext.ClientID %>").click();
-                            
+                            //parent.$.fn.colorbox.close();
+                            //$('#cboxOverlay').css({ "display": "none" });
                         }
                     }
                 });
@@ -167,7 +161,7 @@
                     var unsq = "";
                     var pt = "";
                     for (j = 0; j < ct; j++) {
-                        if (j <= 9) {
+                        if (j <= 3) {
                             pt = '0' + j;
                         } else {
                             pt = j;
@@ -195,8 +189,7 @@
 
             });
         </script>
-
-<tr>
+       <tr>
         <td class="inrbg">
             <table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr>
@@ -207,7 +200,7 @@
                         <table width="99%" border="0" align="right" cellpadding="0" cellspacing="0" class="panbox">
                             <tr>
                                 <td class="hd26">
-                                    EDIT NEGOTIATION PROFILE TEST
+                                    EDIT Contract Management Evaluation TEST
                                 </td>
                             </tr>
                             <tr>
@@ -227,10 +220,10 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <!-- Content Area start -->
+<!-- Content Area start -->
 				<article id="container">
 					<section class="welcome-test">
-						<p class="title40 floatL">NEGOTIATION PROFILE</p>
+						<p class="title40 floatL">Contract Management Evaluation</p>
 						<div class="timer"></div>
 						<div class="clear"></div>
 					</section>
@@ -248,14 +241,11 @@
 					</article>
 					<section class="color-box">
 						<article class="test-info-box">
-							<p class="title">Section <%=PageNumber +1 %>: <span class="orange">
-                            <asp:Label ID="lblTopic" runat="server"></asp:Label>
-                            </span></p>
+							<p class="title">Section <%=PageNumber +1 %>: <span class="orange"><asp:Label ID="lblTopic" runat="server"></asp:Label></span></p>
 							<p>&nbsp;</p>
 							<p><span class="dark">
-                            DEFINITION OF THIS STAGE:</span> <asp:Label ID="lblDescription" runat="server"></asp:Label></p>
+                            DEFINITION:</span> <asp:Label ID="lblDescription" runat="server"></asp:Label></p>
 							<p>&nbsp;</p>
-							
 						</article>
 						<article class="info-box-shdw-cat-mngmt">
 							<div class="test-box">
@@ -284,7 +274,7 @@
 							</div>
 							<p>&nbsp;</p>
 							<div class="score-box">
-								<div class="score-cnt">You're <asp:Label ID="lblPercentage" runat="server"></asp:Label> through, doing well!</div>
+								<div class="score-cnt"><asp:Label ID="lblPercentage" runat="server"></asp:Label></div>
 								
                                 <div class="score-btn">
                                     
@@ -305,7 +295,7 @@
 					</section>
 					<div class="dot-line">&nbsp;</div>
 				</article>
-                                                    </td>
+                 </td>
                                                 </tr>
                                             </table>
  
@@ -317,17 +307,19 @@
             </table>
         </td>
     </tr>
-
-
-                
              <script type="text/javascript" language="javascript">
                  function StyleRadio() {
                      $('table.styled input:radio').addClass("styled");
                      Custom.init();
                  }
-                 
+                 if (document.addEventListener) {
+                     document.addEventListener("contextmenu", function (e) {
+                         e.preventDefault();
+                     }, false);
+                 } else if (document.attachEvent) {
+                     document.attachEvent("oncontextmenu", function (event) {
+                         event.returnValue = false;
+                     });
+                 }
     </script>
 </asp:Content>
-
-
-

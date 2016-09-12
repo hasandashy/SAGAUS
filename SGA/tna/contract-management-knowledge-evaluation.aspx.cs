@@ -71,7 +71,7 @@ namespace SGA.tna
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
-            SGACommon.AddPageTitle(this.Page, "Contract Management Assessment  ", "");
+            SGACommon.AddPageTitle(this.Page, "Contract Management Knowledge Evaluation  ", "");
             MasterPage mp = this.Page.Master;
             if (mp != null)
             {
@@ -86,14 +86,21 @@ namespace SGA.tna
                 }
             }
             SGACommon.IsTakeTest("viewCmkTest");
+            this.Cronometro1.ScriptPath = "~/js/";
+            this.Cronometro1.ImagesPath = "~/images/";
+            this.Cronometro1.Ascendente = false;
             if (!base.IsPostBack)
             {
-                this.testId = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spInitalizeCMKTest", new SqlParameter[]
+                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spInitalizeCMKTest", new SqlParameter[]
 				{
 					new SqlParameter("@userId", SGACommon.LoginUserInfo.userId),
 					new SqlParameter("@testDate", System.DateTime.UtcNow.ToString()),
-					new SqlParameter("@sessionId", this.Session.SessionID)
-				}));
+                    new SqlParameter("@startDate", System.DateTime.UtcNow.ToString()),
+                    new SqlParameter("@endDate", System.DateTime.UtcNow.ToString()),
+                    new SqlParameter("@sessionId", this.Session.SessionID)
+				});
+                this.testId = System.Convert.ToInt32(ds.Tables[0].Rows[0]["testId"].ToString());
+                this.Cronometro1.Duracion = new System.TimeSpan(0, System.Convert.ToInt32(ds.Tables[0].Rows[0]["time"].ToString()), 0);
                 this.LoadAllTopics();
                 this.Percentage();
                 this.SetClass();
@@ -366,19 +373,19 @@ namespace SGA.tna
 						};
             XmlRpcStruct[] resultFound = isdnAPI.findByEmail(SGACommon.LoginUserInfo.name, strField);
             int userId;
-            XmlRpcStruct Contact = new XmlRpcStruct();
-            if (resultFound.Length > 0)
-            {
-                userId = System.Convert.ToInt32(resultFound[0]["Id"].ToString());
-                isdnAPI.addToGroup(userId, 1474);
-                string Url = "http://" + base.Request.UrlReferrer.Host + "/Contract_Management_Report.aspx?Id=" + DataTier.SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetSessionId", new SqlParameter[]{
-                    new SqlParameter("@testId",this.testId),
-                    new SqlParameter("@flag","6")
-                }).ToString();
-                Contact.Add("_CMAReportURL", Url);
-                Contact.Add("ContactType", "Customer");
-                isdnAPI.dsUpdate("Contact", userId, Contact);
-            }
+            //XmlRpcStruct Contact = new XmlRpcStruct();
+            //if (resultFound.Length > 0)
+            //{
+            //    userId = System.Convert.ToInt32(resultFound[0]["Id"].ToString());
+            //    isdnAPI.addToGroup(userId, 1474);
+            //    string Url = "http://" + base.Request.UrlReferrer.Host + "/Contract_Management_Report.aspx?Id=" + DataTier.SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetSessionId", new SqlParameter[]{
+            //        new SqlParameter("@testId",this.testId),
+            //        new SqlParameter("@flag","6")
+            //    }).ToString();
+            //    Contact.Add("_CMAReportURL", Url);
+            //    Contact.Add("ContactType", "Customer");
+            //    isdnAPI.dsUpdate("Contact", userId, Contact);
+            //}
             this.testId = 0;
             SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spRestrictTest", new SqlParameter[]
 			{
@@ -422,6 +429,31 @@ namespace SGA.tna
             this.Percentage();
             this.pgNumber.Value = "";
             base.ClientScript.RegisterStartupScript(this.Page.GetType(), "abc", "$(document).ready(function(){\r\nStyleRadio();\r\n});", true);
+        }
+
+        protected void Cronometro1_TimeOut(object sender, System.EventArgs e)
+        {
+            foreach (RepeaterItem itm in this.parentRepeater.Items)
+            {
+                RadioButtonList rdb = (RadioButtonList)itm.FindControl("RadioButtonList1");
+                if (rdb != null)
+                {
+                    if (rdb.SelectedIndex != -1)
+                    {
+                        SqlParameter[] param = new SqlParameter[3];
+                        string fff = rdb.SelectedValue.ToString();
+                        Label qId = (Label)itm.FindControl("lblquestionId");
+                        int questionId = System.Convert.ToInt32(qId.Text);
+                        param[0] = new SqlParameter("@questionId", questionId);
+                        param[1] = new SqlParameter("@OptionId", fff);
+                        param[2] = new SqlParameter("@testId", this.testId);
+                        SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateCMKOptions", param);
+                    }
+                }
+            }
+            this.testId = 0;
+            base.ClientScript.RegisterStartupScript(this.Page.GetType(), "time", "timeOut();", true);
+            base.Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
         }
     }
 }

@@ -11,7 +11,7 @@ namespace SGA.tna
 {
     public partial class ssa_assessment_instructions : Page
     {
-        protected int directSend = 0;
+        protected int directSend = 1;
 
        
 
@@ -22,7 +22,7 @@ namespace SGA.tna
             if (!base.IsPostBack)
             {
                 this.lblName.Text = "Hi " + SGACommon.GetName() + "!";
-                this.PassProfile();
+                //this.PassProfile();
             }
         }
 

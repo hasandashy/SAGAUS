@@ -13,7 +13,7 @@ namespace SGA.tna
 {
     public partial class pk_evaluation_instructions : System.Web.UI.Page
     {
-        protected int directSend = 0;
+        protected int directSend = 1;
 
 
         protected void Page_Load(object sender, System.EventArgs e)
@@ -23,7 +23,7 @@ namespace SGA.tna
             if (!base.IsPostBack)
             {
                 this.lblName.Text = "Hi " + SGACommon.GetName() + "!";
-                this.PassProfile();
+                //this.PassProfile();
             }
         }
 

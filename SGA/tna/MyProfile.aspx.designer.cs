@@ -58,24 +58,6 @@ namespace SGA.tna {
         protected global::System.Web.UI.WebControls.DropDownList ddlJobRole;
         
         /// <summary>
-        /// hylJobLevel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hylJobLevel;
-        
-        /// <summary>
-        /// ddlJobLevel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlJobLevel;
-        
-        /// <summary>
         /// email control.
         /// </summary>
         /// <remarks>
@@ -103,6 +85,15 @@ namespace SGA.tna {
         protected global::System.Web.UI.HtmlControls.HtmlInputPassword password;
         
         /// <summary>
+        /// txtPhoneNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPhoneNo;
+        
+        /// <summary>
         /// ddlAgency control.
         /// </summary>
         /// <remarks>
@@ -112,48 +103,102 @@ namespace SGA.tna {
         protected global::System.Web.UI.WebControls.DropDownList ddlAgency;
         
         /// <summary>
-        /// txtDivision control.
+        /// txtBranch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDivision;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtBranch;
         
         /// <summary>
-        /// ddlLocation control.
+        /// txtJobTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLocation;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtJobTitle;
         
         /// <summary>
-        /// txtPosition control.
+        /// ddlCentral control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPosition;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCentral;
         
         /// <summary>
-        /// ddlGoods control.
+        /// ddlCurrentJobClassification control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGoods;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCurrentJobClassification;
         
         /// <summary>
-        /// txtPhoneNo control.
+        /// ddlExperience control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPhoneNo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlExperience;
+        
+        /// <summary>
+        /// ddlQualification control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlQualification;
+        
+        /// <summary>
+        /// ddlTimeAlloc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTimeAlloc;
+        
+        /// <summary>
+        /// ddlNature control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlNature;
+        
+        /// <summary>
+        /// ddlInfluence control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlInfluence;
+        
+        /// <summary>
+        /// ddlContract control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlContract;
+        
+        /// <summary>
+        /// ddlRange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlRange;
     }
 }

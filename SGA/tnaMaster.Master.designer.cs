@@ -46,7 +46,7 @@ namespace SGA {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl header1;
+        protected global::SGA.controls.ctrlHeader header1;
         
         /// <summary>
         /// ContentPlaceHolder1 control.
@@ -64,6 +64,6 @@ namespace SGA {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl footer;
+        protected global::SGA.controls.ctrlFooter footer;
     }
 }

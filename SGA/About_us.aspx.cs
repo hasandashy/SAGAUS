@@ -304,103 +304,103 @@ namespace SGA
 						{
 							"Id"
 						};
-						XmlRpcStruct[] resultFound = isdnAPI.findByEmail(email, strField);
-						if (resultFound.Length > 0)
-						{
-							int userId = System.Convert.ToInt32(resultFound[0]["Id"].ToString());
-							bool isAdded = isdnAPI.addToGroup(userId, 400);
-							isdnAPI.optIn(email, "Sending emails is allowed");
-							isdnAPI.dsUpdate("Contact", userId, new XmlRpcStruct
-							{
-								{
-									"FirstName",
-									fname
-								},
-								{
-									"LastName",
-									lname
-								},
-								{
-									"Email",
-									email
-								},
-								{
-									"OwnerID",
-									"50036"
-								},
-								{
-									"_CSBPassword",
-									plainpassword
-								},
-								{
-									"_YourOrganisation",
-									Profile.GetOrganisation(agencyId)
-								},
-								{
-									"_Role",
-									Profile.GetJobRole(jobId)
-								},
-								{
-									"_RoleLevel",
-									Profile.GetJobLevel(jobLevel)
-								},
-								{
-									"_CSBUsername",
-									email
-								}
-							});
-						}
-						else
-						{
-							int userId = isdnAPI.add(new XmlRpcStruct
-							{
-								{
-									"FirstName",
-									fname
-								},
-								{
-									"LastName",
-									lname
-								},
-								{
-									"Email",
-									email
-								},
-								{
-									"OwnerID",
-									"50036"
-								},								
-								{
-									"_CSBPassword",
-									plainpassword
-								},
-								{
-									"_YourOrganisation",
-									Profile.GetOrganisation(agencyId)
-								},
-								{
-									"_Role",
-									Profile.GetJobRole(jobId)
-								},
-								{
-									"_RoleLevel",
-									Profile.GetJobLevel(jobLevel)
-								},
-								{
-									"_CSBUsername",
-									email
-								},
-								{
-									"ContactType",
-									"Customer"
-								}
-							});
-							if (userId > 0)
-							{
-								bool isAdded = isdnAPI.addToGroup(userId, 400);
-								isdnAPI.optIn(email, "Sending emails is allowed");
-							}
-						}
+						//XmlRpcStruct[] resultFound = isdnAPI.findByEmail(email, strField);
+						//if (resultFound.Length > 0)
+						//{
+						//	int userId = System.Convert.ToInt32(resultFound[0]["Id"].ToString());
+						//	bool isAdded = isdnAPI.addToGroup(userId, 400);
+						//	isdnAPI.optIn(email, "Sending emails is allowed");
+						//	isdnAPI.dsUpdate("Contact", userId, new XmlRpcStruct
+						//	{
+						//		{
+						//			"FirstName",
+						//			fname
+						//		},
+						//		{
+						//			"LastName",
+						//			lname
+						//		},
+						//		{
+						//			"Email",
+						//			email
+						//		},
+						//		{
+						//			"OwnerID",
+						//			"50036"
+						//		},
+						//		{
+						//			"_CSBPassword",
+						//			plainpassword
+						//		},
+						//		{
+						//			"_YourOrganisation",
+						//			Profile.GetOrganisation(agencyId)
+						//		},
+						//		{
+						//			"_Role",
+						//			Profile.GetJobRole(jobId)
+						//		},
+						//		{
+						//			"_RoleLevel",
+						//			Profile.GetJobLevel(jobLevel)
+						//		},
+						//		{
+						//			"_CSBUsername",
+						//			email
+						//		}
+						//	});
+						//}
+						//else
+						//{
+						//	int userId = isdnAPI.add(new XmlRpcStruct
+						//	{
+						//		{
+						//			"FirstName",
+						//			fname
+						//		},
+						//		{
+						//			"LastName",
+						//			lname
+						//		},
+						//		{
+						//			"Email",
+						//			email
+						//		},
+						//		{
+						//			"OwnerID",
+						//			"50036"
+						//		},								
+						//		{
+						//			"_CSBPassword",
+						//			plainpassword
+						//		},
+						//		{
+						//			"_YourOrganisation",
+						//			Profile.GetOrganisation(agencyId)
+						//		},
+						//		{
+						//			"_Role",
+						//			Profile.GetJobRole(jobId)
+						//		},
+						//		{
+						//			"_RoleLevel",
+						//			Profile.GetJobLevel(jobLevel)
+						//		},
+						//		{
+						//			"_CSBUsername",
+						//			email
+						//		},
+						//		{
+						//			"ContactType",
+						//			"Customer"
+						//		}
+						//	});
+						//	if (userId > 0)
+						//	{
+						//		bool isAdded = isdnAPI.addToGroup(userId, 400);
+						//		isdnAPI.optIn(email, "Sending emails is allowed");
+						//	}
+						//}
 						result2 = "s";
 					}
 				}

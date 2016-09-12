@@ -82,7 +82,7 @@ namespace SGA.tna
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
-            SGACommon.AddPageTitle(this.Page, "Procurement Assessment  ", "");
+            SGACommon.AddPageTitle(this.Page, "Procurement Skills Self Assessment ", "");
             MasterPage mp = this.Page.Master;
             if (mp != null)
             {
@@ -374,19 +374,19 @@ namespace SGA.tna
 			{
 				"Id"
 			};
-            XmlRpcStruct[] resultFound = isdnAPI.findByEmail(SGACommon.LoginUserInfo.name, strField);
-            if (resultFound.Length > 0)
-            {
-                int Id = System.Convert.ToInt32(resultFound[0]["Id"]);
-                bool isAdded = isdnAPI.addToGroup(Id, 402);
-                isdnAPI.dsUpdate("Contact", Id, new XmlRpcStruct
-				{
-					{
-						"_ProcurementTNALink",
-						"http://" + base.Request.UrlReferrer.Host + "/ProcurementReport.aspx?Id=" + strLink
-					}
-				});
-            }
+    //        XmlRpcStruct[] resultFound = isdnAPI.findByEmail(SGACommon.LoginUserInfo.name, strField);
+    //        if (resultFound.Length > 0)
+    //        {
+    //            int Id = System.Convert.ToInt32(resultFound[0]["Id"]);
+    //            bool isAdded = isdnAPI.addToGroup(Id, 402);
+    //            isdnAPI.dsUpdate("Contact", Id, new XmlRpcStruct
+				//{
+				//	{
+				//		"_ProcurementTNALink",
+				//		"http://" + base.Request.UrlReferrer.Host + "/ProcurementReport.aspx?Id=" + strLink
+				//	}
+				//});
+    //        }
             this.testId = 0;
             SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spRestrictTest", new SqlParameter[]
 			{

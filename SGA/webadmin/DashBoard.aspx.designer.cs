@@ -67,6 +67,15 @@ namespace SGA.webadmin {
         protected global::System.Web.UI.WebControls.Label lblSSA;
         
         /// <summary>
+        /// lblSga control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSga;
+        
+        /// <summary>
         /// lblCMA control.
         /// </summary>
         /// <remarks>
@@ -76,13 +85,13 @@ namespace SGA.webadmin {
         protected global::System.Web.UI.WebControls.Label lblCMA;
         
         /// <summary>
-        /// lblBA control.
+        /// lblCmk control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBA;
+        protected global::System.Web.UI.WebControls.Label lblCmk;
         
         /// <summary>
         /// lblContact control.

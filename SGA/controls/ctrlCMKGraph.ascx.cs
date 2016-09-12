@@ -62,7 +62,7 @@ namespace SGA.controls
         {
             if (!base.IsPostBack)
             {
-                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCMAGraph", new SqlParameter[]
+                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCMKGraph", new SqlParameter[]
 				{
 					new SqlParameter("@testId", this.testId)
 				});

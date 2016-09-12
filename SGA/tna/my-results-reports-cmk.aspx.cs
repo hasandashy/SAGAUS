@@ -194,7 +194,7 @@ namespace SGA.tna
         {
             if (e.CommandName == "bar")
             {
-                this.Session["cmaTestId"] = e.CommandArgument;
+                this.Session["cmkTestId"] = e.CommandArgument;
                 base.Response.Redirect("my-results-bar-graph-cmk.aspx", false);
             }
         }

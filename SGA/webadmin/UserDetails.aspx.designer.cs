@@ -85,33 +85,6 @@ namespace SGA.webadmin {
         protected global::System.Web.UI.WebControls.DropDownList ddlEditJobLevel;
         
         /// <summary>
-        /// MEditfirstName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox MEditfirstName;
-        
-        /// <summary>
-        /// MEditlastName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox MEditlastName;
-        
-        /// <summary>
-        /// MEditemail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox MEditemail;
-        
-        /// <summary>
         /// txtDivision control.
         /// </summary>
         /// <remarks>

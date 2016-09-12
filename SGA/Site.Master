@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head id="Head1" runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Critical Skills Boost Program</title>
+    <title>SA Gov - Skills for Procurement</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
     <!-- Favicons -->
@@ -147,36 +147,7 @@
         
 					<!-- Logo end // -->
 					<!-- Top Navigation start -->
-					<%--<a id="top-nav-mob" href="#nogo"><span>Menu</span></a>
-					<nav id="top-nav">
-						<ul>
-                            <li><a href="Default.aspx">Home</a>
-                            <ul class="sub">
-									<li><a href="/role_guidelines" title="Role Guidelines">Role Guidelines</a></li>
-                                    <li><a href="/standing-offer-arrangement" title="Standing offer arrangement">Standing Offer</a></li>
-                                    <li><a href="/help.aspx" title="help">Help</a></li>
-								</ul>
-                            </li>
-							<li><a href="#">Assessments</a>
-								<ul class="sub">
-									<li><a href="/Procurement_TNA" title="Procurement TNA">Procurement TNA</a></li>
-                                    <li><a href="/Contract_Management_TNA" title="Contract Management TNA">Contract Management TNA</a></li>
-									<li><a href="/Leadership" title="Leadership TNA">Leadership TNA</a></li>
-								</ul>
-							</li>
-                            <li><a href="http://events.criticalskillsboost.com/" title="Workshops">Workshops</a>
-								<ul class="sub">
-									<li><a href="http://events.criticalskillsboost.com/booking/" title="Workshops">Workshops</a></li>
-                                    <li><a href="http://events.criticalskillsboost.com/workshops/contract-management/contract-management-essentials/" title="Contract Management">Contract Management</a></li>
-                                    <li><a href="http://events.criticalskillsboost.com/workshops/sourcing/procurement-essentials/" title="Sourcing">Sourcing</a></li>
-									<li><a href="http://events.criticalskillsboost.com/workshops/category-management/category-management-essentials/" title="Category Management">Category Management</a></li>
-								    <li><a target="_blank" title="Procurement Leadership Program" href="http://events.criticalskillsboost.com/wp-content/uploads/2015/09/QLD_LeadershipCourseR03LR.pdf">Procurement Leadership Program</a></li>
-                                </ul>
-							</li>
-							<li><a href="http://sipm.upsidelms.com/sipmlive/login/ad_MC_CS63_LRN.jsp" target="_blank" title="e-Learning">e-Learning</a></li>
-                            <li><a href="http://sipm.upsidelms.com/sipmlive/login/ad_MC_CS63_LRN.jsp" target="_blank" title="e-Learning">Access your e-Learning here!</a></li>
-						</ul>
-					</nav>--%>
+					
                      <div class="menu-bg"><a style="display:none;" href="javascript:void(0)" class="menuImage"><img src="images/top-nav-mob-bg.gif" alt=""> Menu</a></div>
         
   <div class="menu iphonNav">
@@ -185,8 +156,11 @@
    <li><a href="/role_guidelines">Role Guidelines</a></li>
    <li><a href="javascript:void(0)">Assessments </a>
    <ul>
-   <li><a href="/Procurement_TNA" title="Procurement TNA">> Procurement TNA</a></li>
-   <li><a href="/Contract_Management_TNA" title="Contract Management TNA">> Contract Management TNA</a></li>  
+   <li><a href="/Procurement_knowledge_evaluation.aspx" title="Procurement – Knowledge Evaluation">> Procurement – Knowledge Evaluation</a></li>
+            <li><a href="/Procurement_TNA" title="Procurement – Self Assessment">> Procurement – Self Assessment</a></li>
+            <li><a href="/Contract_Management_TNA" title="Contract Management – Knowledge Evaluation">> Contract Management – Knowledge Evaluation</a></li>
+            <li><a href="/Contract_Management_TNA" title="Contract Management – Self Assessment">> Contract Management – Self Assessment</a></li>
+            <li><a href="/Contract_Management_TNA" title="Commercial Awareness – Knowledge Evaluation">> Commercial Awareness – Knowledge Evaluation</a></li>
   </ul>  
    
    </li> 
@@ -199,7 +173,6 @@
 					<!-- Logoin start -->
 					<a id="login-mob" href="#nogo"><span>Login</span></a>
 					<div id="login">
-					 <%--<p><strong>Existing learners login here!</strong></p>--%>
                      <p><strong>Existing participants login here!</strong></p>
 						<p>
                         <asp:TextBox ID="txtUserName" runat="server"  MaxLength="100" CssClass="txt-field" onfocus="if(this.value==&#39;Username&#39;)this.value=&#39;&#39;" onblur="if(this.value==&#39;&#39;) {this.value = &#39;Username&#39;}" Text="Username" ></asp:TextBox>
@@ -244,11 +217,11 @@
         <div class="col-3">
           <ul class="footer-link">
             <li class="title">Assessments</li>
-            <li><a href="/Procurement_TNA" title="">Procurement – Knowledge Evaluation</a></li>
+            <li><a href="/Procurement_knowledge_evaluation.aspx" title="">Procurement – Knowledge Evaluation</a></li>
             <li><a href="/Procurement_TNA" title="">Procurement – Self Assessment</a></li>
             <li><a href="/Contract_Management_TNA" title="">Contract Management – Knowledge Evaluation</a></li>
             <li><a href="/Contract_Management_TNA" title="">Contract Management – Self Assessment</a></li>
-            <li><a href="#" title="">Commercial Awareness – Knowledge Evaluation</a></li>
+            <li><a href="/Contract_Management_TNA" title="">Commercial Awareness – Knowledge Evaluation</a></li>
           </ul>
         </div>
         

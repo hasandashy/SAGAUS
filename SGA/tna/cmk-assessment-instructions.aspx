@@ -51,7 +51,7 @@
             } else {
                 // show confirmation
                 lastpage = 'y';
-                alertHtml = 'You are about to begin the Contract Management Assessment. This assessment must be taken in a single sitting. Are you ready to begin?';
+                alertHtml = 'You are about to begin the Contract Management Knowledge Evaluation. This is a timed event and must be taken in a single sitting. Are you ready to begin?';
             }
         });
     });*/
@@ -60,7 +60,7 @@
 				<article id="container">
 					<section class="welcome">
 						<p class="title40-orange"><asp:Label ID="lblName" runat="server"></asp:Label></p>
-						<p class="title40">Welcome to the Commercial Contract Management Assessment</p>
+						<p class="title40">Welcome to the Contract Management Knowledge Evaluation</p>
 					</section>
 					<div class="dot-line">&nbsp;</div>
 					<section class="color-box">

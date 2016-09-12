@@ -80,18 +80,18 @@ namespace SGA.tna
 			{
 				"Id"
 			};
-            XmlRpcStruct[] resultFound = isdnAPI.findByEmail(SGACommon.LoginUserInfo.name, strField);
-            if (resultFound.Length > 0)
-            {
-                int Id = System.Convert.ToInt32(resultFound[0]["Id"]);
-                isdnAPI.dsUpdate("Contact", Id, new XmlRpcStruct
-				{
-					{
-						"_CSBPassword",
-						password
-					}
-				});
-            }
+    //        XmlRpcStruct[] resultFound = isdnAPI.findByEmail(SGACommon.LoginUserInfo.name, strField);
+    //        if (resultFound.Length > 0)
+    //        {
+    //            int Id = System.Convert.ToInt32(resultFound[0]["Id"]);
+    //            isdnAPI.dsUpdate("Contact", Id, new XmlRpcStruct
+				//{
+				//	{
+				//		"_CSBPassword",
+				//		password
+				//	}
+				//});
+    //        }
             int result = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spUpdatePassword", param));
             return "s";
         }

@@ -11,16 +11,16 @@ namespace SGA.tna
 {
     public partial class cma_relationsip_context : Page
     {
-        protected int directSend = 0;
+        protected int directSend = 1;
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
-            SGACommon.AddPageTitle(this.Page, "Commercial Contract Management Assessment Instructions Page", "");
-            SGACommon.IsTakeTest("takeCMATest");
+            SGACommon.AddPageTitle(this.Page, "Contract Management Self Assessment Instructions Page", "");
+            SGACommon.IsTakeTest("takeCmaTest");
             if (!base.IsPostBack)
             {
                 this.lblName.Text = "Hi " + SGACommon.GetName() + "!";
-                this.PassProfile();
+                //this.PassProfile();
             }
         }
 

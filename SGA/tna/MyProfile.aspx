@@ -66,7 +66,7 @@
             onComplete: function () {
                 if (lastpage == 'y') {
 
-                    if (($("#<%= txtPhoneNo.ClientID%>").val() == 'Phone') && ($("#<%= txtDivision.ClientID%>").val() == 'Division') && ($("#<%=ddlLocation.ClientID %>").val() == 0) && ($("#<%= txtPosition.ClientID%>").val() == 'Position') && ($("#<%=ddlGoods.ClientID %>").val() == 0)) {
+                   if (($("#<%= txtPhoneNo.ClientID%>").val() == 'Phone') && ($("#<%= txtBranch.ClientID%>").val() == 'branch') && ($("#<%=txtJobTitle.ClientID %>").val() == 'jobTitle') && ($("#<%=ddlAgency.ClientID %>").val() == 0) && ($("#<%=ddlCentral.ClientID %>").val() == 0) && ($("#<%=ddlContract.ClientID %>").val() == 0) && ($("#<%=ddlCurrentJobClassification.ClientID %>").val() == 0) && ($("#<%=ddlExperience.ClientID %>").val() == 0) && ($("#<%=ddlInfluence.ClientID %>").val() == 0) && ($("#<%=ddlNature.ClientID %>").val() == 0) && ($("#<%=ddlQualification.ClientID %>").val() == 0) && ($("#<%=ddlRange.ClientID %>").val() == 0) && ($("#<%=ddlTimeAlloc.ClientID %>").val() == 0)) {
                         redirect = "y";
                         $('#title').text("Confirmation");
                         $('#colorbox').css({ "display": "block" });
@@ -109,11 +109,11 @@
                 emptyFields.push('Last name');
             }
 
-            var agency = $("#<%=ddlAgency.ClientID %>").val();
+         <%--   var agency = $("#<%=ddlAgency.ClientID %>").val();
             if (agency == 0) {
                 error = 1;
                 emptyFields.push('Your Organisation');
-            }
+            }--%>
 
             if (password == '') {
                 error = 1;
@@ -123,11 +123,7 @@
 
 
 
-            var location = $("#<%=ddlLocation.ClientID %>").val();
-            if (location == 0) {
-                error = 1;
-                emptyFields.push('Your Location');
-            }
+          
             if (error) {
                 $('#colorbox').css({ "display": "block" });
                 alertHtml = 'Please select/enter ' + emptyFields.join(', ');
@@ -144,7 +140,7 @@
                         type: "POST",
                         async: false,
                         url: "MyProfile.aspx/UpdateProfile",
-                        data: JSON.stringify({ 'fname': name, 'lname': surname, 'agencyId': agency, 'phone': $("#<%= txtPhoneNo.ClientID%>").val(), 'division': $("#<%= txtDivision.ClientID%>").val(), 'locationId': $("#<%=ddlLocation.ClientID %>").val(), 'position': $("#<%= txtPosition.ClientID%>").val(), 'goodsId': $("#<%=ddlGoods.ClientID %>").val(), 'password': password }),
+                        data: JSON.stringify({ 'fname': name, 'lname': surname, 'phone': $("#<%= txtPhoneNo.ClientID%>").val(), 'password': password,'department': $("#<%= ddlAgency.ClientID%>").val(),'central': $("#<%= ddlCentral.ClientID%>").val(),'classification': $("#<%= ddlCurrentJobClassification.ClientID%>").val(),'experience': $("#<%= ddlExperience.ClientID%>").val(),'qualification': $("#<%= ddlQualification.ClientID%>").val(),'time': $("#<%= ddlTimeAlloc.ClientID%>").val(),'nature': $("#<%= ddlNature.ClientID%>").val(),'size': $("#<%= ddlInfluence.ClientID%>").val(),'noOfContracts': $("#<%= ddlContract.ClientID%>").val(),'activities': $("#<%= ddlRange.ClientID%>").val(),'branch': $("#<%= txtBranch.ClientID%>").val(),'jobTitle': $("#<%= txtJobTitle.ClientID%>").val() }),
                         dataType: "json",
                         contentType: "application/json; charset=utf-8",
                         success: function (data) {
@@ -194,22 +190,7 @@
                             <asp:ListItem Value="8">Procurement Manager/ Director</asp:ListItem>
                         </asp:DropDownList>
 
-                    </div>
-                    <span class="error"></span>&nbsp;&nbsp;<b>Level of role best described as</b><asp:HyperLink ID="hylJobLevel" CssClass="infolock" runat="server"><span>If you require your Role or your Level to be changed please contact support@comprara.com.au before continuing. In your email, please let us know the reason why you require the change.</span></asp:HyperLink><br />
-                    <div class="form-box1">
-                        <span class="error"></span>&nbsp;&nbsp;<asp:DropDownList ID="ddlJobLevel" class="styled" runat="server">
-                            <asp:ListItem Value="0">Please select</asp:ListItem>
-                            <asp:ListItem Value="1">Graduate</asp:ListItem>
-                            <asp:ListItem Value="2">Officer</asp:ListItem>
-                            <asp:ListItem Value="3">Advisor</asp:ListItem>
-                            <asp:ListItem Value="4">Senior advisor</asp:ListItem>
-                            <asp:ListItem Value="5">Operational Leader</asp:ListItem>
-                            <asp:ListItem Value="6">Director</asp:ListItem>
-                            <asp:ListItem Value="7">Executive Level</asp:ListItem>
-                        </asp:DropDownList>
-
-                    </div>
-
+                    </div>                  
 
                     <p>&nbsp;</p>
                     <p class="txt18-bold">LOGIN DETAILS</p>
@@ -220,96 +201,178 @@
                     <span class="error"></span>&nbsp;&nbsp;<a href="javascript:void('0')" id="edit">Edit Password</a>
                     <br />
                     <span class="error">*</span>&nbsp;<input type="text" id="passwordplain" name="passwordplain" maxlength="20" runat="server" style="display: none" class="text-box-2" /><input type="password" id="password" name="password" disabled="disabled" maxlength="20" runat="server" class="text-box-2" />
-
+                    <p>&nbsp;</p>
+                    <span class="error"></span>&nbsp;&nbsp;<b>Phone</b><br />
+                    <span class="error">*</span>&nbsp;<input type="text" id="txtPhoneNo" name="txtPhoneNo" maxlength="20" runat="server" class="text-box-2" />
+                   
 
                     <p>&nbsp;</p>
                     <p class="txt18-bold">MY DETAILS</p>
-                    <span class="error"></span>&nbsp;&nbsp;<b>Your Organisation</b><br />
+                    <span class="error"></span>&nbsp;&nbsp;<b>Your Department</b><br />
                     <div class="form-box1">
-                        <span class="error">*</span>&nbsp;<asp:DropDownList ID="ddlAgency" class="styled" runat="server">
-                            <asp:ListItem Value="0">Your Organisation</asp:ListItem>
-                            <asp:ListItem Value="1">Premier and Cabinet</asp:ListItem>
-                            <asp:ListItem Value="2">Aboriginal and Torres Strait Islander Partnerships</asp:ListItem>
-                            <asp:ListItem Value="3">Agriculture and Fisheries</asp:ListItem>
-                            <asp:ListItem Value="4">Communities, Child Safety and Disability Services</asp:ListItem>
-                            <asp:ListItem Value="5">Education and Training</asp:ListItem>
-                            <asp:ListItem Value="6">Energy and Water Supply</asp:ListItem>
-                            <asp:ListItem Value="7">Environment and Heritage Protection</asp:ListItem>
-                            <asp:ListItem Value="8">Health</asp:ListItem>
-                            <asp:ListItem Value="9">Housing and Public Works</asp:ListItem>
-                            <asp:ListItem Value="10">Infrastructure, Local Government and Planning</asp:ListItem>
-                            <asp:ListItem Value="11">Justice and Attorney-General</asp:ListItem>
-                            <asp:ListItem Value="12">National Parks, Sport and Racing</asp:ListItem>
-                            <asp:ListItem Value="13">Natural Resources and Mines</asp:ListItem>
-                            <asp:ListItem Value="14">Police, Fire and Emergency Services</asp:ListItem>
-                            <asp:ListItem Value="15">Science, Information Technology and Innovation</asp:ListItem>
-                            <asp:ListItem Value="16">State Development</asp:ListItem>
-                            <asp:ListItem Value="17">Transport and Main Roads</asp:ListItem>
-                            <asp:ListItem Value="18">Treasury</asp:ListItem>
-                            <asp:ListItem Value="19">Tourism, Major Events, Small Business and the Commonwealth Gamesv</asp:ListItem>
-                            <asp:ListItem Value="20">Other</asp:ListItem>
+                        <span class="error"></span>&nbsp;<asp:DropDownList ID="ddlAgency" class="styled" runat="server">
+                            <asp:ListItem Value="0">Please Select--</asp:ListItem>
+                            <asp:ListItem Value="1">Attorney-Generals Department</asp:ListItem>
+                            <asp:ListItem Value="2">Courts Administration Authority</asp:ListItem>
+                            <asp:ListItem Value="3">Department for Communities and Social Inclusion</asp:ListItem>
+                            <asp:ListItem Value="4">Department for Correctional Services</asp:ListItem>
+                            <asp:ListItem Value="5">Department for Education and Child Development</asp:ListItem>
+                            <asp:ListItem Value="6">Department of Environment Water and Natural Resources</asp:ListItem>
+                            <asp:ListItem Value="7">Department of Planning Transport and Infrastructure</asp:ListItem>
+                            <asp:ListItem Value="8">Department of State Development</asp:ListItem>
+                            <asp:ListItem Value="9">Department of the Premier and Cabinet </asp:ListItem>
+                            <asp:ListItem Value="10">Department of Treasury and Finance</asp:ListItem>
+                            <asp:ListItem Value="11">Primary Industries and Regions SA</asp:ListItem>
+                            <asp:ListItem Value="12">SA Fire and Emergency Services Commission</asp:ListItem>
+                            <asp:ListItem Value="13">SA Health</asp:ListItem>
+                            <asp:ListItem Value="14">South Australia Police</asp:ListItem>
+                            <asp:ListItem Value="15">South Australian Tourism Commission</asp:ListItem>
+                            <asp:ListItem Value="16">TAFE SA</asp:ListItem>                            
                         </asp:DropDownList>
 
                     </div>
-                    <span class="error"></span>&nbsp;&nbsp;<b>Your Division</b><br />
-                    <span class="error">&nbsp;</span>&nbsp;<input type="text" id="txtDivision" name="txtDivision" title="Division" maxlength="250" runat="server" class="text-box-2" />
+                    <span class="error"></span>&nbsp;&nbsp;<b>Your Branch</b><br />
+                    <span class="error">&nbsp;</span>&nbsp;<input type="text" id="txtBranch" name="txtBranch" title="Division" maxlength="250" runat="server" class="text-box-2" />
                     <p>&nbsp;</p>
-                    <span class="error"></span>&nbsp;&nbsp;<b>Your Location</b><br />
+                    <span class="error"></span>&nbsp;&nbsp;<b>Youe actual job title(position)</b><br />
+                    <span class="error">&nbsp;</span>&nbsp;<input type="text" id="txtJobTitle" name="txtJobTitle" title="Phone" maxlength="250" runat="server" class="text-box-2" />
+                     <p>&nbsp;</p>
+                     <span class="error"></span>&nbsp;&nbsp;<b>Are you part of the Central Procurement function? </b><br />
                     <div class="form-box1">
-                        <span class="error">*</span>&nbsp;<asp:DropDownList ID="ddlLocation" class="styled" runat="server">
-                            <asp:ListItem Value="0">Location</asp:ListItem>
-                            <%--<asp:ListItem Value="1">Brisbane </asp:ListItem>
-<asp:ListItem Value="2">Central West</asp:ListItem>
-<asp:ListItem Value="3">Darling Downs</asp:ListItem>
-<asp:ListItem Value="4">Far North</asp:ListItem>
-<asp:ListItem Value="5">Fitzroy</asp:ListItem>
-<asp:ListItem Value="6">Gold Coast</asp:ListItem>
-<asp:ListItem Value="7">Mackay</asp:ListItem>
-<asp:ListItem Value="8">North West</asp:ListItem>
-<asp:ListItem Value="9">Northern</asp:ListItem>
-<asp:ListItem Value="10">South West</asp:ListItem>
-<asp:ListItem Value="11">Sunshine Coast</asp:ListItem>
-<asp:ListItem Value="12">West Moreton</asp:ListItem>
-<asp:ListItem Value="13">Wide Bay-Burnett</asp:ListItem>--%>
-                            <asp:ListItem Value="1">Brisbane </asp:ListItem>
-                            <asp:ListItem Value="2">South West</asp:ListItem>
-                            <asp:ListItem Value="3">Sunshine Coast</asp:ListItem>
-                            <asp:ListItem Value="4">Gold Coast</asp:ListItem>
-                            <asp:ListItem Value="5">Fitzroy</asp:ListItem>
-                            <asp:ListItem Value="6">Mackay</asp:ListItem>
-                            <asp:ListItem Value="7">Northern</asp:ListItem>
-                            <asp:ListItem Value="8">North West</asp:ListItem>
-                            <asp:ListItem Value="9">Wide Bay-Burnett</asp:ListItem>
-                            <asp:ListItem Value="10">Far North Queensland</asp:ListItem>
-                            <asp:ListItem Value="11">Darling Downs</asp:ListItem>
-                            <asp:ListItem Value="12">Far North</asp:ListItem>
-                            <asp:ListItem Value="13">South West Queensland</asp:ListItem>
-                            <asp:ListItem Value="14">Northern Queensland</asp:ListItem>
+                        <span class="error"></span>&nbsp;<asp:DropDownList ID="ddlCentral" class="styled" runat="server">
+                            <asp:ListItem Value="0">Please select ---</asp:ListItem>
+                            <asp:ListItem Value="1">Yes</asp:ListItem>
+                            <asp:ListItem Value="2">No- Operational</asp:ListItem>
+                            <asp:ListItem Value="3">No- Regional</asp:ListItem>    
+                            <asp:ListItem Value="4">No- Other</asp:ListItem>                           
                         </asp:DropDownList>
 
                     </div>
-                    <span class="error"></span>&nbsp;&nbsp;<b>Your Position</b><br />
-                    <span class="error">&nbsp;</span>&nbsp;<input type="text" id="txtPosition" name="txtPosition" title="Position" maxlength="250" runat="server" class="text-box-2" />
+                     <p>&nbsp;</p>
+                     <span class="error"></span>&nbsp;&nbsp;<b>Your current job classification </b><br />
+                    <div class="form-box1">
+                        <span class="error"></span>&nbsp;<asp:DropDownList ID="ddlCurrentJobClassification" class="styled" runat="server">
+                            <asp:ListItem Value="0">Please select ---</asp:ListItem>
+                            <asp:ListItem Value="1">ASO2</asp:ListItem>
+                            <asp:ListItem Value="2">ASO3</asp:ListItem>
+                            <asp:ListItem Value="3">ASO4</asp:ListItem>
+                            <asp:ListItem Value="4">ASO5</asp:ListItem>
+                            <asp:ListItem Value="5">ASO6/ MAS1</asp:ListItem>
+                            <asp:ListItem Value="6">ASO7/ MAS2</asp:ListItem>
+                            <asp:ListItem Value="7">ASO8/ MAS3</asp:ListItem>
+                            <asp:ListItem Value="8">EX</asp:ListItem>
+                        </asp:DropDownList>
+
+                    </div>
+                     <p>&nbsp;</p>
+                     <span class="error"></span>&nbsp;&nbsp;<b>Years of procurement/ contract management experience </b><br />
+                    <div class="form-box1">
+                        <span class="error"></span>&nbsp;<asp:DropDownList ID="ddlExperience" class="styled" runat="server">
+                            <asp:ListItem Value="0">Please select ---</asp:ListItem>
+                            <asp:ListItem Value="1">Less than 1 year</asp:ListItem>
+                            <asp:ListItem Value="2">1 to 3 years</asp:ListItem>
+                            <asp:ListItem Value="3">3 to 5 years</asp:ListItem>
+                            <asp:ListItem Value="4">5 to 10 years</asp:ListItem>
+                            <asp:ListItem Value="5">10 to 15 years</asp:ListItem>
+                            <asp:ListItem Value="6">15 to 20 years</asp:ListItem>
+                            <asp:ListItem Value="7">More than 20 years</asp:ListItem>
+                        </asp:DropDownList>
+
+                    </div>
+                       <p>&nbsp;</p>
+                     <span class="error"></span>&nbsp;&nbsp;<b>Your procurement / contract management qualifications </b><br />
+                    <div class="form-box1">
+                        <span class="error"></span>&nbsp;<asp:DropDownList ID="ddlQualification" class="styled" runat="server">
+                            <asp:ListItem Value="0">Please select ---</asp:ListItem>
+                            <asp:ListItem Value="1">Not applicable</asp:ListItem>
+                            <asp:ListItem Value="2">Certificate in Procurement / Contract Management</asp:ListItem>
+                            <asp:ListItem Value="3">Diploma in Procurement / Contract Management</asp:ListItem>
+                            <asp:ListItem Value="4">Undergraduate degree in Procurement / Contract Management</asp:ListItem>
+                            <asp:ListItem Value="5">Postgraduate diploma in Procurement / Contract Management</asp:ListItem>
+                            <asp:ListItem Value="6">Postgraduate degree in Procurement / Contract Management</asp:ListItem>
+                            <asp:ListItem Value="7">CIPS: Member (MCIPS)</asp:ListItem>
+                            <asp:ListItem Value="8">CIPS: Fellow (FCIPS)</asp:ListItem>
+                            <asp:ListItem Value="9">AAPCM: Member</asp:ListItem>
+                            <asp:ListItem Value="10">AAPCM: Fellow</asp:ListItem>
+                            <asp:ListItem Value="11">IFPSM: Certified International Procurement Professional</asp:ListItem>
+                            <asp:ListItem Value="12">IFPSM: Certified International Advanced Procurement Professional</asp:ListItem>
+                            <asp:ListItem Value="13">Other</asp:ListItem>
+                        </asp:DropDownList>
+
+                    </div>
                     <p>&nbsp;</p>
-                    <span class="error"></span>&nbsp;&nbsp;<b>What is the Nature of the goods/services that you most commonly procure, or manage contracts for?</b><br />
+                     <span class="error"></span>&nbsp;&nbsp;<b>How much of your time is allocated to Procurement and/or Contract Management activities </b><br />
                     <div class="form-box1">
-                        <span class="error">&nbsp;</span>&nbsp;<asp:DropDownList ID="ddlGoods" class="styled" runat="server">
-                            <asp:ListItem Value="0">Please select</asp:ListItem>
-                            <asp:ListItem Value="1">Building Construction and Maintenance</asp:ListItem>
-                            <asp:ListItem Value="2">General Goods and Services</asp:ListItem>
-                            <asp:ListItem Value="3">ICT</asp:ListItem>
-                            <asp:ListItem Value="4">Medical </asp:ListItem>
-                            <asp:ListItem Value="5">Social Services</asp:ListItem>
-                            <asp:ListItem Value="6">Transport Infrastructure & Services</asp:ListItem>
-
-
+                        <span class="error"></span>&nbsp;<asp:DropDownList ID="ddlTimeAlloc" class="styled" runat="server">
+                            <asp:ListItem Value="0">Please select ---</asp:ListItem>
+                            <asp:ListItem Value="1">Full-time</asp:ListItem>
+                            <asp:ListItem Value="2">Part-time less than 50%</asp:ListItem>
+                            <asp:ListItem Value="3">Part-time greater than 50%</asp:ListItem>
                         </asp:DropDownList>
 
                     </div>
-                    <span class="error"></span>&nbsp;&nbsp;<b>Phone No</b><br />
-                    <span class="error">&nbsp;</span>&nbsp;<input type="text" id="txtPhoneNo" name="txtPhoneNo" title="Phone" maxlength="20" runat="server" class="text-box-2" />
+                     <p>&nbsp;</p>
+                        <span class="error"></span>&nbsp;&nbsp;<b>What is the nature of the goods/ services that you most commonly procure, or manage contracts for?  </b><br />
+                    <div class="form-box1">
+                        <span class="error"></span>&nbsp;<asp:DropDownList ID="ddlNature" class="styled" runat="server">
+                            <asp:ListItem Value="0">Please select ---</asp:ListItem>
+                            <asp:ListItem Value="1">General Goods and Services</asp:ListItem>
+                            <asp:ListItem Value="2">ICT</asp:ListItem>
+                            <asp:ListItem Value="3">Medical / Health Services</asp:ListItem>
+                            <asp:ListItem Value="4">Social Services</asp:ListItem>
+                            <asp:ListItem Value="5">Transport Infrastructure & Services</asp:ListItem>
+                            <asp:ListItem Value="6">Building Construction and Maintenance</asp:ListItem>
+                        </asp:DropDownList>
 
+                    </div>
+                     <p>&nbsp;</p>
+                        <span class="error"></span>&nbsp;&nbsp;<b>What is the size of spend under your influence? </b><br />
+                    <div class="form-box1">
+                        <span class="error"></span>&nbsp;<asp:DropDownList ID="ddlInfluence" class="styled" runat="server">
+                            <asp:ListItem Value="0">Please select ---</asp:ListItem>
+                            <asp:ListItem Value="1">$1 billion or more</asp:ListItem>
+                            <asp:ListItem Value="2">$500 million to $999.9 million</asp:ListItem>
+                            <asp:ListItem Value="3">$100 million to $499.9 million</asp:ListItem>
+                            <asp:ListItem Value="4">$50 million to $99.9 million</asp:ListItem>
+                            <asp:ListItem Value="5">$20 million to $49.9 million</asp:ListItem>
+                            <asp:ListItem Value="6">$10 million to $19.9 million</asp:ListItem>
+                            <asp:ListItem Value="7">$5 million to $9.9 million</asp:ListItem>
+                            <asp:ListItem Value="8">$2.5 million to $4.9 million</asp:ListItem>
+                            <asp:ListItem Value="9">$1 million to $2.49 million</asp:ListItem>
+                            <asp:ListItem Value="10">$500,000 to $999.999</asp:ListItem>
+                            <asp:ListItem Value="11">Less than $500,000</asp:ListItem>
+                        </asp:DropDownList>
 
+                    </div>
+                      <p>&nbsp;</p>
+                        <span class="error"></span>&nbsp;&nbsp;<b>How many procurements/ contracts have you managed in the past 12 months? </b><br />
+                    <div class="form-box1">
+                        <span class="error"></span>&nbsp;<asp:DropDownList ID="ddlContract" class="styled" runat="server">
+                            <asp:ListItem Value="0">Please select ---</asp:ListItem>
+                            <asp:ListItem Value="1">1 to 5</asp:ListItem>
+                            <asp:ListItem Value="2">5 to 10 </asp:ListItem>
+                            <asp:ListItem Value="3">10 to 20</asp:ListItem>
+                            <asp:ListItem Value="4">20 plus</asp:ListItem>
+                            <asp:ListItem Value="5">Not relevant</asp:ListItem>
+                        </asp:DropDownList>
+
+                    </div>
+                      <p>&nbsp;</p>
+                        <span class="error"></span>&nbsp;&nbsp;<b>Select one of the range of activities listed which most closely reflects the nature of your role </b><br />
+                    <div class="form-box1">
+                        <span class="error"></span>&nbsp;<asp:DropDownList ID="ddlRange" class="styled" runat="server">
+                            <asp:ListItem Value="0">Please select ---</asp:ListItem>
+                            <asp:ListItem Value="1">Operational tasks like routing non-matched invoices or other administrative tasks</asp:ListItem>
+                            <asp:ListItem Value="2">Managing contracts and dealing with operational problems that arise </asp:ListItem>
+                            <asp:ListItem Value="3">Operational procurement tasks like raising purchase orders for end users</asp:ListItem>
+                            <asp:ListItem Value="4">Tactical procurement activities, like issuing and evaluating quotes for simple acquisitions</asp:ListItem>
+                            <asp:ListItem Value="5">Strategic procurement activities, like managing procurement projects for complex and/or high value acquisitions</asp:ListItem>
+                            <asp:ListItem Value="6">Managing significant contracts and ensuring that outcomes are realised</asp:ListItem>
+                            <asp:ListItem Value="7">Policy, governance or other managerial tasks, such as supporting governance bodies and/or reporting </asp:ListItem>
+                            <asp:ListItem Value="8">Procurement leadership, setting goals and direction and leading a team of procurement practitioners</asp:ListItem>                           
+                        </asp:DropDownList>
+
+                    </div>
                     <div class="clear"></div>
                     <p>&nbsp;</p>
                     <p class="txtRgt">
