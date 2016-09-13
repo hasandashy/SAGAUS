@@ -597,13 +597,36 @@ a#more-info-mob {
 	margin: 16px 0;
 	padding: 8px 0
 }
-.banner-inner-pke {background:url(../images/Businessmen.jpg) top no-repeat; background-size:cover}
-.banner-inner-pke .banner-cnt {min-height:508px;}
-.banner-inner-pke .banner-cnt .banner-heading {font-family:'cleargothic-mediumregular', Arial, Helvetica, sans-serif; font-size:50px; line-height:70px; color:#231f20; margin:0 0 10px 30px; padding-top:10px}
-.banner-inner-pke .banner-cnt .banner-heading span {color:#ea4320}
-.banner-inner-pke .banner-cnt .banner-icn {float:left; width:156px}
-.banner-inner-pke .banner-cnt .banner-txt {float:left; width:844px; font-family:'cleargothic-lightregular', Arial, Helvetica, sans-serif; font-size:20px; line-height:23px; color:#231f20}
-
+.banner-inner-pke {
+	background: url(../images/img-banner-dm-profile-new.jpg) top right no-repeat;
+	background-size: auto 100%
+}
+.banner-inner-pke .banner-cnt {
+	min-height: 322px
+}
+.banner-inner-pke .banner-cnt .banner-heading {
+	font-family: 'cleargothic-mediumregular', Arial, Helvetica, sans-serif;
+	font-size: 38px;
+	line-height: 50px;
+	color: #231f20;
+	margin: 0 0 10px 30px;
+	padding-top: 10px
+}
+.banner-inner-pke .banner-cnt .banner-heading span {
+	color: #ea4320
+}
+.banner-inner-pke .banner-cnt .banner-icn {
+	float: left;
+	width: 156px
+}
+.banner-inner-pke .banner-cnt .banner-txt {
+	float: left;
+	width: 844px;
+	font-family: 'cleargothic-lightregular', Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	line-height: 23px;
+	color: #231f20
+}
 /* About Us */
 .banner-inner {
 }
@@ -754,8 +777,8 @@ ol.list1 > li:before {
 }
 .banner-inner-ssa .banner-cnt .banner-heading {
 	font-family: 'cleargothic-mediumregular', Arial, Helvetica, sans-serif;
-	font-size: 50px;
-	line-height: 70px;
+	font-size: 38px;
+	line-height: 50px;
 	color: #231f20;
 	margin: 0 0 10px 30px;
 	padding-top: 10px
@@ -768,6 +791,39 @@ ol.list1 > li:before {
 	width: 156px
 }
 .banner-inner-ssa .banner-cnt .banner-txt {
+	float: left;
+	width: 844px;
+	font-family: 'cleargothic-lightregular', Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	line-height: 23px;
+	color: #231f20
+}
+
+
+/* Skills Self Assessment */
+.banner-inner-caa {
+	background: url(../images/img-banner-ss-assessment-new.jpg) top right no-repeat;
+	background-size: auto 100%
+}
+.banner-inner-caa .banner-cnt {
+	min-height: 322px
+}
+.banner-inner-caa .banner-cnt .banner-heading {
+	font-family: 'cleargothic-mediumregular', Arial, Helvetica, sans-serif;
+	font-size: 38px;
+	line-height: 50px;
+	color: #231f20;
+	margin: 0 0 10px 30px;
+	padding-top: 10px
+}
+.banner-inner-caa .banner-cnt .banner-heading span {
+	color: #ea4320
+}
+.banner-inner-caa .banner-cnt .banner-icn {
+	float: left;
+	width: 156px
+}
+.banner-inner-caa .banner-cnt .banner-txt {
 	float: left;
 	width: 844px;
 	font-family: 'cleargothic-lightregular', Arial, Helvetica, sans-serif;

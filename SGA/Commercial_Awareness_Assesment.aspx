@@ -1,50 +1,41 @@
-﻿<%@ Page  Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Procurement_knowledge_evaluation.aspx.cs" Inherits="SGA.Procurement_knowledge_evaluation" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Commercial_Awareness_Assesment.aspx.cs" Inherits="SGA.Commercial_Awareness_Assesment" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-   <%-- <div class="banner-inner-pke">
+     <!-- Banner start -->
+				<div class="banner-inner-caa">
 					<div class="banner-cnt">
-						<p class="banner-heading">Procurement<br />Knowledge<br />Evaluation</p>
-						
-						<div class="clear"></div>
-					</div>
-				</div>--%>
-    <div class="banner-inner-pke">
-					<div class="banner-cnt">
-						<p class="banner-heading"><span>Procurement Knowledge Evaluation</span></p>
+						<p class="banner-heading"><span>Commercial Awareness Assessment</span></p>
 						<div class="banner-txt">
                             <p class="banner-heading" style="font-size:25px">Note: This is a timed assessment!<br />At 60 minutes the assessment will close</p>
 						</div>
 						<div class="clear"></div>
 					</div>
 				</div>
-                
+				<!--div class="banner-inner">
+					<img src="images/img-banner-ss-assessment.jpg" alt="" />
+				</div-->
 				<!-- Banner end // -->
-				<div class="dot-line1">&nbsp;</div>
+				<div class="dot-line1 no-mrg">&nbsp;</div>
 				<!-- Content Area start -->
 				<article id="container">
 					<div class="col-660">
 						<section class="cnt-lt-2 equal_height">
-							<p class="title28">What is the evaluation about?</p>
-							<p>This is an evaluation of your Procurement knowledge. You will be guided through eight dimensions of Procurement and you will be asked nine multiple choice questions for each dimension. This is a timed assessment and at 60 minutes the assessment will close. </p>
-							<p class="mrg-bt-10 dark">The 8 dimensions are:</p>
+							<p class="title28">What is it?</p>
+							<p>The Commercial Awareness Assessment is designed to diagnose commercial awareness across the Government of South Australia to deliver ‘value’ beyond traditional economic measures of value, such as price savings.</p>
+							<p></p>
+							<p class="mrg-bt-10 txt-orange dark">The eight dimensions are:</p>
 							<div class="floatL wide50-1">
 								<ul class="tick-mark2">
-									<li>Opportunity Analysis</li>
-									<li>Market Analysis</li>
-									<li>Strategy Development</li>
-									<li>Market Engagement</li>
+									<li>Stakeholder engagement</li>
+									<li>Outcome focus</li>
+									<li>Market steward</li>
+									<li>Risk management</li>
+                                    <li>Creating public value</li>
 								</ul>
 							</div>
-							<div class="floatL wide50-1">
-								<ul class="tick-mark2">
-									<li>Negotiation</li>
-									<li>Contract Implementation</li>
-									<li>Supplier Relationship Management</li>
-									<li>Strategy Refresh</li>
-								</ul>
-							</div>
+							
 							<div class="clear"></div>
 							<p></p>
-							<p>The question set is based on technical skills standards and there are varying levels of difficulty in the question set however, they are not designed to 'trip up' or trick you but rather to provide an insight into your expertise across procurement.</p>
+							<p>The Assessment is structured around five scenarios. For each scenario you will be asked four multiple-choice question.</p>
 							<p></p>
 							<p class="title28">What is it used for?</p>
 							<p>The South Australian Government is committed to maximising the value derived from the procurement process. The aim of this assessment process is to provide a snapshot of the current level of procurement and contract management capability across the SA Government. </p>
@@ -75,8 +66,16 @@
 						</section>
 					</div>
 					<div class="clear"></div>
-					<div class="dot-line">&nbsp;</div>
+					
+					<p class="hide">&nbsp;</p>
 					<p>&nbsp;</p>
 				</article>
 				<!-- Content Area end // -->
+<script>
+    $(document).ready(function () {
+        $(".iphonNav ul li").removeClass("active");
+        //alert($(".iphonNav ul li").eq(4));
+        $(".iphonNav ul li:eq(2)").addClass("active");
+    });
+</script>
 </asp:Content>

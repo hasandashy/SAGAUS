@@ -1,45 +1,42 @@
-﻿<%@ Page  Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Procurement_knowledge_evaluation.aspx.cs" Inherits="SGA.Procurement_knowledge_evaluation" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contract_Knowledge_Evaluation.aspx.cs" Inherits="SGA.Contract_Knowledge_Evaluation" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-   <%-- <div class="banner-inner-pke">
+    <!-- Banner start -->
+				<div class="banner-inner-ssa">
 					<div class="banner-cnt">
-						<p class="banner-heading">Procurement<br />Knowledge<br />Evaluation</p>
-						
-						<div class="clear"></div>
-					</div>
-				</div>--%>
-    <div class="banner-inner-pke">
-					<div class="banner-cnt">
-						<p class="banner-heading"><span>Procurement Knowledge Evaluation</span></p>
+						<p class="banner-heading"><span>Contract Management Knowledge Evaluation</span></p>
 						<div class="banner-txt">
                             <p class="banner-heading" style="font-size:25px">Note: This is a timed assessment!<br />At 60 minutes the assessment will close</p>
 						</div>
 						<div class="clear"></div>
 					</div>
 				</div>
-                
+				<!--div class="banner-inner">
+					<img src="images/img-banner-ss-assessment.jpg" alt="" />
+				</div-->
 				<!-- Banner end // -->
-				<div class="dot-line1">&nbsp;</div>
+				<div class="dot-line1 no-mrg">&nbsp;</div>
 				<!-- Content Area start -->
 				<article id="container">
 					<div class="col-660">
 						<section class="cnt-lt-2 equal_height">
-							<p class="title28">What is the evaluation about?</p>
-							<p>This is an evaluation of your Procurement knowledge. You will be guided through eight dimensions of Procurement and you will be asked nine multiple choice questions for each dimension. This is a timed assessment and at 60 minutes the assessment will close. </p>
-							<p class="mrg-bt-10 dark">The 8 dimensions are:</p>
+							<p class="title28">What is it?</p>
+							<p>This is an evaluation of your Contract Management knowledge. You will be guided through eight dimensions of Contract Management and you will be asked nine multiple choice questions for each dimension. This is a timed assessment and at 60 minutes the assessment will close.</p>
+							<p></p>
+							<p class="mrg-bt-10 txt-orange dark">The eight dimensions are:</p>
 							<div class="floatL wide50-1">
 								<ul class="tick-mark2">
-									<li>Opportunity Analysis</li>
-									<li>Market Analysis</li>
-									<li>Strategy Development</li>
-									<li>Market Engagement</li>
+									<li>Planning and Governance</li>
+									<li>Measuring Performance</li>
+									<li>Building relationships</li>
+									<li>Reviewing Performance</li>
 								</ul>
 							</div>
 							<div class="floatL wide50-1">
 								<ul class="tick-mark2">
-									<li>Negotiation</li>
-									<li>Contract Implementation</li>
-									<li>Supplier Relationship Management</li>
-									<li>Strategy Refresh</li>
+									<li>Sponsor Improvement</li>
+									<li>Administer Contract</li>
+									<li>Managing Risk</li>
+									<li>Commercial Risk</li>
 								</ul>
 							</div>
 							<div class="clear"></div>
@@ -75,8 +72,16 @@
 						</section>
 					</div>
 					<div class="clear"></div>
-					<div class="dot-line">&nbsp;</div>
+					
+					<p class="hide">&nbsp;</p>
 					<p>&nbsp;</p>
 				</article>
 				<!-- Content Area end // -->
+<script>
+    $(document).ready(function () {
+        $(".iphonNav ul li").removeClass("active");
+        //alert($(".iphonNav ul li").eq(4));
+        $(".iphonNav ul li:eq(2)").addClass("active");
+    });
+</script>
 </asp:Content>

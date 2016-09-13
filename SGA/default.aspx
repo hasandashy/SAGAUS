@@ -54,88 +54,88 @@
 
 
                 var jobRole = $("#<%=ddlJobRole.ClientID %>").val();
-            if (jobRole == 0) {
-                error = 1;
-                emptyFields.push('Your Job ROLE is best described as');
-            }          
-
-
-            if (($("#terms").is(':checked')) == false) {
-                error = 1;
-                emptyFields.push("\r\nPlease tick the checkbox to agree to the Terms and Conditions.");
-            }
-
-            if (error) {
-                $('#colorbox').css({ "display": "block" });
-                alertHtml = 'Please select/enter ' + emptyFields.join(', ');
-            }
-            else if (email != '' && !filter.test(email)) {
-                $('#colorbox').css({ "display": "block" });
-                alertHtml = 'Please enter valid email id';
-            }
-            else {
-                var emailpass = 0;
-                var domain = email.replace(/.*@/, "");
-
-
-                if (domain.toLowerCase() == 'sa.gov.au') {
-                    emailpass = 1;
-                } else {
-                    if (domain.toLowerCase() == 'courts.sa.gov.au') {
-                        emailpass = 1;
-                    }
-                    else if (domain.toLowerCase() == 'police.sa.gov.au') {
-                        emailpass = 1;
-                    }
-                    else if (domain.toLowerCase() == 'tafesa.edu.au') {
-                        emailpass = 1;
-                    }
-                        //for testing purpose
-                    else if (domain.toLowerCase() == 'gmail.com') {
-                        emailpass = 1;
-                    }
-                    else if (domain.toLowerCase() == 'comprara.com.au') {
-                        emailpass = 1;
-                    }
+                if (jobRole == 0) {
+                    error = 1;
+                    emptyFields.push('Your Job ROLE is best described as');
                 }
 
 
-                if (parseInt(emailpass) == 0) {
+                if (($("#terms").is(':checked')) == false) {
+                    error = 1;
+                    emptyFields.push("\r\nPlease tick the checkbox to agree to the Terms and Conditions.");
+                }
+
+                if (error) {
                     $('#colorbox').css({ "display": "block" });
-                    alertHtml = 'The email should only be registered with one of these \n(sa.gov.au,\ncourts.sa.gov.au,\npolice.sa.gov.au,\ntafesa.edu.au)';
+                    alertHtml = 'Please select/enter ' + emptyFields.join(', ');
+                }
+                else if (email != '' && !filter.test(email)) {
+                    $('#colorbox').css({ "display": "block" });
+                    alertHtml = 'Please enter valid email id';
                 }
                 else {
-                    //$("#register").mask("Processing ...");
-                    var json =
-                        $.ajax({
-                            type: "POST",
-                            async: false,
-                            url: "About_us.aspx/RegisterUser",
-                            data: JSON.stringify({ 'fname': name, 'lname': surname, 'email': email, 'jobId': $("#<%=ddlJobRole.ClientID %>").val(), 'jobLevel': 1, 'agencyId': agency }),
-                            dataType: "json",
-                            contentType: "application/json; charset=utf-8",
-                            success: function (data) {
-                                if (data.d == 's') {
-                                    $('#colorbox').css({ "display": "block" });
-                                    alertHtml = "Thank you for registering. Your registration has been approved and in the next few minutes a confirmation email will be sent to your inbox. The email contains your username and password to login. Note: You may need to check your junk mail folder if this doesn't reach your inbox.";
-                                    $('#FName').val('');
-                                    $('#LName').val('');
-                                    $('#Email').val('');
-                                } else if (data.d == 'e') {
-                                    $('#colorbox').css({ "display": "block" });
-                                    alertHtml = 'Some error occured in the process, Please try again.';
-                                } else if (data.d == 'u') {
-                                    $('#colorbox').css({ "display": "block" });
-                                    alertHtml = 'User name already exists.';
-                                } else if (data.d == 'd') {
-                                    $('#colorbox').css({ "display": "block" });
-                                    alertHtml = 'Email address already exists.';
-                                }
-                            }
-                        });
+                    var emailpass = 0;
+                    var domain = email.replace(/.*@/, "");
+
+
+                    if (domain.toLowerCase() == 'sa.gov.au') {
+                        emailpass = 1;
+                    } else {
+                        if (domain.toLowerCase() == 'courts.sa.gov.au') {
+                            emailpass = 1;
+                        }
+                        else if (domain.toLowerCase() == 'police.sa.gov.au') {
+                            emailpass = 1;
+                        }
+                        else if (domain.toLowerCase() == 'tafesa.edu.au') {
+                            emailpass = 1;
+                        }
+                            //for testing purpose
+                        else if (domain.toLowerCase() == 'gmail.com') {
+                            emailpass = 1;
+                        }
+                        else if (domain.toLowerCase() == 'comprara.com.au') {
+                            emailpass = 1;
+                        }
                     }
 
-                }
+
+                    if (parseInt(emailpass) == 0) {
+                        $('#colorbox').css({ "display": "block" });
+                        alertHtml = 'The email should only be registered with one of these \n(sa.gov.au,\ncourts.sa.gov.au,\npolice.sa.gov.au,\ntafesa.edu.au)';
+                    }
+                    else {
+                        //$("#register").mask("Processing ...");
+                        var json =
+                            $.ajax({
+                                type: "POST",
+                                async: false,
+                                url: "About_us.aspx/RegisterUser",
+                                data: JSON.stringify({ 'fname': name, 'lname': surname, 'email': email, 'jobId': $("#<%=ddlJobRole.ClientID %>").val(), 'jobLevel': 1, 'agencyId': agency }),
+                                dataType: "json",
+                                contentType: "application/json; charset=utf-8",
+                                success: function (data) {
+                                    if (data.d == 's') {
+                                        $('#colorbox').css({ "display": "block" });
+                                        alertHtml = "Thank you for registering. Your registration has been approved and in the next few minutes a confirmation email will be sent to your inbox. The email contains your username and password to login. Note: You may need to check your junk mail folder if this doesn't reach your inbox.";
+                                        $('#FName').val('');
+                                        $('#LName').val('');
+                                        $('#Email').val('');
+                                    } else if (data.d == 'e') {
+                                        $('#colorbox').css({ "display": "block" });
+                                        alertHtml = 'Some error occured in the process, Please try again.';
+                                    } else if (data.d == 'u') {
+                                        $('#colorbox').css({ "display": "block" });
+                                        alertHtml = 'User name already exists.';
+                                    } else if (data.d == 'd') {
+                                        $('#colorbox').css({ "display": "block" });
+                                        alertHtml = 'Email address already exists.';
+                                    }
+                                }
+                            });
+                        }
+
+                    }
             });
 
         });
@@ -182,7 +182,7 @@
                 <h2>Step 4</h2>
                 <p><strong>REVIEW your 70:20:10 recommendations.</strong></p>
                 <p class="txtCtr"><img src="Images/imgStep4.jpg" alt="Step4" /></p>
-                <p>Consider the suggestions made in your report and consider how you can apply them in your workplace.</p>
+                <p>Consider your development priorities and consider how you can apply the suggestions in your workplace.</p>
               </li>
             </ul>
           </div>
@@ -203,26 +203,22 @@
                         	<li><span>*</span><input type="text" value="Email address" title="Email address" class="txt-field2" id="Email"/></li>
                         	<li><span>*</span><asp:DropDownList ID="ddlAgency"  runat="server">
                             <asp:ListItem Value="0">Your Organisation</asp:ListItem>
-                            <asp:ListItem Value="1">Premier and Cabinet</asp:ListItem>
-<asp:ListItem Value="2">Aboriginal and Torres Strait Islander Partnerships</asp:ListItem>
-<asp:ListItem Value="3">Agriculture and Fisheries</asp:ListItem>
-<asp:ListItem Value="4">Communities, Child Safety and Disability Services</asp:ListItem>
-<asp:ListItem Value="5">Education and Training</asp:ListItem>
-<asp:ListItem Value="6">Energy and Water Supply</asp:ListItem>
-<asp:ListItem Value="7">Environment and Heritage Protection</asp:ListItem>
-<asp:ListItem Value="8">Health</asp:ListItem>
-<asp:ListItem Value="9">Housing and Public Works</asp:ListItem>
-<asp:ListItem Value="10">Infrastructure, Local Government and Planning</asp:ListItem>
-<asp:ListItem Value="11">Justice and Attorney-General</asp:ListItem>
-<asp:ListItem Value="12">National Parks, Sport and Racing</asp:ListItem>
-<asp:ListItem Value="13">Natural Resources and Mines</asp:ListItem>
-<asp:ListItem Value="14">Police, Fire and Emergency Services</asp:ListItem>
-<asp:ListItem Value="15">Science, Information Technology and Innovation</asp:ListItem>
-<asp:ListItem Value="16">State Development</asp:ListItem>
-<asp:ListItem Value="17">Transport and Main Roads</asp:ListItem>
-<asp:ListItem Value="18">Treasury</asp:ListItem>
-<asp:ListItem Value="19">Tourism, Major Events, Small Business and the Commonwealth Games</asp:ListItem>
-<asp:ListItem Value="20">Other</asp:ListItem>
+                          <asp:ListItem Value="1">Attorney-Generals Department</asp:ListItem>
+                            <asp:ListItem Value="2">Courts Administration Authority</asp:ListItem>
+                            <asp:ListItem Value="3">Department for Communities and Social Inclusion</asp:ListItem>
+                            <asp:ListItem Value="4">Department for Correctional Services</asp:ListItem>
+                            <asp:ListItem Value="5">Department for Education and Child Development</asp:ListItem>
+                            <asp:ListItem Value="6">Department of Environment Water and Natural Resources</asp:ListItem>
+                            <asp:ListItem Value="7">Department of Planning Transport and Infrastructure</asp:ListItem>
+                            <asp:ListItem Value="8">Department of State Development</asp:ListItem>
+                            <asp:ListItem Value="9">Department of the Premier and Cabinet </asp:ListItem>
+                            <asp:ListItem Value="10">Department of Treasury and Finance</asp:ListItem>
+                            <asp:ListItem Value="11">Primary Industries and Regions SA</asp:ListItem>
+                            <asp:ListItem Value="12">SA Fire and Emergency Services Commission</asp:ListItem>
+                            <asp:ListItem Value="13">SA Health</asp:ListItem>
+                            <asp:ListItem Value="14">South Australia Police</asp:ListItem>
+                            <asp:ListItem Value="15">South Australian Tourism Commission</asp:ListItem>
+                            <asp:ListItem Value="16">TAFE SA</asp:ListItem>  
 
                             </asp:DropDownList></li>
                         	
@@ -238,7 +234,7 @@
 <asp:ListItem Value="8">Procurement Manager/ Director</asp:ListItem>
                             </asp:DropDownList> </li>                        	
                         	
-                            <li><input type="checkbox" id="terms" name="terms" />  By ticking this box, I agree to the terms of the website and I understand that the information (including my personal information) entered may be held offshore.</li>
+                            <li><input type="checkbox" id="terms" name="terms" />  By ticking this box, I agree to the <a href="Terms.aspx">terms</a> of the website and I understand that the information (including my personal information) entered may be held offshore.</li>
                             <li class="txtRgt"><input type="submit" value="" class="btn-go2" id="btnSend" /></li>
                         </ul>
                    
@@ -252,10 +248,12 @@
               <p></p>
               <img src="images/imgNote.png" alt="" />
               <p>&nbsp;</p>
+             
               <p>The selections you make when registering are important as they directly affect the assesments you will gain access to.</p>
               <p>&nbsp;</p>
+                       
               <p>The most important is to select the ROLE that best describes your current role.</p>
-              <p>&nbsp;</p>
+              
               <a href="/role_guidelines" title="">Click here first for further guidelines before selecting your role descriptor &gt;</a> </div>
                    
                    

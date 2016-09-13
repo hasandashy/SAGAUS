@@ -157,10 +157,10 @@
    <li><a href="javascript:void(0)">Assessments </a>
    <ul>
    <li><a href="/Procurement_knowledge_evaluation.aspx" title="Procurement – Knowledge Evaluation">> Procurement – Knowledge Evaluation</a></li>
-            <li><a href="/Procurement_TNA" title="Procurement – Self Assessment">> Procurement – Self Assessment</a></li>
-            <li><a href="/Contract_Management_TNA" title="Contract Management – Knowledge Evaluation">> Contract Management – Knowledge Evaluation</a></li>
-            <li><a href="/Contract_Management_TNA" title="Contract Management – Self Assessment">> Contract Management – Self Assessment</a></li>
-            <li><a href="/Contract_Management_TNA" title="Commercial Awareness – Knowledge Evaluation">> Commercial Awareness – Knowledge Evaluation</a></li>
+            <li><a href="/procurement-self-assessment" title="Procurement – Self Assessment">> Procurement – Self Assessment</a></li>
+            <li><a href="/Contract_Knowledge_Evaluation.aspx" title="Contract Management – Knowledge Evaluation">> Contract Management – Knowledge Evaluation</a></li>
+            <li><a href="/contract-management-self-assessment" title="Contract Management – Self Assessment">> Contract Management – Self Assessment</a></li>
+            <li><a href="/Commercial_Awareness_Assesment.aspx" title="Commercial Awareness – Knowledge Evaluation">> Commercial Awareness – Knowledge Evaluation</a></li>
   </ul>  
    
    </li> 
@@ -212,16 +212,18 @@
             <li><a href="/help.aspx" title="Support">Support</a></li>
             <li><a href="/role_guidelines" title="Role Guidelines">Role Guidelines</a></li>
             <li><a href="About_us.aspx" title="About Comprara">About Comprara</a></li>
+              <li><a href="Terms.aspx" title="Terms of Use">Terms of Use</a></li>
+              <li><a href="Privacy.aspx" title="Privacy Policy">Privacy Policy</a></li>
           </ul>
         </div>
         <div class="col-3">
           <ul class="footer-link">
             <li class="title">Assessments</li>
             <li><a href="/Procurement_knowledge_evaluation.aspx" title="">Procurement – Knowledge Evaluation</a></li>
-            <li><a href="/Procurement_TNA" title="">Procurement – Self Assessment</a></li>
-            <li><a href="/Contract_Management_TNA" title="">Contract Management – Knowledge Evaluation</a></li>
-            <li><a href="/Contract_Management_TNA" title="">Contract Management – Self Assessment</a></li>
-            <li><a href="/Contract_Management_TNA" title="">Commercial Awareness – Knowledge Evaluation</a></li>
+            <li><a href="/procurement-self-assessment" title="">Procurement – Self Assessment</a></li>
+            <li><a href="/Contract_Knowledge_Evaluation.aspx" title="">Contract Management – Knowledge Evaluation</a></li>
+            <li><a href="/contract-management-self-assessment" title="">Contract Management – Self Assessment</a></li>
+            <li><a href="/Commercial_Awareness_Assesment.aspx" title="">Commercial Awareness – Knowledge Evaluation</a></li>
           </ul>
         </div>
         

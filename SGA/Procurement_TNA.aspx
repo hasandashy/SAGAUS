@@ -1,12 +1,10 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Procurement_TNA.aspx.cs" Inherits="SGA.Procurement_TNA" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 <!-- Banner start -->
-				<div class="banner-inner-ssa">
+				<div class="banner-inner-pke">
 					<div class="banner-cnt">
-						<p class="banner-heading"><span>Procurement Assessment</span></p>
-						<div class="banner-txt">
-                            <p class="banner-heading" style="font-size:32px">Training Needs Analysis</p>
-						</div>
+						<p class="banner-heading"><span>Procurement Self Assessment</span></p>
+						
 						<div class="clear"></div>
 					</div>
 				</div>
@@ -20,11 +18,9 @@
 					<div class="col-660">
 						<section class="cnt-lt-2 equal_height">
 							<p class="title28">What is it?</p>
-							<p>This self-assessment focusses on the skills required to perform the category management function. It focusses on an eight-step category management process and asks you for rate yourself across 72 self- evaluations.</p>
-							<p></p>
-                            <p>It explores the Procurement Attributes, Business Attributes and Personal Attributes that drive excellence in each step of the category management process. As such, skills are uniquely aligned to the distinct phase and capabilities of procurement.</p>
-							<p></p>
-							<p class="mrg-bt-10 txt-orange dark">The 8 steps are:</p>
+							<p>This is a self-assessment of your Procurement skills. You will be guided through eight dimensions of Procurement as you assess yourself on 72 questions. Allow for 40 – 60 minutes to complete this self-assessment.</p>
+								<p></p>
+							<p class="mrg-bt-10 txt-orange dark">The 8 dimesions are:</p>
 							<div class="floatL wide50-1">
 								<ul class="tick-mark2">
 									<li>Opportunity Analysis</li>
@@ -43,30 +39,30 @@
 							</div>
 							<div class="clear"></div>
 							<p></p>
-							<p>On completion you will receive an individual report with an assessment of your capability across a range of technical competencies. It will highlight each phase of the category management process focussing on both your strengths and your evolving skill-sets. The key output is a set of recommendations for both you and your manager to consider in order to optimise department and individual performance.</p>
+							<p>It explores the Procurement Attributes, Business Attributes and Personal Attributes that drive excellence in procurement. As such, the skills that are uniquely aligned to capabilities required in procurement.</p>
 							<p></p>
 							<p class="title28">What is it used for?</p>
-							<p>The information gathered in your Training Needs Analysis is used to inform which e-Learning and workshop recommendation would be the most relevant for you. </p>
+							<p>The South Australian Government is committed to maximising the value derived from the procurement process. The aim of this assessment process is to provide a snapshot of the current level of procurement and contract management capability across the SA Government. </p>
 							<p></p>
-							<p>Once you complete it you will receive an individual report with an assessment of your capability across a range of procurement competencies.  It will highlight each phase of the procurement process focusing on both your strengths and your evolving skill-sets. </p>
+							<p>A group report will be prepared that summarises procurement capability and capacity across the public sector along with some analysis and options for improvement.</p>
 							<p></p>
-							<p class="title28">Your Training Needs Analysis report</p>
-							<p>The aim of your individual report is to provide you systematic insight of your skill set as it stands today together with ideas for you to apply 70:20:10 learning in your workplace. </p>
+							<p class="title28">Your individual feedback report</p>
+							<p>This report is tailored especially for you and in it you will find suggestions and recommendations that will help you develop skills and knowledge in the areas identified for you.</p>
 							<p></p>
-							<p>The 70:20:10 learning model suggests that 70% of development consists of on the job learning, supported by 20% coaching and mentoring and 10% classroom training, with each component reinforcing the others. </p>
+							<p>Your report will be delivered at the conclusion of the assessment period after completing your assigned Assessment Pack.  </p>
 							<p></p>
-							<p>In your report you will find suggestions for each of these learning components. You will also receive your personalised e-Learning plan and high-priority training workshops. </p>
+							<p><strong>REVIEW</strong> the 70:20:10 recommendations in your report, consider your development priorities and consider how you can apply the suggestions in your workplace. </p>
 							<p>&nbsp;</p>
 						</section>
 					</div>
 					<div class="col-340">
 						<section class="cnt-rt-2 equal_height">
 							<p class="title28">Note!</p>
-                            <p>As you work through the questionnaire you may find themes that are not directly relevant to your current role.</p>
+                            <p>As you work through the assessment you may find themes that are not directly relevant to your current role.</p>
                             <p></p>
-                            <p>This is likely happen for many people as this questionnaire considers the end-to-end commercial contract management process.</p>
+                            <p>This is likely to happen for many people as this diagnostic considers a broad range of procurement capabilities.</p>
                             <p></p>
-                            <p>It has purposefully been designed to not be role specific, instead it seeks to understand the capability of end-to-end contract management across agencies and Queensland Government.</p>
+                            <p>It has purposefully been designed not to be role specific, instead it seeks to understand the South Australian Government procurement capability as a whole.</p>
                             <p></p>
                             <p class="title28">Remember!</p>
                             <p>With this questionnaire there are no incorrect answers.</p>
