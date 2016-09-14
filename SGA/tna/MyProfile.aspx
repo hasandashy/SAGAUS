@@ -261,6 +261,8 @@
                             <asp:ListItem Value="6">ASO7/ MAS2</asp:ListItem>
                             <asp:ListItem Value="7">ASO8/ MAS3</asp:ListItem>
                             <asp:ListItem Value="8">EX</asp:ListItem>
+                            <asp:ListItem Value="9">Other (e.g. technical grades)</asp:ListItem>
+                            
                         </asp:DropDownList>
 
                     </div>
@@ -280,7 +282,7 @@
 
                     </div>
                        <p>&nbsp;</p>
-                     <span class="error"></span>&nbsp;&nbsp;<b>Your procurement / contract management qualifications </b><br />
+                     <span class="error"></span>&nbsp;&nbsp;<b>Please select your highest level of qualification that relates to the field of procurement / contract management </b><br />
                     <div class="form-box1">
                         <span class="error"></span>&nbsp;<asp:DropDownList ID="ddlQualification" class="styled" runat="server">
                             <asp:ListItem Value="0">Please select ---</asp:ListItem>
@@ -294,9 +296,10 @@
                             <asp:ListItem Value="8">CIPS: Fellow (FCIPS)</asp:ListItem>
                             <asp:ListItem Value="9">AAPCM: Member</asp:ListItem>
                             <asp:ListItem Value="10">AAPCM: Fellow</asp:ListItem>
-                            <asp:ListItem Value="11">IFPSM: Certified International Procurement Professional</asp:ListItem>
-                            <asp:ListItem Value="12">IFPSM: Certified International Advanced Procurement Professional</asp:ListItem>
-                            <asp:ListItem Value="13">Other</asp:ListItem>
+                            <asp:ListItem Value="11">IACCM: Accreditation</asp:ListItem>
+                            <asp:ListItem Value="12">IFPSM: Certified International Procurement Professional</asp:ListItem>
+                            <asp:ListItem Value="13">IFPSM: Certified International Advanced Procurement Professional</asp:ListItem>
+                            <asp:ListItem Value="14">Other</asp:ListItem>
                         </asp:DropDownList>
 
                     </div>
@@ -318,7 +321,7 @@
                             <asp:ListItem Value="0">Please select ---</asp:ListItem>
                             <asp:ListItem Value="1">General Goods and Services</asp:ListItem>
                             <asp:ListItem Value="2">ICT</asp:ListItem>
-                            <asp:ListItem Value="3">Medical / Health Services</asp:ListItem>
+                            <asp:ListItem Value="3">Medical / Health</asp:ListItem>
                             <asp:ListItem Value="4">Social Services</asp:ListItem>
                             <asp:ListItem Value="5">Transport Infrastructure & Services</asp:ListItem>
                             <asp:ListItem Value="6">Building Construction and Maintenance</asp:ListItem>

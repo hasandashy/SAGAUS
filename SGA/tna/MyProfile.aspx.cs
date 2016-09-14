@@ -60,7 +60,7 @@ namespace SGA.tna
                     this.txtBranch.Value = ((ds.Tables[0].Rows[0]["branch"].ToString() == "") ? "branch" : ds.Tables[0].Rows[0]["branch"].ToString());
                     this.txtJobTitle.Value = ((ds.Tables[0].Rows[0]["jobTitle"].ToString() == "") ? "jobTitle" : ds.Tables[0].Rows[0]["jobTitle"].ToString());                                
                     SGACommon.SelectListItem(this.ddlJobRole, ds.Tables[0].Rows[0]["jobrole"].ToString());
-                    SGACommon.SelectListItem(this.ddlAgency, ds.Tables[0].Rows[0]["department"].ToString());
+                    SGACommon.SelectListItem(this.ddlAgency, ds.Tables[0].Rows[0]["agencyId"].ToString());
                     SGACommon.SelectListItem(this.ddlCentral, ds.Tables[0].Rows[0]["isCentralProcurement"].ToString());
                     SGACommon.SelectListItem(this.ddlCurrentJobClassification, ds.Tables[0].Rows[0]["jobClassification"].ToString());
                     SGACommon.SelectListItem(this.ddlExperience, ds.Tables[0].Rows[0]["experience"].ToString());

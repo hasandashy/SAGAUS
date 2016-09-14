@@ -16,9 +16,9 @@
     <li><a href="EmailTracker.aspx" ><span>Email tracker</span></a></li>
     <li><a href="BrowserTracker.aspx" ><span>Browser tracker</span></a></li>
     
-   <%-- <li><a href="#"><span><strong>Assessment Type</strong></span></a></li>
+    <li><a href="#"><span><strong>Assessment Type</strong></span></a></li>
     <li><a href="ManageSSA.aspx" class="training" title="Procurement Assessment"><span>Procurement Self Assessment</span></a></li>
     <li><a href="ManageSGA.aspx" class="behavioural"><span>Procurement Evaluation</span></a></li>
     <li><a href="ManageCMK.aspx" class="negotiation"><span>Contract Management Evaluation</span></a></li>
-    <li><a href="ManageCMA.aspx" class="contract"><span>Contract Management Assess</span></a></li>--%>
+    <li><a href="ManageCMA.aspx" class="contract"><span>Contract Management Assess</span></a></li>
 </ul>
