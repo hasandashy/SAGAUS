@@ -33,9 +33,9 @@ namespace SGA.webadmin
                     this.LoadProfile();
                     this.BindPermission();
                     this.BindSSATest();
-                    this.BindBATest();
+                    this.BindSGATest();
                     this.BindCMATest();
-                    this.BindNPTest();
+                    this.BindCMKTest();
                 }
             }
         }
@@ -70,8 +70,7 @@ namespace SGA.webadmin
                     this.txtEditPassword.Text = ds.Tables[0].Rows[0]["plainpassword"].ToString();
                     this.txtEditPhone.Text = ((ds.Tables[0].Rows[0]["Phone"].ToString().Length > 0) ? ds.Tables[0].Rows[0]["Phone"].ToString() : "");
                     this.txtEditExiryDate.Text = System.Convert.ToDateTime(ds.Tables[0].Rows[0]["expiryDate"]).ToShortDateString();
-                    this.txtEditPosition.Value = ds.Tables[0].Rows[0]["position"].ToString();
-                    this.txtDivision.Text = ds.Tables[0].Rows[0]["division"].ToString();
+                   
                     if (System.Convert.ToBoolean(ds.Tables[0].Rows[0]["expired"]))
                     {
                         this.btnEditProfileExpire.Visible = false;
@@ -82,20 +81,19 @@ namespace SGA.webadmin
                     }
                     SGACommon.SelectListItem(this.ddlEditAgency, ds.Tables[0].Rows[0]["agencyId"].ToString());
                     SGACommon.SelectListItem(this.ddlEditJobRole, ds.Tables[0].Rows[0]["jobRole"].ToString());
-                    SGACommon.SelectListItem(this.ddlEditJobLevel, ds.Tables[0].Rows[0]["jobLevel"].ToString());
-                    SGACommon.SelectListItem(this.ddlEditLocation, ds.Tables[0].Rows[0]["locationId"].ToString());
-                    SGACommon.SelectListItem(this.ddlEditGoods, ds.Tables[0].Rows[0]["goodsId"].ToString());
+                    SGACommon.SelectListItem(this.ddlExperience, ds.Tables[0].Rows[0]["experience"].ToString());
+                    SGACommon.SelectListItem(this.ddlNature, ds.Tables[0].Rows[0]["nature"].ToString());
                     this.txtEditEmailAddress.Text = ds.Tables[0].Rows[0]["email"].ToString();
                     this.lblEditStatus.Text = (System.Convert.ToBoolean(ds.Tables[0].Rows[0]["expired"]) ? "Expired" : "Running");
                 }
             }
         }
 
-        public void UpdateProfile(string fname, string lname, int jobId, int jobLevel,  int agencyId, string phone, string division, int locationId, string position, int goodsId, string password, System.DateTime dtExpiryDate, bool isExpired, string email)
+        public void UpdateProfile(string fname, string lname, int agencyId, string phone, int experience, int nature, string password, System.DateTime dtExpiryDate, bool isExpired, string email)
         {
             string passwordSalt = SGACommon.CreateSalt(5);
             string passwordHash = SGACommon.CreatePasswordHash(password, passwordSalt);
-            SqlParameter[] param = new SqlParameter[17];
+            SqlParameter[] param = new SqlParameter[13];
             param[0] = new SqlParameter("@password", SqlDbType.VarChar);
             param[0].Value = password;
             param[1] = new SqlParameter("@firstName", SqlDbType.VarChar);
@@ -105,31 +103,23 @@ namespace SGA.webadmin
             param[3] = new SqlParameter("@passwordHash", SqlDbType.VarChar);
             param[3].Value = passwordHash;
             param[4] = new SqlParameter("@passwordSalt", SqlDbType.VarChar);
-            param[4].Value = passwordSalt;
-            param[5] = new SqlParameter("@jobRole", SqlDbType.Int);
-            param[5].Value = jobId;
-            param[6] = new SqlParameter("@jobLevel", SqlDbType.Int);
-            param[6].Value = jobLevel;           
-            param[7] = new SqlParameter("@agencyId", SqlDbType.Int);
-            param[7].Value = agencyId;
-            param[8] = new SqlParameter("@phone", SqlDbType.VarChar);
-            param[8].Value = phone;
-            param[9] = new SqlParameter("@division", SqlDbType.VarChar);
-            param[9].Value = division;
-            param[10] = new SqlParameter("@locationId", SqlDbType.Int);
-            param[10].Value = locationId;
-            param[11] = new SqlParameter("@position", SqlDbType.VarChar);
-            param[11].Value = position;
-            param[12] = new SqlParameter("@goodsId", SqlDbType.Int);
-            param[12].Value = goodsId;
-            param[13] = new SqlParameter("@userId", SqlDbType.Int);
-            param[13].Value = this.userId;
-            param[14] = new SqlParameter("@expiryDate", SqlDbType.DateTime);
-            param[14].Value = dtExpiryDate;
-            param[15] = new SqlParameter("@isExpired", SqlDbType.VarChar);
-            param[15].Value = isExpired;
-            param[16] = new SqlParameter("@flag", SqlDbType.Int);
-            param[16].Value = 2;
+            param[4].Value = passwordSalt;                 
+            param[5] = new SqlParameter("@agencyId", SqlDbType.Int);
+            param[5].Value = agencyId;
+            param[6] = new SqlParameter("@phone", SqlDbType.VarChar);
+            param[6].Value = phone;
+            param[7] = new SqlParameter("@nature", SqlDbType.VarChar);
+            param[7].Value = nature;
+            param[8] = new SqlParameter("@experience", SqlDbType.VarChar);
+            param[8].Value = experience;
+            param[9] = new SqlParameter("@userId", SqlDbType.Int);
+            param[9].Value = this.userId;           
+            param[10] = new SqlParameter("@expiryDate", SqlDbType.DateTime);
+            param[10].Value = dtExpiryDate;
+            param[11] = new SqlParameter("@isExpired", SqlDbType.VarChar);
+            param[11].Value = isExpired;
+            param[12] = new SqlParameter("@flag", SqlDbType.Int);
+            param[12].Value = 2;
             int result = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spUpdateProfileAdmin", param));
             string[] strField = new string[]
 			{
@@ -228,7 +218,8 @@ namespace SGA.webadmin
 
         protected void btnEditSaveProfile_Click(object sender, ImageClickEventArgs e)
         {
-            this.UpdateProfile(this.txtEditFname.Text.Trim(), this.txtEditLname.Text.Trim(), System.Convert.ToInt32(this.ddlEditJobRole.SelectedValue), System.Convert.ToInt32(this.ddlEditJobLevel.SelectedValue),System.Convert.ToInt32(this.ddlEditAgency.SelectedValue), this.txtEditPhone.Text.Trim(), this.txtDivision.Text.Trim(), System.Convert.ToInt32(this.ddlEditLocation.SelectedValue), this.txtEditPosition.Value.Trim(), System.Convert.ToInt32(this.ddlEditGoods.SelectedValue), this.txtEditPassword.Text.Trim(), System.Convert.ToDateTime(this.txtEditExiryDate.Text), false, this.txtEditEmailAddress.Text.Trim());
+            //this.UpdateProfile(this.txtEditFname.Text.Trim(), this.txtEditLname.Text.Trim(), System.Convert.ToInt32(this.ddlEditJobRole.SelectedValue), System.Convert.ToInt32(this.ddlEditJobLevel.SelectedValue),System.Convert.ToInt32(this.ddlEditAgency.SelectedValue), this.txtEditPhone.Text.Trim(), this.txtDivision.Text.Trim(), System.Convert.ToInt32(this.ddlEditLocation.SelectedValue), this.txtEditPosition.Value.Trim(), System.Convert.ToInt32(this.ddlEditGoods.SelectedValue), this.txtEditPassword.Text.Trim(), System.Convert.ToDateTime(this.txtEditExiryDate.Text), false, this.txtEditEmailAddress.Text.Trim());
+            this.UpdateProfile(this.txtEditFname.Text.Trim(), this.txtEditLname.Text.Trim(), System.Convert.ToInt32(this.ddlEditAgency.SelectedValue), txtEditPhone.Text, System.Convert.ToInt32(this.ddlExperience.SelectedValue), System.Convert.ToInt32(this.ddlNature.SelectedValue), txtEditPassword.Text.Trim(), Convert.ToDateTime(txtEditExiryDate.Text.Trim()), false, this.txtEditEmailAddress.Text.Trim());
             this.LoadProfile();
         }
 
@@ -338,23 +329,23 @@ namespace SGA.webadmin
             }
         }
 
-        private void BindBATest()
+        private void BindSGATest()
         {
             string strOrderBy = " testId desc  ";
-            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageBATest", new SqlParameter[]
-			{
-				new SqlParameter("@firstname", ""),
-				new SqlParameter("@lastname", ""),
-				new SqlParameter("@userIds", this.userId),
-				new SqlParameter("@dateFrom", ""),
-				new SqlParameter("@dateTo", ""),
-				new SqlParameter("@orderBy", strOrderBy)
-			});
-            this.grdBA.DataSource = ds;
-            this.grdBA.DataBind();
+            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageSSATest", new SqlParameter[]
+            {
+                new SqlParameter("@firstname", ""),
+                new SqlParameter("@lastname", ""),
+                new SqlParameter("@userIds", this.userId),
+                new SqlParameter("@dateFrom", ""),
+                new SqlParameter("@dateTo", ""),
+                new SqlParameter("@orderBy", strOrderBy)
+            });
+            this.grdSSA.DataSource = ds;
+            this.grdSSA.DataBind();
         }
 
-        protected void grdBA_ItemDataBound(object sender, DataGridItemEventArgs e)
+        protected void grdSga_ItemDataBound(object sender, DataGridItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
@@ -371,27 +362,27 @@ namespace SGA.webadmin
             }
         }
 
-        protected void grdBA_ItemCommand(object source, DataGridCommandEventArgs e)
+        protected void grdSga_ItemCommand(object source, DataGridCommandEventArgs e)
         {
             if (e.CommandName == "Delete")
             {
-                SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spDeleteBATest", new SqlParameter[]
-				{
-					new SqlParameter("@testId", e.CommandArgument)
-				});
-                this.BindBATest();
+                SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spDeleteSGATest", new SqlParameter[]
+                {
+                    new SqlParameter("@testId", e.CommandArgument)
+                });
+                this.BindSSATest();
             }
             else if (e.CommandName == "Graph")
             {
-                base.Response.Redirect("TestChartBA.aspx?id=" + e.CommandArgument, false);
+                base.Response.Redirect("TestChartSGA.aspx?id=" + e.CommandArgument, false);
             }
             else if (e.CommandName == "drilldown")
             {
-                base.Response.Redirect("/BAChart/" + e.CommandArgument, false);
+                base.Response.Redirect("/SSAChart/" + e.CommandArgument, false);
             }
             else if (e.CommandName == "Edit")
             {
-                base.Response.Redirect("EditBAtest.aspx?id=" + e.CommandArgument, false);
+                base.Response.Redirect("EditSGAtest.aspx?id=" + e.CommandArgument, false);
             }
         }
 
@@ -452,48 +443,23 @@ namespace SGA.webadmin
             }
         }
 
-        private void BindNPTest()
+        private void BindCMKTest()
         {
             string strOrderBy = " testId desc  ";
-            
-            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageNPTest", new SqlParameter[]
-			{
-				new SqlParameter("@firstname",""),
-				new SqlParameter("@lastname", ""),
-				new SqlParameter("@dateFrom", ""),
-				new SqlParameter("@dateTo", ""),
+            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageCMKTest", new SqlParameter[]
+            {
+                new SqlParameter("@firstname", ""),
+                new SqlParameter("@lastname", ""),
                 new SqlParameter("@userIds", this.userId),
-				new SqlParameter("@orderBy", strOrderBy)
-			});
-            this.grdNP.DataSource = ds;
-            this.grdNP.DataBind();
+                new SqlParameter("@dateFrom", ""),
+                new SqlParameter("@dateTo", ""),
+                new SqlParameter("@orderBy", strOrderBy)
+            });
+            this.grdCMA.DataSource = ds;
+            this.grdCMA.DataBind();
         }
 
-        protected void grdNP_ItemCommand(object source, DataGridCommandEventArgs e)
-        {
-            if (e.CommandName == "Delete")
-            {
-                SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spDeleteNPTest", new SqlParameter[]
-				{
-					new SqlParameter("@testId", e.CommandArgument)
-				});
-                this.BindNPTest();
-            }
-            else if (e.CommandName == "Graph")
-            {
-                base.Response.Redirect("TestChartNP.aspx?id=" + e.CommandArgument, false);
-            }
-            else if (e.CommandName == "drilldown")
-            {
-                base.Response.Redirect("/NPChart/" + e.CommandArgument, false);
-            }
-            else if (e.CommandName == "Edit")
-            {
-                base.Response.Redirect("EditNPtest.aspx?id=" + e.CommandArgument, false);
-            }
-        }
-
-        protected void grdNP_ItemDataBound(object sender, DataGridItemEventArgs e)
+        protected void grdCMK_ItemDataBound(object sender, DataGridItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
@@ -509,5 +475,31 @@ namespace SGA.webadmin
                 }
             }
         }
+
+        protected void grdCMK_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+            if (e.CommandName == "Delete")
+            {
+                SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spDeleteCMKTest", new SqlParameter[]
+                {
+                    new SqlParameter("@testId", e.CommandArgument)
+                });
+                this.BindCMATest();
+            }
+            else if (e.CommandName == "Graph")
+            {
+                base.Response.Redirect("TestChartCMK.aspx?id=" + e.CommandArgument, false);
+            }
+            else if (e.CommandName == "drilldown")
+            {
+                base.Response.Redirect("/CMKChart/" + e.CommandArgument, false);
+            }
+            else if (e.CommandName == "Edit")
+            {
+                base.Response.Redirect("EditCMKtest.aspx?id=" + e.CommandArgument, false);
+            }
+        }
+
+
     }
 }

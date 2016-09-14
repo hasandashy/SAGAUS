@@ -79,13 +79,15 @@
                 <img src="images/captcha-btn.png" />
                 </span></a>
 			</div>--%>
-			<input type="submit" value="" class="btn-submit" />
+			<input type="submit" value="" class="btn-submit" />
+
             
 			<div class="clear"></div>
 		</form>
 	</div>
 	<div class="clear"></div>
-</div>
+</div>
+
     </form>
 </body>
 </html>

@@ -26,14 +26,14 @@ namespace SGA.webadmin
 
         private void BindTopics()
         {
-            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCMATopicsAdmin");
+            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCMKTopicsAdmin");
             this.dtgList.DataSource = ds;
             this.dtgList.DataBind();
         }
 
         private void BindQuestions()
         {
-            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCMAAdminQuestions", new SqlParameter[]
+            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCMKAdminQuestions", new SqlParameter[]
 			{
 				new SqlParameter("@topicIds", this.hdSelectIds.Value)
 			});
@@ -43,7 +43,7 @@ namespace SGA.webadmin
 
         private void BindOptions()
         {
-            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetOptionsAdminCMA");
+            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetOptionsAdminCMK");
             this.grdOptions.DataSource = ds;
             this.grdOptions.DataBind();
         }
@@ -52,7 +52,7 @@ namespace SGA.webadmin
         {
             if (this.Page.IsValid)
             {
-                SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateTopicDetailCMA", new SqlParameter[]
+                SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateTopicDetailCMK", new SqlParameter[]
 				{
 					new SqlParameter("@topicId", this.imgSave.CommandArgument.ToString()),
 					new SqlParameter("@topicTitle", this.txttopicTitle.Value.Trim()),
@@ -92,7 +92,7 @@ namespace SGA.webadmin
         {
             if (this.Page.IsValid)
             {
-                SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateCMAQuestion", new SqlParameter[]
+                SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateCMKQuestion", new SqlParameter[]
 				{
 					new SqlParameter("@questionId", this.imgUpdateQuestion.CommandArgument.ToString()),
 					new SqlParameter("@questionText", this.txtQuestion.Text.Trim()),
@@ -109,12 +109,11 @@ namespace SGA.webadmin
         {
             if (this.Page.IsValid)
             {
-                SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateAdminCMAOptions", new SqlParameter[]
+                SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateAdminCMKOptions", new SqlParameter[]
 				{
 					new SqlParameter("@optionId", this.ImageButton1.CommandArgument.ToString()),
 					new SqlParameter("@optionText", this.txtOptionText.Value.Trim()),
-					new SqlParameter("@optionValue", this.txtOptionValue.Value.Trim()),
-					new SqlParameter("@optionLevel", this.txtOptionLevel.Value.Trim())
+					new SqlParameter("@optionMark", this.txtOptionValue.Value.Trim())
 				});
                 this.BindOptions();
                 this.pnlOptions.Visible = true;
@@ -138,7 +137,7 @@ namespace SGA.webadmin
         {
             if (e.CommandName == "Edit")
             {
-                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetTopicDetailCMA", new SqlParameter[]
+                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetTopicDetailCMK", new SqlParameter[]
 				{
 					new SqlParameter("@topicId", e.CommandArgument)
 				});
@@ -160,7 +159,7 @@ namespace SGA.webadmin
         {
             if (e.CommandName == "Edit")
             {
-                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetQuestionDetailCMA", new SqlParameter[]
+                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetQuestionDetailCMK", new SqlParameter[]
 				{
 					new SqlParameter("@questionId", e.CommandArgument)
 				});
@@ -183,7 +182,7 @@ namespace SGA.webadmin
         {
             if (e.CommandName == "Edit")
             {
-                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetOptionDetailCMA", new SqlParameter[]
+                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetOptionDetailCMK", new SqlParameter[]
 				{
 					new SqlParameter("@optionId", e.CommandArgument)
 				});
@@ -193,8 +192,7 @@ namespace SGA.webadmin
                     {
                         this.ImageButton1.CommandArgument = e.CommandArgument.ToString();
                         this.txtOptionText.Value = ds.Tables[0].Rows[0]["optionText"].ToString();
-                        this.txtOptionValue.Value = ds.Tables[0].Rows[0]["optionValue"].ToString();
-                        this.txtOptionLevel.Value = ds.Tables[0].Rows[0]["optionLevel"].ToString();
+                        this.txtOptionValue.Value = ds.Tables[0].Rows[0]["optionMark"].ToString();
                         this.pnlOptions.Visible = false;
                         this.pnlOptionsEdit.Visible = true;
                     }

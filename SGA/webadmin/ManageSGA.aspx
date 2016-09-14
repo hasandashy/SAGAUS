@@ -128,7 +128,7 @@
                                                                     &nbsp;
                                                                 </td>
                                                             </tr>
-                                                            <tr>
+                                                         <%--   <tr>
                                                                 <td class="txtrht">
                                                                     Topic Description
                                                                 </td>
@@ -138,7 +138,7 @@
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" SetFocusOnError="true"
                                                                         CssClass="error" ControlToValidate="txtDescription" ValidationGroup="add" Text="*"></asp:RequiredFieldValidator>
                                                                 </td>
-                                                            </tr>
+                                                            </tr>--%>
                                                             <tr>
                                                                 <td>&nbsp;</td>
                                                                 <td colspan="3">
@@ -178,7 +178,7 @@
                                                                 <asp:TemplateColumn HeaderText="Topic title" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="20%"
                                                                     HeaderStyle-Width="12%">
                                                                     <ItemTemplate>
-                                                                        <%#Eval("topicTitle").ToString().Replace("<br />"," ") %>
+                                                                        <%#Eval("topicName").ToString().Replace("<br />"," ") %>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateColumn>
                                                                 <asp:TemplateColumn HeaderText="Question text" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="55%"
@@ -186,11 +186,7 @@
                                                                     <ItemTemplate>
                                                                         <%#Eval("questionText").ToString()%>
                                                                     </ItemTemplate>
-                                                                </asp:TemplateColumn>
-                                                                <asp:BoundColumn DataField="hintWord" HeaderText="Hint Word" ItemStyle-HorizontalAlign="Left"
-                                                                    ItemStyle-Width="12%" HeaderStyle-Width="12%"></asp:BoundColumn>
-                                                                
-                                                                
+                                                                </asp:TemplateColumn>                                                              
                                                                 <asp:TemplateColumn HeaderText="Action" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="5%"
                                                                     HeaderStyle-Width="5%">
                                                                     <ItemTemplate>
@@ -218,7 +214,7 @@
                                                                 </td>
                                                                 
                                                             </tr>
-                                                            <tr>
+                                                           <%-- <tr>
                                                                 <td class="txtrht">
                                                                     Hint Word
                                                                 </td>
@@ -237,7 +233,7 @@
                                                                     </textarea>
                                                                     
                                                                 </td>
-                                                            </tr>
+                                                            </tr>--%>
                                                             <tr>
                                                                 <td>&nbsp;</td>
                                                                 <td colspan="3">
@@ -315,7 +311,7 @@
                                                                 </td>
                                                                 
                                                             </tr>
-                                                            <tr>
+                                                          <%--  <tr>
                                                                 <td class="txtrht">
                                                                     Option Level
                                                                 </td>
@@ -325,7 +321,7 @@
                                                                         CssClass="error" ControlToValidate="txtOptionLevel" ValidationGroup="addOptions" Text="*"></asp:RequiredFieldValidator>
                                                                 </td>
                                                                 
-                                                            </tr>
+                                                            </tr>--%>
                                                             <tr>
                                                                 <td class="txtrht">
                                                                     Option value

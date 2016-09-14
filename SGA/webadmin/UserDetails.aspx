@@ -35,26 +35,22 @@
                 <td>
                     <asp:DropDownList ID="ddlEditAgency" CssClass="styled" runat="server">
                         <asp:ListItem Value="0">Your Organisation</asp:ListItem>
-                        <asp:ListItem Value="1">Premier and Cabinet</asp:ListItem>
-                        <asp:ListItem Value="2">Aboriginal and Torres Strait Islander Partnerships</asp:ListItem>
-                        <asp:ListItem Value="3">Agriculture and Fisheries</asp:ListItem>
-                        <asp:ListItem Value="4">Communities, Child Safety and Disability Services</asp:ListItem>
-                        <asp:ListItem Value="5">Education and Training</asp:ListItem>
-                        <asp:ListItem Value="6">Energy and Water Supply</asp:ListItem>
-                        <asp:ListItem Value="7">Environment and Heritage Protection</asp:ListItem>
-                        <asp:ListItem Value="8">Health</asp:ListItem>
-                        <asp:ListItem Value="9">Housing and Public Works</asp:ListItem>
-                        <asp:ListItem Value="10">Infrastructure, Local Government and Planning</asp:ListItem>
-                        <asp:ListItem Value="11">Justice and Attorney-General</asp:ListItem>
-                        <asp:ListItem Value="12">National Parks, Sport and Racing</asp:ListItem>
-                        <asp:ListItem Value="13">Natural Resources and Mines</asp:ListItem>
-                        <asp:ListItem Value="14">Police, Fire and Emergency Services</asp:ListItem>
-                        <asp:ListItem Value="15">Science, Information Technology and Innovation</asp:ListItem>
-                        <asp:ListItem Value="16">State Development</asp:ListItem>
-                        <asp:ListItem Value="17">Transport and Main Roads</asp:ListItem>
-                        <asp:ListItem Value="18">Treasury</asp:ListItem>
-                        <asp:ListItem Value="19">Tourism, Major Events, Small Business and the Commonwealth Games</asp:ListItem>
-                        <asp:ListItem Value="20">Other</asp:ListItem>
+                            <asp:ListItem Value="1">Attorney-Generals Department</asp:ListItem>
+                            <asp:ListItem Value="2">Courts Administration Authority</asp:ListItem>
+                            <asp:ListItem Value="3">Department for Communities and Social Inclusion</asp:ListItem>
+                            <asp:ListItem Value="4">Department for Correctional Services</asp:ListItem>
+                            <asp:ListItem Value="5">Department for Education and Child Development</asp:ListItem>
+                            <asp:ListItem Value="6">Department of Environment Water and Natural Resources</asp:ListItem>
+                            <asp:ListItem Value="7">Department of Planning Transport and Infrastructure</asp:ListItem>
+                            <asp:ListItem Value="8">Department of State Development</asp:ListItem>
+                            <asp:ListItem Value="9">Department of the Premier and Cabinet </asp:ListItem>
+                            <asp:ListItem Value="10">Department of Treasury and Finance</asp:ListItem>
+                            <asp:ListItem Value="11">Primary Industries and Regions SA</asp:ListItem>
+                            <asp:ListItem Value="12">SA Fire and Emergency Services Commission</asp:ListItem>
+                            <asp:ListItem Value="13">SA Health</asp:ListItem>
+                            <asp:ListItem Value="14">South Australia Police</asp:ListItem>
+                            <asp:ListItem Value="15">South Australian Tourism Commission</asp:ListItem>
+                            <asp:ListItem Value="16">TAFE SA</asp:ListItem> 
                     </asp:DropDownList>
                 </td>
                 <td class="txtrht">Email Address
@@ -69,39 +65,33 @@
                 </td>
                 <td>
                     <asp:DropDownList ID="ddlEditJobRole" CssClass="styled" runat="server">
-                        <asp:ListItem Value="0">- Your Job ROLE is best described as -</asp:ListItem>
-                        <asp:ListItem Value="1">Purchasing Officer</asp:ListItem>
-                        <asp:ListItem Value="2">Procurement/ Purchasing Support</asp:ListItem>
-                        <asp:ListItem Value="3">Procurement/ Purchasing Analyst</asp:ListItem>
-                        <asp:ListItem Value="4">Procurement Officer/ Advisor</asp:ListItem>
-                        <asp:ListItem Value="5">Procurement Specialist</asp:ListItem>
-                        <asp:ListItem Value="6">Contract Manager</asp:ListItem>
-                        <asp:ListItem Value="7">Category Manager</asp:ListItem>
-                        <asp:ListItem Value="8">Procurement Manager/ Director</asp:ListItem>
+                         <asp:ListItem Value="0">Please select</asp:ListItem>
+                            <asp:ListItem Value="1">Purchasing Officer</asp:ListItem>
+                            <asp:ListItem Value="2">Procurement/ Purchasing Support</asp:ListItem>
+                            <asp:ListItem Value="3">Procurement/ Purchasing Analyst</asp:ListItem>
+                            <asp:ListItem Value="4">Procurement Officer/ Advisor</asp:ListItem>
+                            <asp:ListItem Value="5">Procurement Specialist</asp:ListItem>
+                            <asp:ListItem Value="6">Contract Manager</asp:ListItem>
+                            <asp:ListItem Value="7">Category Manager</asp:ListItem>
+                            <asp:ListItem Value="8">Procurement Manager/ Director</asp:ListItem>
                     </asp:DropDownList>
                 </td>
-                <td class="txtrht">Job level
+                <td class="txtrht">Experience
                 </td>
                 <td>
-                    <asp:DropDownList ID="ddlEditJobLevel" CssClass="styled" runat="server">
-                        <asp:ListItem Value="0">- Level of role best described as -</asp:ListItem>
-                        <asp:ListItem Value="1">Graduate</asp:ListItem>
-                        <asp:ListItem Value="2">Officer</asp:ListItem>
-                        <asp:ListItem Value="3">Advisor</asp:ListItem>
-                        <asp:ListItem Value="4">Senior advisor</asp:ListItem>
-                        <asp:ListItem Value="5">Operational Leader</asp:ListItem>
-                        <asp:ListItem Value="6">Director</asp:ListItem>
-                        <asp:ListItem Value="7">Executive Level</asp:ListItem>
-                    </asp:DropDownList>
+                   <asp:DropDownList ID="ddlExperience" class="styled" runat="server">
+                            <asp:ListItem Value="0">Please select ---</asp:ListItem>
+                            <asp:ListItem Value="1">Less than 1 year</asp:ListItem>
+                            <asp:ListItem Value="2">1 to 3 years</asp:ListItem>
+                            <asp:ListItem Value="3">3 to 5 years</asp:ListItem>
+                            <asp:ListItem Value="4">5 to 10 years</asp:ListItem>
+                            <asp:ListItem Value="5">10 to 15 years</asp:ListItem>
+                            <asp:ListItem Value="6">15 to 20 years</asp:ListItem>
+                            <asp:ListItem Value="7">More than 20 years</asp:ListItem>
+                        </asp:DropDownList>
                 </td>
             </tr>
-            <tr>
-                <td class="txtrht">Division
-                </td>
-                <td>
-                    <asp:TextBox name="txtDivision" ID="txtDivision" runat="server" MaxLength="100" />
-                </td>
-            </tr>
+            
             <tr>
                 <td class="txtrht">Password
                 </td>
@@ -113,50 +103,21 @@
                 <td>
                     <asp:TextBox name="txtEditPhone" ID="txtEditPhone" runat="server" MaxLength="100" />
                 </td>
-            </tr>
+            </tr>            
             <tr>
-                <td class="txtrht">Location
-                </td>
-                <td>
-                    <asp:DropDownList ID="ddlEditLocation" class="styled" runat="server">
-                        <asp:ListItem Value="0">Location</asp:ListItem>
-                        <asp:ListItem Value="1">Brisbane </asp:ListItem>
-                        <asp:ListItem Value="2">South West</asp:ListItem>
-                        <asp:ListItem Value="3">Sunshine Coast</asp:ListItem>
-                        <asp:ListItem Value="4">Gold Coast</asp:ListItem>
-                        <asp:ListItem Value="5">Fitzroy</asp:ListItem>
-                        <asp:ListItem Value="6">Mackay</asp:ListItem>
-                        <asp:ListItem Value="7">Northern</asp:ListItem>
-                        <asp:ListItem Value="8">North West</asp:ListItem>
-                        <asp:ListItem Value="9">Wide Bay-Burnett</asp:ListItem>
-                        <asp:ListItem Value="10">Far North Queensland</asp:ListItem>
-                        <asp:ListItem Value="11">Darling Downs</asp:ListItem>
-                        <asp:ListItem Value="12">Far North</asp:ListItem>
-                        <asp:ListItem Value="13">South West Queensland</asp:ListItem>
-                        <asp:ListItem Value="14">Northern Queensland</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-                <td class="txtrht">Position
-                </td>
-                <td>
-                    <input type="text" id="txtEditPosition" name="txtEditPosition" title="Position" maxlength="250"
-                        runat="server" class="text-box-2" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">Nature of the goods/services that you most commonly procure, or manage contracts
+                <td colspan="2">What is the nature of the goods/ services that you most commonly procure, or manage contracts for?
                 for?
                 </td>
                 <td colspan="2">
-                    <asp:DropDownList ID="ddlEditGoods" class="styled" runat="server">
-                        <asp:ListItem Value="0">Nature of the goods/services that you most commonly procure, or manage contracts for?</asp:ListItem>
-                        <asp:ListItem Value="1">Building Construction and Maintenance</asp:ListItem>
-                        <asp:ListItem Value="2">General Goods and Services</asp:ListItem>
-                        <asp:ListItem Value="3">ICT</asp:ListItem>
-                        <asp:ListItem Value="4">Medical </asp:ListItem>
-                        <asp:ListItem Value="5">Social Services</asp:ListItem>
-                        <asp:ListItem Value="6">Transport Infrastructure & Services</asp:ListItem>
-                    </asp:DropDownList>
+                   <asp:DropDownList ID="ddlNature" class="styled" runat="server">
+                            <asp:ListItem Value="0">Please select ---</asp:ListItem>
+                            <asp:ListItem Value="1">General Goods and Services</asp:ListItem>
+                            <asp:ListItem Value="2">ICT</asp:ListItem>
+                            <asp:ListItem Value="3">Medical / Health</asp:ListItem>
+                            <asp:ListItem Value="4">Social Services</asp:ListItem>
+                            <asp:ListItem Value="5">Transport Infrastructure & Services</asp:ListItem>
+                            <asp:ListItem Value="6">Building Construction and Maintenance</asp:ListItem>
+                        </asp:DropDownList>
                 </td>
             </tr>
             <tr>
@@ -313,8 +274,7 @@
                                         Style="height: 25px; width: 25px;" OnClientClick="return confirm('Are you sure you want to delete this record?');"
                                         CommandArgument='<%#Eval("testId") %>' CommandName="Delete" ToolTip="Delete"
                                         ImageUrl="~/webadmin/images/disapprove_icon.png" />
-                                    &nbsp; <a target="_blank" href="ShowSSAPdf.aspx?id=<%#Eval("emailLink") %>">
-                                        <img src="../innerimages/icon-pdf.gif" style="height: 25px; width: 25px;" alt="" /></a>
+                                  
                                     &nbsp;
                                 <asp:ImageButton ID="iBtnGraph" runat="server" CausesValidation="false" AlternateText="Graph"
                                     Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Graph"
@@ -341,7 +301,7 @@
         <table width="100%" border="0" cellspacing="1" cellpadding="1" class="tform">
             <tr>
                 <td colspan="6">
-                    <b>Leadership Assessment </b>
+                    <b>Procurement Evaloation</b>
                 </td>
             </tr>
             <tr>
@@ -349,16 +309,16 @@
             </tr>
             <tr>
                 <td colspan="4">
-                    <asp:DataGrid ID="grdBA" runat="server" AllowPaging="false" AllowSorting="false"
-                        AutoGenerateColumns="False" CssClass="grdMain" OnItemDataBound="grdBA_ItemDataBound"
-                        OnItemCommand="grdBA_ItemCommand" Width="100%" GridLines="None" PageSize="20">
+                    <asp:DataGrid ID="grdSga" runat="server" AllowPaging="false" AllowSorting="false"
+                        AutoGenerateColumns="False" CssClass="grdMain" OnItemDataBound="grdSga_ItemDataBound"
+                        OnItemCommand="grdSga_ItemCommand" Width="100%" GridLines="None" PageSize="20">
                         <HeaderStyle CssClass="gridHeader" />
                         <PagerStyle Mode="NumericPages" CssClass="pager" HorizontalAlign="Center" />
                         <ItemStyle CssClass="gridItem" />
                         <Columns>
                             <asp:BoundColumn DataField="name" ItemStyle-Width="18%" HeaderText="Name" HeaderStyle-Width="18%"
                                 SortExpression="name"></asp:BoundColumn>
-                            <asp:TemplateColumn ItemStyle-Width="12%" HeaderStyle-Width="12%" SortExpression="Marks"
+                            <asp:TemplateColumn ItemStyle-Width="10%" HeaderStyle-Width="10%" SortExpression="Marks"
                                 HeaderText="Marks">
                                 <ItemTemplate>
                                     <%#Eval("marks")%>
@@ -377,8 +337,7 @@
                                         Style="height: 25px; width: 25px;" OnClientClick="return confirm('Are you sure you want to delete this record?');"
                                         CommandArgument='<%#Eval("testId") %>' CommandName="Delete" ToolTip="Delete"
                                         ImageUrl="~/webadmin/images/disapprove_icon.png" />
-                                    &nbsp; <a target="_blank" href="ShowBAPdf.aspx?id=<%#Eval("emailLink") %>">
-                                        <img src="../innerimages/icon-pdf.gif" style="height: 25px; width: 25px;" alt="" /></a>
+                                   
                                     &nbsp;
                                 <asp:ImageButton ID="iBtnGraph" runat="server" CausesValidation="false" AlternateText="Graph"
                                     Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Graph"
@@ -441,8 +400,7 @@
                                         Style="height: 25px; width: 25px;" OnClientClick="return confirm('Are you sure you want to delete this record?');"
                                         CommandArgument='<%#Eval("testId") %>' CommandName="Delete" ToolTip="Delete"
                                         ImageUrl="~/webadmin/images/disapprove_icon.png" />
-                                    &nbsp; <a target="_blank" href="ShowCMAPdf.aspx?id=<%#Eval("emailLink") %>">
-                                        <img src="../innerimages/icon-pdf.gif" style="height: 25px; width: 25px;" alt="" /></a>&nbsp;
+                                 &nbsp;
                                 <asp:ImageButton ID="iBtnGraph" runat="server" CausesValidation="false" AlternateText="Graph"
                                     Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Graph"
                                     ToolTip="Graph" ImageUrl="~/webadmin/images/img-graph-icon.gif" />
@@ -468,7 +426,7 @@
         <table width="100%" border="0" cellspacing="1" cellpadding="1" class="tform">
             <tr>
                 <td colspan="4">
-                    <b>Negotiation Profile Assessment</b>
+                    <b>Contract Management Evaluation</b>
                 </td>
             </tr>
             <tr>
@@ -476,41 +434,46 @@
             </tr>
             <tr>
                 <td colspan="4">
-                    <asp:DataGrid ID="grdNP" runat="server" AllowPaging="false" AllowSorting="false"
-                        AutoGenerateColumns="False" CssClass="grdMain"
-                        OnItemDataBound="grdNP_ItemDataBound" OnItemCommand="grdNP_ItemCommand"
-                        Width="100%" GridLines="None" PageSize="20">
+                    <asp:DataGrid ID="grdCMK" runat="server" AllowPaging="false" AllowSorting="false"
+                        AutoGenerateColumns="False" CssClass="grdMain" OnItemDataBound="grdCMK_ItemDataBound"
+                        OnItemCommand="grdCMK_ItemCommand" Width="100%" GridLines="None" PageSize="20">
                         <HeaderStyle CssClass="gridHeader" />
                         <PagerStyle Mode="NumericPages" CssClass="pager" HorizontalAlign="Center" />
                         <ItemStyle CssClass="gridItem" />
                         <Columns>
-                            <asp:BoundColumn DataField="name" ItemStyle-Width="15%" HeaderText="Name" HeaderStyle-Width="15%" SortExpression="name"></asp:BoundColumn>
-
-                            <asp:BoundColumn DataField="email" HeaderText="Email" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="email"></asp:BoundColumn>
-
-                            <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Marks" HeaderText="Marks">
+                            <asp:BoundColumn DataField="name" ItemStyle-Width="18%" HeaderText="Name" HeaderStyle-Width="18%"
+                                SortExpression="name"></asp:BoundColumn>
+                            <asp:TemplateColumn ItemStyle-Width="12%" HeaderStyle-Width="12%" SortExpression="Marks"
+                                HeaderText="Marks">
                                 <ItemTemplate>
                                     <%#Eval("marks")%>
                                 </ItemTemplate>
                             </asp:TemplateColumn>
-
-                            <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate" HeaderText="Assesment<br>Date">
+                            <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate"
+                                HeaderText="Assesment Date">
                                 <ItemTemplate>
                                     <asp:Label ID="lblAssesmentDate" runat="server"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateColumn>
-                            <asp:TemplateColumn ItemStyle-Width="22%" HeaderStyle-Width="22%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderText="Action">
+                            <asp:TemplateColumn ItemStyle-Width="24%" HeaderStyle-Width="24%" ItemStyle-HorizontalAlign="Center"
+                                HeaderStyle-HorizontalAlign="Center" HeaderText="Action">
                                 <ItemTemplate>
-                                    <asp:ImageButton ID="iBtnDelete" runat="server" CausesValidation="false" AlternateText="Delete" Style="height: 25px; width: 25px;" OnClientClick="return confirm('Are you sure you want to delete this record?');" CommandArgument='<%#Eval("testId") %>' CommandName="Delete" ToolTip="Delete" ImageUrl="~/webadmin/images/disapprove_icon.png" />
+                                    <asp:ImageButton ID="iBtnDelete" runat="server" CausesValidation="false" AlternateText="Delete"
+                                        Style="height: 25px; width: 25px;" OnClientClick="return confirm('Are you sure you want to delete this record?');"
+                                        CommandArgument='<%#Eval("testId") %>' CommandName="Delete" ToolTip="Delete"
+                                        ImageUrl="~/webadmin/images/disapprove_icon.png" />
+                                 &nbsp;
+                                <asp:ImageButton ID="iBtnGraph" runat="server" CausesValidation="false" AlternateText="Graph"
+                                    Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Graph"
+                                    ToolTip="Graph" ImageUrl="~/webadmin/images/img-graph-icon.gif" />
                                     &nbsp;
-                                                            <a target="_blank" href="ShowNPPdf.aspx?id=<%#Eval("testId") %>&userId=<%#Eval("userId") %>">
-                                                                <img src="../innerimages/icon-pdf.gif" style="height: 25px; width: 25px;" alt="" /></a>
+                                <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" AlternateText="Edit"
+                                    Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Edit"
+                                    ToolTip="Edit" ImageUrl="~/webadmin/images/edit.png" />
                                     &nbsp;
-                                                            <asp:ImageButton ID="iBtnGraph" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Graph" ToolTip="Graph" ImageUrl="~/webadmin/images/img-graph-icon.gif" />
-                                    &nbsp;
-                                                            <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" AlternateText="Edit" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Edit" ToolTip="Edit" ImageUrl="~/webadmin/images/edit.png" />
-                                    &nbsp;
-                                                            <asp:ImageButton ID="iBtnDrill" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 30px; width: 30px;" CommandArgument='<%#Eval("testId") %>' CommandName="drilldown" ToolTip="drilldown" ImageUrl="~/webadmin/images/drilldown.png" />
+                                <asp:ImageButton ID="iBtnDrill" runat="server" CausesValidation="false" AlternateText="Graph"
+                                    Style="height: 30px; width: 30px;" CommandArgument='<%#Eval("testId") %>' CommandName="drilldown"
+                                    ToolTip="drilldown" ImageUrl="~/webadmin/images/drilldown.png" />
                                 </ItemTemplate>
                             </asp:TemplateColumn>
                         </Columns>

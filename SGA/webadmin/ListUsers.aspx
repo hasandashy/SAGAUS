@@ -196,8 +196,8 @@
                                                                         <Columns>
                                                                             <asp:TemplateColumn HeaderText="Name" SortExpression="firstname" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Left" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Width="10%">
                                                                                 <ItemTemplate>
-                                                                                    <%--<a href="UserDetails.aspx?Id=<%#Eval("Id") %>&KeepThis=true&TB_iframe=true&height=500&width=1070" class="thickbox"><%# Eval("firstname") +" "+ Eval("lastname") %></a>--%>
-                                                                                    <a href="#"><%# Eval("firstname") +" "+ Eval("lastname") %></a>
+                                                                                    <a href="UserDetails.aspx?Id=<%#Eval("Id") %>&KeepThis=true&TB_iframe=true&height=500&width=1070" class="thickbox"><%# Eval("firstname") +" "+ Eval("lastname") %></a>
+                                                                                   <%-- <a href="#"><%# Eval("firstname") +" "+ Eval("lastname") %></a>--%>
                                                                                 </ItemTemplate>
                                                                             </asp:TemplateColumn>
                                                                             <asp:TemplateColumn HeaderText="Email" SortExpression="email" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Left" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Width="10%">

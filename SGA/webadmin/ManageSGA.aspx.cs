@@ -33,7 +33,7 @@ namespace SGA.webadmin
 
         private void BindQuestions()
         {
-            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetQuestions", new SqlParameter[]
+            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSgaQuestions", new SqlParameter[]
 			{
 				new SqlParameter("@topicIds", this.hdSelectIds.Value)
 			});
@@ -52,11 +52,10 @@ namespace SGA.webadmin
         {
             if (this.Page.IsValid)
             {
-                SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateTopicDetail", new SqlParameter[]
+                SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateSgaTopicDetail", new SqlParameter[]
 				{
 					new SqlParameter("@topicId", this.imgSave.CommandArgument.ToString()),
-					new SqlParameter("@topicTitle", this.txttopicTitle.Value.Trim()),
-					new SqlParameter("@topicDesc", this.txtDescription.Value.Trim())
+					new SqlParameter("@topicName", this.txttopicTitle.Value.Trim())
 				});
                 this.pnlTopics.Visible = true;
                 this.pnlTopicsEdit.Visible = false;
@@ -95,9 +94,8 @@ namespace SGA.webadmin
                 SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateSGAQuestion", new SqlParameter[]
 				{
 					new SqlParameter("@questionId", this.imgUpdateQuestion.CommandArgument.ToString()),
-					new SqlParameter("@questionText", this.txtQuestion.Text.Trim()),
-					new SqlParameter("@hintText", this.txtHintText.Value.Trim()),
-					new SqlParameter("@hintWord", this.txtHintWord.Value.Trim())
+					new SqlParameter("@questionText", this.txtQuestion.Text.Trim())
+
 				});
                 this.pnlQuestions.Visible = true;
                 this.pnlQuestionsEdit.Visible = false;
@@ -113,8 +111,7 @@ namespace SGA.webadmin
 				{
 					new SqlParameter("@optionId", this.ImageButton1.CommandArgument.ToString()),
 					new SqlParameter("@optionText", this.txtOptionText.Value.Trim()),
-					new SqlParameter("@optionValue", this.txtOptionValue.Value.Trim()),
-					new SqlParameter("@optionLevel", this.txtOptionLevel.Value.Trim())
+					new SqlParameter("@optionMark", this.txtOptionValue.Value.Trim())
 				});
                 this.BindOptions();
                 this.pnlOptions.Visible = true;
@@ -138,7 +135,7 @@ namespace SGA.webadmin
         {
             if (e.CommandName == "Edit")
             {
-                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetTopicDetail", new SqlParameter[]
+                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSgaTopicDetail", new SqlParameter[]
 				{
 					new SqlParameter("@topicId", e.CommandArgument)
 				});
@@ -147,8 +144,8 @@ namespace SGA.webadmin
                     if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                     {
                         this.imgSave.CommandArgument = e.CommandArgument.ToString();
-                        this.txttopicTitle.Value = ds.Tables[0].Rows[0]["topicTitle"].ToString();
-                        this.txtDescription.Value = ds.Tables[0].Rows[0]["topicDescription"].ToString();
+                        this.txttopicTitle.Value = ds.Tables[0].Rows[0]["topicName"].ToString();
+                        //this.txtDescription.Value = ds.Tables[0].Rows[0]["topicDescription"].ToString();
                         this.pnlTopics.Visible = false;
                         this.pnlTopicsEdit.Visible = true;
                     }
@@ -160,7 +157,7 @@ namespace SGA.webadmin
         {
             if (e.CommandName == "Edit")
             {
-                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetQuestionDetail", new SqlParameter[]
+                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSgaQuestionDetail", new SqlParameter[]
 				{
 					new SqlParameter("@questionId", e.CommandArgument)
 				});
@@ -170,8 +167,6 @@ namespace SGA.webadmin
                     {
                         this.imgUpdateQuestion.CommandArgument = e.CommandArgument.ToString();
                         this.txtQuestion.Text = ds.Tables[0].Rows[0]["questionText"].ToString();
-                        this.txtHintText.Value = ds.Tables[0].Rows[0]["hintText"].ToString();
-                        this.txtHintWord.Value = ds.Tables[0].Rows[0]["hintWord"].ToString();
                         this.pnlQuestions.Visible = false;
                         this.pnlQuestionsEdit.Visible = true;
                     }
@@ -183,7 +178,7 @@ namespace SGA.webadmin
         {
             if (e.CommandName == "Edit")
             {
-                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetOptionDetail", new SqlParameter[]
+                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSgaOptionDetail", new SqlParameter[]
 				{
 					new SqlParameter("@optionId", e.CommandArgument)
 				});
@@ -193,8 +188,7 @@ namespace SGA.webadmin
                     {
                         this.ImageButton1.CommandArgument = e.CommandArgument.ToString();
                         this.txtOptionText.Value = ds.Tables[0].Rows[0]["optionText"].ToString();
-                        this.txtOptionValue.Value = ds.Tables[0].Rows[0]["optionValue"].ToString();
-                        this.txtOptionLevel.Value = ds.Tables[0].Rows[0]["optionLevel"].ToString();
+                        this.txtOptionValue.Value = ds.Tables[0].Rows[0]["optionMark"].ToString();
                         this.pnlOptions.Visible = false;
                         this.pnlOptionsEdit.Visible = true;
                     }

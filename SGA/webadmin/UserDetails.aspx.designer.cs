@@ -76,22 +76,13 @@ namespace SGA.webadmin {
         protected global::System.Web.UI.WebControls.DropDownList ddlEditJobRole;
         
         /// <summary>
-        /// ddlEditJobLevel control.
+        /// ddlExperience control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEditJobLevel;
-        
-        /// <summary>
-        /// txtDivision control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDivision;
+        protected global::System.Web.UI.WebControls.DropDownList ddlExperience;
         
         /// <summary>
         /// txtEditPassword control.
@@ -112,31 +103,13 @@ namespace SGA.webadmin {
         protected global::System.Web.UI.WebControls.TextBox txtEditPhone;
         
         /// <summary>
-        /// ddlEditLocation control.
+        /// ddlNature control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEditLocation;
-        
-        /// <summary>
-        /// txtEditPosition control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEditPosition;
-        
-        /// <summary>
-        /// ddlEditGoods control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEditGoods;
+        protected global::System.Web.UI.WebControls.DropDownList ddlNature;
         
         /// <summary>
         /// txtEditExiryDate control.
@@ -229,13 +202,13 @@ namespace SGA.webadmin {
         protected global::System.Web.UI.WebControls.DataGrid grdSSA;
         
         /// <summary>
-        /// grdBA control.
+        /// grdSga control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataGrid grdBA;
+        protected global::System.Web.UI.WebControls.DataGrid grdSga;
         
         /// <summary>
         /// grdCMA control.
@@ -247,12 +220,12 @@ namespace SGA.webadmin {
         protected global::System.Web.UI.WebControls.DataGrid grdCMA;
         
         /// <summary>
-        /// grdNP control.
+        /// grdCMK control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataGrid grdNP;
+        protected global::System.Web.UI.WebControls.DataGrid grdCMK;
     }
 }

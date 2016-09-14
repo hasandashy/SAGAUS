@@ -34,7 +34,7 @@
                         <table width="99%" border="0" align="right" cellpadding="0" cellspacing="0" class="panbox">
                             <tr>
                                 <td class="hd26">
-                                    Contract Management Knowledge Assessment
+                                    Contract Management Evaluation
                                 </td>
                             </tr>
                             <tr>
@@ -277,13 +277,8 @@
                                                                         <%#Eval("optionText").ToString()%>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateColumn>
-                                                                <asp:TemplateColumn HeaderText="Option level" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="55%"
-                                                                    HeaderStyle-Width="55%">
-                                                                    <ItemTemplate>
-                                                                        <%#Eval("optionLevel").ToString()%>
-                                                                    </ItemTemplate>
-                                                                </asp:TemplateColumn>
-                                                                <asp:BoundColumn DataField="optionValue" HeaderText="Option value" ItemStyle-HorizontalAlign="Left"
+                                                             
+                                                                <asp:BoundColumn DataField="optionMark" HeaderText="Option value" ItemStyle-HorizontalAlign="Left"
                                                                     ItemStyle-Width="12%" HeaderStyle-Width="12%"></asp:BoundColumn>
                                                                 
                                                                 
@@ -315,17 +310,7 @@
                                                                 </td>
                                                                 
                                                             </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    Option Level
-                                                                </td>
-                                                                <td colspan="3">
-                                                                    <input type="text" name="txtOptionLevel" id="txtOptionLevel" runat="server"  maxlength="20" />
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" SetFocusOnError="true"
-                                                                        CssClass="error" ControlToValidate="txtOptionLevel" ValidationGroup="addOptions" Text="*"></asp:RequiredFieldValidator>
-                                                                </td>
-                                                                
-                                                            </tr>
+                                                       
                                                             <tr>
                                                                 <td class="txtrht">
                                                                     Option value
@@ -361,3 +346,4 @@
             </table>
         </td>
     </tr>
+    </asp:Content>
