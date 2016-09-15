@@ -12,7 +12,7 @@
                         <article id="pnlTNA" runat="server" visible="false" class="info-box-shdw">
 							<div class="icon"><img src="../innerimages/img-skills-self-assessment.gif" alt="Skills Self Assessment" /></div>
 							<div class="head">Procurement Skills Self Assessment</div>
-							<div class="desc">An online self-assessment survey designed to explore the skills required to perform the end-to-end procurement function. It focuses on 8 phases of the procurement process and asks you to rate yourself across 72 capabilities in total.</div>
+							<div class="desc">This is a self-assessment of your Procurement skills. You will be guided through eight dimensions of Contract Management as you assess yourself on 72 questions. Allow for 40 – 60 minutes to complete this self-assessment.</div>
 							<div class="info">
 							<asp:HyperLink ID="hylTna" runat="server"></asp:HyperLink></div>
 							<div class="clear"></div>
@@ -20,7 +20,7 @@
 						<article id="pnlSga" runat="server" visible="false" class="info-box-shdw">
 							<div class="icon"><img src="../innerimages/img-category-management-challenge.gif" alt="Procurement Knowledge Evaluation" /></div>
 							<div class="head">Procurement Knowledge Evaluation</div>
-							<div class="desc">This assessment focuses on the skills required to perform procurement. It focuses on eight dimensions typically used in an end-to-end procurement process. For each dimension you will be asked nine questions.</div>
+							<div class="desc">This is an evaluation of your Procurement knowledge. You will be guided through eight dimensions of Procurement and you will be asked nine multiple choice questions for each dimension. This is a timed assessment and at 60 minutes the assessment will close.</div>
 							<div class="info">
 					        <asp:HyperLink ID="hylSga" runat="server"></asp:HyperLink></div>
 							<div class="clear"></div>
@@ -30,7 +30,7 @@
                         <article id="pnlCMA" runat="server" visible="false" class="info-box-shdw">
 							<div class="icon"><img src="../innerimages/img-contract-management-assessment.png" alt="Contract Management Assessment" /></div>
 							<div class="head">Contract Management Self Assessment</div>
-							<div class="desc">An online self-assessment survey designed to explore the capability required to perform commercial contract management. Based on your responses to 72 questions, across the 8 categories of contract management, a profile of your capability will be built and recommendations for future development will be made.</div>
+							<div class="desc">This is a self-assessment of your Contract Management skills. You will be guided through eight dimensions of Contract Management as you assess yourself on 72 questions. Allow for 40 – 60 minutes to complete this self-assessment.</div>
 							<div class="info">
 							<asp:HyperLink ID="hylCMA" runat="server"></asp:HyperLink></div>
 							<div class="clear"></div>
@@ -39,9 +39,17 @@
                          <article id="pnlCMK" runat="server" visible="false" class="info-box-shdw">
 							<div class="icon"><img src="../innerimages/img-contract-management-assessment.png" alt="Contract Management Assessment" /></div>
 							<div class="head">Contract Management Knowledge Evaluation</div>
-							<div class="desc">This assessment targets contract and commercial managers. The diagnostic profiles capability in managing suppliers and contracts. The feedback uses 70:20:10 framework for extending traditional learning into the workplace to support you in managing commercial contracts more effectively. </div>
+							<div class="desc">This is an evaluation of your Contract Management knowledge. You will be guided through eight dimensions of Contract Management and you will be asked nine multiple choice questions for each dimension. This is a timed assessment and at 60 minutes the assessment will close. </div>
 							<div class="info">
 							<asp:HyperLink ID="hylCMK" runat="server"></asp:HyperLink></div>
+							<div class="clear"></div>
+						</article>
+                          <article id="pnlCAA" runat="server" visible="false" class="info-box-shdw">
+							<div class="icon"><img src="../innerimages/img-contract-management-assessment.png" alt="Commercial Awareness Assessment" /></div>
+							<div class="head">Commercial Awareness Assessment</div>
+							<div class="desc">This is an evaluation of commercial awareness. You will be guided through five scenarios and asked four multiple-choice questions for each. This is a timed assessment and at 60 minutes the assessment will close. </div>
+							<div class="info">
+							<asp:HyperLink ID="hylCAA" runat="server"></asp:HyperLink></div>
 							<div class="clear"></div>
 						</article>
 

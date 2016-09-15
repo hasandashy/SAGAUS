@@ -10,105 +10,123 @@
 namespace SGA.tna {
     
     
-    public partial class _default {
+    public partial class commercial_awareness_assessment_test {
         
         /// <summary>
-        /// lblName control.
+        /// Cronometro1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblName;
+        protected global::Flanders.Componentes.Cronometro Cronometro1;
         
         /// <summary>
-        /// pnlTNA control.
+        /// pgNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlTNA;
+        protected global::System.Web.UI.WebControls.HiddenField pgNumber;
         
         /// <summary>
-        /// hylTna control.
+        /// rptrTopics control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hylTna;
+        protected global::System.Web.UI.WebControls.Repeater rptrTopics;
         
         /// <summary>
-        /// pnlSga control.
+        /// lblTopic control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlSga;
+        protected global::System.Web.UI.WebControls.Label lblTopic;
         
         /// <summary>
-        /// hylSga control.
+        /// lblDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hylSga;
+        protected global::System.Web.UI.WebControls.Label lblDescription;
         
         /// <summary>
-        /// pnlCMA control.
+        /// hdCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlCMA;
+        protected global::System.Web.UI.WebControls.HiddenField hdCount;
         
         /// <summary>
-        /// hylCMA control.
+        /// parentRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hylCMA;
+        protected global::System.Web.UI.WebControls.Repeater parentRepeater;
         
         /// <summary>
-        /// pnlCMK control.
+        /// lblPercentage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlCMK;
+        protected global::System.Web.UI.WebControls.Label lblPercentage;
         
         /// <summary>
-        /// hylCMK control.
+        /// lnkPrev control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hylCMK;
+        protected global::System.Web.UI.WebControls.Button lnkPrev;
         
         /// <summary>
-        /// pnlCAA control.
+        /// lnkNext control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlCAA;
+        protected global::System.Web.UI.WebControls.Button lnkNext;
         
         /// <summary>
-        /// hylCAA control.
+        /// btnSubmitNext control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hylCAA;
+        protected global::System.Web.UI.WebControls.Button btnSubmitNext;
+        
+        /// <summary>
+        /// btnFinal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFinal;
+        
+        /// <summary>
+        /// btnSubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
     }
 }

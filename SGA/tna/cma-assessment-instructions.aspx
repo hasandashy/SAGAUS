@@ -70,7 +70,7 @@
 							<p class="txt16-bold">You are about to complete an evaluation of your commercial contract management capability. The aim of this exercise is to provide an independent assessment of your capabilities as they stand today.</p>
 							<p>&nbsp;</p>
 							<p class="txt30">01</p>
-							<p>This assessment focuses on the capabilities required to perform commercial contract management. It focuses on the eight underpinning capabilities driving effective commercial contract management. You will be presented with a series of scenarios designed to explore your capability in each area.</p>
+							<p>This assessment focuses on eight underpinning capabilities that drive effective contract management. They are:</p>
 							<p>&nbsp;</p>
 							<p class="txt16-bold">The eight capabilities are:</p>
 							<div class="step1">
@@ -85,13 +85,15 @@
 								<p>7.	Managing Risk</p>
 								<p>8.	Commercial Awareness</p>
 							</div>
+                            <p>&nbsp;</p>
+                            <p>As you work through the assessment you may find themes that are not directly relevant to your current role. This is likely to happen for many people as this diagnostic considers a broad range of procurement capabilities. It has purposefully been designed not to be role specific, instead it seeks to understand the South Australian Government procurement capability as a whole.</p>
 							<div class="clear"></div>
 							<hr class="divider-line" />
 							<p class="txt30">02</p>
-							<p>Before you start the assessment you will be taken to your profile where we ask you several key questions regarding your role and your experience. This provides the context for your assessment. You can edit or update this information at any time by clicking 'My Profile' at the top of the page.</p>
+							<p>For each Contract Management dimension you will be asked to assess yourself on nine specific capabilities. A scoring guide is provided at the top of the Assessment page that you can refer to when assessing yourself.</p>
 							<hr class="divider-line" />
 							<p class="txt30">03</p>
-							<p>This assessment focuses on the capability required to perform commercial contract management and based on your responses to 72 questions, both profiles your current capability and provides recommendations for future development. On completion of the assessment you will receive a PDF report of your results by email. You can use this report for your own records and/or to facilitate a discussion with your manager.</p>
+							<p>For each statement, click the radio button that represents your level of skill for each (0 Novice – 7 Expert). Once you have completed each Dimension, click ’NEXT’ to be taken to the next Dimension. </p>
 							<p>&nbsp;</p>
 							<p>&nbsp;</p>
                            

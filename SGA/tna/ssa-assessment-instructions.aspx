@@ -74,7 +74,7 @@
 							<p class="txt16-bold">You are about to complete a self-assessment of your procurement skills. </p>
 							<p>&nbsp;</p>
 							<p class="txt30">01</p>
-							<p>This self-assessment will explore the skills required to perform the end-to-end procurement function. It focuses on 8 phases of the procurement process and asks you to rate yourself across 72 capabilities in total. </p>
+							<p>This assessment focuses on eight underpinning capabilities that drive effective Procurement. They are: </p>
 							<p>&nbsp;</p>
 							<p class="txt16-bold">The 8 phases are:</p>
 							<div class="step1">
@@ -89,13 +89,16 @@
 								<p>7. Supplier Relationship Management</p>
 								<p>8. Strategy Refresh</p>
 							</div>
+                             <p>&nbsp;</p>
+                            <p>As you work through the assessment you may find themes that are not directly relevant to your current role. This is likely to happen for many people as this diagnostic considers a broad range of procurement capabilities. It has purposefully been designed not to be role specific, instead it seeks to understand the South Australian Government procurement capability as a whole.</p>
+							
 							<div class="clear"></div>
 							<hr class="divider-line" />
 							<p class="txt30">02</p>
-							<p>Please allow for around 30-45 minutes to complete your assessment. The assessment must be completed in one-sitting - if you do not complete the assessment to the end, you will need to start it again. It is therefore recommended that you complete this in a quiet space with no interruptions. </p>
+							<p>For each Procurement dimension you will be asked to assess yourself on nine specific capabilities. A scoring guide is provided at the top of the Assessment page that you can refer to when assessing yourself. </p>
 							<hr class="divider-line" />
 							<p class="txt30">03</p>
-							<p>Once you complete the Training Needs Analysis you will receive an individual report with an assessment of your capability across the 8 phases of the procurement process. You will also receive your  Critical Skills Boost plan which will inform you on the e-Learning and workshop recommendation most relevant for you. </p>
+							<p>For each statement, click the radio button that represents your level of skill for each (0 Novice – 7 Expert). Once you have completed each Dimension, click ’NEXT’ to be taken to the next Dimension.  </p>
 							<p>&nbsp;</p>
 							<p>&nbsp;</p>
                            

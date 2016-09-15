@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/tnaMaster.Master"  AutoEventWireup="true" CodeBehind="my-results-reports-cmk.aspx.cs" Inherits="SGA.tna.my_results_reports_cmk" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/tnaMaster.Master" AutoEventWireup="true" CodeBehind="my-results-reports-caa.aspx.cs" Inherits="SGA.tna.my_results_reports_caa" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <script type="text/javascript" src="../js/ddaccordion.js"></script>
 <script type="text/javascript" src="../js/ddaccordion-menu.js"></script>
@@ -25,7 +25,7 @@
 					</section>
 					<section class="my-result-box">
 						<article class="breadcrumb">
-							<a href="#">Report Centre</a>&nbsp; &gt; &nbsp;<a href="#">Contract Management Assessment Results</a>&nbsp; <span>&gt; &nbsp;Reports</span>
+							<a href="#">Report Centre</a>&nbsp; &gt; &nbsp;<a href="#">Commercial Awareness Assessment Results</a>&nbsp; <span>&gt; &nbsp;Reports</span>
 						</article>
 						<p>&nbsp;</p>
 						<p>&nbsp;</p>
@@ -196,7 +196,7 @@
                         $.ajax({
                             type: "POST",
                             async: false,
-                            url: "my-results-reports-cmk.aspx/EmailResultBack",
+                            url: "my-results-reports-caa.aspx/EmailResultBack",
                             data: JSON.stringify({ 'testIds': specification }),
                             dataType: "json",
                             contentType: "application/json; charset=utf-8",
@@ -213,6 +213,3 @@
                     });
                  </script>
 </asp:Content>
-
-
-
