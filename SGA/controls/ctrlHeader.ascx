@@ -12,7 +12,7 @@
 		<ul>
 			<li><a href="/tna/default.aspx">Home</a></li>
 			<li><a href="/tna/MyProfile.aspx">My Profile</a></li>
-            <li><a href="/tna/my-results-reports-ssa.aspx">My Results</a></li>
+            <li><a href="/tna/my-results-reports-caa.aspx">My Results</a></li>
 			<li><a href="/tna/help.aspx">Help</a></li>
 			<li><asp:LinkButton ID="lnkLogout" runat="server" CausesValidation="false" 
                   Text="Log out" onclick="lnkLogout_Click"  ></asp:LinkButton></li>

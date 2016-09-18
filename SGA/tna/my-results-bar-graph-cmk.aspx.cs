@@ -47,6 +47,7 @@ namespace SGA.tna
                 this.spCMA.Attributes["class"] = (this.isCMAResult ? "" : "lock");
                 this.spCMK.Attributes["class"] = (this.isCmkResult ? "" : "lock");
                 this.spPKE.Attributes["class"] = (this.isPkeResult ? "" : "lock");
+                this.spCaa.Attributes["class"] = (this.isCaaResult ? "" : "lock");
 
                 base.Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
                 if (this.Session["cmkTestId"] != null)
@@ -56,7 +57,7 @@ namespace SGA.tna
 						new SqlParameter("@userId", SGACommon.LoginUserInfo.userId),
 						new SqlParameter("@testId", this.Session["cmkTestId"].ToString())
 					};
-                    this.lblPercentage.Text = System.Convert.ToDecimal(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetCMKPrecentage", param)).ToString("#.##");
+                    //this.lblPercentage.Text = System.Convert.ToDecimal(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetCMKPrecentage", param)).ToString("#.##");
                     this.graph1.testId = System.Convert.ToInt32(this.Session["cmkTestId"].ToString());
                 }
                 else

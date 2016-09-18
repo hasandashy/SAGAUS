@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contract_Management_TNA.aspx.cs" Inherits="SGA.Contract_Management_TNA" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 <!-- Banner start -->
-				<div class="banner-inner-ssa">
+				<div class="banner-inner-cma">
 					<div class="banner-cnt">
 						<p class="banner-heading"><span>Contract Management Self Assessment</span></p>
 						

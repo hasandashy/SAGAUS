@@ -51,6 +51,7 @@ namespace SGA.tna
                 this.spCMA.Attributes["class"] = (this.isCMAResult ? "" : "lock");
                 this.spCMK.Attributes["class"] = (this.isCmkResult ? "" : "lock");
                 this.spPKE.Attributes["class"] = (this.isPkeResult ? "" : "lock");
+                this.spCaa.Attributes["class"] = (this.isCaaResult ? "" : "lock");
 
                 this._name = SGACommon.GetName();
                 base.Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));

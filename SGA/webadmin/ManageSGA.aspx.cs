@@ -33,7 +33,7 @@ namespace SGA.webadmin
 
         private void BindQuestions()
         {
-            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSgaQuestions", new SqlParameter[]
+            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSgaQuestionsAdmin", new SqlParameter[]
 			{
 				new SqlParameter("@topicIds", this.hdSelectIds.Value)
 			});

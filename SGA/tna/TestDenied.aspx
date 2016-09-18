@@ -2,9 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <article id="container">
 					<section class="welcome">
-						<p class="title40-orange"><asp:Label ID="lblName" runat="server"></asp:Label>
+						<p class="title40-orange" style="text-align:center;"><asp:Label ID="lblName" runat="server"></asp:Label>
 						</p>
-						<p class="title40">Test Restricted</p>
+						<p class="title40" style="text-align:center;">Test Restricted</p>
 						<p>Your assessment setting for this test is restricted.</p>
 					</section>
 					<div class="dot-line">&nbsp;</div>

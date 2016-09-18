@@ -248,7 +248,7 @@ namespace SGA
 		}
 
 		[WebMethod]
-		public static string RegisterUser(string fname, string lname, string email, int jobId, int jobLevel, int agencyId)
+		public static string RegisterUser(string fname, string lname, string email, int jobId, int agencyId)
 		{
 			SqlParameter[] param = new SqlParameter[]
 			{
@@ -268,7 +268,7 @@ namespace SGA
 					string plainpassword = SGACommon.generatePassword(8);
 					string passwordSalt = SGACommon.CreateSalt(5);
 					string passwordHash = SGACommon.CreatePasswordHash(plainpassword, passwordSalt);
-					param = new SqlParameter[12];
+					param = new SqlParameter[11];
 					param[0] = new SqlParameter("@action", SqlDbType.VarChar);
 					param[0].Value = "Insert";
 					param[1] = new SqlParameter("@password", SqlDbType.VarChar);
@@ -288,11 +288,9 @@ namespace SGA
 					param[8] = new SqlParameter("@jobRole", SqlDbType.Int);
 					param[8].Value = jobId;
 					param[9] = new SqlParameter("@isAdminAdded", SqlDbType.Bit);
-					param[9].Value = 0;
-					param[10] = new SqlParameter("@jobLevel", SqlDbType.Int);
-					param[10].Value = jobLevel;				
-					param[11] = new SqlParameter("@agencyId", SqlDbType.Int);
-					param[11].Value = agencyId;
+					param[9].Value = 0;		
+					param[10] = new SqlParameter("@agencyId", SqlDbType.Int);
+					param[10].Value = agencyId;
 					int result = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spUserMaster", param));
 					if (result == 0)
 					{

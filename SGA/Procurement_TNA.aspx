@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Procurement_TNA.aspx.cs" Inherits="SGA.Procurement_TNA" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 <!-- Banner start -->
-				<div class="banner-inner-pke">
+				<div class="banner-inner-ssa">
 					<div class="banner-cnt">
 						<p class="banner-heading"><span>Procurement Self Assessment</span></p>
 						

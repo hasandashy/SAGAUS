@@ -111,7 +111,7 @@
                                 type: "POST",
                                 async: false,
                                 url: "About_us.aspx/RegisterUser",
-                                data: JSON.stringify({ 'fname': name, 'lname': surname, 'email': email, 'jobId': $("#<%=ddlJobRole.ClientID %>").val(), 'jobLevel': 1, 'agencyId': agency }),
+                                data: JSON.stringify({ 'fname': name, 'lname': surname, 'email': email, 'jobId': $("#<%=ddlJobRole.ClientID %>").val(), 'agencyId': agency }),
                                 dataType: "json",
                                 contentType: "application/json; charset=utf-8",
                                 success: function (data) {
@@ -146,7 +146,7 @@
             <li>
                 <img src="images/img-banner-01.jpg" /></li>
             <li>
-                <img src="images/img-banner-06.jpg" /></li>
+                <img src="images/img-banner-06.png" /></li>
         </ul>
         <img src="images/banner-bottom.png" alt="banner" style="width: 100%; height: 100%" />
     </div>

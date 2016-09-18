@@ -45,7 +45,7 @@ namespace SGA.tna
             this.spCMA.Attributes["class"] = (this.isCMAResult ? "" : "lock");
             this.spCMK.Attributes["class"] = (this.isCmkResult ? "" : "lock");
             this.spPKE.Attributes["class"] = (this.isPkeResult ? "" : "lock");
-
+            this.spCaa.Attributes["class"] = (this.isCaaResult ? "" : "lock");
 
             if (!base.IsPostBack)
             {
@@ -57,7 +57,7 @@ namespace SGA.tna
 						new SqlParameter("@userId", SGACommon.LoginUserInfo.userId),
 						new SqlParameter("@testId", this.Session["sgaTestId"].ToString())
 					};
-                    this.lblPercentage.Text = System.Convert.ToDecimal(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetPrecentage", param)).ToString("#.##") + " %";
+                    //this.lblPercentage.Text = System.Convert.ToDecimal(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetPrecentage", param)).ToString("#.##") + " %";
                     this.graph1.testId = System.Convert.ToInt32(this.Session["sgaTestId"].ToString());
                 }
                 else

@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contract_Knowledge_Evaluation.aspx.cs" Inherits="SGA.Contract_Knowledge_Evaluation" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <!-- Banner start -->
-				<div class="banner-inner-ssa">
+				<div class="banner-inner-cke">
 					<div class="banner-cnt">
 						<p class="banner-heading"><span>Contract Management Knowledge Evaluation</span></p>
 						<div class="banner-txt">

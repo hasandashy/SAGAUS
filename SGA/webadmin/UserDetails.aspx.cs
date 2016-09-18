@@ -332,7 +332,7 @@ namespace SGA.webadmin
         private void BindSGATest()
         {
             string strOrderBy = " testId desc  ";
-            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageSSATest", new SqlParameter[]
+            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageSGATest", new SqlParameter[]
             {
                 new SqlParameter("@firstname", ""),
                 new SqlParameter("@lastname", ""),
@@ -341,8 +341,8 @@ namespace SGA.webadmin
                 new SqlParameter("@dateTo", ""),
                 new SqlParameter("@orderBy", strOrderBy)
             });
-            this.grdSSA.DataSource = ds;
-            this.grdSSA.DataBind();
+            this.grdSga.DataSource = ds;
+            this.grdSga.DataBind();
         }
 
         protected void grdSga_ItemDataBound(object sender, DataGridItemEventArgs e)
@@ -370,7 +370,7 @@ namespace SGA.webadmin
                 {
                     new SqlParameter("@testId", e.CommandArgument)
                 });
-                this.BindSSATest();
+                this.BindSGATest();
             }
             else if (e.CommandName == "Graph")
             {
@@ -455,8 +455,8 @@ namespace SGA.webadmin
                 new SqlParameter("@dateTo", ""),
                 new SqlParameter("@orderBy", strOrderBy)
             });
-            this.grdCMA.DataSource = ds;
-            this.grdCMA.DataBind();
+            this.grdCMK.DataSource = ds;
+            this.grdCMK.DataBind();
         }
 
         protected void grdCMK_ItemDataBound(object sender, DataGridItemEventArgs e)
@@ -484,7 +484,7 @@ namespace SGA.webadmin
                 {
                     new SqlParameter("@testId", e.CommandArgument)
                 });
-                this.BindCMATest();
+                this.BindCMKTest();
             }
             else if (e.CommandName == "Graph")
             {

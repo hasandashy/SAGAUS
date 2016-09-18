@@ -31,15 +31,6 @@ namespace SGA.tna {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl spSkills;
         
         /// <summary>
-        /// spCMA control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spCMA;
-        
-        /// <summary>
         /// spPKE control.
         /// </summary>
         /// <remarks>
@@ -49,6 +40,15 @@ namespace SGA.tna {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl spPKE;
         
         /// <summary>
+        /// spCMA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spCMA;
+        
+        /// <summary>
         /// spCMK control.
         /// </summary>
         /// <remarks>
@@ -56,6 +56,15 @@ namespace SGA.tna {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl spCMK;
+        
+        /// <summary>
+        /// spCaa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spCaa;
         
         /// <summary>
         /// graph1 control.

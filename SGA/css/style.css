@@ -236,8 +236,9 @@ nav li a:hover {color:#ea4320 !important; text-decoration:none}
 
 
 /* Multiple Assessment */
-.welcome {padding:28px 119px; font-size:18px; line-height:22px; text-align:center}
+.welcome {padding:28px 119px; font-size:18px; line-height:22px; text-align:left}
 .title40-orange {font-family:'HelveticaBold', Arial, Helvetica, sans-serif; font-size:40px; color:#ea4320; line-height:normal}
+.title30-orange {font-family:'HelveticaBold', Arial, Helvetica, sans-serif; font-size:30px; color:#ea4320; line-height:normal}
 .title40 {font-size:40px; line-height:normal}
 .orange {color:#ea4320}
 
@@ -538,7 +539,12 @@ ol.list3 > li:before {content:counter(li); counter-increment:li; position:absolu
 	line-height: normal;
 	margin-bottom: 5px
 }
-
+.title27 {
+	font-family: 'cleargothic-mediumregular', Arial, Helvetica, sans-serif;
+	font-size: 28px;
+	line-height: normal;
+	margin-bottom: 5px
+}
 
 
 

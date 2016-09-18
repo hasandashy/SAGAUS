@@ -23,7 +23,7 @@
                     onComplete: function () {
                         if (lastpage == 'y') {
                             $('#colorbox').css({ "display": "none" });
-                            window.location.href = '/tna/MyProfile.aspx';
+                            window.location.href = '/tna/default.aspx';
                         }
                         else {
                             redirect = "n";
@@ -74,7 +74,7 @@
 </script>
 <article id="container">
 					<section class="welcome-inner">
-						<p class="title40-orange"><asp:Label ID="lblName" runat="server"></asp:Label></p>
+						<p class="title40-orange" style="text-align:center;"><asp:Label ID="lblName" runat="server"></asp:Label></p>
 						<p class="title40">Welcome to your Training Needs Analysis</p>
 					</section>
 					<section class="color-box">

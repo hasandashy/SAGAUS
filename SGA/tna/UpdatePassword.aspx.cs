@@ -54,7 +54,7 @@ namespace SGA.tna
                     if (System.Convert.ToBoolean(ds.Tables[0].Rows[0]["passwordUpdated"].ToString()))
                     {
                         int complete = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spUserProfileComplete", param));
-                        base.Response.Redirect("~/tna/" + ((complete == 1) ? "MyProfile.aspx" : "default.aspx"), false);
+                        base.Response.Redirect("~/tna/default.aspx", false);
                     }
                     this.password.Value = ds.Tables[0].Rows[0]["plainpassword"].ToString();
                     this.email.Value = ds.Tables[0].Rows[0]["email"].ToString();

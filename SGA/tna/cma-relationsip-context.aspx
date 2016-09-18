@@ -59,8 +59,8 @@
 <!-- Content Area start -->
 				<article id="container">
 					<section class="welcome">
-						<p class="title40-orange"><asp:Label ID="lblName" runat="server"></asp:Label></p>
-						<p class="title40">Welcome to the Contract Management Self Assessment</p>
+						<p class="title40-orange" style="text-align:center;"><asp:Label ID="lblName" runat="server"></asp:Label></p>
+						<p class="title40" style="text-align:center;">Welcome to the Contract Management Self Assessment</p>
 					</section>
 					<div class="dot-line">&nbsp;</div>
 					<section class="color-box">

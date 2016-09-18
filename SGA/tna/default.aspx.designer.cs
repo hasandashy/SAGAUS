@@ -22,6 +22,24 @@ namespace SGA.tna {
         protected global::System.Web.UI.WebControls.Label lblName;
         
         /// <summary>
+        /// spanBegin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanBegin;
+        
+        /// <summary>
+        /// hyper control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hyper;
+        
+        /// <summary>
         /// pnlTNA control.
         /// </summary>
         /// <remarks>

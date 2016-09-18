@@ -301,7 +301,7 @@
         <table width="100%" border="0" cellspacing="1" cellpadding="1" class="tform">
             <tr>
                 <td colspan="6">
-                    <b>Procurement Evaloation</b>
+                    <b>Procurement Evaluation</b>
                 </td>
             </tr>
             <tr>

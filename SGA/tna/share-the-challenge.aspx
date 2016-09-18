@@ -121,9 +121,11 @@
 					<div class="dot-line">&nbsp;</div>
 					<section class="color-box">
 						<article class="test-info-box">
-							<p class="title orange">My Results and Reports</p>
+							<p class="title orange">My Results</p>
 							<p>&nbsp;</p>
-							<p><span class="dark">INSTRUCTIONS:</span> Below you will find the results and reports each challenge and assessment you have taken.  In the left hand column you will note the menu where you can easily navigate.  If you would like to access your reports or compare your results, simply navigate through the links.  We encourage you to share the 'Category Management Challenge' since aggregate data from this challenge will provide an important insight into 'Category Management Capability' in Australia.  The richer the data - the greater the insights.</p>
+                            <span>Below you will find the results for each assessment you have taken. In the left hand column, you will note the menu where can easily navigate your bar-graphs. </span>
+							<div class="clear"></div>
+                            <br /><p><span class="dark">NOTE:</span> Your Individual Feedback Report will be delivered at the conclusion of the assessment period after you have completed your assigned Assessment Pack.</p>
 						</article>
 					</section>
 					<section class="my-result-box">
@@ -133,11 +135,11 @@
 						<p>&nbsp;</p>
 						<p>&nbsp;</p>
 						<div class="my-result-container">
-							<div class="col-lft">
+						<div class="col-lft">
 
-                                <p class="title18"><span id="spSkills" runat="server">Procurement Skills Self  <br />Assessment</span></p>
+                              
                                 <% if(isTnaResult) { %>
-                                
+                                  <p class="title18"><span id="spSkills" runat="server">Procurement Skills Self  <br />Assessment</span></p>
                                 <div class="acrd-menu">
                                 <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
 								<div class="submenu">
@@ -146,33 +148,10 @@
 										</ul>
 									</div>
                                 </div>
-                                <% } else { %>
-                                <div class="result-info icon-graf">
-									<p>This assessment is locked and no results are available.</p>
-								</div>
-                                <%} %>
+                                <% } %>
                                 
-                                <p class="title18"><span id="spCMA" runat="server">Contract Management Self <br />Assessment</span></p>
-                                <% if (isCMAResult)
-                                   { %>
-                                
-                                <div class="acrd-menu">
-                                <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
-								<div class="submenu">
-										<ul>
-											<li><a href="my-results-bar-graph-cma.aspx"   >&bull; Bar Graph</a></li>
-										</ul>
-									</div>
-                                </div>
-                                <% } else { %>
-                                <div class="result-info icon-copy">
-									<p>This assessment is locked and no results are available.</p>
-								</div>
-                                <%} %>
-                                
-                                <p class="title18"><span id="spPKE" runat="server">Procurement Knowledge   <br />Evaluation</span></p>
-                                <% if(isPkeResult) { %>
-                                
+                                 <% if(isPkeResult) { %>
+                                 <p class="title18"><span id="spPKE" runat="server">Procurement Knowledge   <br />Evaluation</span></p>
                                 <div class="acrd-menu">
                                 <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
 								<div class="submenu">
@@ -181,14 +160,29 @@
 										</ul>
 									</div>
                                 </div>
-                                <% } else { %>
-                                <div class="result-info icon-bulb">
-									<p>This assessment is locked and no results are available.</p>
-								</div>
-                                <%} %>
-                                <p class="title18"><span id="spCMK" runat="server">Contract Management Knowledge <br /> Evaluation</span></p>
+                                <% } %>
+                               
+                               
+                                <% if (isCMAResult)
+                                    { %>
+                                 <p class="title18"><span id="spCMA" runat="server">Contract Management Self <br />Assessment</span></p>
+                                <div class="acrd-menu">
+                                <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
+								<div class="submenu">
+										<ul>
+											<li><a href="my-results-bar-graph-cma.aspx"   >&bull; Bar Graph</a></li>
+										</ul>
+									</div>
+                                </div>
+                                <% } %>
+                               
+                                
+                               
+                               
+                               
 								<% if (isCmkResult)
                                 { %>
+                                 <p class="title18"><span id="spCMK" runat="server">Contract Management Knowledge <br /> Evaluation</span></p>
                                 <div class="acrd-menu">
 									<p><a href="#" class="menuitem submenuheader">Display Results</a></p>
 									<div class="submenu">
@@ -197,11 +191,19 @@
 										</ul>
 									</div>
 								</div>
-								<% } else { %>
-                                <div class="result-info icon-calcualtor">
-									<p>Your results are restricted of this assessment.</p>
+								<% } %>        
+                                <% if (isCaaResult)
+                                { %>
+                                 <p class="title18"><span id="spCaa" runat="server">Commercial Awareness Knowledge <br /> Evaluation</span></p>
+                                <div class="acrd-menu">
+									<p><a href="#" class="menuitem submenuheader">Display Results</a></p>
+									<div class="submenu">
+										<ul>
+											<li><a href="my-results-bar-graph-caa.aspx" >&bull; Bar Graph</a></li>
+										</ul>
+									</div>
 								</div>
-                                <%} %>
+								<% } %>                         
 							</div>
 							<div class="col-cnt">
 								<div class="share-challange-2">

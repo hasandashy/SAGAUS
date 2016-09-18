@@ -128,6 +128,7 @@ namespace SGA.tna
                 this.spCMA.Attributes["class"] = (this.isCMAResult ? "" : "lock");
                 this.spCMK.Attributes["class"] = (this.isCmkResult ? "" : "lock");
                 this.spPKE.Attributes["class"] = (this.isPkeResult ? "" : "lock");
+                this.spCaa.Attributes["class"] = (this.isCaaResult ? "" : "lock");
 
                 this.BindResults();
                 base.Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
@@ -137,7 +138,7 @@ namespace SGA.tna
 
         private void BindResults()
         {
-            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCMKTests", new SqlParameter[]
+            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCAATests", new SqlParameter[]
 			{
 				new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
 			});

@@ -22,11 +22,7 @@ namespace SGA.controls
 
         protected decimal topic5mark = 0m;
 
-        protected decimal topic6mark = 0m;
-
-        protected decimal topic7mark = 0m;
-
-        protected decimal topic8mark = 0m;
+     
 
         protected string topic1name = "";
 
@@ -38,12 +34,7 @@ namespace SGA.controls
 
         protected string topic5name = "";
 
-        protected string topic6name = "";
-
-        protected string topic7name = "";
-
-        protected string topic8name = "";
-
+      
         private int _testId;
 
         public int testId
@@ -62,7 +53,7 @@ namespace SGA.controls
         {
             if (!base.IsPostBack)
             {
-                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCMKGraph", new SqlParameter[]
+                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCAAGraph", new SqlParameter[]
 				{
 					new SqlParameter("@testId", this.testId)
 				});
@@ -75,37 +66,26 @@ namespace SGA.controls
                             switch (i)
                             {
                                 case 0:
-                                    this.topic1mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["topicmarks"].ToString());
+                                    this.topic1mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString());
                                     this.topic1name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
                                     break;
                                 case 1:
-                                    this.topic2mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["topicmarks"].ToString());
+                                    this.topic2mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString());
                                     this.topic2name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
                                     break;
                                 case 2:
-                                    this.topic3mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["topicmarks"].ToString());
+                                    this.topic3mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString());
                                     this.topic3name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
                                     break;
                                 case 3:
-                                    this.topic4mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["topicmarks"].ToString());
+                                    this.topic4mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString());
                                     this.topic4name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
                                     break;
                                 case 4:
-                                    this.topic5mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["topicmarks"].ToString());
+                                    this.topic5mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString());
                                     this.topic5name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
                                     break;
-                                case 5:
-                                    this.topic6mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["topicmarks"].ToString());
-                                    this.topic6name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
-                                    break;
-                                case 6:
-                                    this.topic7mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["topicmarks"].ToString());
-                                    this.topic7name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
-                                    break;
-                                case 7:
-                                    this.topic8mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["topicmarks"].ToString());
-                                    this.topic8name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
-                                    break;
+                              
                             }
                         }
                     }

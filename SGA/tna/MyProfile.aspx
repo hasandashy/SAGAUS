@@ -234,7 +234,7 @@
                     <span class="error"></span>&nbsp;&nbsp;<b>Your Branch</b><br />
                     <span class="error">&nbsp;</span>&nbsp;<input type="text" id="txtBranch" name="txtBranch" title="Division" maxlength="250" runat="server" class="text-box-2" />
                     <p>&nbsp;</p>
-                    <span class="error"></span>&nbsp;&nbsp;<b>Youe actual job title(position)</b><br />
+                    <span class="error"></span>&nbsp;&nbsp;<b>Your actual job title(position)</b><br />
                     <span class="error">&nbsp;</span>&nbsp;<input type="text" id="txtJobTitle" name="txtJobTitle" title="Phone" maxlength="250" runat="server" class="text-box-2" />
                      <p>&nbsp;</p>
                      <span class="error"></span>&nbsp;&nbsp;<b>Are you part of the Central Procurement function? </b><br />
