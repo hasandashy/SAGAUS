@@ -10,141 +10,123 @@
 namespace SGA.webadmin {
     
     
-    public partial class DashBoard {
+    public partial class EditCAAtest {
         
         /// <summary>
-        /// lblRegistered control.
+        /// menu1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRegistered;
+        protected global::SGA.controls.ctrlLeftMenu menu1;
         
         /// <summary>
-        /// lblUnApproved control.
+        /// pgNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUnApproved;
+        protected global::System.Web.UI.WebControls.HiddenField pgNumber;
         
         /// <summary>
-        /// lblDeactive control.
+        /// rptrTopics control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDeactive;
+        protected global::System.Web.UI.WebControls.Repeater rptrTopics;
         
         /// <summary>
-        /// lblTotalUserByAdmin control.
+        /// lblTopic control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalUserByAdmin;
+        protected global::System.Web.UI.WebControls.Label lblTopic;
         
         /// <summary>
-        /// lblFromFront control.
+        /// lblDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFromFront;
+        protected global::System.Web.UI.WebControls.Label lblDescription;
         
         /// <summary>
-        /// lblSSA control.
+        /// hdCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSSA;
+        protected global::System.Web.UI.WebControls.HiddenField hdCount;
         
         /// <summary>
-        /// lblSga control.
+        /// parentRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSga;
+        protected global::System.Web.UI.WebControls.Repeater parentRepeater;
         
         /// <summary>
-        /// lblCMA control.
+        /// lblPercentage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCMA;
+        protected global::System.Web.UI.WebControls.Label lblPercentage;
         
         /// <summary>
-        /// lblCmk control.
+        /// lnkPrev control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCmk;
+        protected global::System.Web.UI.WebControls.Button lnkPrev;
         
         /// <summary>
-        /// lblCAA control.
+        /// lnkNext control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCAA;
+        protected global::System.Web.UI.WebControls.Button lnkNext;
         
         /// <summary>
-        /// lblContact control.
+        /// btnSubmitNext control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblContact;
+        protected global::System.Web.UI.WebControls.Button btnSubmitNext;
         
         /// <summary>
-        /// lblEmailTemplate control.
+        /// btnFinal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmailTemplate;
+        protected global::System.Web.UI.WebControls.Button btnFinal;
         
         /// <summary>
-        /// lblLoggedin control.
+        /// btnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLoggedin;
-        
-        /// <summary>
-        /// lblNotLoggenin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNotLoggenin;
-        
-        /// <summary>
-        /// lblChallenge control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblChallenge;
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
     }
 }

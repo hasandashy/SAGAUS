@@ -37,6 +37,7 @@ namespace SGA.webadmin
                         this.lblNotLoggenin.Text = ds.Tables[0].Rows[0]["totalNotLoggedIn"].ToString();
                         this.lblChallenge.Text = ds.Tables[0].Rows[0]["sharecount"].ToString();
                         this.lblCMA.Text = ds.Tables[0].Rows[0]["totalcma"].ToString();
+                        this.lblCAA.Text = ds.Tables[0].Rows[0]["totalcaa"].ToString();
                     }
                 }
             }

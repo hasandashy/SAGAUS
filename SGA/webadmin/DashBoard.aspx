@@ -101,7 +101,14 @@
                             <div class="clr">
                             </div>
                         </a></li>
-                        
+                          <li><a href="ListUsers.aspx?tabId=11">
+                            <div class="fl num_dashboard">
+                                <asp:Label ID="lblCAA" runat="server"></asp:Label></div>
+                            <div class="fl hdtxt pt15">
+                                Commercial Awareness Assessment taken</div>
+                            <div class="clr">
+                            </div>
+                        </a></li>
                        
                     </ul>
                     <br />

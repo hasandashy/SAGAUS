@@ -21,4 +21,5 @@
     <li><a href="ManageSGA.aspx" class="behavioural"><span>Procurement Evaluation</span></a></li>
     <li><a href="ManageCMK.aspx" class="negotiation"><span>Contract Management Evaluation</span></a></li>
     <li><a href="ManageCMA.aspx" class="contract"><span>Contract Management Assess</span></a></li>
+    <li><a href="ManageCAA.aspx" class="contract"><span>Commercial Awareness Assess</span></a></li>
 </ul>

@@ -113,6 +113,30 @@ namespace SGA.webadmin
             }
         }
 
+        public bool SortOrderCAA
+        {
+            get
+            {
+                return this.ViewState["SortOrderCAA"] != null && System.Convert.ToBoolean(this.ViewState["SortOrderCAA"].ToString());
+            }
+            set
+            {
+                this.ViewState["SortOrderCAA"] = value;
+            }
+        }
+
+        public string SortExpressionCAA
+        {
+            get
+            {
+                return (this.ViewState["SortExpressionCAA"] == null) ? "" : this.ViewState["SortExpressionCAA"].ToString();
+            }
+            set
+            {
+                this.ViewState["SortExpressionCAA"] = value;
+            }
+        }
+
 
         public bool SortOrderCMA
         {
@@ -210,6 +234,8 @@ namespace SGA.webadmin
             this.txtCMATo.Attributes.Add("readonly", "readonly");
             this.txtCMKFrom.Attributes.Add("readonly", "readonly");
             this.txtCMKTo.Attributes.Add("readonly", "readonly");
+            this.txtCAAFrom.Attributes.Add("readonly", "readonly");
+            this.txtCAATo.Attributes.Add("readonly", "readonly");
            // this.txtEditExiryDate.Attributes.Add("readonly", "readonly");
             if (!base.IsPostBack)
             {
@@ -228,6 +254,7 @@ namespace SGA.webadmin
                 this.BindCMATest();
                 this.BindSGATest();
                 this.BindCMKTest();
+                this.BindCAATest();
             }
         }
 
@@ -301,6 +328,8 @@ namespace SGA.webadmin
             this.BindCMKTest();
             this.grdCMA.CurrentPageIndex = 0;
             this.BindCMATest();
+            this.grdCAA.CurrentPageIndex = 0;
+            this.BindCAATest();
            
            // this.LoadProfile();
         }
@@ -328,6 +357,7 @@ namespace SGA.webadmin
             this.BindCMATest();
             this.BindSGATest();
             this.BindCMKTest();
+            this.BindCAATest();
         }
 
         protected void iBtnDisApproveAll_Click(object sender, ImageClickEventArgs e)
@@ -362,6 +392,7 @@ namespace SGA.webadmin
             this.BindCMATest();
             this.BindSGATest();
             this.BindCMKTest();
+            this.BindCAATest();
         }
 
         protected void iBtnApproveAll_Click(object sender, ImageClickEventArgs e)
@@ -396,6 +427,7 @@ namespace SGA.webadmin
             this.BindCMATest();
             this.BindSGATest();
             this.BindCMKTest();
+            this.BindCAATest();
         }
 
         protected void iBtnLoginReminder_Click(object sender, ImageClickEventArgs e)
@@ -1944,7 +1976,7 @@ namespace SGA.webadmin
             this.SortExpressionCMK = e.SortExpression;
             int i = 0;
             string strOrder = this.SortOrderCMK ? "ASC" : "DESC";
-            foreach (DataGridColumn col in this.grdCMA.Columns)
+            foreach (DataGridColumn col in this.grdCMK.Columns)
             {
                 if (col.SortExpression == e.SortExpression)
                 {
@@ -1993,7 +2025,106 @@ namespace SGA.webadmin
             }));
         }
 
+        protected void grdCAA_SortCommand(object source, DataGridSortCommandEventArgs e)
+        {
+            if (e.SortExpression.ToString() == this.SortExpressionCAA)
+            {
+                this.SortOrderCAA = !this.SortOrderCAA;
+            }
+            else
+            {
+                this.SortOrderCAA = true;
+            }
+            this.SortExpressionCAA = e.SortExpression;
+            int i = 0;
+            string strOrder = this.SortOrderCAA ? "ASC" : "DESC";
+            foreach (DataGridColumn col in this.grdCAA.Columns)
+            {
+                if (col.SortExpression == e.SortExpression)
+                {
+                    this.grdCAA.Columns[i].HeaderStyle.CssClass = "gridHeaderSort" + strOrder;
+                }
+                else
+                {
+                    this.grdCAA.Columns[i].HeaderStyle.CssClass = "gridHeader";
+                }
+                i++;
+            }
+            this.BindCAATest();
+        }
 
+        private void BindCAATest()
+        {
+            string strOrderBy = " testId desc  ";
+            if (this.SortExpressionCAA.Length > 0)
+            {
+                strOrderBy = (this.SortOrderCMA ? (this.SortExpressionCAA + " Asc") : (this.SortExpressionCAA + " Desc"));
+            }
+            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageCAATest", new SqlParameter[]
+			{
+				new SqlParameter("@firstname", this.txtCMAFname.Value.Trim()),
+				new SqlParameter("@lastname", this.txtCMALname.Value.Trim()),
+				new SqlParameter("@userIds", this.hdSelectIds.Value),
+				new SqlParameter("@dateFrom", this.txtCMAFrom.Text.Trim()),
+				new SqlParameter("@dateTo", this.txtCMATo.Text.Trim()),
+				new SqlParameter("@orderBy", strOrderBy)
+			});
+            this.grdCAA.DataSource = ds;
+            this.grdCAA.DataBind();
+        }
+
+        protected void grdCAA_ItemDataBound(object sender, DataGridItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                Label lblAssesmentDate = (Label)e.Item.FindControl("lblAssesmentDate");
+                if (lblAssesmentDate != null)
+                {
+                    lblAssesmentDate.Text = SGACommon.ToAusTimeZone(System.Convert.ToDateTime(DataBinder.Eval(e.Item.DataItem, "testDate"))).ToString("dd MMM yyyy HH:mm tt");
+                }
+                int complete = System.Convert.ToInt32(DataBinder.Eval(e.Item.DataItem, "complete"));
+                if (complete <= 0)
+                {
+                    e.Item.BackColor = Color.FromArgb(255, 156, 255);
+                }
+            }
+        }
+
+        protected void grdCAA_PageIndexChanged(object source, DataGridPageChangedEventArgs e)
+        {
+            this.grdCMA.CurrentPageIndex = e.NewPageIndex;
+            this.BindCMATest();
+        }
+
+        protected void grdCAA_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+            if (e.CommandName == "Delete")
+            {
+                SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spDeleteCAATest", new SqlParameter[]
+				{
+					new SqlParameter("@testId", e.CommandArgument)
+				});
+                this.BindCMATest();
+            }
+            else if (e.CommandName == "Graph")
+            {
+                base.Response.Redirect("TestChartCAA.aspx?id=" + e.CommandArgument, false);
+            }
+            else if (e.CommandName == "drilldown")
+            {
+                base.Response.Redirect("/CAAChart/" + e.CommandArgument, false);
+            }
+            else if (e.CommandName == "Edit")
+            {
+                base.Response.Redirect("EditCAAtest.aspx?id=" + e.CommandArgument, false);
+            }
+        }
+
+        protected void lnkCAASearch_Click(object sender, System.EventArgs e)
+        {
+            this.grdCAA.CurrentPageIndex = 0;
+            this.BindCAATest();
+        }
 
 
     }

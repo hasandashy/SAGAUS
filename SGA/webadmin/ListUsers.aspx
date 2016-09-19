@@ -77,6 +77,7 @@
                                             <li><a href="#tabs-6">Procurement Knowledge</a></li>
                                             <li><a href="#tabs-10">CMK Assess</a></li>
                                             <li><a href="#tabs-7">CMA Assess</a></li>
+                                            <li><a href="#tabs-11">CAA Assess</a></li>
                                             <li><a href="#tabs-8">Add User</a></li>
                                             <li><a href="#tabs-9">Import</a></li>
                                         </ul>
@@ -649,9 +650,9 @@
                                                                     <ItemTemplate>
                                                                         <asp:ImageButton ID="iBtnDelete" runat="server" CausesValidation="false" AlternateText="Delete" Style="height: 25px; width: 25px;" OnClientClick="return confirm('Are you sure you want to delete this record?');" CommandArgument='<%#Eval("testId") %>' CommandName="Delete" ToolTip="Delete" ImageUrl="~/webadmin/images/disapprove_icon.png" />
                                                                         &nbsp;
-                                                            <a target="_blank" href="ShowSSAPdf.aspx?id=<%#Eval("emailLink") %>">
+                                                          <%--  <a target="_blank" href="ShowSSAPdf.aspx?id=<%#Eval("emailLink") %>">
                                                                 <img src="../innerimages/icon-pdf.gif" style="height: 25px; width: 25px;" alt="" /></a>
-                                                                        &nbsp;
+                                                                        &nbsp;--%>
                                                             <asp:ImageButton ID="iBtnGraph" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Graph" ToolTip="Graph" ImageUrl="~/webadmin/images/img-graph-icon.gif" />
                                                                         &nbsp;
                                                             <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" AlternateText="Edit" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Edit" ToolTip="Edit" ImageUrl="~/webadmin/images/edit.png" />
@@ -864,8 +865,8 @@
                                                                     <ItemTemplate>
                                                                         <asp:ImageButton ID="iBtnDelete" runat="server" CausesValidation="false" AlternateText="Delete" Style="height: 25px; width: 25px;" OnClientClick="return confirm('Are you sure you want to delete this record?');" CommandArgument='<%#Eval("testId") %>' CommandName="Delete" ToolTip="Delete" ImageUrl="~/webadmin/images/disapprove_icon.png" />
                                                                         &nbsp;
-                                                            <a target="_blank" href="ShowCMAPdf.aspx?id=<%#Eval("emailLink") %>">
-                                                                <img src="../innerimages/icon-pdf.gif" style="height: 25px; width: 25px;" alt="" /></a>
+                                                           <%-- <a target="_blank" href="ShowCMAPdf.aspx?id=<%#Eval("emailLink") %>">
+                                                                <img src="../innerimages/icon-pdf.gif" style="height: 25px; width: 25px;" alt="" /></a>--%>
                                                                         &nbsp;
                                                             <asp:ImageButton ID="iBtnGraph" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Graph" ToolTip="Graph" ImageUrl="~/webadmin/images/img-graph-icon.gif" />
                                                                         &nbsp;
@@ -1089,6 +1090,111 @@
                                                         <asp:DataGrid ID="grdCMK" runat="server" AllowPaging="True" AllowSorting="true"
                                                             AutoGenerateColumns="False" CssClass="grdMain"
                                                             OnItemDataBound="grdCMK_ItemDataBound" OnItemCommand="grdCMK_ItemCommand" OnSortCommand="grdCMK_SortCommand" OnPageIndexChanged="grdCMK_PageIndexChanged"
+                                                            Width="100%" GridLines="None" PageSize="20">
+                                                            <HeaderStyle CssClass="gridHeader" />
+                                                            <PagerStyle Mode="NumericPages" CssClass="pager" HorizontalAlign="Center" />
+                                                            <ItemStyle CssClass="gridItem" />
+                                                            <Columns>
+                                                                <asp:BoundColumn DataField="name" ItemStyle-Width="15%" HeaderText="Name" HeaderStyle-Width="15%" SortExpression="name"></asp:BoundColumn>
+
+                                                                <asp:BoundColumn DataField="email" HeaderText="Email" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="email"></asp:BoundColumn>
+
+                                                                <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Marks" HeaderText="Marks">
+                                                                    <ItemTemplate>
+                                                                        <%#Eval("marks")%>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateColumn>
+
+                                                                <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate" HeaderText="Assesment Date">
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="lblAssesmentDate" runat="server"></asp:Label>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateColumn>
+                                                                <asp:TemplateColumn ItemStyle-Width="19%" HeaderStyle-Width="19%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderText="Action">
+                                                                    <ItemTemplate>
+                                                                        <asp:ImageButton ID="iBtnDelete" runat="server" CausesValidation="false" AlternateText="Delete" Style="height: 25px; width: 25px;" OnClientClick="return confirm('Are you sure you want to delete this record?');" CommandArgument='<%#Eval("testId") %>' CommandName="Delete" ToolTip="Delete" ImageUrl="~/webadmin/images/disapprove_icon.png" />
+                                                                        &nbsp;
+                                                             <asp:ImageButton ID="iBtnGraph" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Graph" ToolTip="Graph" ImageUrl="~/webadmin/images/img-graph-icon.gif" />
+                                                                        &nbsp;
+                                                            <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" AlternateText="Edit" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Edit" ToolTip="Edit" ImageUrl="~/webadmin/images/edit.png" />
+                                                                        &nbsp;
+                                                            <asp:ImageButton ID="iBtnDrill" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 30px; width: 30px;" CommandArgument='<%#Eval("testId") %>' CommandName="drilldown" ToolTip="drilldown" ImageUrl="~/webadmin/images/drilldown.png" />
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateColumn>
+                                                            </Columns>
+                                                        </asp:DataGrid>
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div id="tabs-11">
+                                            <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td class="hd20">Commercial Awareness Assessment
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="grybox">
+                                                        <table width="100%" border="0" cellspacing="1" cellpadding="1" class="tform">
+                                                            <tr>
+                                                                <td class="txtrht">First Name
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" id="Text1" runat="server" maxlength="100" />
+                                                                </td>
+                                                                <td class="txtrht">Last Name
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" id="Text2" runat="server" maxlength="100" />
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+
+                                                                <td class="txtrht">Assessment date
+                                                                </td>
+                                                                <td colspan="3">From : 
+                                                    <asp:TextBox runat="server" ID="txtCAAFrom" Style="width: 100px"></asp:TextBox>
+                                                                    <asp:ImageButton ID="ImageButton12" runat="server" Height="16px" ImageUrl="~/Images/cal.gif"
+                                                                        Width="16px" ImageAlign="Bottom" />
+                                                                    <ajaxToolkit:CalendarExtender ID="CalendarExtender9" runat="server" PopupButtonID="ImageButton18"
+                                                                        TargetControlID="txtCAAFrom" Format="dd/MM/yyyy">
+                                                                    </ajaxToolkit:CalendarExtender>
+                                                                    &nbsp;&nbsp;&nbsp;
+                                                    To: 
+                                                        <asp:TextBox ID="txtCAATo" runat="server" Style="width: 100px"></asp:TextBox>
+                                                                    <asp:ImageButton ID="ImageButton13" runat="server" Height="16px" ImageUrl="~/Images/cal.gif"
+                                                                        Width="16px" ImageAlign="Bottom" />
+                                                                    <ajaxToolkit:CalendarExtender ID="CalendarExtender10" runat="server" Format="dd/MM/yyyy"
+                                                                        PopupButtonID="ImageButton19" TargetControlID="txtCAATo">
+                                                                    </ajaxToolkit:CalendarExtender>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td></td>
+                                                                <td>
+                                                                    <asp:LinkButton ID="lnkCAASearch" runat="server" CausesValidation="false"
+                                                                        Text="Search" CssClass="rdbut" OnClick="lnkCAASearch_Click"></asp:LinkButton>
+
+                                                                </td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+
+                                                        <asp:DataGrid ID="grdCAA" runat="server" AllowPaging="True" AllowSorting="true"
+                                                            AutoGenerateColumns="False" CssClass="grdMain"
+                                                            OnItemDataBound="grdCAA_ItemDataBound" OnItemCommand="grdCAA_ItemCommand" OnSortCommand="grdCAA_SortCommand" OnPageIndexChanged="grdCAA_PageIndexChanged"
                                                             Width="100%" GridLines="None" PageSize="20">
                                                             <HeaderStyle CssClass="gridHeader" />
                                                             <PagerStyle Mode="NumericPages" CssClass="pager" HorizontalAlign="Center" />

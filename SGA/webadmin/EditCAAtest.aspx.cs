@@ -1,6 +1,4 @@
-﻿using CookComputing.XmlRpc;
-using DataTier;
-using InfusionSoftDotNet;
+﻿using DataTier;
 using SGA.App_Code;
 using System;
 using System.Collections.Generic;
@@ -11,9 +9,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SGA.tna
+namespace SGA.webadmin
 {
-    public partial class commercial_awareness_assessment_test : System.Web.UI.Page
+    public partial class EditCAAtest : System.Web.UI.Page
     {
         protected int PageNumber
         {
@@ -71,36 +69,11 @@ namespace SGA.tna
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
-            SGACommon.AddPageTitle(this.Page, "Contract Awareness Assessment  ", "");
-            MasterPage mp = this.Page.Master;
-            if (mp != null)
-            {
-                UserControl uc = (UserControl)mp.FindControl("header1");
-                if (uc != null)
-                {
-                    Panel pnlTopMenu = (Panel)uc.FindControl("pnlTopMenu");
-                    if (pnlTopMenu != null)
-                    {
-                        pnlTopMenu.Visible = false;
-                    }
-                }
-            }
-            SGACommon.IsTakeTest("viewCaaTest");
-            this.Cronometro1.ScriptPath = "~/js/";
-            this.Cronometro1.ImagesPath = "~/images/";
-            this.Cronometro1.Ascendente = false;
+          
             if (!base.IsPostBack)
             {
-                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spInitalizeCAATest", new SqlParameter[]
-				{
-					new SqlParameter("@userId", SGACommon.LoginUserInfo.userId),
-					new SqlParameter("@testDate", System.DateTime.UtcNow.ToString()),
-                    new SqlParameter("@startDate", System.DateTime.UtcNow.ToString()),
-                    new SqlParameter("@endDate", System.DateTime.UtcNow.ToString()),
-                    new SqlParameter("@sessionId", this.Session.SessionID)
-				});
-                this.testId = System.Convert.ToInt32(ds.Tables[0].Rows[0]["testId"].ToString());
-                this.Cronometro1.Duracion = new System.TimeSpan(0, System.Convert.ToInt32(ds.Tables[0].Rows[0]["time"].ToString()), 0);
+                this.testId = System.Convert.ToInt32(base.Request.QueryString["Id"].ToString());
+             
                 this.LoadAllTopics();
                 this.Percentage();
                 this.SetClass();
@@ -316,8 +289,8 @@ namespace SGA.tna
                         this.Number = 16;
                         break;
                     //case 5:
-                       // this.Number = 20;
-                      //  break;
+                    // this.Number = 20;
+                    //  break;
                     //case 6:
                     //    this.Number = 18;
                     //    break;
@@ -371,7 +344,7 @@ namespace SGA.tna
 						{
 							"Id"
 						};
-            XmlRpcStruct[] resultFound = isdnAPI.findByEmail(SGACommon.LoginUserInfo.name, strField);
+            //XmlRpcStruct[] resultFound = isdnAPI.findByEmail(SGACommon.LoginUserInfo.name, strField);
             int userId;
             //XmlRpcStruct Contact = new XmlRpcStruct();
             //if (resultFound.Length > 0)
@@ -392,7 +365,7 @@ namespace SGA.tna
 				new SqlParameter("@flag", "2"),
 				new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
 			});
-            base.Response.Redirect("~/tna/my-results-bar-graph-caa.aspx", false);
+            base.Response.Redirect("~/webadmin/listusers.aspx", false);
         }
 
         protected void btnSubmitNext_Click(object sender, System.EventArgs e)

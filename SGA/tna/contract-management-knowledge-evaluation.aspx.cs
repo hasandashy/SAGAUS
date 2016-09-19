@@ -347,7 +347,7 @@ namespace SGA.tna
 
         protected void btnFinal_Click(object sender, System.EventArgs e)
         {
-            this.Session["cmaTestId"] = this.testId;
+            this.Session["cmkTestId"] = this.testId;
             foreach (RepeaterItem itm in this.parentRepeater.Items)
             {
                 RadioButtonList rdb = (RadioButtonList)itm.FindControl("RadioButtonList1");
