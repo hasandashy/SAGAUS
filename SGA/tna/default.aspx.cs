@@ -115,7 +115,8 @@ namespace SGA.tna
                                 {
                                     this.hylCAA.Text = "Currently locked.<br />Want more info?<span>Your access to this assessment is locked. If you require access to the assessment, please complete Procurement self assesment first.</span>";
                                     this.hylCAA.ToolTip = "Locked";
-                                    this.hylCAA.CssClass = "locked";
+                                    this.hylCAA.CssClass = "lockedAsess";
+                                    this.hylCAA.NavigateUrl = "#";
                                 }
                                 break;
                             case 2:
@@ -125,7 +126,8 @@ namespace SGA.tna
                                 {
                                     this.hylCAA.Text = "Currently locked.<br />Want more info?<span>Your access to this assessment is locked. If you require access to the assessment, please complete Procurement self assesment first.</span>";
                                     this.hylCAA.ToolTip = "Locked";
-                                    this.hylCAA.CssClass = "locked";
+                                    this.hylCAA.CssClass = "lockedAsess";
+                                    this.hylCAA.NavigateUrl = "#";
                                 }
                                 break;
                             case 3:
@@ -135,7 +137,8 @@ namespace SGA.tna
                                 {
                                     this.hylCAA.Text = "Currently locked.<br />Want more info?<span>Your access to this assessment is locked. If you require access to the assessment, please complete Procurement self assesment first.</span>";
                                     this.hylCAA.ToolTip = "Locked";
-                                    this.hylCAA.CssClass = "locked";
+                                    this.hylCAA.CssClass = "lockedAsess";
+                                    this.hylCAA.NavigateUrl = "#";
                                 }
                                 break;
                             case 4:
@@ -145,7 +148,8 @@ namespace SGA.tna
                                 {
                                     this.hylCAA.Text = "Currently locked.<br />Want more info?<span>Your access to this assessment is locked. If you require access to the assessment, please complete Procurement self assesment first.</span>";
                                     this.hylCAA.ToolTip = "Locked";
-                                    this.hylCAA.CssClass = "locked";
+                                    this.hylCAA.CssClass = "lockedAsess";
+                                    this.hylCAA.NavigateUrl = "#";
                                 }
                                 break;
                             case 5:
@@ -156,14 +160,16 @@ namespace SGA.tna
                                 {
                                     this.hylSga.Text = "Currently locked.<br />Want more info?<span>Your access to this assessment is locked. If you require access to the assessment, please complete Procurement self assesment first.</span>";
                                     this.hylSga.ToolTip = "Locked";
-                                    this.hylSga.CssClass = "locked";
+                                    this.hylSga.CssClass = "lockedAsess";
+                                    this.hylSga.NavigateUrl = "#";
 
                                 }
                                 if(!isPkeComplete)
                                 {
                                     this.hylCAA.Text = "Currently locked.<br />Want more info?<span>Your access to this assessment is locked. If you require access to the assessment, please complete Procurement Knowledge Evaluation first.</span>";
                                     this.hylCAA.ToolTip = "Locked";
-                                    this.hylCAA.CssClass = "locked";
+                                    this.hylCAA.CssClass = "lockedAsess";
+                                    this.hylCAA.NavigateUrl = "#";
                                 }
                                 break;
                             case 6:
@@ -175,13 +181,15 @@ namespace SGA.tna
                                 {
                                     this.hylCMK.Text = "Currently locked.<br />Want more info?<span>Your access to this assessment is locked. If you require access to the assessment, please complete Contract Management Self Assessment first.</span>";
                                     this.hylCMK.ToolTip = "Locked";
-                                    this.hylCMK.CssClass = "locked";
+                                    this.hylCMK.CssClass = "lockedAsess";
+                                    this.hylCMK.NavigateUrl = "#";
                                 }
                                 if (!isCmkComplete)
                                 {
                                     this.hylCAA.Text = "Currently locked.<br />Want more info?<span>Your access to this assessment is locked. If you require access to the assessment, please complete Contract Management Knowledge Evaluation first.</span>";
                                     this.hylCAA.ToolTip = "Locked";
-                                    this.hylCAA.CssClass = "locked";
+                                    this.hylCAA.CssClass = "lockedAsess";
+                                    this.hylCAA.NavigateUrl = "#";
                                 }
                                 break;
                             case 7:
@@ -192,13 +200,15 @@ namespace SGA.tna
                                 {
                                     this.hylSga.Text = "Currently locked.<br />Want more info?<span>Your access to this assessment is locked. If you require access to the assessment, please complete Procurement self assesment first.</span>";
                                     this.hylSga.ToolTip = "Locked";
-                                    this.hylSga.CssClass = "locked";
+                                    this.hylSga.CssClass = "lockedAsess";
+                                    this.hylSga.NavigateUrl = "#";
                                 }
                                 if (!isPkeComplete)
                                 {
                                     this.hylCAA.Text = "Currently locked.<br />Want more info?<span>Your access to this assessment is locked. If you require access to the assessment, please complete Procurement Knowledge Evaluation first.</span>";
                                     this.hylCAA.ToolTip = "Locked";
-                                    this.hylCAA.CssClass = "locked";
+                                    this.hylCAA.CssClass = "lockedAsess";
+                                    this.hylCAA.NavigateUrl = "#";
                                 }
                                 break;
                             case 8:
@@ -209,13 +219,15 @@ namespace SGA.tna
                                 {
                                     this.hylSga.Text = "Currently locked.<br />Want more info?<span>Your access to this assessment is locked. If you require access to the assessment, please complete Procurement self assesment first.</span>";
                                     this.hylSga.ToolTip = "Locked";
-                                    this.hylSga.CssClass = "locked";
+                                    this.hylSga.CssClass = "lockedAsess";
+                                    this.hylSga.NavigateUrl = "#";
                                 }
                                 if (!isPkeComplete)
                                 {
                                     this.hylCAA.Text = "Currently locked.<br />Want more info?<span>Your access to this assessment is locked. If you require access to the assessment, please complete Procurement Knowledge Evaluation first.</span>";
                                     this.hylCAA.ToolTip = "Locked";
-                                    this.hylCAA.CssClass = "locked";
+                                    this.hylCAA.CssClass = "lockedAsess";
+                                    this.hylCAA.NavigateUrl = "#";
                                 }
                                 break;
                         }

@@ -5,10 +5,10 @@
 						<p class="title30-orange" style="text-align:center;"><asp:Label ID="lblName" runat="server"></asp:Label>
 						</p>
 						<p class="title27">Wecome to <b>Skills for Procurement</b> - Assess and Build</p>
-						<p>Below you will see the assessments that you currently have access to. It may have been determined that you should complete more than one assessment - this is when a role covers more than one aspect. If you see a lock symbol, this is because you do not yet have access to this assessment. If on review, it is determined that you also need access to this assessment it will be unlocked for you.By clicking 'go' against each assessment, you will be directed to that particular assessment.</p>
+						<p>Below you will see the Assessment Pack that has been assigned to you. As you complete one assessment you will ‘unlock’ the next, and a <b>GO</b> button will appear. By clicking GO against the assessment, you will be taken directly to it. Each Assessment starts with a page of Instructions, and your timed Assessments will not begin until you have completed reading the Instructions.</p>
                         
                         <br />
-                       <div runat="server" id="spanBegin" visible="true"> <div style="color:#ea4320 !important;text-align:left;font-size:20px;;float:left;font-weight:bold;">Before you begin your first Assessment,<br /> Please complete your Profile.</div><div style="float:right;"><asp:HyperLink ID="hyper" CssClass="my-profile" Text="Begin Now" NavigateUrl="~/tna/MyProfile.aspx" runat="server"></asp:HyperLink></div></div>
+                       <div runat="server" id="spanBegin" visible="true"> <div style="color:#ea4320 !important;text-align:left;font-size:20px;;float:left;font-weight:bold;">Before you begin your first Assessment,<br /> Please complete your Profile.</div><div style="float:right;"><asp:HyperLink ID="hyper" CssClass="my-profile" Text="BEGIN NOW" NavigateUrl="~/tna/MyProfile.aspx" runat="server"></asp:HyperLink></div></div>
 					<br />
                     </section>
 					<div class="dot-line">&nbsp;</div>

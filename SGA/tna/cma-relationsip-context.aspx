@@ -89,7 +89,7 @@
 							<p>&nbsp;</p>
                            
 							<div class="floatR">
-                            <a href="MyProfile.aspx?id=3"  class="update-profile">UPDATE PROFILE</a>
+                            <%--<a href="MyProfile.aspx?id=3"  class="update-profile">UPDATE PROFILE</a>--%>
                             <a  id="hylProfile" runat="server" href="/tna/contract-management-assessment-test.aspx" class="my-profile">BEGIN NOW</a></div>
 							<div class="clear"></div>
 							<p>&nbsp;</p>

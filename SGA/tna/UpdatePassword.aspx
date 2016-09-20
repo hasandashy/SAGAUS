@@ -75,7 +75,7 @@
 <article id="container">
 					<section class="welcome-inner">
 						<p class="title40-orange" style="text-align:center;"><asp:Label ID="lblName" runat="server"></asp:Label></p>
-						<p class="title40">Welcome to your Training Needs Analysis</p>
+						<p class="title40">Welcome to your Assessments</p>
 					</section>
 					<section class="color-box">
 						<article class="info-box-shdw-inner">

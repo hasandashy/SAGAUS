@@ -102,7 +102,7 @@
 							<div class="floatR">
                             
                             
-                            <a href="MyProfile.aspx?id=1"  class="update-profile">UPDATE PROFILE</a>
+                            <%--<a href="MyProfile.aspx?id=1"  class="update-profile">UPDATE PROFILE</a>--%>
                             <a id="hylProfile"  runat="server" href="#" class="my-profile">BEGIN NOW</a>
                            </div>
 							<div class="clear"></div>
