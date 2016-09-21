@@ -227,7 +227,9 @@
 <asp:ListItem Value="8">Procurement Manager/ Director</asp:ListItem>
                             </asp:DropDownList> </li>                        	
                         	
-                            <li><input type="checkbox" id="terms" name="terms" />  By ticking this box, I agree to the <a href="Terms.aspx">terms</a> of the website and I understand that the information (including my personal information) entered may be held offshore.</li>
+                            <li><input type="checkbox" id="terms" name="terms" />  
+                            By ticking this box, I agree to the <a href="Terms.aspx">terms and conditions</a> of this website and acknowledge how Comprara will protect my personal information while aggregating and analysing the data received.
+                            </li>
                             <li class="txtRgt"><input type="submit" value="" class="btn-go2" id="btnSend" /></li>
                         </ul>
                    

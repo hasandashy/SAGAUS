@@ -50,6 +50,7 @@
                                             <li><a href="#tabs-6">Contract Manager Pack</a></li>
                                              <li><a href="#tabs-7">Category Manager Pack</a></li>
                                             <li><a href="#tabs-8">Procurement Director Pack</a></li>
+                                              <li><a href="#tabs-9">Commercial Awareness Assesment</a></li>
                                                                                     </ul>
                                         
                                         <div id="tabs-1">
@@ -659,6 +660,83 @@
                                                                 <td colspan="2">
                                                                     <asp:ImageButton ID="ImgDirectorEdit" runat="server" ImageUrl="~/webadmin/images/save.png" OnClick="ImgDirectorEdit_Click" />
                                                                     <asp:ImageButton ID="ImgDirectorCancel" runat="server" ImageUrl="~/webadmin/images/close.png" OnClick="ImgDirectorCancel_Click" CausesValidation="false" />
+                                                                    
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                </asp:Panel>
+                                            </table>
+                                        </div>  
+                                        <div id="tabs-9">
+                                            <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td class="hd20">
+                                                        Commercial Awareness Assesment SUGGESTIONS
+                                                    </td>
+                                                </tr>
+                                                <asp:Panel ID="pnlCAAList" runat="server">
+                                                <tr>
+                                                    <td>
+                                                        <asp:DataGrid ID="grdCAASuggestions" runat="server" AllowPaging="false" AllowSorting="false"
+                                                AutoGenerateColumns="False" CssClass="grdMain" OnItemCommand="grdCAASuggestions_ItemCommand" 
+                                                Width="100%" GridLines="None" PageSize="10">
+                                                <HeaderStyle CssClass="gridHeader" />
+                                                <PagerStyle Mode="NumericPages"  CssClass="pager" HorizontalAlign="Center"  />
+                                                <ItemStyle CssClass="gridItem"  />
+                                                <Columns>
+                                                    <asp:BoundColumn DataField="Id" ItemStyle-Width="12%" HeaderText="Suggestion Id" HeaderStyle-Width="12%" >
+                                                    </asp:BoundColumn>
+                                                   
+                                                    <asp:BoundColumn DataField="topicName" HeaderText="Topic Name" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="20%" HeaderStyle-Width="20%" >
+                                                    </asp:BoundColumn>
+                                                    <asp:BoundColumn DataField="SuggestionText" HeaderText="Suggestion Defination" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="60%" HeaderStyle-Width="60%" >
+                                                    </asp:BoundColumn> 
+                                                    
+                                                    <asp:TemplateColumn HeaderText="Edit" ItemStyle-width="8%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="8%">
+                                                        <ItemTemplate>
+                                                            <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" CommandArgument='<%#Eval("Id") %>' CommandName="Edit" ImageUrl="~/webadmin/images/edit.png" />
+                                                        </ItemTemplate>
+                                                    </asp:TemplateColumn>
+                                                </Columns>
+                                            </asp:DataGrid>
+                                                    </td>
+                                                </tr>
+                                                </asp:Panel>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <asp:Panel ID="pnlCAAEdit" runat="server" Visible="false">
+                                                <tr>
+                                                    <td class="grybox">
+                                                        <table width="100%" border="0" cellspacing="1" cellpadding="1" class="tform">
+                                                            <tr>
+                                                                <td class="txtrht">
+                                                                    Suggestion Defination
+                                                                </td>
+                                                                <td>
+                                                                    <FCKeditorV2:FCKeditor ID="txtCAADefination" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" >&nbsp;</td>
+                                                            </tr>
+                                                            <tr style="display:none">
+                                                                <td class="txtrht">
+                                                                    Considerations
+                                                                </td>
+                                                                <td>
+                                                                    <FCKeditorV2:FCKeditor ID="txtCAAConsidration" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td>&nbsp;</td>
+                                                                <td colspan="2">
+                                                                    <asp:ImageButton ID="ImgCAAEdit" runat="server" ImageUrl="~/webadmin/images/save.png" OnClick="imgCAAEdit_Click" />
+                                                                    <asp:ImageButton ID="ImgCAACancel" runat="server" ImageUrl="~/webadmin/images/close.png" OnClick="imgCAACancel_Click" CausesValidation="false" />
                                                                     
                                                                 </td>
                                                             </tr>

@@ -30,7 +30,7 @@
                     <div class="clear pt10"></div>
                     <p>Comprara's privacy policy may be viewed at <a href="http://www.skillsgapanalysis.com/privacy.aspx">http://www.skillsgapanalysis.com/privacy.aspx</a> Comprara reserves the right to modify its privacy and security policies in its reasonable discretion from time to time. 
                     </p>
-                    <p>Comprara acts in accordance with the Privacy Principles in the Information Privacy Act 2009 (Qld) or the Australian Privacy Principles in the Privacy Act 1988 (Commonwealth) as appropriate to agency. </p>
+                    <p>Comprara acts in accordance with the Privacy Principles in the Information Privacy Principles Instruction (SA) or the Australian Privacy Principles in the Privacy Act 1988 (Commonwealth) as appropriate to agency. </p>
                     <div class="clear pt10"></div>
                     <b class="bold">2. Licence Grant & Restrictions</b>
                     <div class="clear pt10"></div>
@@ -60,7 +60,7 @@
                     
                     <b class="bold">7. Termination</b>
                     <div class="clear pt10"></div>
-                    <p>This Agreement commences on the date of your registration. The Initial Term will be six months, commencing on the date off your registration for the Service. Upon the expiration of the Initial Term, this Agreement will automatically renew for successive renewal terms equal in duration to the Initial Term. Either party may terminate this Agreement by notifying the other party in writing at any stage. You agree and acknowledge that Comprara has no obligation to retain the Customer Data, and may delete such Customer Data, more than 30 days after de-registration.</p>
+                    <p>This Agreement commences on the date of your registration. The initial term will be up to 12 months, commencing on the date off your registration for the Service. Upon the expiration of the Initial Term, this Agreement will automatically renewal terms of 12 months.. Either party may terminate this Agreement by notifying the other party in writing at any stage. You agree and acknowledge that Comprara has no obligation to retain the Customer Data, and may delete such Customer Data, more than 30 days after de-registration.</p>
                     <div class="clear pt10"></div>
                     
                     <b class="bold">8. Termination for Cause</b>

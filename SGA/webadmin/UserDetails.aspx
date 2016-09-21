@@ -484,6 +484,70 @@
                 <td style="height: 10px" colspan="4"></td>
             </tr>
         </table>
+        <br />
+         <table width="100%" border="0" cellspacing="1" cellpadding="1" class="tform">
+            <tr>
+                <td colspan="4">
+                    <b>Commercial Awareness Assessment</b>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 10px" colspan="4"></td>
+            </tr>
+            <tr>
+                <td style="height: 10px" colspan="4">
+                    <asp:DataGrid ID="grdCAA" runat="server" AllowPaging="false" AllowSorting="false"
+                        AutoGenerateColumns="False" CssClass="grdMain" OnItemDataBound="grdCAA_ItemDataBound"
+                        OnItemCommand="grdCAA_ItemCommand" Width="100%" GridLines="None" PageSize="20">
+                        <HeaderStyle CssClass="gridHeader" />
+                        <PagerStyle Mode="NumericPages" CssClass="pager" HorizontalAlign="Center" />
+                        <ItemStyle CssClass="gridItem" />
+                        <Columns>
+                            <asp:BoundColumn DataField="name" ItemStyle-Width="18%" HeaderText="Name" HeaderStyle-Width="18%"
+                                SortExpression="name"></asp:BoundColumn>
+                            <asp:TemplateColumn ItemStyle-Width="10%" HeaderStyle-Width="10%" SortExpression="Marks"
+                                HeaderText="Marks">
+                                <ItemTemplate>
+                                    <%#Eval("marks")%>
+                                </ItemTemplate>
+                            </asp:TemplateColumn>
+                            <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate"
+                                HeaderText="Assesment Date">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblAssesmentDate" runat="server"></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateColumn>
+                            <asp:TemplateColumn ItemStyle-Width="24%" HeaderStyle-Width="24%" ItemStyle-HorizontalAlign="Center"
+                                HeaderStyle-HorizontalAlign="Center" HeaderText="Action">
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="iBtnDelete" runat="server" CausesValidation="false" AlternateText="Delete"
+                                        Style="height: 25px; width: 25px;" OnClientClick="return confirm('Are you sure you want to delete this record?');"
+                                        CommandArgument='<%#Eval("testId") %>' CommandName="Delete" ToolTip="Delete"
+                                        ImageUrl="~/webadmin/images/disapprove_icon.png" />
+                                  
+                                    &nbsp;
+                                <asp:ImageButton ID="iBtnGraph" runat="server" CausesValidation="false" AlternateText="Graph"
+                                    Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Graph"
+                                    ToolTip="Graph" ImageUrl="~/webadmin/images/img-graph-icon.gif" />
+                                    &nbsp;
+                                <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" AlternateText="Edit"
+                                    Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Edit"
+                                    ToolTip="Edit" ImageUrl="~/webadmin/images/edit.png" />
+                                    &nbsp;
+                                <asp:ImageButton ID="iBtnDrill" runat="server" CausesValidation="false" AlternateText="Graph"
+                                    Style="height: 30px; width: 30px;" CommandArgument='<%#Eval("testId") %>' CommandName="drilldown"
+                                    ToolTip="drilldown" ImageUrl="~/webadmin/images/drilldown.png" />
+                                </ItemTemplate>
+                            </asp:TemplateColumn>
+                        </Columns>
+                    </asp:DataGrid>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 10px" colspan="4"></td>
+            </tr>
+        </table>
+        <br />
     </form>
 </body>
 </html>

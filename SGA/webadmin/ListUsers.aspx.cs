@@ -1075,14 +1075,7 @@ namespace SGA.webadmin
 						"First name",
 						"Last name",
 						"Your Organisation ID",
-						"Your Job ROLE ID",
-						"Your Job level ID",
-						"Manager's First Name",
-						"Manager's Last Name",
-						"Manager's Email",
-                        "Phone",
-                        "Division",
-                        "Location ID"
+						"Your Job ROLE ID"
 					};
                     int iRow = 2;
                     using (ExcelPackage xlPackage = new ExcelPackage(newFile))
@@ -1113,13 +1106,13 @@ namespace SGA.webadmin
                             string lName = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Last name")].Value.ToString().Trim();
                             int agencyId = System.Convert.ToInt32(worksheet.Cells[iRow, this.GetColumnIndex(properties, "Your Organisation ID")].Value.ToString().Trim());
                             int jobRoleId = System.Convert.ToInt32(worksheet.Cells[iRow, this.GetColumnIndex(properties, "Your Job ROLE ID")].Value.ToString().Trim());
-                            int jobLevelId = System.Convert.ToInt32(worksheet.Cells[iRow, this.GetColumnIndex(properties, "Your Job level ID")].Value.ToString().Trim());
-                            string mFirstName = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Manager's First Name")].Value.ToString().Trim();
-                            string mLastName = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Manager's Last Name")].Value.ToString().Trim();
-                            string mEmail = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Manager's Email")].Value.ToString().Trim();
-                            string phone = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Phone")].Value.ToString().Trim();
-                            string division = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Division")].Value.ToString().Trim();
-                            int locationId = System.Convert.ToInt32(worksheet.Cells[iRow, this.GetColumnIndex(properties, "Location ID")].Value.ToString().Trim());
+                            //int jobLevelId = System.Convert.ToInt32(worksheet.Cells[iRow, this.GetColumnIndex(properties, "Your Job level ID")].Value.ToString().Trim());
+                            //string mFirstName = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Manager's First Name")].Value.ToString().Trim();
+                            //string mLastName = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Manager's Last Name")].Value.ToString().Trim();
+                            //string mEmail = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Manager's Email")].Value.ToString().Trim();
+                           // string phone = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Phone")].Value.ToString().Trim();
+                            //string division = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Division")].Value.ToString().Trim();
+                            //int locationId = System.Convert.ToInt32(worksheet.Cells[iRow, this.GetColumnIndex(properties, "Location ID")].Value.ToString().Trim());
                             if (email.Trim().Length <= 0)
                             {
                                 goto Block_12;
@@ -1158,13 +1151,13 @@ namespace SGA.webadmin
                                 string lName = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Last name")].Value.ToString().Trim();
                                 int agencyId = System.Convert.ToInt32(worksheet.Cells[iRow, this.GetColumnIndex(properties, "Your Organisation ID")].Value.ToString().Trim());
                                 int jobRoleId = System.Convert.ToInt32(worksheet.Cells[iRow, this.GetColumnIndex(properties, "Your Job ROLE ID")].Value.ToString().Trim());
-                                int jobLevelId = System.Convert.ToInt32(worksheet.Cells[iRow, this.GetColumnIndex(properties, "Your Job level ID")].Value.ToString().Trim());
-                                string mFirstName = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Manager's First Name")].Value.ToString().Trim();
-                                string mLastName = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Manager's Last Name")].Value.ToString().Trim();
-                                string mEmail = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Manager's Email")].Value.ToString().Trim();
-                                string phone = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Phone")].Value.ToString().Trim();
-                                string division = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Division")].Value.ToString().Trim();
-                                int locationId = System.Convert.ToInt32(worksheet.Cells[iRow, this.GetColumnIndex(properties, "Location ID")].Value.ToString().Trim());
+                                //int jobLevelId = System.Convert.ToInt32(worksheet.Cells[iRow, this.GetColumnIndex(properties, "Your Job level ID")].Value.ToString().Trim());
+                                //string mFirstName = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Manager's First Name")].Value.ToString().Trim();
+                                //string mLastName = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Manager's Last Name")].Value.ToString().Trim();
+                                //string mEmail = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Manager's Email")].Value.ToString().Trim();
+                                //string phone = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Phone")].Value.ToString().Trim();
+                               // string division = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Division")].Value.ToString().Trim();
+                                //int locationId = System.Convert.ToInt32(worksheet.Cells[iRow, this.GetColumnIndex(properties, "Location ID")].Value.ToString().Trim());
                                 if (!isEmailError)
                                 {
                                     SqlParameter[] param = new SqlParameter[]
@@ -1183,7 +1176,7 @@ namespace SGA.webadmin
                                         string plainpassword = SGACommon.generatePassword(8);
                                         string passwordSalt = SGACommon.CreateSalt(5);
                                         string passwordHash = SGACommon.CreatePasswordHash(plainpassword, passwordSalt);
-                                        param = new SqlParameter[15];
+                                        param = new SqlParameter[11];
                                         param[0] = new SqlParameter("@action", SqlDbType.VarChar);
                                         param[0].Value = "Insert";
                                         param[1] = new SqlParameter("@password", SqlDbType.VarChar);
@@ -1204,16 +1197,9 @@ namespace SGA.webadmin
                                         param[8].Value = jobRoleId;
                                         param[9] = new SqlParameter("@isAdminAdded", SqlDbType.Bit);
                                         param[9].Value = 1;
-                                        param[10] = new SqlParameter("@jobLevel", SqlDbType.Int);
-                                        param[10].Value = jobLevelId;
-                                        param[11] = new SqlParameter("@agencyId", SqlDbType.Int);
-                                        param[11].Value = agencyId;
-                                        param[12] = new SqlParameter("@phone", SqlDbType.VarChar);
-                                        param[12].Value = phone;
-                                        param[13] = new SqlParameter("@division", SqlDbType.VarChar);
-                                        param[13].Value = division;
-                                        param[14] = new SqlParameter("@locationId", SqlDbType.Int);
-                                        param[14].Value = locationId;
+                                        param[10] = new SqlParameter("@agencyId", SqlDbType.Int);
+                                        param[10].Value = agencyId;
+                                     
 
                                         int result = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spUserMaster", param));
                                         if (result > 0)
@@ -1222,151 +1208,151 @@ namespace SGA.webadmin
 											{
 												"Id"
 											};
-                                            XmlRpcStruct[] resultFound = isdnAPI.findByEmail(mEmail, strField);
-                                            XmlRpcStruct Contact = new XmlRpcStruct();
-                                            if (resultFound.Length > 0)
-                                            {
-                                                int userId = System.Convert.ToInt32(resultFound[0]["Id"].ToString());
-                                                bool isAdded = isdnAPI.addToGroup(userId, 756);
-                                            }
-                                            else
-                                            {
-                                                Contact.Add("FirstName", mFirstName);
-                                                Contact.Add("LastName", mLastName);
-                                                Contact.Add("Email", mEmail);
-                                                Contact.Add("OwnerID", "50036");
-                                                Contact.Add("ContactType", "Customer");
-                                                int userId = isdnAPI.add(Contact);
-                                                bool isAdded = isdnAPI.addToGroup(userId, 756);
-                                                isdnAPI.optIn(mEmail, "Sending emails is allowed");
-                                            }
-                                            resultFound = isdnAPI.findByEmail(email, strField);
-                                            if (resultFound.Length > 0)
-                                            {
-                                                int userId = System.Convert.ToInt32(resultFound[0]["Id"].ToString());
-                                                bool isAdded = isdnAPI.addToGroup(userId, 400);
-                                                isdnAPI.optIn(email, "Sending emails is allowed");
-                                                isdnAPI.dsUpdate("Contact", userId, new XmlRpcStruct
-												{
-													{
-														"FirstName",
-														fName
-													},
-													{
-														"LastName",
-														lName
-													},
-													{
-														"Email",
-														email
-													},
-													{
-														"OwnerID",
-														"50036"
-													},
-													{
-														"_StudentsManagersFirstName",
-														mFirstName
-													},
-													{
-														"_StudentsManagersLastName",
-														mLastName
-													},
-													{
-														"_StudentsManagersEmail",
-														mEmail
-													},
-													{
-														"_CSBPassword",
-														plainpassword
-													},
-													{
-														"_YourOrganisation",
-														Profile.GetOrganisation(System.Convert.ToInt32(agencyId))
-													},
-													{
-														"_Role",
-														Profile.GetJobRole(System.Convert.ToInt32(jobRoleId))
-													},
-													{
-														"_RoleLevel",
-														Profile.GetJobLevel(System.Convert.ToInt32(jobLevelId))
-													},
-													{
-														"_CSBUsername",
-														email
-													},
-                                                    {"Phone1",phone},
-													{
-														"ContactType",
-														"Customer"
-													}
-												});
-                                            }
-                                            else
-                                            {
-                                                int userId = isdnAPI.add(new XmlRpcStruct
-												{
-													{
-														"FirstName",
-														fName
-													},
-													{
-														"LastName",
-														lName
-													},
-													{
-														"Email",
-														email
-													},
-													{
-														"OwnerID",
-														"50036"
-													},
-													{
-														"_StudentsManagersFirstName",
-														mFirstName
-													},
-													{
-														"_StudentsManagersLastName",
-														mLastName
-													},
-													{
-														"_StudentsManagersEmail",
-														mEmail
-													},
-													{
-														"_CSBPassword",
-														plainpassword
-													},
-													{
-														"_YourOrganisation",
-														Profile.GetOrganisation(System.Convert.ToInt32(agencyId))
-													},
-													{
-														"_Role",
-														Profile.GetJobRole(System.Convert.ToInt32(jobRoleId))
-													},
-													{
-														"_RoleLevel",
-														Profile.GetJobLevel(System.Convert.ToInt32(jobLevelId))
-													},
-													{
-														"_CSBUsername",
-														email
-													},
-                                                    {"Phone1",phone},
-													{
-														"ContactType",
-														"Customer"
-													}
-												});
-                                                if (userId > 0)
-                                                {
-                                                    bool isAdded = isdnAPI.addToGroup(userId, 400);
-                                                    isdnAPI.optIn(email, "Sending emails is allowed");
-                                                }
-                                            }
+                                            //XmlRpcStruct[] resultFound = isdnAPI.findByEmail(mEmail, strField);
+                                            //XmlRpcStruct Contact = new XmlRpcStruct();
+                                            //if (resultFound.Length > 0)
+                                            //{
+                                            //    int userId = System.Convert.ToInt32(resultFound[0]["Id"].ToString());
+                                            //    bool isAdded = isdnAPI.addToGroup(userId, 756);
+                                            //}
+                                            //else
+                                            //{
+                                            //    Contact.Add("FirstName", mFirstName);
+                                            //    Contact.Add("LastName", mLastName);
+                                            //    Contact.Add("Email", mEmail);
+                                            //    Contact.Add("OwnerID", "50036");
+                                            //    Contact.Add("ContactType", "Customer");
+                                            //    int userId = isdnAPI.add(Contact);
+                                            //    bool isAdded = isdnAPI.addToGroup(userId, 756);
+                                            //    isdnAPI.optIn(mEmail, "Sending emails is allowed");
+                                            //}
+                                            //resultFound = isdnAPI.findByEmail(email, strField);
+                                            //if (resultFound.Length > 0)
+                                            //{
+                                            //    int userId = System.Convert.ToInt32(resultFound[0]["Id"].ToString());
+                                            //    bool isAdded = isdnAPI.addToGroup(userId, 400);
+                                            //    isdnAPI.optIn(email, "Sending emails is allowed");
+                                            //    isdnAPI.dsUpdate("Contact", userId, new XmlRpcStruct
+                                            //    {
+                                            //        {
+                                            //            "FirstName",
+                                            //            fName
+                                            //        },
+                                            //        {
+                                            //            "LastName",
+                                            //            lName
+                                            //        },
+                                            //        {
+                                            //            "Email",
+                                            //            email
+                                            //        },
+                                            //        {
+                                            //            "OwnerID",
+                                            //            "50036"
+                                            //        },
+                                            //        {
+                                            //            "_StudentsManagersFirstName",
+                                            //            mFirstName
+                                            //        },
+                                            //        {
+                                            //            "_StudentsManagersLastName",
+                                            //            mLastName
+                                            //        },
+                                            //        {
+                                            //            "_StudentsManagersEmail",
+                                            //            mEmail
+                                            //        },
+                                            //        {
+                                            //            "_CSBPassword",
+                                            //            plainpassword
+                                            //        },
+                                            //        {
+                                            //            "_YourOrganisation",
+                                            //            Profile.GetOrganisation(System.Convert.ToInt32(agencyId))
+                                            //        },
+                                            //        {
+                                            //            "_Role",
+                                            //            Profile.GetJobRole(System.Convert.ToInt32(jobRoleId))
+                                            //        },
+                                            //        {
+                                            //            "_RoleLevel",
+                                            //            Profile.GetJobLevel(System.Convert.ToInt32(jobLevelId))
+                                            //        },
+                                            //        {
+                                            //            "_CSBUsername",
+                                            //            email
+                                            //        },
+                                            //        {"Phone1",phone},
+                                            //        {
+                                            //            "ContactType",
+                                            //            "Customer"
+                                            //        }
+                                            //    });
+                                            //}
+                                            //else
+                                            //{
+                                            //    int userId = isdnAPI.add(new XmlRpcStruct
+                                            //    {
+                                            //        {
+                                            //            "FirstName",
+                                            //            fName
+                                            //        },
+                                            //        {
+                                            //            "LastName",
+                                            //            lName
+                                            //        },
+                                            //        {
+                                            //            "Email",
+                                            //            email
+                                            //        },
+                                            //        {
+                                            //            "OwnerID",
+                                            //            "50036"
+                                            //        },
+                                            //        {
+                                            //            "_StudentsManagersFirstName",
+                                            //            mFirstName
+                                            //        },
+                                            //        {
+                                            //            "_StudentsManagersLastName",
+                                            //            mLastName
+                                            //        },
+                                            //        {
+                                            //            "_StudentsManagersEmail",
+                                            //            mEmail
+                                            //        },
+                                            //        {
+                                            //            "_CSBPassword",
+                                            //            plainpassword
+                                            //        },
+                                            //        {
+                                            //            "_YourOrganisation",
+                                            //            Profile.GetOrganisation(System.Convert.ToInt32(agencyId))
+                                            //        },
+                                            //        {
+                                            //            "_Role",
+                                            //            Profile.GetJobRole(System.Convert.ToInt32(jobRoleId))
+                                            //        },
+                                            //        {
+                                            //            "_RoleLevel",
+                                            //            Profile.GetJobLevel(System.Convert.ToInt32(jobLevelId))
+                                            //        },
+                                            //        {
+                                            //            "_CSBUsername",
+                                            //            email
+                                            //        },
+                                            //        {"Phone1",phone},
+                                            //        {
+                                            //            "ContactType",
+                                            //            "Customer"
+                                            //        }
+                                            //    });
+                                            //    if (userId > 0)
+                                            //    {
+                                            //        bool isAdded = isdnAPI.addToGroup(userId, 400);
+                                            //        isdnAPI.optIn(email, "Sending emails is allowed");
+                                            //    }
+                                            //}
                                         }
                                         userInsert = true;
                                     }

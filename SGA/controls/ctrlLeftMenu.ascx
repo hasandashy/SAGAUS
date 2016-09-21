@@ -7,7 +7,7 @@
     <li><a href="ManageReportRecommendations.aspx" ><span>Recommendations</span></a></li>
     <%--<li><a href="ManageWorkshop.aspx" ><span>Manage WorkShop</span></a></li>--%>
     <li><a href="ManageEmailTemplates.aspx" ><span>Email templates</span></a></li>
-    <li><a href="DownloadReport.aspx" ><span>Download Reports</span></a></li>
+   <%-- <li><a href="DownloadReport.aspx" ><span>Download Reports</span></a></li>--%>
     <%--<li><a href="ManageJobSuggestions.aspx" ><span>Manage JobRole Suggestions</span></a></li>--%>
     <%--<li><a href="ManagePlans.aspx" ><span>Manage Plans</span></a></li>--%>
     <%--<li><a href="PlanAndElearningMapping.aspx" ><span>Manage Elearning Plans</span></a></li>--%>

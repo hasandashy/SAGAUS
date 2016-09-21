@@ -23,9 +23,10 @@ namespace SGA.webadmin
                 this.BindGrid(1, this.grdCMASuggestions);
                 this.BindGrid(1, this.grdAdvisorSuggestions);
                 this.BindGrid(1, this.grdCategoryManagerSuggestions);
-                this.BindGrid(3, this.grdContractManagerSuggestions);
+                this.BindGrid(1, this.grdContractManagerSuggestions);
                 this.BindGrid(1, this.grdSpecialistSuggetions);
                 this.BindGrid(1, this.grdDirectorSuggetsions);
+                this.BindGrid(2, this.grdCAASuggestions);
             }
         }
 
@@ -80,6 +81,20 @@ namespace SGA.webadmin
             this.BindGrid(3, this.grdBASuggestions);
         }
 
+        protected void imgCAAEdit_Click(object sender, ImageClickEventArgs e)
+        {
+            this.pnlBAEdit.Visible = false;
+            this.pnlBAList.Visible = true;
+            SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spGetSuggestionById", new SqlParameter[]
+			{
+				new SqlParameter("@Id", this.imgBAEdit.CommandArgument),
+				new SqlParameter("@flag", "1"),
+				new SqlParameter("@suggestionText", this.txtBADefination.Value),
+				new SqlParameter("@considerationText", this.txtBAConsideration.Value)
+			});
+            this.BindGrid(3, this.grdCAASuggestions);
+        }
+
         protected void imgBACancel_Click(object sender, ImageClickEventArgs e)
         {
             this.pnlBAEdit.Visible = false;
@@ -97,6 +112,12 @@ namespace SGA.webadmin
             this.pnlCMAEdit.Visible = false;
             this.pnlCMAList.Visible = true;
         }
+        protected void imgCAACancel_Click(object sender, ImageClickEventArgs e)
+        {
+            this.pnlCAAEdit.Visible = false;
+            this.pnlCAAList.Visible = true;
+        }
+
 
         protected void imgAdvisorEdit_Click(object sender, ImageClickEventArgs e)
         {
@@ -220,6 +241,30 @@ namespace SGA.webadmin
                 }
             }
         }
+
+        protected void grdCAASuggestions_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+            if (e.CommandName == "Edit")
+            {
+                this.pnlSSAEdit.Visible = true;
+                this.pnlSSAList.Visible = false;
+                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSuggestionById", new SqlParameter[]
+				{
+					new SqlParameter("@Id", e.CommandArgument),
+					new SqlParameter("@flag", "0")
+				});
+                if (ds != null)
+                {
+                    if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                    {
+                        this.txtSSARecommendation.Value = ds.Tables[0].Rows[0]["ConsiderationText"].ToString();
+                        this.txtSSASuggestion.Value = ds.Tables[0].Rows[0]["SuggestionText"].ToString();
+                        this.imgSSAEdit.CommandArgument = ds.Tables[0].Rows[0]["Id"].ToString();
+                    }
+                }
+            }
+        }
+
 
         protected void grdCMASuggestions_ItemCommand(object source, DataGridCommandEventArgs e)
         {

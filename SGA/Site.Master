@@ -211,7 +211,7 @@
             <li class="title">Home</li>
             <li><a href="/help.aspx" title="Support">Support</a></li>
             <li><a href="/role_guidelines" title="Role Guidelines">Role Guidelines</a></li>
-            <li><a href="About_us.aspx" title="About Comprara">About Comprara</a></li>
+            <li><a href="http://www.comprara.com.au" target="_blank" title="About Comprara">About Comprara</a></li>
               <li><a href="Terms.aspx" title="Terms of Use">Terms of Use</a></li>
               <li><a href="Privacy.aspx" title="Privacy Policy">Privacy Policy</a></li>
           </ul>

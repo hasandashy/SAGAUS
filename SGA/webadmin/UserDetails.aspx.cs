@@ -36,6 +36,7 @@ namespace SGA.webadmin
                     this.BindSGATest();
                     this.BindCMATest();
                     this.BindCMKTest();
+                    this.BindCAATest();
                 }
             }
         }
@@ -481,6 +482,63 @@ namespace SGA.webadmin
             if (e.CommandName == "Delete")
             {
                 SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spDeleteCMKTest", new SqlParameter[]
+                {
+                    new SqlParameter("@testId", e.CommandArgument)
+                });
+                this.BindCMKTest();
+            }
+            else if (e.CommandName == "Graph")
+            {
+                base.Response.Redirect("TestChartCMK.aspx?id=" + e.CommandArgument, false);
+            }
+            else if (e.CommandName == "drilldown")
+            {
+                base.Response.Redirect("/CMKChart/" + e.CommandArgument, false);
+            }
+            else if (e.CommandName == "Edit")
+            {
+                base.Response.Redirect("EditCMKtest.aspx?id=" + e.CommandArgument, false);
+            }
+        }
+
+        private void BindCAATest()
+        {
+            string strOrderBy = " testId desc  ";
+            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageCAATest", new SqlParameter[]
+            {
+                new SqlParameter("@firstname", ""),
+                new SqlParameter("@lastname", ""),
+                new SqlParameter("@userIds", this.userId),
+                new SqlParameter("@dateFrom", ""),
+                new SqlParameter("@dateTo", ""),
+                new SqlParameter("@orderBy", strOrderBy)
+            });
+            this.grdCMK.DataSource = ds;
+            this.grdCMK.DataBind();
+        }
+
+        protected void grdCAA_ItemDataBound(object sender, DataGridItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                Label lblAssesmentDate = (Label)e.Item.FindControl("lblAssesmentDate");
+                if (lblAssesmentDate != null)
+                {
+                    lblAssesmentDate.Text = SGACommon.ToAusTimeZone(System.Convert.ToDateTime(DataBinder.Eval(e.Item.DataItem, "testDate"))).ToString("dd MMM yyyy HH:mm tt");
+                }
+                int complete = System.Convert.ToInt32(DataBinder.Eval(e.Item.DataItem, "complete"));
+                if (complete <= 0)
+                {
+                    e.Item.BackColor = Color.FromArgb(255, 156, 255);
+                }
+            }
+        }
+
+        protected void grdCAA_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+            if (e.CommandName == "Delete")
+            {
+                SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spDeleteCAATest", new SqlParameter[]
                 {
                     new SqlParameter("@testId", e.CommandArgument)
                 });

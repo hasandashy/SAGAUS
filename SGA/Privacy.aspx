@@ -44,7 +44,6 @@
                             <li>information about the services you have ordered</li>
                             <li>information from enquiries you have made</li>
                             <li>communications between us</li>
-                            <li>credit card information</li>
                         </ul></div>
                     </p>
                     <div class="clear pt10"></div>
@@ -66,9 +65,13 @@
                         The personal information you provide may be used by Comprara to:
                         <div  style="padding-left:30px;">
                         <ul>
-                            <li>comply with our reporting obligations under the Standing Offer Arrangement with Queensland Government (SOA)</li>
-                            <li>provide your Skills Gap Test and Training Needs Analysis results to your employer and to the Principal of the SOA (currently Department of Housing and Public Works, Procurement Transformation Division)</li>
-                            <li>compile an employer-requested list of those persons in their employment who have registered for the Skills Gap Test and Training Needs Analysis and their completion status</li>
+                            <!--<li>comply with our reporting obligations under the Standing Offer Arrangement with Queensland Government (SOA)</li>
+                            <li>provide your Skills Gap Test and Training Needs Analysis results to your employer and to the Principal of the SOA (currently Department of Housing and Public Works, Procurement Transformation Division)</li>-->
+                            <li>provide required services and reporting under the scope of our Agreement with the State Procurement Board (SA)</li>
+                            <li>provide you (and you alone) with your personalised assessment report and 70:20:10 recommendations (emaiI address only)</li>
+                            <li>develop high level across government aggregated analysis and reporting for the State Procurement Board without attribution to individual participants</li>
+                            <li>inform planning for future capability development programs in SA assessments under the Skills for Procurement- Assess and Build program</li>
+                            <li>compile a list of those persons in each agency who have registered for the Skills Gap Test and Training Needs Analysis and their completion status to inform the relevant agency.</li>
                             <li>aggregate and use for internal review to analyse trends and statistics</li>
                             <li>process your registration and record your profile information</li>
                             <li>customise future service offerings, such as procurement training</li>

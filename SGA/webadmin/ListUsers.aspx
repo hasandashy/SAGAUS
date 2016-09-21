@@ -70,7 +70,7 @@
                                     <div id="tabs">
                                         <ul>
                                             <li><a href="#tabs-1">List User</a></li>
-                                           <%-- <li><a href="#tabs-2">View/Edit User </a></li>--%>
+                                            <%-- <li><a href="#tabs-2">View/Edit User </a></li>--%>
                                             <li><a href="#tabs-3">Permissions </a></li>
                                             <li><a href="#tabs-4">User Assess</a></li>
                                             <li><a href="#tabs-5">Procurement self Assess</a></li>
@@ -198,7 +198,7 @@
                                                                             <asp:TemplateColumn HeaderText="Name" SortExpression="firstname" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Left" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Width="10%">
                                                                                 <ItemTemplate>
                                                                                     <a href="UserDetails.aspx?Id=<%#Eval("Id") %>&KeepThis=true&TB_iframe=true&height=500&width=1070" class="thickbox"><%# Eval("firstname") +" "+ Eval("lastname") %></a>
-                                                                                   <%-- <a href="#"><%# Eval("firstname") +" "+ Eval("lastname") %></a>--%>
+                                                                                    <%-- <a href="#"><%# Eval("firstname") +" "+ Eval("lastname") %></a>--%>
                                                                                 </ItemTemplate>
                                                                             </asp:TemplateColumn>
                                                                             <asp:TemplateColumn HeaderText="Email" SortExpression="email" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Left" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Width="10%">
@@ -653,7 +653,7 @@
                                                           <%--  <a target="_blank" href="ShowSSAPdf.aspx?id=<%#Eval("emailLink") %>">
                                                                 <img src="../innerimages/icon-pdf.gif" style="height: 25px; width: 25px;" alt="" /></a>
                                                                         &nbsp;--%>
-                                                            <asp:ImageButton ID="iBtnGraph" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Graph" ToolTip="Graph" ImageUrl="~/webadmin/images/img-graph-icon.gif" />
+                                                                        <asp:ImageButton ID="iBtnGraph" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Graph" ToolTip="Graph" ImageUrl="~/webadmin/images/img-graph-icon.gif" />
                                                                         &nbsp;
                                                             <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" AlternateText="Edit" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Edit" ToolTip="Edit" ImageUrl="~/webadmin/images/edit.png" />
                                                                         &nbsp;
@@ -777,7 +777,7 @@
                                         <div id="tabs-7">
                                             <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
                                                 <tr>
-                                                    <td class="hd20"> Contract Management Knowledge Evaluation
+                                                    <td class="hd20">Contract Management Assesment
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -943,7 +943,7 @@
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" SetFocusOnError="true" InitialValue="0" CssClass="error" ControlToValidate="ddlAgency" ValidationGroup="add" Text="*"></asp:RequiredFieldValidator>
                                                                 </td>
                                                             </tr>
-                                                            <tr>                                                                
+                                                            <tr>
                                                                 <td class="txtrht">Your Job ROLE</td>
                                                                 <td>
                                                                     <asp:DropDownList ID="ddlJobRole" CssClass="styled" runat="server">
@@ -958,8 +958,8 @@
                                                                     </asp:DropDownList>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" SetFocusOnError="true" ControlToValidate="ddlJobRole" InitialValue="0" CssClass="error" ValidationGroup="add" Text="*"></asp:RequiredFieldValidator>
                                                                 </td>
-                                                            </tr>                                                          
-                                                           
+                                                            </tr>
+
                                                             <tr>
                                                                 <td colspan="4" align="center">
                                                                     <asp:Label ID="lblError" runat="server" CssClass="error"></asp:Label>
@@ -1026,7 +1026,7 @@
                                         <div id="tabs-10">
                                             <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
                                                 <tr>
-                                                    <td class="hd20">Contract Management Assessment
+                                                    <td class="hd20">Contract Management Knowledge Evaluation
                                                     </td>
                                                 </tr>
                                                 <tr>
