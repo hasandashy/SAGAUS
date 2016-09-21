@@ -3,7 +3,7 @@
      <!-- Banner start -->
 				<div class="banner-inner-caa">
 					<div class="banner-cnt">
-						<p class="banner-heading"><span>Commercial Awareness Assessment</span></p>
+						<p class="banner-heading"><span>Commercial Awareness<br /> Assessment</span></p>
 						<div class="banner-txt">
                             <p class="banner-heading" style="font-size:25px">Note: This is a timed assessment!<br />At 60 minutes the assessment will close</p>
 						</div>
@@ -22,7 +22,7 @@
 							<p class="title28">What is it?</p>
 							<p>The Commercial Awareness Assessment is designed to diagnose commercial awareness across the Government of South Australia to deliver ‘value’ beyond traditional economic measures of value, such as price savings.</p>
 							<p></p>
-							<p class="mrg-bt-10 txt-orange dark">The eight dimensions are:</p>
+							<p class="mrg-bt-10 txt-orange dark">The five dimensions are:</p>
 							<div class="floatL wide50-1">
 								<ul class="tick-mark2">
 									<li>Stakeholder engagement</li>

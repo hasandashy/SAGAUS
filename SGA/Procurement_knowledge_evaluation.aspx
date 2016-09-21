@@ -9,7 +9,7 @@
 				</div>--%>
     <div class="banner-inner-pke">
 					<div class="banner-cnt">
-						<p class="banner-heading"><span>Procurement Knowledge Evaluation</span></p>
+						<p class="banner-heading"><span>Procurement<br /> Knowledge Evaluation</span></p>
 						<div class="banner-txt">
                             <p class="banner-heading" style="font-size:25px">Note: This is a timed assessment!<br />At 60 minutes the assessment will close</p>
 						</div>
@@ -23,9 +23,9 @@
 				<article id="container">
 					<div class="col-660">
 						<section class="cnt-lt-2 equal_height">
-							<p class="title28">What is the evaluation about?</p>
+							<p class="title28">What is it?</p>
 							<p>This is an evaluation of your Procurement knowledge. You will be guided through eight dimensions of Procurement and you will be asked nine multiple choice questions for each dimension. This is a timed assessment and at 60 minutes the assessment will close. </p>
-							<p class="mrg-bt-10 dark">The 8 dimensions are:</p>
+							<p class="mrg-bt-10 txt-orange dark">The eight dimensions are:</p>
 							<div class="floatL wide50-1">
 								<ul class="tick-mark2">
 									<li>Opportunity Analysis</li>

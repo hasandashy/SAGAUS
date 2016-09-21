@@ -70,6 +70,7 @@ input, textarea, select {
     padding: 1px;
     border: 1px solid #9b9b9b;
     outline: none;
+
 }
 
 button, input, select, textarea {
@@ -702,7 +703,7 @@ a#more-info-mob {
         .banner-inner-pke .banner-cnt .banner-heading {
             font-family: 'cleargothic-mediumregular', Arial, Helvetica, sans-serif;
             font-size: 38px;
-            line-height: 50px;
+            line-height: 40px;
             color: #231f20;
             margin: 0 0 10px 30px;
             padding-top: 10px;
@@ -727,7 +728,7 @@ a#more-info-mob {
         }
 
 .banner-inner-pke > div:after {
- content:url(../innerimages/icon-score.png);
+ content:url(../innerimages/icon-timed-task.png);
  position: absolute;
         left: 20px;
         bottom: 20px;
@@ -909,7 +910,7 @@ ol.list1 {
         .banner-inner-ssa .banner-cnt .banner-heading {
             font-family: 'cleargothic-mediumregular', Arial, Helvetica, sans-serif;
             font-size: 38px;
-            line-height: 50px;
+            line-height: 40px;
             color: #231f20;
             margin: 0 0 10px 30px;
             padding-top: 10px;
@@ -934,7 +935,7 @@ ol.list1 {
         }
 
     .banner-inner-ssa > div:after {
-        content: url(../innerimages/icon-graf.png);
+        content: url(../innerimages/img-skills-self-assessment.gif);
         position: absolute;
         left: 20px;
         bottom: 20px;
@@ -954,7 +955,7 @@ ol.list1 {
         .banner-inner-cke .banner-cnt .banner-heading {
             font-family: 'cleargothic-mediumregular', Arial, Helvetica, sans-serif;
             font-size: 38px;
-            line-height: 50px;
+            line-height: 40px;
             color: #231f20;
             margin: 0 0 10px 30px;
             padding-top: 10px;
@@ -999,7 +1000,7 @@ ol.list1 {
         .banner-inner-caa .banner-cnt .banner-heading {
             font-family: 'cleargothic-mediumregular', Arial, Helvetica, sans-serif;
             font-size: 38px;
-            line-height: 50px;
+            line-height: 40px;
             color: #231f20;
             margin: 0 0 10px 30px;
             padding-top: 10px;
@@ -1025,7 +1026,7 @@ ol.list1 {
 
         
  .banner-inner-caa > div:after {
-        content: url(../innerimages/icon-bulb.png);
+        content: url(../innerimages/img-behavioural-assessment.gif);
         position: absolute;
         left: 20px;
         bottom: 20px;
@@ -1278,7 +1279,7 @@ ol.list1 {
         .banner-inner-cma .banner-cnt .banner-heading {
             font-family: 'cleargothic-mediumregular', Arial, Helvetica, sans-serif;
             font-size: 38px;
-            line-height: 50px;
+            line-height: 40px;
             color: #231f20;
             margin: 0 0 10px 30px;
             padding-top: 10px;

@@ -3,7 +3,7 @@
 <!-- Banner start -->
 				<div class="banner-inner-ssa">
 					<div class="banner-cnt">
-						<p class="banner-heading"><span>Procurement Self Assessment</span></p>
+						<p class="banner-heading"><span>Procurement<br /> Self Assessment</span></p>
 						
 						<div class="clear"></div>
 					</div>
@@ -20,7 +20,7 @@
 							<p class="title28">What is it?</p>
 							<p>This is a self-assessment of your Procurement skills. You will be guided through eight dimensions of Procurement as you assess yourself on 72 questions. Allow for 40 – 60 minutes to complete this self-assessment.</p>
 								<p></p>
-							<p class="mrg-bt-10 txt-orange dark">The 8 dimesions are:</p>
+							<p class="mrg-bt-10 txt-orange dark">The eight dimesions are:</p>
 							<div class="floatL wide50-1">
 								<ul class="tick-mark2">
 									<li>Opportunity Analysis</li>

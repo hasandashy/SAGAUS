@@ -71,7 +71,7 @@ namespace SGA.tna
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
-            SGACommon.AddPageTitle(this.Page, "Contract Awareness Assessment  ", "");
+            SGACommon.AddPageTitle(this.Page, "Commercial Awareness Assessment  ", "");
             MasterPage mp = this.Page.Master;
             if (mp != null)
             {

@@ -66,23 +66,23 @@ namespace SGA.controls
                             switch (i)
                             {
                                 case 0:
-                                    this.topic1mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString() + "%");
+                                    this.topic1mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString());
                                     this.topic1name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
                                     break;
                                 case 1:
-                                    this.topic2mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString() + "%");
+                                    this.topic2mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString());
                                     this.topic2name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
                                     break;
                                 case 2:
-                                    this.topic3mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString() + "%");
+                                    this.topic3mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString());
                                     this.topic3name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
                                     break;
                                 case 3:
-                                    this.topic4mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString() + "%");
+                                    this.topic4mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString());
                                     this.topic4name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
                                     break;
                                 case 4:
-                                    this.topic5mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString() + "%");
+                                    this.topic5mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString());
                                     this.topic5name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
                                     break;
                               

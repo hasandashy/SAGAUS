@@ -38,7 +38,7 @@ namespace SGA.controls
                     this.fname.Value = ds.Tables[0].Rows[0]["firstname"].ToString();
                     this.lname.Value = ds.Tables[0].Rows[0]["lastname"].ToString();
                     this.email.Value = ds.Tables[0].Rows[0]["email"].ToString();
-                    this.company.Value = ds.Tables[0].Rows[0]["Division"].ToString(); 
+                    this.company.SelectedValue = ds.Tables[0].Rows[0]["agencyId"].ToString(); 
                     
                 }
             }

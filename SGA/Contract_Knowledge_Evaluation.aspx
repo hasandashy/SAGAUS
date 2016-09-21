@@ -3,7 +3,7 @@
     <!-- Banner start -->
 				<div class="banner-inner-cke">
 					<div class="banner-cnt">
-						<p class="banner-heading"><span>Contract Management Knowledge Evaluation</span></p>
+						<p class="banner-heading"><span>Contract Management<br /> Knowledge Evaluation</span></p>
 						<div class="banner-txt">
                             <p class="banner-heading" style="font-size:25px">Note: This is a timed assessment!<br />At 60 minutes the assessment will close</p>
 						</div>

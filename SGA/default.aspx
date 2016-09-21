@@ -89,14 +89,7 @@
                         }
                         else if (domain.toLowerCase() == 'tafesa.edu.au') {
                             emailpass = 1;
-                        }
-                            //for testing purpose
-                        else if (domain.toLowerCase() == 'gmail.com') {
-                            emailpass = 1;
-                        }
-                        else if (domain.toLowerCase() == 'comprara.com.au') {
-                            emailpass = 1;
-                        }
+                        }                       
                     }
 
 

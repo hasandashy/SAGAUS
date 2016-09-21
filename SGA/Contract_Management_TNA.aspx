@@ -3,7 +3,7 @@
 <!-- Banner start -->
 				<div class="banner-inner-cma">
 					<div class="banner-cnt">
-						<p class="banner-heading"><span>Contract Management Self Assessment</span></p>
+						<p class="banner-heading"><span>Contract Management<br /> Self Assessment</span></p>
 						
 						<div class="clear"></div>
 					</div>

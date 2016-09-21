@@ -46,7 +46,7 @@ namespace SGA.controls {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText company;
+        protected global::System.Web.UI.WebControls.DropDownList company;
         
         /// <summary>
         /// ddlNavigating control.
@@ -58,15 +58,6 @@ namespace SGA.controls {
         protected global::System.Web.UI.WebControls.DropDownList ddlNavigating;
         
         /// <summary>
-        /// ddlWorkshopEvent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlWorkshopEvent;
-        
-        /// <summary>
         /// ddlTna control.
         /// </summary>
         /// <remarks>
@@ -74,15 +65,6 @@ namespace SGA.controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTna;
-        
-        /// <summary>
-        /// ddlAccess control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAccess;
         
         /// <summary>
         /// comments control.

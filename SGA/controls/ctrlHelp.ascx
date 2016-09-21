@@ -9,7 +9,25 @@
                         	<li><span>*</span><input type="text" value="First name" class="txt-field2" id="fname" maxlength="250" runat="server" name="fname" /></li>
                         	<li><span>*</span><input type="text" value="Last name" class="txt-field2" id="lname" maxlength="250" runat="server" name="lname" /></li>
                         	<li><span>*</span><input type="text" value="Email address" class="txt-field2" id="email" runat="server" maxlength="250" name="email" /></li>
-                            <li><span>*</span><input type="text" value="Department of" class="txt-field2" id="company" runat="server" maxlength="250" name="company" /></li>
+                            <li><span>*</span><asp:DropDownList ID="company"  runat="server">
+                            <asp:ListItem Value="0">Your Organisation</asp:ListItem>
+                          <asp:ListItem Value="1">Attorney-Generals Department</asp:ListItem>
+                            <asp:ListItem Value="2">Courts Administration Authority</asp:ListItem>
+                            <asp:ListItem Value="3">Department for Communities and Social Inclusion</asp:ListItem>
+                            <asp:ListItem Value="4">Department for Correctional Services</asp:ListItem>
+                            <asp:ListItem Value="5">Department for Education and Child Development</asp:ListItem>
+                            <asp:ListItem Value="6">Department of Environment Water and Natural Resources</asp:ListItem>
+                            <asp:ListItem Value="7">Department of Planning Transport and Infrastructure</asp:ListItem>
+                            <asp:ListItem Value="8">Department of State Development</asp:ListItem>
+                            <asp:ListItem Value="9">Department of the Premier and Cabinet </asp:ListItem>
+                            <asp:ListItem Value="10">Department of Treasury and Finance</asp:ListItem>
+                            <asp:ListItem Value="11">Primary Industries and Regions SA</asp:ListItem>
+                            <asp:ListItem Value="12">SA Fire and Emergency Services Commission</asp:ListItem>
+                            <asp:ListItem Value="13">SA Health</asp:ListItem>
+                            <asp:ListItem Value="14">South Australia Police</asp:ListItem>
+                            <asp:ListItem Value="15">South Australian Tourism Commission</asp:ListItem>
+                            <asp:ListItem Value="16">TAFE SA</asp:ListItem>  
+                            </asp:DropDownList></li>
                             <li><strong>What is the primary nature of enquiry?</strong></li>
                             <li>
                             	<input type="radio" value="1" name="access" class="access" />
@@ -20,7 +38,7 @@
 <asp:ListItem Value="2">User registration</asp:ListItem>
                             </asp:DropDownList>
                             </li>
-                            <li>
+                          <%--  <li>
                                 <input type="radio" value="2" name="access" class="access"/>
                             	Workshop event enquiries and bookings <br/>
                                 <asp:DropDownList ID="ddlWorkshopEvent" runat="server" disabled="disabled" cssclass="helpSelect">
@@ -31,10 +49,10 @@
 <asp:ListItem Value="4">Post event</asp:ListItem> 
 <asp:ListItem Value="5">General</asp:ListItem>
                             </asp:DropDownList>
-                            </li>
+                            </li>--%>
                             <li>
                                 <input type="radio" value="3" name="access" class="access" />
-                            	Taking the TNA and accessing my report / results <br/>
+                            	Taking the assessments and accessing my bar-graph results <br/>
                                 <asp:DropDownList ID="ddlTna" runat="server" disabled="disabled" cssclass="helpSelect">
                             <asp:ListItem Value="0"> Please select </asp:ListItem>
                             <asp:ListItem Value="1">Registration, username and password</asp:ListItem> 
@@ -45,7 +63,7 @@
                             </asp:DropDownList>
                               
                             </li>
-                            <li>
+                           <%-- <li>
                             <input type="radio" value="4" name="access" class="access" />
                             
                             	 Accessing the e-Learning portal <br/>
@@ -79,7 +97,7 @@
 					<div class="col-340">
 						<section class="cnt-lt-2 equal_height">
                             <p>&nbsp;</p>
-                            <p>Technical support for the Critical Skills Boost Program is available between the hours of 9.00am and 5.00pm, Monday to Friday.</p>
+                            <p>Technical support for the Skills for Procurement – Assess and Build project is available between the hours of 8.30am and 5.00pm CST, Monday to Friday.</p>
                            <p>&nbsp;</p>
                            
 						</section>
@@ -98,26 +116,16 @@
         $("input[name='access']").click(function () {
             var access = $("input[name='access']:checked").val();
             $('#<%=ddlNavigating.ClientID %>').attr("disabled", "disabled");
-            $('#<%=ddlWorkshopEvent.ClientID %>').attr("disabled", "disabled");
             $('#<%=ddlTna.ClientID %>').attr("disabled", "disabled");
-            $('#<%=ddlAccess.ClientID %>').attr("disabled", "disabled");
+            
             
             switch (parseInt(access)) {
                 case 1:
                     $('#<%=ddlNavigating.ClientID %>').removeAttr("disabled");
-                    break;
-                case 2:
-                    $('#<%=ddlWorkshopEvent.ClientID %>').removeAttr("disabled");
-                    break;
+                    break;            
                 case 3:
                     $('#<%=ddlTna.ClientID %>').removeAttr("disabled");
-                    break;
-                case 4:
-                    $('#<%=ddlAccess.ClientID %>').removeAttr("disabled");
-                    break;
-                /*case 5:
-                    $('#<%=comments.ClientID %>').removeAttr("disabled");
-                    break;*/
+                    break;                      
             }
         });
         /*$("input[name='access']").on('change', function () {
@@ -157,19 +165,11 @@
                 switch (parseInt(access)) {
                     case 1:
                         query = $('#<%=ddlNavigating.ClientID %>').val();
-                        break;
-                    case 2:
-                        query = $('#<%=ddlWorkshopEvent.ClientID %>').val();
-                        break;
+                        break;                  
                     case 3:
                         query = $('#<%=ddlTna.ClientID %>').val();
-                        break;
-                    case 4:
-                        query = $('#<%=ddlAccess.ClientID %>').val();
-                        break;
-                    /*case 5:
-                        query = $('#<%=comments.ClientID %>').val();
-                        break;*/
+                        break;               
+                  
                 }
             }
 
@@ -190,9 +190,13 @@
                 emptyFields.push('Email address');
             }
 
-            if (company == '' || company == 'Department of') {
+            if (company == '' || company == '0') {
                 error = 1;
-                emptyFields.push('Department of');
+                emptyFields.push('Organisation');
+            }
+            else
+            {
+                company =  $('#<%=company.ClientID %>').text();
             }
 
 
