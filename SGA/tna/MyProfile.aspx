@@ -51,8 +51,7 @@
                 height: "450px",
                 onComplete: function () {
                     if (lastpage == 'y') {
-
-                        if (($("#<%= txtPhoneNo.ClientID%>").val() == 'Phone') && ($("#<%= txtBranch.ClientID%>").val() == 'branch') && ($("#<%=txtJobTitle.ClientID %>").val() == 'jobTitle') && ($("#<%=ddlAgency.ClientID %>").val() == 0) && ($("#<%=ddlCentral.ClientID %>").val() == 0) && ($("#<%=ddlContract.ClientID %>").val() == 0) && ($("#<%=ddlCurrentJobClassification.ClientID %>").val() == 0) && ($("#<%=ddlExperience.ClientID %>").val() == 0) && ($("#<%=ddlInfluence.ClientID %>").val() == 0) && ($("#<%=ddlNature.ClientID %>").val() == 0) && ($("#<%=ddlQualification.ClientID %>").val() == 0) && ($("#<%=ddlRange.ClientID %>").val() == 0) && ($("#<%=ddlTimeAlloc.ClientID %>").val() == 0)) {
+                       if (($("#<%=fname.ClientID %>").val() == '') && $("#<%=lname.ClientID %>").val() == ''  && $("#<%=passwordplain.ClientID %>").val() == '' && $("#<%=ddlCentral.ClientID %>").val() == 0 && $("#<%=ddlCurrentJobClassification.ClientID %>").val() == 0  && $("#<%=ddlExperience.ClientID %>").val() == 0 && $("#<%=ddlQualification.ClientID %>").val() == 0 && $("#<%=ddlTimeAlloc.ClientID %>").val() == 0 && $("#<%=ddlInfluence.ClientID %>").val() == 0 && $("#<%=ddlContract.ClientID %>").val() == 0 && $("#<%=ddlRange.ClientID %>").val() == 0) {
                         redirect = "y";
                         $('#title').text("Confirmation");
                         $('#colorbox').css({ "display": "block" });
@@ -83,36 +82,40 @@
                 var error = 0;
                 var emptyFields = new Array();
                 var password = $('#<%=passwordplain.ClientID %>').val();
+                var name = $('#<%=fname.ClientID %>').val();
+                 var surname = $('#<%=lname.ClientID %>').val();
 
-            var name = $('#<%=fname.ClientID %>').val();
+          <%--   
             if (name == '' || name == 'First name') {
                 error = 1;
                 emptyFields.push('First name');
             }
-            var surname = $('#<%=lname.ClientID %>').val();
+           
             if (surname == '' || surname == 'Last name') {
                 error = 1;
                 emptyFields.push('Last name');
             }
 
-         <%--   var agency = $("#<%=ddlAgency.ClientID %>").val();
+           var agency = $("#<%=ddlAgency.ClientID %>").val();
             if (agency == 0) {
                 error = 1;
                 emptyFields.push('Your Organisation');
-            }--%>
+            }
 
             if (password == '') {
                 error = 1;
                 emptyFields.push('Password');
-            }
+            }--%>
 
-
+                if (($("#<%=fname.ClientID %>").val() == '') || $("#<%=lname.ClientID %>").val() == ''  || $("#<%=passwordplain.ClientID %>").val() == '' || $("#<%=ddlCentral.ClientID %>").val() == 0 || $("#<%=ddlCurrentJobClassification.ClientID %>").val() == 0  || $("#<%=ddlExperience.ClientID %>").val() == 0 || $("#<%=ddlQualification.ClientID %>").val() == 0 || $("#<%=ddlTimeAlloc.ClientID %>").val() == 0 || $("#<%=ddlInfluence.ClientID %>").val() == 0 || $("#<%=ddlContract.ClientID %>").val() == 0 || $("#<%=ddlRange.ClientID %>").val() == 0) {
+                    error = 1;
+                }
 
 
 
             if (error) {
                 $('#colorbox').css({ "display": "block" });
-                alertHtml = 'Please select/enter ' + emptyFields.join(', ');
+                alertHtml = 'It seems you have not completed all mandatory fields - please complete all fields that are marked with a red asterisk. Thank you.';
             }
             else {
                 alertHtml = 's';
@@ -162,7 +165,7 @@
                     <span class="error"></span>&nbsp;&nbsp;<b>Last Name</b><br />
                     <span class="error">*</span>&nbsp;<input type="text" id="lname" name="lname" maxlength="100" runat="server" class="text-box-2" />
                     <p>&nbsp;</p>
-                    <span class="error"></span>&nbsp;&nbsp;<b>Your Job Role</b><asp:HyperLink ID="hylJobRole" CssClass="infolock" runat="server"><span>If you require your Role or your Level to be changed please contact support@comprara.com.au before continuing. In your email, please let us know the reason why you require the change.</span></asp:HyperLink><br />
+                    <span class="error"></span>&nbsp;&nbsp;<b>Your Job Role</b><asp:HyperLink ID="hylJobRole" CssClass="infolock" runat="server"><span>If you require your Role to be changed please contact support@comprara.com.au before continuing. In your email, please let us know the reason why you require the change.</span></asp:HyperLink><br />
                     <div class="form-box1">
                         <span class="error"></span>&nbsp;&nbsp;<asp:DropDownList ID="ddlJobRole" class="styled" runat="server">
                             <asp:ListItem Value="0">Please select</asp:ListItem>
@@ -189,7 +192,7 @@
                     <span class="error">*</span>&nbsp;<input type="text" id="passwordplain" name="passwordplain" maxlength="20" runat="server" style="display: none" class="text-box-2" /><input type="password" id="password" name="password" disabled="disabled" maxlength="20" runat="server" class="text-box-2" />
                     <p>&nbsp;</p>
                     <span class="error"></span>&nbsp;&nbsp;<b>Phone</b><br />
-                    <span class="error">*</span>&nbsp;<input type="text" id="txtPhoneNo" name="txtPhoneNo" maxlength="20" runat="server" class="text-box-2" />
+                    <span class="error"></span>&nbsp;<input type="text" id="txtPhoneNo" name="txtPhoneNo" maxlength="20" runat="server" class="text-box-2" />
 
 
                     <p>&nbsp;</p>
@@ -220,13 +223,13 @@
                     <span class="error"></span>&nbsp;&nbsp;<b>Your Branch</b><br />
                     <span class="error">&nbsp;</span>&nbsp;<input type="text" id="txtBranch" name="txtBranch" title="Division" maxlength="250" runat="server" class="text-box-2" />
                     <p>&nbsp;</p>
-                    <span class="error"></span>&nbsp;&nbsp;<b>Your actual job title(position)</b><br />
+                    <span class="error"></span>&nbsp;&nbsp;<b>Your actual job title (position)</b><br />
                     <span class="error">&nbsp;</span>&nbsp;<input type="text" id="txtJobTitle" name="txtJobTitle" title="Phone" maxlength="250" runat="server" class="text-box-2" />
                     <p>&nbsp;</p>
                     <span class="error"></span>&nbsp;&nbsp;<b>Are you part of the Central Procurement function? </b>
                     <br />
                     <div class="form-box1">
-                        <span class="error"></span>&nbsp;<asp:DropDownList ID="ddlCentral" class="styled" runat="server">
+                        <span class="error">*</span>&nbsp;<asp:DropDownList ID="ddlCentral" class="styled" runat="server">
                             <asp:ListItem Value="0">Please select ---</asp:ListItem>
                             <asp:ListItem Value="1">Yes</asp:ListItem>
                             <asp:ListItem Value="2">No- Operational</asp:ListItem>
@@ -239,7 +242,7 @@
                     <span class="error"></span>&nbsp;&nbsp;<b>Your current job classification </b>
                     <br />
                     <div class="form-box1">
-                        <span class="error"></span>&nbsp;<asp:DropDownList ID="ddlCurrentJobClassification" class="styled" runat="server">
+                        <span class="error">*</span>&nbsp;<asp:DropDownList ID="ddlCurrentJobClassification" class="styled" runat="server">
                             <asp:ListItem Value="0">Please select ---</asp:ListItem>
                             <asp:ListItem Value="1">ASO2</asp:ListItem>
                             <asp:ListItem Value="2">ASO3</asp:ListItem>
@@ -258,7 +261,7 @@
                     <span class="error"></span>&nbsp;&nbsp;<b>Years of procurement/ contract management experience </b>
                     <br />
                     <div class="form-box1">
-                        <span class="error"></span>&nbsp;<asp:DropDownList ID="ddlExperience" class="styled" runat="server">
+                        <span class="error">*</span>&nbsp;<asp:DropDownList ID="ddlExperience" class="styled" runat="server">
                             <asp:ListItem Value="0">Please select ---</asp:ListItem>
                             <asp:ListItem Value="1">Less than 1 year</asp:ListItem>
                             <asp:ListItem Value="2">1 to 3 years</asp:ListItem>
@@ -274,7 +277,7 @@
                     <span class="error"></span>&nbsp;&nbsp;<b>Please select your highest level of qualification that relates to the field of procurement / contract management </b>
                     <br />
                     <div class="form-box1">
-                        <span class="error"></span>&nbsp;<asp:DropDownList ID="ddlQualification" class="styled" runat="server">
+                        <span class="error">*</span>&nbsp;<asp:DropDownList ID="ddlQualification" class="styled" runat="server">
                             <asp:ListItem Value="0">Please select ---</asp:ListItem>
                             <asp:ListItem Value="1">Not applicable</asp:ListItem>
                             <asp:ListItem Value="2">Certificate in Procurement / Contract Management</asp:ListItem>
@@ -297,7 +300,7 @@
                     <span class="error"></span>&nbsp;&nbsp;<b>How much of your time is allocated to Procurement and/or Contract Management activities </b>
                     <br />
                     <div class="form-box1">
-                        <span class="error"></span>&nbsp;<asp:DropDownList ID="ddlTimeAlloc" class="styled" runat="server">
+                        <span class="error">*</span>&nbsp;<asp:DropDownList ID="ddlTimeAlloc" class="styled" runat="server">
                             <asp:ListItem Value="0">Please select ---</asp:ListItem>
                             <asp:ListItem Value="1">Full-time</asp:ListItem>
                             <asp:ListItem Value="2">Part-time less than 50%</asp:ListItem>
@@ -321,10 +324,24 @@
 
                     </div>
                     <p>&nbsp;</p>
+                      <span class="error"></span>&nbsp;&nbsp;<b>How many procurements/ contracts have you managed in the past 12 months? </b>
+                    <br />
+                    <div class="form-box1">
+                        <span class="error">*</span>&nbsp;<asp:DropDownList ID="ddlContract" class="styled" runat="server">
+                            <asp:ListItem Value="0">Please select ---</asp:ListItem>
+                            <asp:ListItem Value="1">1 to 5</asp:ListItem>
+                            <asp:ListItem Value="2">5 to 10 </asp:ListItem>
+                            <asp:ListItem Value="3">10 to 20</asp:ListItem>
+                            <asp:ListItem Value="4">20 plus</asp:ListItem>
+                            <asp:ListItem Value="5">Not relevant</asp:ListItem>
+                        </asp:DropDownList>
+
+                    </div>
+                    <p>&nbsp;</p>
                     <span class="error"></span>&nbsp;&nbsp;<b>What is the size of spend under your influence? </b>
                     <br />
                     <div class="form-box1">
-                        <span class="error"></span>&nbsp;<asp:DropDownList ID="ddlInfluence" class="styled" runat="server">
+                        <span class="error">*</span>&nbsp;<asp:DropDownList ID="ddlInfluence" class="styled" runat="server">
                             <asp:ListItem Value="0">Please select ---</asp:ListItem>
                             <asp:ListItem Value="1">$1 billion or more</asp:ListItem>
                             <asp:ListItem Value="2">$500 million to $999.9 million</asp:ListItem>
@@ -337,28 +354,15 @@
                             <asp:ListItem Value="9">$1 million to $2.49 million</asp:ListItem>
                             <asp:ListItem Value="10">$500,000 to $999.999</asp:ListItem>
                             <asp:ListItem Value="11">Less than $500,000</asp:ListItem>
+                             <asp:ListItem Value="12">Not Applicable</asp:ListItem>
                         </asp:DropDownList>
 
                     </div>
-                    <p>&nbsp;</p>
-                    <span class="error"></span>&nbsp;&nbsp;<b>How many procurements/ contracts have you managed in the past 12 months? </b>
-                    <br />
-                    <div class="form-box1">
-                        <span class="error"></span>&nbsp;<asp:DropDownList ID="ddlContract" class="styled" runat="server">
-                            <asp:ListItem Value="0">Please select ---</asp:ListItem>
-                            <asp:ListItem Value="1">1 to 5</asp:ListItem>
-                            <asp:ListItem Value="2">5 to 10 </asp:ListItem>
-                            <asp:ListItem Value="3">10 to 20</asp:ListItem>
-                            <asp:ListItem Value="4">20 plus</asp:ListItem>
-                            <asp:ListItem Value="5">Not relevant</asp:ListItem>
-                        </asp:DropDownList>
-
-                    </div>
-                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>                  
                     <span class="error"></span>&nbsp;&nbsp;<b>Select one of the range of activities listed which most closely reflects the nature of your role </b>
                     <br />
                     <div class="form-box1">
-                        <span class="error"></span>&nbsp;<asp:DropDownList ID="ddlRange" class="styled" runat="server">
+                        <span class="error">*</span>&nbsp;<asp:DropDownList ID="ddlRange" class="styled" runat="server">
                             <asp:ListItem Value="0">Please select ---</asp:ListItem>
                             <asp:ListItem Value="1">Operational tasks like routing non-matched invoices or other administrative tasks</asp:ListItem>
                             <asp:ListItem Value="2">Managing contracts and dealing with operational problems that arise </asp:ListItem>

@@ -1,17 +1,18 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Privacy.aspx.cs" Inherits="SGA.Privacy" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<!-- Banner start -->
-				<div class="banner-inner-abt">
-					<div class="banner-cnt">
-						<p class="banner-heading">Privacy <span>Policy</span></p>
-						
-					</div>
-				</div>
-				
-				<!-- Banner end // -->
-				<div class="dot-line no-mrg">&nbsp;</div>
-				<!-- Content Area start -->
-				<article id="container">
+    <!-- Banner start -->
+    <div class="banner-inner-abt">
+        <div class="banner-cnt">
+            <p class="banner-heading">Privacy <span>Policy</span></p>
+
+        </div>
+    </div>
+
+    <!-- Banner end // -->
+    <div class="dot-line no-mrg">&nbsp;</div>
+    <!-- Content Area start -->
+    <article id="container">
                     <div class="col-950">
 					<p>&nbsp;</p>
 					<b class="bold">WE RESPECT YOUR PRIVACY</b>
@@ -54,11 +55,10 @@
                     
                     <div class="clear pt10"></div>
                     <b class="bold">USE OF YOUR PERSONAL INFORMATION</b>
-                    <p>We use your information to provide our service to you. We also use it to improve our service and to notify you of opportunities that we think you might be interested in.
-                    </p>
+                    <p>We use your information to provide our service to you.</p>
                     <div class="clear pt10"></div>
                     <p>
-                        Comprara may use the collected personal information and other information about your use of the Service to operate and make the Service available to you, for billing, identification and authentication, to contact you about your use of the Service, research purposes and to generally improve the content and functionality of the Service and Site.
+                        Comprara may use the collected personal information and other information about your use of the Service to operate and make the Service available to you, identification and authentication, to contact you about your use of the Service, research purposes and to generally improve the content and functionality of the Service and Site.
                     </p>
                     <div class="clear pt10"></div>
                     <p>
@@ -71,21 +71,22 @@
                             <li>provide you (and you alone) with your personalised assessment report and 70:20:10 recommendations (emaiI address only)</li>
                             <li>develop high level across government aggregated analysis and reporting for the State Procurement Board without attribution to individual participants</li>
                             <li>inform planning for future capability development programs in SA assessments under the Skills for Procurement- Assess and Build program</li>
-                            <li>compile a list of those persons in each agency who have registered for the Skills Gap Test and Training Needs Analysis and their completion status to inform the relevant agency.</li>
+                           <%-- <li>compile a list of those persons in each agency who have registered for the Skills Gap Test and Training Needs Analysis and their completion status to inform the relevant agency.</li>
                             <li>aggregate and use for internal review to analyse trends and statistics</li>
                             <li>process your registration and record your profile information</li>
-                            <li>customise future service offerings, such as procurement training</li>
+                            <li>customise future service offerings, such as procurement training</li>--%>
                         </ul></div>
                         <br />
                         Comprara may disclose your personal information to:
                         <div  style="padding-left:30px;">
                         <ul>
-                            <li>your employer or to the Principal of the SOA for the purposes specified in this Privacy Statement</li>
+                           <%-- <li>your employer or to the Principal of the SOA for the purposes specified in this Privacy Statement</li>
                             <li>external service providers to whom we have contracted out functions such as printers, mailing houses, information technology companies and marketing and communications agencies</li>
                             <li>to subpoenas, court orders, or legal process, or to establish or exercise our legal rights or defend against legal claims</li>
                             <li>respond to subpoenas, court orders, or legal process, or to establish or exercise our legal rights or defend against legal claims</li>
                             <li>in order to investigate, prevent, or take action regarding illegal activities, suspected fraud, situations involving potential threats to the physical safety of any person, violations of our Terms of Service, or as otherwise required by law</li>
-                            <li>overseas third party vendors and hosting partners to provide the necessary hardware, software, networking, storage, and other technology and services required to operate and maintain the Service</li>
+                      --%>    
+                              <li>overseas third party vendors and hosting partners to provide the necessary hardware, software, networking, storage, and other technology and services required to operate and maintain the Service</li>
                         </ul>
                         </div>
                     </p>
@@ -132,5 +133,5 @@
 					<div class="gry-bar">The leading assessment tool for the procurement profession.</div>
 					<p>&nbsp;</p>
 				</article>
-				<!-- Content Area end // -->
+    <!-- Content Area end // -->
 </asp:Content>

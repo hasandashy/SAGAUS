@@ -20,7 +20,7 @@
 						<article class="test-info-box">
 							<p class="title orange">My Results</p>
 							<p>&nbsp;</p>
-                            <span>Below you will find the results for each assessment you have taken. In the left hand column, you will note the menu where can easily navigate your bar-graphs. </span>
+                            <span>Below you will find the results for each assessment you have taken. In the left hand column, you will note the menu where you can easily navigate your bar-graphs. </span>
 							<div class="clear"></div>
                             <br /><p><span class="dark">NOTE:</span> Your Individual Feedback Report will be delivered at the conclusion of the assessment period after you have completed your assigned Assessment Pack.</p>
 						</article>
@@ -123,8 +123,8 @@
                                             <asp:Label ID="lblDate" runat="server" Visible="false"  Text='<%#Eval("testDate")%>' CssClass="adminheader2"></asp:Label>
 
                                             </td>
-											<td width="30%"><span class="dark">Time taken</span><br />
-                                            <%#Eval("diff") %>
+											<td width="30%"><span class="dark">Score</span><br />
+                                            <%#Eval("percentage") %> %
                                             </td>
 											
                                             <td width="10%">

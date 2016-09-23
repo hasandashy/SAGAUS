@@ -513,8 +513,8 @@ namespace SGA.webadmin
                 new SqlParameter("@dateTo", ""),
                 new SqlParameter("@orderBy", strOrderBy)
             });
-            this.grdCMK.DataSource = ds;
-            this.grdCMK.DataBind();
+            this.grdCAA.DataSource = ds;
+            this.grdCAA.DataBind();
         }
 
         protected void grdCAA_ItemDataBound(object sender, DataGridItemEventArgs e)
@@ -542,11 +542,11 @@ namespace SGA.webadmin
                 {
                     new SqlParameter("@testId", e.CommandArgument)
                 });
-                this.BindCMKTest();
+                this.BindCAATest();
             }
             else if (e.CommandName == "Graph")
             {
-                base.Response.Redirect("TestChartCMK.aspx?id=" + e.CommandArgument, false);
+                base.Response.Redirect("TestChartCAA.aspx?id=" + e.CommandArgument, false);
             }
             else if (e.CommandName == "drilldown")
             {
@@ -554,7 +554,7 @@ namespace SGA.webadmin
             }
             else if (e.CommandName == "Edit")
             {
-                base.Response.Redirect("EditCMKtest.aspx?id=" + e.CommandArgument, false);
+                base.Response.Redirect("EditCAAtest.aspx?id=" + e.CommandArgument, false);
             }
         }
 

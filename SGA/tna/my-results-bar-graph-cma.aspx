@@ -44,9 +44,9 @@
            <article class="test-info-box">
 							<p class="title orange">My Results</p>
 							<p>&nbsp;</p>
-                            <span>Below you will find the results for each assessment you have taken. In the left hand column, you will note the menu where can easily navigate your bar-graphs. </span>
+                            <span>Below you will find the results for each assessment you have taken. In the left hand column, you will note the menu where you can easily navigate your bar-graphs. </span>
 							<div class="clear"></div>
-                            <br /><p><span class="dark">NOTE:</span> Your Individual Feedback Report will be delivered at the conclusion of the assessment period after you have completed your assigned Assessment Pack.</p>
+                            <br /><p><span class="dark">NOTE:</span> Your report will be delivered one week after the conclusion of the assessment period. To receive your report you need to complete all assessments assigned to you.</p>
 						</article>
         </section>
         <section class="my-result-box">
@@ -139,6 +139,10 @@
                         <sga:baGragh ID="graph1" runat="server"></sga:baGragh>
                     </p>
                     <p>&nbsp;</p>
+                    	<div style="float:right;">				
+                                   <asp:HyperLink ID="hyper" CssClass="my-grph" Text="ASSESSMENT HOME PAGE" NavigateUrl="~/tna/default.aspx" runat="server"></asp:HyperLink>
+								
+							</div><br />
                     <hr class="divider-line" />
                     <p>&nbsp;</p>
 

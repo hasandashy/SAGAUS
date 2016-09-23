@@ -175,15 +175,6 @@ namespace SGA.tna {
         protected global::System.Web.UI.WebControls.DropDownList ddlNature;
         
         /// <summary>
-        /// ddlInfluence control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlInfluence;
-        
-        /// <summary>
         /// ddlContract control.
         /// </summary>
         /// <remarks>
@@ -191,6 +182,15 @@ namespace SGA.tna {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlContract;
+        
+        /// <summary>
+        /// ddlInfluence control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlInfluence;
         
         /// <summary>
         /// ddlRange control.

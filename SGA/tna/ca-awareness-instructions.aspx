@@ -74,12 +74,12 @@
             <article class="info-box-shdw-inner">
                 <p class="title40">Instructions</p>
                 <p>&nbsp;</p>
-                <p class="txt16-bold">You are about to complete an evaluation of your commercial cwareness.</p>
+               <%-- <p class="txt16-bold">You are about to complete an evaluation of your commercial cwareness.</p>--%>
                 <p>&nbsp;</p>
                 <p class="txt30">01</p>
-                <p>This evaluation focuses on the skills required to perform in procurement. It focuses on five procurement dimensions and for each, you will be asked four assessment questions.</p>
+                <p>This assessment focuses on five dimensions that underpin commercial awareness.</p>
                 <p>&nbsp;</p>
-                <p class="txt16-bold">The 5 dimensions are:</p>
+                <p class="txt16-bold">The five dimensions are:</p>
                 <div class="step1">
                     <p>1. Stakeholder engagement</p>
                     <p>2. Outcome focus</p>
@@ -87,13 +87,16 @@
                     <p>4. Risk management</p>
                     <p>5. Creating public value</p>
                 </div>
+                 <div class="clear"></div>
+                <p>&nbsp;</p>
+                <p>As you work through the assessment you may find themes that are not directly relevant to your current role. This is likely to happen for many people as this diagnostic considers a broad range of commercial awareness themes. It has purposefully been designed not to be role specific, instead it seeks to understand South Australian Government commercial awareness as a whole.</p>
                 <div class="clear"></div>
                 <hr class="divider-line" />
                 <p class="txt30">02</p>
-                <p>If you haven't already done so, please complete your profile. Here we ask you several key questions regarding your role and your experience. This provides the context for your assessment. You can edit or update this information at any time by clicking 'My Profile' at the top of the page.</p>
+                <p>This assessment is scenario based. You will be given five different scenarios to consider. The five scenarios do not directly correspond with the five dimensions stated above.</p>
                 <hr class="divider-line" />
                 <p class="txt30">03</p>
-                <p>On completion of the evaluation you will receive a PDF report of your results. This may happen automatically or at a later stage depending on what was agreed with your organisation. You can use this report for your own records - as an evaluation of your knowledge, as it stands today. You can also use this report to facilitate discussion with your manager.</p>
+                <p>This is a multiple-choice assessment. You will be presented with four questions for each scenario (20 questions in total) and each question has four answer options for you to choose from. Choose which ever you think is the most correct answer. </p>
                 <p>&nbsp;</p>
                 <p>&nbsp;</p>
                 <div class="floatR">
@@ -107,10 +110,7 @@
                         <font class="orange">TIMED TASK!</font></span></p>
                     <p>&nbsp;</p>
                     <p>
-                        You are given 60 minutes to complete the evaluation. There are eight sections with nine questions each. We recommend that you allocate no more than 5 minutes for each section. This gives you 10 minutes to go back to the answers that you may want to revisit. When you click 'Next' you will be taken to 'My Profile' page.  Once you have completed your profile, click 'Next' and then the clock will start!  
-                                <br />
-                        <br />
-                        You will see the clock throughout the evaluation in the top right hand side of the page in orange!
+                       You are given 60 minutes to complete the evaluation. There are five sections with four scenario based questions in each. You will see the clock throughout the evaluation in the top right hand side of the page in orange and you are given a guide of your completion progress as you go. 
                     </p>
                 </div>
             </article>

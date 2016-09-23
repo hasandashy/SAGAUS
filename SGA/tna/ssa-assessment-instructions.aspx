@@ -74,9 +74,9 @@
 							<p class="txt16-bold">You are about to complete a self-assessment of your procurement skills. </p>
 							<p>&nbsp;</p>
 							<p class="txt30">01</p>
-							<p>This assessment focuses on eight underpinning capabilities that drive effective Procurement. They are: </p>
+							<p>This assessment focuses on eight underpinning capabilities that drive effective Procurement.</p>
 							<p>&nbsp;</p>
-							<p class="txt16-bold">The 8 phases are:</p>
+							<p class="txt16-bold">The eight phases are:</p>
 							<div class="step1">
 								<p>1. Opportunity Analysis</p>
 								<p>2. Market Analysis</p>

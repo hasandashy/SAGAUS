@@ -218,10 +218,10 @@
 
 					<section class="color-box">
 						<article class="test-info-box">
-							<p class="title">Section <%=PageNumber +1 %>: <span class="orange"><asp:Label ID="lblTopic" runat="server"></asp:Label></span></p>
+							<p class="title"><%--Section <%=PageNumber +1 %>:--%> <span class="orange"><asp:Label ID="lblTopic" runat="server"></asp:Label></span></p>
 							<p>&nbsp;</p>
-							<p><span class="dark">
-                            DEFINITION:</span> <asp:Label ID="lblDescription" runat="server"></asp:Label></p>
+							<p><%--<span class="dark">
+                            DEFINITION:</span>--%> <asp:Label ID="lblDescription" runat="server"></asp:Label></p>
 							<p>&nbsp;</p>
 						</article>
 						<article class="info-box-shdw-cat-mngmt">

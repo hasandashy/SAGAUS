@@ -35,7 +35,7 @@
 							
 							<div class="clear"></div>
 							<p></p>
-							<p>The Assessment is structured around five scenarios. For each scenario you will be asked four multiple-choice question.</p>
+							<p>The Assessment is structured around five scenarios. For each scenario you will be asked four multiple-choice questions.</p>
 							<p></p>
 							<p class="title28">What is it used for?</p>
 							<p>The South Australian Government is committed to maximising the value derived from the procurement process. The aim of this assessment process is to provide a snapshot of the current level of procurement and contract management capability across the SA Government. </p>
@@ -45,7 +45,7 @@
 							<p class="title28">Your individual feedback report</p>
 							<p>This report is tailored especially for you and in it you will find suggestions and recommendations that will help you develop skills and knowledge in the areas identified for you.</p>
 							<p></p>
-							<p>Your report will be delivered at the conclusion of the assessment period after completing your assigned Assessment Pack.  </p>
+							<p>Your report will be delivered one week after the conclusion of the assessment period. To receive your report you need to complete all assessments assigned to you.  </p>
 							<p></p>
 							<p><strong>REVIEW</strong> the 70:20:10 recommendations in your report, consider your development priorities and consider how you can apply the suggestions in your workplace. </p>
 							<p>&nbsp;</p>

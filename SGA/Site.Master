@@ -156,11 +156,11 @@
    <li><a href="/role_guidelines">Role Guidelines</a></li>
    <li><a href="javascript:void(0)">Assessments </a>
    <ul>
+        <li><a href="/procurement-self-assessment" title="Procurement – Self Assessment">> Procurement – Self Assessment</a></li>
    <li><a href="/Procurement_knowledge_evaluation.aspx" title="Procurement – Knowledge Evaluation">> Procurement – Knowledge Evaluation</a></li>
-            <li><a href="/procurement-self-assessment" title="Procurement – Self Assessment">> Procurement – Self Assessment</a></li>
-            <li><a href="/Contract_Knowledge_Evaluation.aspx" title="Contract Management – Knowledge Evaluation">> Contract Management – Knowledge Evaluation</a></li>
-            <li><a href="/contract-management-self-assessment" title="Contract Management – Self Assessment">> Contract Management – Self Assessment</a></li>
-            <li><a href="/Commercial_Awareness_Assesment.aspx" title="Commercial Awareness – Knowledge Evaluation">> Commercial Awareness – Knowledge Evaluation</a></li>
+             <li><a href="/contract-management-self-assessment" title="Contract Management – Self Assessment">> Contract Management – Self Assessment</a></li>
+            <li><a href="/Contract_Knowledge_Evaluation.aspx" title="Contract Management – Knowledge Evaluation">> Contract Management – Knowledge Evaluation</a></li>          
+            <li><a href="/Commercial_Awareness_Assesment.aspx" title="Commercial Awareness Assessment">> Commercial Awareness Assessment</a></li>
   </ul>  
    
    </li> 

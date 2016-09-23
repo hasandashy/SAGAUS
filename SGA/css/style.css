@@ -555,6 +555,6 @@ ol.list3 > li:before {content:counter(li); counter-increment:li; position:absolu
 /*.locked:hover {text-decoration:none}*/
 .lockedAsess span {color:#231f20; margin-left:-999em; position:absolute}
 .lockedAsess:hover span {position:absolute; right:-210px; top:50px; z-index:99; margin-left:0; border:1px solid #bcbcbc; background:#e6e6e6; padding:8px; width:200px; font-size:12px; line-height:normal; box-shadow:2px 2px 4px #666}
-
+a.my-grph, a.my-grph:hover {font-family:'helvetica_neueregular', Arial, Helvetica, sans-serif; font-size:13px; line-height:32px; color:#fff !important; text-align:center; display:inline-block; width:160px; height:32px; text-decoration:none; background:url(../innerimages/proceed.png) left top no-repeat}
 
 

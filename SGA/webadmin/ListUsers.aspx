@@ -174,8 +174,9 @@
                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                             <tr>
                                                                 <td align="right">
-                                                                    <asp:ImageButton ID="iBtnLoginReminder" runat="server" OnClick="iBtnLoginReminder_Click" CausesValidation="false" ImageUrl="~/webadmin/images/sendLoginReminder.png" />
+                                                                    <%-- <asp:ImageButton ID="iBtnLoginReminder" runat="server" OnClick="iBtnLoginReminder_Click" CausesValidation="false" ImageUrl="~/webadmin/images/sendLoginReminder.png" />
                                                                     <asp:ImageButton ID="ImageButton7" runat="server" OnClick="iBtnResendEmail_Click" CausesValidation="false" ImageUrl="~/webadmin/images/resend_button.png" />
+                                                                    --%>
                                                                     <asp:ImageButton ID="ImageButton8" runat="server" OnClick="iBtnApproveAll_Click" CausesValidation="false" ImageUrl="~/webadmin/images/approve_button.png" />
                                                                     <asp:ImageButton ID="ImageButton9" runat="server" OnClick="iBtnDisApproveAll_Click" CausesValidation="false" ImageUrl="~/webadmin/images/disapprove_button.png" />
                                                                     <asp:ImageButton ID="ImageButton10" runat="server" OnClick="iBtnDelete_Click" CausesValidation="false" OnClientClick="javascript:return confirm('Are you sure you want to delete selected users ?');" ImageUrl="~/webadmin/images/delete_button.png" />
@@ -235,8 +236,9 @@
                                                                                     <asp:ImageButton ID="iBtnSelect" runat="server" CausesValidation="false" AlternateText="Select" CommandArgument='<%#Eval("Id") %>' CommandName="select" ToolTip="Select" ImageUrl="~/webadmin/images/select_icon.png" />
                                                                                     <asp:ImageButton ID="iBtnDelete" runat="server" CausesValidation="false" AlternateText="Delete" OnClientClick="return confirm('Are you sure you want to delete this user?');" CommandArgument='<%#Eval("Id") %>' CommandName="delete" ToolTip="Delete" ImageUrl="~/webadmin/images/disapprove_icon.png" />
                                                                                     <asp:ImageButton ID="iBtnApprove" runat="server" CausesValidation="false" AlternateText="Approve user" CommandArgument='<%#Eval("Id") %>' CommandName="approve" ToolTip="Approve user" ImageUrl="~/webadmin/images/approve.png" />
-                                                                                    <asp:ImageButton ID="IbtnResend" runat="server" CausesValidation="false" AlternateText="Resend email" CommandArgument='<%#Eval("Id") %>' CommandName="send" ToolTip="Resend email" ImageUrl="~/webadmin/images/mail-32.png" />
+                                                                                    <%-- <asp:ImageButton ID="IbtnResend" runat="server" CausesValidation="false" AlternateText="Resend email" CommandArgument='<%#Eval("Id") %>' CommandName="send" ToolTip="Resend email" ImageUrl="~/webadmin/images/mail-32.png" />
                                                                                     <asp:ImageButton ID="iBtnLogin" runat="server" CausesValidation="false" AlternateText="Log in Reminder" CommandArgument='<%#Eval("Id") %>' Height="32" Width="32" CommandName="reminder" ToolTip="Log in Reminder" ImageUrl="~/webadmin/images/reminder.png" />
+                                                                                    --%>
                                                                                 </ItemTemplate>
                                                                             </asp:TemplateColumn>
                                                                         </Columns>
@@ -252,9 +254,9 @@
                                                             <tr>
                                                                 <td align="right">
                                                                     <asp:HiddenField ID="hdSelectIds" runat="server" />
-                                                                    <asp:ImageButton ID="ImageButton17" runat="server" OnClick="iBtnLoginReminder_Click" CausesValidation="false" ImageUrl="~/webadmin/images/sendLoginReminder.png" />
+                                                                 <%--   <asp:ImageButton ID="ImageButton17" runat="server" OnClick="iBtnLoginReminder_Click" CausesValidation="false" ImageUrl="~/webadmin/images/sendLoginReminder.png" />
                                                                     <asp:ImageButton ID="iBtnResendEmail" runat="server" OnClick="iBtnResendEmail_Click" CausesValidation="false" ImageUrl="~/webadmin/images/resend_button.png" />
-                                                                    <asp:ImageButton ID="iBtnApproveAll" runat="server" OnClick="iBtnApproveAll_Click" CausesValidation="false" ImageUrl="~/webadmin/images/approve_button.png" />
+                                                               --%>     <asp:ImageButton ID="iBtnApproveAll" runat="server" OnClick="iBtnApproveAll_Click" CausesValidation="false" ImageUrl="~/webadmin/images/approve_button.png" />
                                                                     <asp:ImageButton ID="iBtnDisApproveAll" runat="server" OnClick="iBtnDisApproveAll_Click" CausesValidation="false" ImageUrl="~/webadmin/images/disapprove_button.png" />
                                                                     <asp:ImageButton ID="iBtnDelete" runat="server" OnClick="iBtnDelete_Click" CausesValidation="false" OnClientClick="javascript:return confirm('Are you sure you want to delete selected users ?');" ImageUrl="~/webadmin/images/delete_button.png" />
                                                                     <asp:ImageButton ID="iBtnSelect" runat="server" OnClick="iBtnSelect_Click" CausesValidation="false" ImageUrl="~/webadmin/images/select_button.png" />
@@ -635,11 +637,17 @@
 
                                                                 <asp:BoundColumn DataField="email" HeaderText="Email" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="email"></asp:BoundColumn>
 
-                                                                <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Marks" HeaderText="Marks">
+                                                                <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Percentage" HeaderText="Percentage">
                                                                     <ItemTemplate>
-                                                                        <%#Eval("marks")%>
+                                                                        <%#Eval("percentage")%>
                                                                     </ItemTemplate>
-                                                                </asp:TemplateColumn>
+                                                                </asp:TemplateColumn>      
+                                                                
+                                                                 <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
+                                                                    <ItemTemplate>
+                                                                        <%#Eval("level")%>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateColumn>                                                            
 
                                                                 <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate" HeaderText="Assesment Date">
                                                                     <ItemTemplate>
@@ -657,7 +665,7 @@
                                                                         &nbsp;
                                                             <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" AlternateText="Edit" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Edit" ToolTip="Edit" ImageUrl="~/webadmin/images/edit.png" />
                                                                         &nbsp;
-                                                            <asp:ImageButton ID="iBtnDrill" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 30px; width: 30px;" CommandArgument='<%#Eval("testId") %>' CommandName="drilldown" ToolTip="drilldown" ImageUrl="~/webadmin/images/drilldown.png" />
+                                                           <%-- <asp:ImageButton ID="iBtnDrill" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 30px; width: 30px;" CommandArgument='<%#Eval("testId") %>' CommandName="drilldown" ToolTip="drilldown" ImageUrl="~/webadmin/images/drilldown.png" />--%>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateColumn>
                                                             </Columns>
@@ -744,11 +752,17 @@
 
                                                                 <asp:BoundColumn DataField="email" HeaderText="Email" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="email"></asp:BoundColumn>
 
-                                                                <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Marks" HeaderText="Marks">
+                                                                <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Percentage" HeaderText="Percentage">
                                                                     <ItemTemplate>
-                                                                        <%#Eval("marks")%>
+                                                                        <%#Eval("percentage")%>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateColumn>
+
+                                                                 <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
+                                                                    <ItemTemplate>
+                                                                        <%#Eval("level")%>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateColumn>    
 
                                                                 <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate" HeaderText="Assesment Date">
                                                                     <ItemTemplate>
@@ -764,7 +778,7 @@
                                                                         &nbsp;
                                                             <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" AlternateText="Edit" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Edit" ToolTip="Edit" ImageUrl="~/webadmin/images/edit.png" />
                                                                         &nbsp;
-                                                            <asp:ImageButton ID="iBtnDrill" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 30px; width: 30px;" CommandArgument='<%#Eval("testId") %>' CommandName="drilldown" ToolTip="drilldown" ImageUrl="~/webadmin/images/drilldown.png" />
+                                                            <%--<asp:ImageButton ID="iBtnDrill" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 30px; width: 30px;" CommandArgument='<%#Eval("testId") %>' CommandName="drilldown" ToolTip="drilldown" ImageUrl="~/webadmin/images/drilldown.png" />--%>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateColumn>
                                                             </Columns>
@@ -850,11 +864,17 @@
 
                                                                 <asp:BoundColumn DataField="email" HeaderText="Email" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="email"></asp:BoundColumn>
 
-                                                                <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Marks" HeaderText="Marks">
+                                                                <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Percentage" HeaderText="Percentage">
                                                                     <ItemTemplate>
-                                                                        <%#Eval("marks")%>
+                                                                        <%#Eval("percentage")%>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateColumn>
+
+                                                                 <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
+                                                                    <ItemTemplate>
+                                                                        <%#Eval("level")%>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateColumn>    
 
                                                                 <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate" HeaderText="Assesment Date">
                                                                     <ItemTemplate>
@@ -872,7 +892,7 @@
                                                                         &nbsp;
                                                             <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" AlternateText="Edit" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Edit" ToolTip="Edit" ImageUrl="~/webadmin/images/edit.png" />
                                                                         &nbsp;
-                                                            <asp:ImageButton ID="iBtnDrill" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 30px; width: 30px;" CommandArgument='<%#Eval("testId") %>' CommandName="drilldown" ToolTip="drilldown" ImageUrl="~/webadmin/images/drilldown.png" />
+                                                            <%--<asp:ImageButton ID="iBtnDrill" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 30px; width: 30px;" CommandArgument='<%#Eval("testId") %>' CommandName="drilldown" ToolTip="drilldown" ImageUrl="~/webadmin/images/drilldown.png" />--%>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateColumn>
                                                             </Columns>
@@ -919,26 +939,22 @@
                                                                 <td>
                                                                     <asp:DropDownList ID="ddlAgency" CssClass="styled" runat="server">
                                                                         <asp:ListItem Value="0">Your Organisation</asp:ListItem>
-                                                                        <asp:ListItem Value="1">Premier and Cabinet</asp:ListItem>
-                                                                        <asp:ListItem Value="2">Aboriginal and Torres Strait Islander Partnerships</asp:ListItem>
-                                                                        <asp:ListItem Value="3">Agriculture and Fisheries</asp:ListItem>
-                                                                        <asp:ListItem Value="4">Communities, Child Safety and Disability Services</asp:ListItem>
-                                                                        <asp:ListItem Value="5">Education and Training</asp:ListItem>
-                                                                        <asp:ListItem Value="6">Energy and Water Supply</asp:ListItem>
-                                                                        <asp:ListItem Value="7">Environment and Heritage Protection</asp:ListItem>
-                                                                        <asp:ListItem Value="8">Health</asp:ListItem>
-                                                                        <asp:ListItem Value="9">Housing and Public Works</asp:ListItem>
-                                                                        <asp:ListItem Value="10">Infrastructure, Local Government and Planning</asp:ListItem>
-                                                                        <asp:ListItem Value="11">Justice and Attorney-General</asp:ListItem>
-                                                                        <asp:ListItem Value="12">National Parks, Sport and Racing</asp:ListItem>
-                                                                        <asp:ListItem Value="13">Natural Resources and Mines</asp:ListItem>
-                                                                        <asp:ListItem Value="14">Police, Fire and Emergency Services</asp:ListItem>
-                                                                        <asp:ListItem Value="15">Science, Information Technology and Innovation</asp:ListItem>
-                                                                        <asp:ListItem Value="16">State Development</asp:ListItem>
-                                                                        <asp:ListItem Value="17">Transport and Main Roads</asp:ListItem>
-                                                                        <asp:ListItem Value="18">Treasury</asp:ListItem>
-                                                                        <asp:ListItem Value="19">Tourism, Major Events, Small Business and the Commonwealth Games</asp:ListItem>
-                                                                        <asp:ListItem Value="20">Other</asp:ListItem>
+                                                                        <asp:ListItem Value="1">Attorney-Generals Department</asp:ListItem>
+                                                                        <asp:ListItem Value="2">Courts Administration Authority</asp:ListItem>
+                                                                        <asp:ListItem Value="3">Department for Communities and Social Inclusion</asp:ListItem>
+                                                                        <asp:ListItem Value="4">Department for Correctional Services</asp:ListItem>
+                                                                        <asp:ListItem Value="5">Department for Education and Child Development</asp:ListItem>
+                                                                        <asp:ListItem Value="6">Department of Environment Water and Natural Resources</asp:ListItem>
+                                                                        <asp:ListItem Value="7">Department of Planning Transport and Infrastructure</asp:ListItem>
+                                                                        <asp:ListItem Value="8">Department of State Development</asp:ListItem>
+                                                                        <asp:ListItem Value="9">Department of the Premier and Cabinet </asp:ListItem>
+                                                                        <asp:ListItem Value="10">Department of Treasury and Finance</asp:ListItem>
+                                                                        <asp:ListItem Value="11">Primary Industries and Regions SA</asp:ListItem>
+                                                                        <asp:ListItem Value="12">SA Fire and Emergency Services Commission</asp:ListItem>
+                                                                        <asp:ListItem Value="13">SA Health</asp:ListItem>
+                                                                        <asp:ListItem Value="14">South Australia Police</asp:ListItem>
+                                                                        <asp:ListItem Value="15">South Australian Tourism Commission</asp:ListItem>
+                                                                        <asp:ListItem Value="16">TAFE SA</asp:ListItem>
                                                                     </asp:DropDownList>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" SetFocusOnError="true" InitialValue="0" CssClass="error" ControlToValidate="ddlAgency" ValidationGroup="add" Text="*"></asp:RequiredFieldValidator>
                                                                 </td>
@@ -1099,11 +1115,17 @@
 
                                                                 <asp:BoundColumn DataField="email" HeaderText="Email" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="email"></asp:BoundColumn>
 
-                                                                <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Marks" HeaderText="Marks">
+                                                                <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Percentage" HeaderText="Percentage">
                                                                     <ItemTemplate>
-                                                                        <%#Eval("marks")%>
+                                                                        <%#Eval("Percentage")%>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateColumn>
+
+                                                                 <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
+                                                                    <ItemTemplate>
+                                                                        <%#Eval("level")%>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateColumn>    
 
                                                                 <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate" HeaderText="Assesment Date">
                                                                     <ItemTemplate>
@@ -1118,7 +1140,7 @@
                                                                         &nbsp;
                                                             <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" AlternateText="Edit" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Edit" ToolTip="Edit" ImageUrl="~/webadmin/images/edit.png" />
                                                                         &nbsp;
-                                                            <asp:ImageButton ID="iBtnDrill" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 30px; width: 30px;" CommandArgument='<%#Eval("testId") %>' CommandName="drilldown" ToolTip="drilldown" ImageUrl="~/webadmin/images/drilldown.png" />
+                                                            <%--<asp:ImageButton ID="iBtnDrill" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 30px; width: 30px;" CommandArgument='<%#Eval("testId") %>' CommandName="drilldown" ToolTip="drilldown" ImageUrl="~/webadmin/images/drilldown.png" />--%>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateColumn>
                                                             </Columns>
@@ -1204,11 +1226,17 @@
 
                                                                 <asp:BoundColumn DataField="email" HeaderText="Email" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="email"></asp:BoundColumn>
 
-                                                                <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Marks" HeaderText="Marks">
+                                                                 <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Percentage" HeaderText="Percentage">
                                                                     <ItemTemplate>
-                                                                        <%#Eval("marks")%>
+                                                                        <%#Eval("percentage")%>
                                                                     </ItemTemplate>
-                                                                </asp:TemplateColumn>
+                                                                </asp:TemplateColumn>    
+                                                                
+                                                                 <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
+                                                                    <ItemTemplate>
+                                                                        <%#Eval("level")%>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateColumn>     
 
                                                                 <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate" HeaderText="Assesment Date">
                                                                     <ItemTemplate>
@@ -1223,7 +1251,7 @@
                                                                         &nbsp;
                                                             <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" AlternateText="Edit" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Edit" ToolTip="Edit" ImageUrl="~/webadmin/images/edit.png" />
                                                                         &nbsp;
-                                                            <asp:ImageButton ID="iBtnDrill" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 30px; width: 30px;" CommandArgument='<%#Eval("testId") %>' CommandName="drilldown" ToolTip="drilldown" ImageUrl="~/webadmin/images/drilldown.png" />
+                                                            <%--<asp:ImageButton ID="iBtnDrill" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 30px; width: 30px;" CommandArgument='<%#Eval("testId") %>' CommandName="drilldown" ToolTip="drilldown" ImageUrl="~/webadmin/images/drilldown.png" />--%>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateColumn>
                                                             </Columns>

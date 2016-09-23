@@ -2,9 +2,9 @@
 <ul>
     <li><a href="Dashboard.aspx" class="home"><span>Dashboard</span></a></li>
     <li><a href="ListUsers.aspx" class="user"><span>User</span> </a></li>
-    <li><a href="ManageReportText.aspx" class="reports"><span>Reports</span></a></li>
+   <%-- <li><a href="ManageReportText.aspx" class="reports"><span>Reports</span></a></li>
     <li><a href="ManageReportSuggestions.aspx" ><span>Suggestions</span></a></li>
-    <li><a href="ManageReportRecommendations.aspx" ><span>Recommendations</span></a></li>
+    <li><a href="ManageReportRecommendations.aspx" ><span>Recommendations</span></a></li>--%>
     <%--<li><a href="ManageWorkshop.aspx" ><span>Manage WorkShop</span></a></li>--%>
     <li><a href="ManageEmailTemplates.aspx" ><span>Email templates</span></a></li>
    <%-- <li><a href="DownloadReport.aspx" ><span>Download Reports</span></a></li>--%>

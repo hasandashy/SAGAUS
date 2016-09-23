@@ -10,6 +10,6 @@
 namespace SGA.controls {
     
     
-    public partial class ctrlCMKGraph {
+    public partial class ctrlCMAGraph {
     }
 }

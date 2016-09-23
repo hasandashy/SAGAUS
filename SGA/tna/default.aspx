@@ -16,7 +16,7 @@
                         <article id="pnlTNA" runat="server" visible="false" class="info-box-shdw">
 							<div class="icon"><img src="../innerimages/img-skills-self-assessment.gif" alt="Skills Self Assessment" /></div>
 							<div class="head">Procurement Skills Self Assessment</div>
-							<div class="desc">This is a self-assessment of your Procurement skills. You will be guided through eight dimensions of Contract Management as you assess yourself on 72 questions. Allow for 40 – 60 minutes to complete this self-assessment.</div>
+							<div class="desc">This is a self-assessment of your Procurement skills. You will be guided through eight dimensions of Procurement as you assess yourself on 72 questions. Allow for 40 – 60 minutes to complete this self-assessment.</div>
 							<div class="info">
 							<asp:HyperLink ID="hylTna" runat="server"></asp:HyperLink></div>
 							<div class="clear"></div>

@@ -211,7 +211,7 @@ namespace SGA.tna
 					{
 						new SqlParameter("@topicId", System.Convert.ToInt32(lnkButton.CommandArgument))
 					};
-                    this.lblDescription.Text = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetCMKTopicDetail", param).ToString();
+                    //this.lblDescription.Text = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetCMKTopicDetail", param).ToString();
                 }
                 else
                 {

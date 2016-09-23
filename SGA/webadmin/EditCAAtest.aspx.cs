@@ -258,13 +258,14 @@ namespace SGA.webadmin
                         {
                             if (rdb.SelectedIndex != -1)
                             {
-                                SqlParameter[] param = new SqlParameter[3];
+                                SqlParameter[] param = new SqlParameter[4];
                                 string fff = rdb.SelectedValue.ToString();
                                 Label qId = (Label)itm.FindControl("lblquestionId");
                                 int questionId = System.Convert.ToInt32(qId.Text);
                                 param[0] = new SqlParameter("@questionId", questionId);
                                 param[1] = new SqlParameter("@OptionId", fff);
                                 param[2] = new SqlParameter("@testId", this.testId);
+                                param[3] = new SqlParameter("@endDate", System.DateTime.UtcNow.ToString());
                                 SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateCAAOptions", param);
                             }
                         }
@@ -330,13 +331,14 @@ namespace SGA.webadmin
                     {
                         return;
                     }
-                    SqlParameter[] param = new SqlParameter[3];
+                    SqlParameter[] param = new SqlParameter[4];
                     string fff = rdb.SelectedValue.ToString();
                     Label qId = (Label)itm.FindControl("lblquestionId");
                     int questionId = System.Convert.ToInt32(qId.Text);
                     param[0] = new SqlParameter("@questionId", questionId);
                     param[1] = new SqlParameter("@OptionId", fff);
                     param[2] = new SqlParameter("@testId", this.testId);
+                    param[3] = new SqlParameter("@endDate", System.DateTime.UtcNow.ToString());
                     SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateCAAOptions", param);
                 }
             }
@@ -379,13 +381,14 @@ namespace SGA.webadmin
                     {
                         return;
                     }
-                    SqlParameter[] param = new SqlParameter[3];
+                    SqlParameter[] param = new SqlParameter[4];
                     string fff = rdb.SelectedValue.ToString();
                     Label qId = (Label)itm.FindControl("lblquestionId");
                     int questionId = System.Convert.ToInt32(qId.Text);
                     param[0] = new SqlParameter("@questionId", questionId);
                     param[1] = new SqlParameter("@OptionId", fff);
                     param[2] = new SqlParameter("@testId", this.testId);
+                    param[3] = new SqlParameter("@endDate", System.DateTime.UtcNow.ToString());
                     SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateCAAOptions", param);
                 }
             }
@@ -413,13 +416,14 @@ namespace SGA.webadmin
                 {
                     if (rdb.SelectedIndex != -1)
                     {
-                        SqlParameter[] param = new SqlParameter[3];
+                        SqlParameter[] param = new SqlParameter[4];
                         string fff = rdb.SelectedValue.ToString();
                         Label qId = (Label)itm.FindControl("lblquestionId");
                         int questionId = System.Convert.ToInt32(qId.Text);
                         param[0] = new SqlParameter("@questionId", questionId);
                         param[1] = new SqlParameter("@OptionId", fff);
                         param[2] = new SqlParameter("@testId", this.testId);
+                        param[3] = new SqlParameter("@endDate", System.DateTime.UtcNow.ToString());
                         SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateCAAOptions", param);
                     }
                 }

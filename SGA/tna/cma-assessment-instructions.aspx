@@ -70,7 +70,7 @@
 							<p class="txt16-bold">You are about to complete an evaluation of your commercial contract management capability. The aim of this exercise is to provide an independent assessment of your capabilities as they stand today.</p>
 							<p>&nbsp;</p>
 							<p class="txt30">01</p>
-							<p>This assessment focuses on eight underpinning capabilities that drive effective contract management. They are:</p>
+							<p>This assessment focuses on eight underpinning capabilities that drive effective contract management.</p>
 							<p>&nbsp;</p>
 							<p class="txt16-bold">The eight capabilities are:</p>
 							<div class="step1">

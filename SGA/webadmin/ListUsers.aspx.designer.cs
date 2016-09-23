@@ -139,24 +139,6 @@ namespace SGA.webadmin {
         protected global::System.Web.UI.WebControls.LinkButton btnExport;
         
         /// <summary>
-        /// iBtnLoginReminder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton iBtnLoginReminder;
-        
-        /// <summary>
-        /// ImageButton7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton7;
-        
-        /// <summary>
         /// ImageButton8 control.
         /// </summary>
         /// <remarks>
@@ -209,24 +191,6 @@ namespace SGA.webadmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdSelectIds;
-        
-        /// <summary>
-        /// ImageButton17 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton17;
-        
-        /// <summary>
-        /// iBtnResendEmail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton iBtnResendEmail;
         
         /// <summary>
         /// iBtnApproveAll control.

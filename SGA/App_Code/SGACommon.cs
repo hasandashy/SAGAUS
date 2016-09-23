@@ -908,28 +908,28 @@ namespace SGA.App_Code
             switch (roleId)
             {
                 case 1:
-                    strValue = "Procurement Officer";
+                    strValue = "Purchasing Officer";
                     break;
                 case 2:
-                    strValue = "Procurement Analyst";
+                    strValue = "Procurement/ Purchasing Support";
                     break;
                 case 3:
-                    strValue = "Procurement Advisor";
+                    strValue = "Procurement/ Purchasing Analyst";
                     break;
                 case 4:
-                    strValue = "Procurement Specialist";
+                    strValue = "Procurement Officer/ Advisor";
                     break;
                 case 5:
-                    strValue = "Contract Manager";
+                    strValue = "Procurement Specialist";
                     break;
                 case 6:
-                    strValue = "Contract Manager (including procurement)";
+                    strValue = "Contract Manager";
                     break;
                 case 7:
                     strValue = "Category Manager";
                     break;
                 case 8:
-                    strValue = "Procurement Director";
+                    strValue = "Procurement Manager/ Director";
                     break;
                 default:
                     strValue = "No response entered";

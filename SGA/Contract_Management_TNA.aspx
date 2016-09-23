@@ -47,7 +47,7 @@
 							<p class="title28">Your individual feedback report</p>
 							<p>This report is tailored especially for you and in it you will find suggestions and recommendations that will help you develop skills and knowledge in the areas identified for you.</p>
 							<p></p>
-							<p>Your report will be delivered at the conclusion of the assessment period after completing your assigned Assessment Pack.  </p>
+							<p>Your report will be delivered one week after the conclusion of the assessment period. To receive your report you need to complete all assessments assigned to you.  </p>
 							<p></p>
 							<p><strong>REVIEW</strong> the 70:20:10 recommendations in your report, consider your development priorities and consider how you can apply the suggestions in your workplace. </p>
 							<p>&nbsp;</p>
@@ -58,7 +58,7 @@
 							<p class="title28">Note!</p>
                             <p>As you work through the assessment you may find themes that are not directly relevant to your current role.</p>
                             <p></p>
-                            <p>This is likely to happen for many people as this diagnostic considers a broad range of procurement capabilities.</p>
+                            <p>This is likely to happen for many people as this diagnostic considers a broad range of Contract Management capabilities.</p>
                             <p></p>
                             <p>It has purposefully been designed not to be role specific, instead it seeks to understand the South Australian Government procurement capability as a whole.</p>
                             <p></p>

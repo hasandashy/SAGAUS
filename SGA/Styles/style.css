@@ -3003,3 +3003,7 @@ ul.stand-offer {
     padding-bottom: 0;
 }
 /*standing offer page css end*/
+
+.form ul li select {
+    height: 26px;
+}

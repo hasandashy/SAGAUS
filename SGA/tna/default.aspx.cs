@@ -72,11 +72,18 @@ namespace SGA.tna
                     this.hylCMK.CssClass = (isCmkTest ? "btn-go" : "locked");
                     this.hylCAA.CssClass = (isCaaTest ? "btn-go" : "locked");
 
-                    this.hylTna.Text = (isTnaTest ? "GO" : "Currently locked.<br />Want more info?<span>Your access to this assessment is now locked as you have completed it. If you require access to the assessment again, please contact support@comprara.com.au If you are looking for your results, click 'My Results' at the top of the page.</span>");
-                    this.hylSga.Text = (isPkeTest ? "GO" : "Currently locked.<br />Want more info?<span>Hi! Your access to the Procurement Knowledge Evaluation is currently disabled. You have either completed the challenge or have not yet been registered by the system administrator. If you would like to sit the assessment or require additional information contact the system administrator at: info@skillsgapanalysis.com</span>");
-                    this.hylCMA.Text = (isCMAtest ? "GO" : "Currently locked.<br />Want more info?<span>Your access to this assessment is now locked as you have completed it. If you require access to the assessment again, please contact support@comprara.com.au If you are looking for your results, click 'My Results' at the top of the page.</span>");
-                    this.hylCMK.Text = (isCmkTest ? "GO" : "Currently locked.<br />Want more info?<span>Your access to this assessment is now locked as you have completed it. If you require access to the assessment again, please contact support@comprara.com.au If you are looking for your results, click 'My Results' at the top of the page.</span>");
-                    this.hylCAA.Text = (isCaaTest ? "GO" : "Currently locked.<br />Want more info?<span>Your access to this assessment is now locked as you have completed it. If you require access to the assessment again, please contact support@comprara.com.au If you are looking for your results, click 'My Results' at the top of the page.</span>");
+                    //this.hylTna.Text = (isTnaTest ? "GO" : "Currently locked.<br />Want more info?<span>Your access to this assessment is now locked as you have completed it. If you require access to the assessment again, please contact support@comprara.com.au If you are looking for your results, click 'My Results' at the top of the page.</span>");
+                    //this.hylSga.Text = (isPkeTest ? "GO" : "Currently locked.<br />Want more info?<span>Hi! Your access to the Procurement Knowledge Evaluation is currently disabled. You have either completed the challenge or have not yet been registered by the system administrator. If you would like to sit the assessment or require additional information contact the system administrator at: info@skillsgapanalysis.com</span>");
+                    //this.hylCMA.Text = (isCMAtest ? "GO" : "Currently locked.<br />Want more info?<span>Your access to this assessment is now locked as you have completed it. If you require access to the assessment again, please contact support@comprara.com.au If you are looking for your results, click 'My Results' at the top of the page.</span>");
+                    //this.hylCMK.Text = (isCmkTest ? "GO" : "Currently locked.<br />Want more info?<span>Your access to this assessment is now locked as you have completed it. If you require access to the assessment again, please contact support@comprara.com.au If you are looking for your results, click 'My Results' at the top of the page.</span>");
+                    //this.hylCAA.Text = (isCaaTest ? "GO" : "Currently locked.<br />Want more info?<span>Your access to this assessment is now locked as you have completed it. If you require access to the assessment again, please contact support@comprara.com.au If you are looking for your results, click 'My Results' at the top of the page.</span>");
+
+                    this.hylTna.Text = (isTnaTest ? "GO" : "Assessment completed");
+                    this.hylSga.Text = (isPkeTest ? "GO" : "Assessment completed");
+                    this.hylCMA.Text = (isCMAtest ? "GO" : "Assessment completed");
+                    this.hylCMK.Text = (isCmkTest ? "GO" : "Assessment completed");
+                    this.hylCAA.Text = (isCaaTest ? "GO" : "Assessment completed");
+
 
                     this.hylTna.ToolTip = (isTnaTest ? "Go" : "Locked");
                     this.hylSga.ToolTip = (isPkeTest ? "Go" : "Locked");

@@ -92,13 +92,13 @@ namespace SGA.tna
             if (!base.IsPostBack)
             {
                 DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spInitalizeCAATest", new SqlParameter[]
-				{
-					new SqlParameter("@userId", SGACommon.LoginUserInfo.userId),
-					new SqlParameter("@testDate", System.DateTime.UtcNow.ToString()),
+                {
+                    new SqlParameter("@userId", SGACommon.LoginUserInfo.userId),
+                    new SqlParameter("@testDate", System.DateTime.UtcNow.ToString()),
                     new SqlParameter("@startDate", System.DateTime.UtcNow.ToString()),
                     new SqlParameter("@endDate", System.DateTime.UtcNow.ToString()),
                     new SqlParameter("@sessionId", this.Session.SessionID)
-				});
+                });
                 this.testId = System.Convert.ToInt32(ds.Tables[0].Rows[0]["testId"].ToString());
                 this.Cronometro1.Duracion = new System.TimeSpan(0, System.Convert.ToInt32(ds.Tables[0].Rows[0]["time"].ToString()), 0);
                 this.LoadAllTopics();
@@ -136,15 +136,15 @@ namespace SGA.tna
                     case 4:
                         this.Number = 16;
                         break;
-                    //case 5:
-                    //    this.Number = 15;
-                    //    break;
-                    //case 6:
-                    //    this.Number = 18;
-                    //    break;
-                    //case 7:
-                    //    this.Number = 21;
-                    //    break;
+                        //case 5:
+                        //    this.Number = 15;
+                        //    break;
+                        //case 6:
+                        //    this.Number = 18;
+                        //    break;
+                        //case 7:
+                        //    this.Number = 21;
+                        //    break;
                 }
                 this.SetClass();
                 this.setPrevButton();
@@ -177,13 +177,13 @@ namespace SGA.tna
                 int questionId = System.Convert.ToInt32(DataBinder.Eval(e.Item.DataItem, "questionid"));
                 RadioButtonList rdb = (RadioButtonList)e.Item.FindControl("RadioButtonList1");
                 string strQuery = string.Concat(new object[]
-				{
-					"SELECT isNull(optionId,'') from  tblCAAOptions where optionId = (select replyId from tblCAAQuestionReply where testId=",
-					this.testId,
-					" and questionId=",
-					questionId,
-					")"
-				});
+                {
+                    "SELECT isNull(optionId,'') from  tblCAAOptions where optionId = (select replyId from tblCAAQuestionReply where testId=",
+                    this.testId,
+                    " and questionId=",
+                    questionId,
+                    ")"
+                });
                 object strOption = SqlHelper.ExecuteScalar(CommandType.Text, strQuery);
                 if (strOption != null)
                 {
@@ -194,7 +194,7 @@ namespace SGA.tna
 
         protected DataSet GetData(int qid)
         {
-            return SqlHelper.ExecuteDataset(CommandType.Text, "select * from tblCAAOptions where questionId=" + qid + " ");
+            return SqlHelper.ExecuteDataset(CommandType.Text, "select * from tblCAAOptions where questionId = " + qid + " order by frontId ");
         }
 
         private void SetClass()
@@ -208,9 +208,9 @@ namespace SGA.tna
                     this.lblTopic.Text = lnkButton.Text.Replace("<br />", " ");
                     this.BindTopicsQuestions(System.Convert.ToInt32(lnkButton.CommandArgument));
                     SqlParameter[] param = new SqlParameter[]
-					{
-						new SqlParameter("@topicId", System.Convert.ToInt32(lnkButton.CommandArgument))
-					};
+                    {
+                        new SqlParameter("@topicId", System.Convert.ToInt32(lnkButton.CommandArgument))
+                    };
                     this.lblDescription.Text = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetCAATopicDetail", param).ToString();
                 }
                 else
@@ -223,9 +223,9 @@ namespace SGA.tna
         private void BindTopicsQuestions(int topicId)
         {
             DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCAAQuestions", new SqlParameter[]
-			{
-				new SqlParameter("@topicId", topicId)
-			});
+            {
+                new SqlParameter("@topicId", topicId)
+            });
             this.parentRepeater.DataSource = ds;
             this.parentRepeater.DataBind();
             this.hdCount.Value = this.parentRepeater.Items.Count.ToString();
@@ -251,15 +251,15 @@ namespace SGA.tna
                 case 4:
                     strPercentage = "You're 100% through, doing well!";
                     break;
-                //case 5:
-                //    strPercentage = "You're 75% through, doing well!";
-                //    break;
-                //case 6:
-                //    strPercentage = "You're 87.50% through, doing well!";
-                //    break;
-                //case 7:
-                //    strPercentage = "You're 100% through, congratulations!";
-                //    break;
+                    //case 5:
+                    //    strPercentage = "You're 75% through, doing well!";
+                    //    break;
+                    //case 6:
+                    //    strPercentage = "You're 87.50% through, doing well!";
+                    //    break;
+                    //case 7:
+                    //    strPercentage = "You're 100% through, congratulations!";
+                    //    break;
             }
             this.lblPercentage.Text = strPercentage;
         }
@@ -285,13 +285,14 @@ namespace SGA.tna
                         {
                             if (rdb.SelectedIndex != -1)
                             {
-                                SqlParameter[] param = new SqlParameter[3];
+                                SqlParameter[] param = new SqlParameter[4];
                                 string fff = rdb.SelectedValue.ToString();
                                 Label qId = (Label)itm.FindControl("lblquestionId");
                                 int questionId = System.Convert.ToInt32(qId.Text);
                                 param[0] = new SqlParameter("@questionId", questionId);
                                 param[1] = new SqlParameter("@OptionId", fff);
                                 param[2] = new SqlParameter("@testId", this.testId);
+                                param[3] = new SqlParameter("@endDate", System.DateTime.UtcNow.ToString());
                                 SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateCAAOptions", param);
                             }
                         }
@@ -315,15 +316,15 @@ namespace SGA.tna
                     case 4:
                         this.Number = 16;
                         break;
-                    //case 5:
-                       // this.Number = 20;
-                      //  break;
-                    //case 6:
-                    //    this.Number = 18;
-                    //    break;
-                    //case 7:
-                    //    this.Number = 21;
-                    //    break;
+                        //case 5:
+                        // this.Number = 20;
+                        //  break;
+                        //case 6:
+                        //    this.Number = 18;
+                        //    break;
+                        //case 7:
+                        //    this.Number = 21;
+                        //    break;
                 }
                 this.SetClass();
                 this.setPrevButton();
@@ -357,20 +358,21 @@ namespace SGA.tna
                     {
                         return;
                     }
-                    SqlParameter[] param = new SqlParameter[3];
+                    SqlParameter[] param = new SqlParameter[4];
                     string fff = rdb.SelectedValue.ToString();
                     Label qId = (Label)itm.FindControl("lblquestionId");
                     int questionId = System.Convert.ToInt32(qId.Text);
                     param[0] = new SqlParameter("@questionId", questionId);
                     param[1] = new SqlParameter("@OptionId", fff);
                     param[2] = new SqlParameter("@testId", this.testId);
+                    param[3] = new SqlParameter("@endDate", System.DateTime.UtcNow.ToString());
                     SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateCAAOptions", param);
                 }
             }
             string[] strField = new string[]
-						{
-							"Id"
-						};
+                        {
+                            "Id"
+                        };
             XmlRpcStruct[] resultFound = isdnAPI.findByEmail(SGACommon.LoginUserInfo.name, strField);
             int userId;
             //XmlRpcStruct Contact = new XmlRpcStruct();
@@ -388,10 +390,10 @@ namespace SGA.tna
             //}
             this.testId = 0;
             SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spRestrictTest", new SqlParameter[]
-			{
-				new SqlParameter("@flag", "2"),
-				new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
-			});
+            {
+                new SqlParameter("@flag", "2"),
+                new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
+            });
             base.Response.Redirect("~/tna/my-results-bar-graph-caa.aspx", false);
         }
 
@@ -406,13 +408,14 @@ namespace SGA.tna
                     {
                         return;
                     }
-                    SqlParameter[] param = new SqlParameter[3];
+                    SqlParameter[] param = new SqlParameter[4];
                     string fff = rdb.SelectedValue.ToString();
                     Label qId = (Label)itm.FindControl("lblquestionId");
                     int questionId = System.Convert.ToInt32(qId.Text);
                     param[0] = new SqlParameter("@questionId", questionId);
                     param[1] = new SqlParameter("@OptionId", fff);
                     param[2] = new SqlParameter("@testId", this.testId);
+                    param[3] = new SqlParameter("@endDate", System.DateTime.UtcNow.ToString());
                     SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateCAAOptions", param);
                 }
             }
@@ -440,13 +443,14 @@ namespace SGA.tna
                 {
                     if (rdb.SelectedIndex != -1)
                     {
-                        SqlParameter[] param = new SqlParameter[3];
+                        SqlParameter[] param = new SqlParameter[4];
                         string fff = rdb.SelectedValue.ToString();
                         Label qId = (Label)itm.FindControl("lblquestionId");
                         int questionId = System.Convert.ToInt32(qId.Text);
                         param[0] = new SqlParameter("@questionId", questionId);
                         param[1] = new SqlParameter("@OptionId", fff);
                         param[2] = new SqlParameter("@testId", this.testId);
+                        param[3] = new SqlParameter("@endDate", System.DateTime.UtcNow.ToString());
                         SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateCAAOptions", param);
                     }
                 }

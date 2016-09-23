@@ -75,9 +75,9 @@
 							<p class="txt16-bold">You are about to complete an evaluation of your procurement knowledge.</p>
 							<p>&nbsp;</p>
 							<p class="txt30">01</p>
-							<p>This evaluation focuses on the skills required to perform in procurement. It focuses on eight procurement dimensions and for each, you will be asked nine assessment questions.</p>
+							<p>This assessment focuses on eight dimensions that drive effective procurement.</p>
 							<p>&nbsp;</p>
-							<p class="txt16-bold">The 8 dimensions are:</p>
+							<p class="txt16-bold">The eight dimensions are:</p>
 							<div class="step1">
 								<p>1. Opportunity Analysis</p>
 								<p>2. Market Analysis</p>
@@ -90,13 +90,15 @@
 								<p>7. Supplier Relationship Management</p>
 								<p>8. Strategy Refresh</p>
 							</div>
+                            <p>&nbsp;</p>
+                            <p>As you work through the assessment you may find themes that are not directly relevant to your current role. This is likely to happen for many people as this diagnostic considers a broad range of procurement capabilities. It has purposefully been designed not to be role specific, instead it seeks to understand the South Australian Government procurement capability as a whole.</p>
 							<div class="clear"></div>
 							<hr class="divider-line" />
 							<p class="txt30">02</p>
-							<p>If you haven't already done so, please complete your profile. Here we ask you several key questions regarding your role and your experience. This provides the context for your assessment. You can edit or update this information at any time by clicking 'My Profile' at the top of the page.</p>
+							<p>For each procurement dimension you will be asked nine multiple choice questions.</p>
 							<hr class="divider-line" />
 							<p class="txt30">03</p>
-							<p>On completion of the evaluation you will receive a PDF report of your results. This may happen automatically or at a later stage depending on what was agreed with your organisation. You can use this report for your own records - as an evaluation of your knowledge, as it stands today. You can also use this report to facilitate discussion with your manager.</p>
+							<p>Each multiple choice question has four answer options. Choose whichever you feel is the most correct answer. </p>
 							<p>&nbsp;</p>
 							<p>&nbsp;</p>
 							<div class="floatR">
@@ -110,9 +112,7 @@
 							<div class="timed-task">
 								<p class="title"><span>THIS IS A<br /><font class="orange">TIMED TASK!</font></span></p>
 								<p>&nbsp;</p>
-								<p>You are given 60 minutes to complete the evaluation. There are eight sections with nine questions each. We recommend that you allocate no more than 5 minutes for each section. This gives you 10 minutes to go back to the answers that you may want to revisit. When you click 'Next' you will be taken to 'My Profile' page.  Once you have completed your profile, click 'Next' and then the clock will start!  
-                                <br /><br />
-You will see the clock throughout the evaluation in the top right hand side of the page in orange! </p>
+								<p>You are given 60 minutes to complete the evaluation. There are eight sections with nine questions in each. You will see the clock throughout the evaluation in the top right hand side of the page in orange and you are given a guide of your completion progress as you go. </p>
 							</div>
 						</article>
 					</section>

@@ -60,31 +60,28 @@
 				<article id="container">
 					<section class="welcome">
 						<p class="title40-orange" style="text-align:center;"><asp:Label ID="lblName" runat="server"></asp:Label></p>
-						<p class="title40" style="text-align:center;">Welcome to the Contract Management Knowledge Evaluation</p>
+						<p class="title40" style="text-align:center;">Here is the background to the relationship between your supplier and you:</p>
 					</section>
 					<div class="dot-line">&nbsp;</div>
 					<section class="color-box">
 						<article class="info-box-shdw-inner">
 							<p class="title40">THE RELATIONSHIP CONTEXT</p>
 							<p>&nbsp;</p>
-							<p class="txt16-bold">The background of the relationship between Cleaning Co. and you</p>
+							<p class="txt16-bold">Backgroud</p>
 							<p>&nbsp;</p>
-							
-							<p>•&nbsp;&nbsp;You are in a full time role with your organisation<br /><br />
-•&nbsp;&nbsp;Managing commercial contracts is part of your full-time role but is not your primary role<br /><br />
-•&nbsp;&nbsp;You are responsible for managing one commercial contract with an external service provider, Cleaning Co.<br /><br />
-•&nbsp;&nbsp;Cleaning Co. provides office-cleaning services across your organisation. They were appointed by a team in your head office<br /><br />
-•&nbsp;&nbsp;You were not involved in their appointment as the service provider<br /><br />
-•&nbsp;&nbsp;Within the portfolio of contracts negotiated by the central procurement team, this contract is considered low to medium risk, and of relatively low value<br /><br />
-•&nbsp;&nbsp;You are responsible for managing Cleaning Co. in your region<br /><br />
+							<p>As a Contract Manager you are responsible for managing a commercial contract with an external service provider: Cleaning Co.</p>
+                            <p>&nbsp;</p>
+							<p>•&nbsp;&nbsp;Cleaning Co. provides office-cleaning services across your organisation. <br /><br />
+•&nbsp;&nbsp;Cleaning Co. was appointed by the Sourcing team and you were not involved in their appointment as the service provider. <br /><br />
+•&nbsp;&nbsp;Within the portfolio of contracts negotiated by the central procurement team, this contract is considered low to medium risk, and of relatively low value.<br /><br />
+•&nbsp;&nbsp;It is your responsibility to manage Cleaning Co. in your region.<br /><br />
 </p>
-							<p>&nbsp;</p>
-                            <p>The questions that follow explore issues involved in managing the contract with Cleaning Co. </p>
                             <p>&nbsp;</p>
-                            <p>Each question describes a different scenario, when answering them treat each question independently.</p>
-                            <p>&nbsp;</p>
-                            <p>Question 3 is a one-off event therefore your response to the situation should be based on that question alone and not on the basis that it is part of a pattern of events that include the incidents described in questions 1 and 2.</p>
+							<p class="txt16-bold">Assessment</p>
 							<p>&nbsp;</p>
+							<p>•&nbsp;&nbsp;The questions that follow explore issues involved in managing the contract with Cleaning Co. <br /><br />
+•&nbsp;&nbsp;Note: Each question describes a different scenario – when answering them, treat each question independently. For example, Question 3 is a one off event therefore your response to the situation should be based on that question alone and not on the basis that it is part of a pattern of events that include the incidents described in preceding questions. <br /><br />
+</p>
                             <p>&nbsp;</p>
 							<p>&nbsp;</p>
                            
@@ -96,9 +93,8 @@
 							<div class="timed-task">
 								<p class="title"><span>THIS IS A<br /><font class="orange">TIMED TASK!</font></span></p>
 								<p>&nbsp;</p>
-								<p>You are given 60 minutes to complete the evaluation. There are eight sections with three questions each. We recommend that you allocate no more than 5 minutes for each section. This gives you 10 minutes to go back to the answers that you may want to revisit. When you click 'Next' you will be taken to 'My Profile' page.  Once you have completed your profile, click 'Next' and then the clock will start!  
-                                <br /><br />
-You will see the clock throughout the evaluation in the top right hand side of the page in orange! </p>
+								<p>You are given 60 minutes to complete the evaluation. There are eight sections with three scenario based questions in each. You will see the clock throughout the evaluation in the top right hand side of the page in orange and you are given a guide of your completion progress as you go.   
+                               </p>
 							</div>
 							
 							

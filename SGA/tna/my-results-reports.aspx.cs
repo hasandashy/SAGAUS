@@ -175,21 +175,21 @@ namespace SGA.tna
             if (e.Item.ItemType == ListItemType.AlternatingItem || e.Item.ItemType == ListItemType.Item)
             {
                 Label lblConvertedDate = (Label)e.Item.FindControl("lblConvertedDate");
-                Label lblTimeTaken = (Label)e.Item.FindControl("lblTimeTaken");
+               // Label lblTimeTaken = (Label)e.Item.FindControl("lblTimeTaken");
                 System.DateTime dtTestdate = System.Convert.ToDateTime(DataBinder.Eval(e.Item.DataItem, "testDate"));
-                string timeDiff = DataBinder.Eval(e.Item.DataItem, "diff").ToString();
+              //  string timeDiff = DataBinder.Eval(e.Item.DataItem, "diff").ToString();
                 if (lblConvertedDate != null)
                 {
                     lblConvertedDate.Text = SGACommon.ToAusTimeZone(dtTestdate).ToString("dd/MM/yyyy HH:mm tt");
                 }
-                if (lblTimeTaken != null)
-                {
-                    string[] strArr = timeDiff.Split(new char[]
-					{
-						':'
-					});
-                    lblTimeTaken.Text = strArr[1] + " min " + strArr[2] + " sec ";
-                }
+     //           if (lblTimeTaken != null)
+     //           {
+     //               string[] strArr = timeDiff.Split(new char[]
+					//{
+					//	':'
+					//});
+     //               lblTimeTaken.Text = strArr[1] + " min " + strArr[2] + " sec ";
+     //           }
             }
         }
 
