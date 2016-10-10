@@ -98,7 +98,7 @@
 							<p>For each Procurement dimension you will be asked to assess yourself on nine specific capabilities. A scoring guide is provided at the top of the Assessment page that you can refer to when assessing yourself. </p>
 							<hr class="divider-line" />
 							<p class="txt30">03</p>
-							<p>For each statement, click the radio button that represents your level of skill for each (0 Novice – 7 Expert). Once you have completed each Dimension, click ’NEXT’ to be taken to the next Dimension.  </p>
+							<p>For each statement, click the radio button that represents your level of skill for each (0 Novice – 7 Expert). In some statements you will notice a word that is underlined - hover your mouse over these words to see the definition. Once you have completed each Dimension, click ’NEXT’ to be taken to the next Dimension.  </p>
 							<p>&nbsp;</p>
 							<p>&nbsp;</p>
                            

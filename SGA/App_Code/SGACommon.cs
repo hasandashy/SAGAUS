@@ -27,9 +27,9 @@ namespace SGA.App_Code
                 {
                     cu = new User();
                     string[] args = HttpContext.Current.User.Identity.Name.Split(new char[]
-					{
-						':'
-					});
+                    {
+                        ':'
+                    });
                     if (args.Length > 0)
                     {
                         cu.userId = System.Convert.ToInt32(args[1]);
@@ -52,12 +52,12 @@ namespace SGA.App_Code
         public static void SaveBrowserDetails(int userId, string browserName, string userAgent, string sessionId)
         {
             SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spProcessSessionDetails", new SqlParameter[]
-			{
-				new SqlParameter("@userId", userId),
-				new SqlParameter("@browserName", browserName),
-				new SqlParameter("@userAgent", userAgent),
-				new SqlParameter("@sessionId", sessionId)
-			});
+            {
+                new SqlParameter("@userId", userId),
+                new SqlParameter("@browserName", browserName),
+                new SqlParameter("@userAgent", userAgent),
+                new SqlParameter("@sessionId", sessionId)
+            });
         }
 
         public static string UppercaseFirst(string s)
@@ -116,9 +116,9 @@ namespace SGA.App_Code
         {
             bool isView = true;
             DataSet dsPermission = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetPremission", new SqlParameter[]
-			{
-				new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
-			});
+            {
+                new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
+            });
             if (dsPermission != null)
             {
                 isView = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0][colName].ToString());
@@ -133,9 +133,9 @@ namespace SGA.App_Code
         {
             bool isView = true;
             DataSet dsPermission = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetPremission", new SqlParameter[]
-			{
-				new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
-			});
+            {
+                new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
+            });
             if (dsPermission != null)
             {
                 isView = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0][colName].ToString());
@@ -155,10 +155,10 @@ namespace SGA.App_Code
         public static void GetEmailTemplate(int id, ref string subject, ref string body)
         {
             DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageTemplate", new SqlParameter[]
-			{
-				new SqlParameter("@flag", "0"),
-				new SqlParameter("@id", id)
-			});
+            {
+                new SqlParameter("@flag", "0"),
+                new SqlParameter("@id", id)
+            });
             if (ds != null)
             {
                 if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -402,9 +402,9 @@ namespace SGA.App_Code
             if (HttpContext.Current.User.Identity.IsAuthenticated)
             {
                 name = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetName", new SqlParameter[]
-				{
-					new SqlParameter("@Id", SGACommon.LoginUserInfo.userId)
-				}).ToString();
+                {
+                    new SqlParameter("@Id", SGACommon.LoginUserInfo.userId)
+                }).ToString();
             }
             return SGACommon.ToTitleCase(name);
         }
@@ -412,9 +412,9 @@ namespace SGA.App_Code
         public static string GetName(int userId)
         {
             string name = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetName", new SqlParameter[]
-			{
-				new SqlParameter("@Id", userId)
-			}).ToString();
+            {
+                new SqlParameter("@Id", userId)
+            }).ToString();
             return SGACommon.ToTitleCase(name);
         }
 
@@ -424,9 +424,9 @@ namespace SGA.App_Code
             if (HttpContext.Current.User.Identity.IsAuthenticated)
             {
                 name = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetFullName", new SqlParameter[]
-				{
-					new SqlParameter("@Id", SGACommon.LoginUserInfo.userId)
-				}).ToString();
+                {
+                    new SqlParameter("@Id", SGACommon.LoginUserInfo.userId)
+                }).ToString();
             }
             return SGACommon.ToTitleCase(name);
         }
@@ -437,9 +437,9 @@ namespace SGA.App_Code
             if (HttpContext.Current.User.Identity.IsAuthenticated)
             {
                 name = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetCompanyByUser", new SqlParameter[]
-				{
-					new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
-				}).ToString();
+                {
+                    new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
+                }).ToString();
             }
             return SGACommon.ToTitleCase(name);
         }
@@ -1049,28 +1049,46 @@ namespace SGA.App_Code
             switch (educationId)
             {
                 case 1:
-                    strValue = "Secondary school";
+                    strValue = "Not applicable";
                     break;
                 case 2:
-                    strValue = "Certificate";
+                    strValue = "Certificate in Procurement / Contract Management";
                     break;
                 case 3:
-                    strValue = "Diploma";
+                    strValue = "Diploma in Procurement / Contract Management";
                     break;
                 case 4:
-                    strValue = "Advanced Diploma";
+                    strValue = "Undergraduate degree in Procurement / Contract Management";
                     break;
                 case 5:
-                    strValue = "Undergraduate";
+                    strValue = "Postgraduate diploma in Procurement / Contract Management";
                     break;
                 case 6:
-                    strValue = "Postgraduate";
+                    strValue = "Postgraduate degree in Procurement / Contract Management";
                     break;
                 case 7:
-                    strValue = "Masters";
+                    strValue = "CIPS: Member (MCIPS)";
                     break;
                 case 8:
-                    strValue = "Doctorate";
+                    strValue = "CIPS: Fellow (FCIPS)";
+                    break;
+                case 9:
+                    strValue = "AAPCM: Member";
+                    break;
+                case 10:
+                    strValue = "AAPCM: Fellow";
+                    break;
+                case 11:
+                    strValue = "IACCM: Accreditation";
+                    break;
+                case 12:
+                    strValue = "IFPSM: Certified International Procurement Professional";
+                    break;
+                case 13:
+                    strValue = "IFPSM: Certified International Advanced Procurement Professional";
+                    break;
+                case 14:
+                    strValue = "Other";
                     break;
                 default:
                     strValue = "No response entered";
@@ -1251,6 +1269,264 @@ namespace SGA.App_Code
                     break;
                 case 20:
                     strValue = "Other";
+                    break;
+            }
+            return strValue;
+        }
+
+        public static string IsCentralProcurement(int id)
+        {
+            string strValue = "";
+            switch (id)
+            {
+                case 1:
+                    strValue = "Yes";
+                    break;
+                case 2:
+                    strValue = "No- Operational";
+                    break;
+                case 3:
+                    strValue = "No- Regional";
+                    break;
+                case 4:
+                    strValue = "No- Other";
+                    break;
+                default:
+                    strValue = "No Value Selected";
+                    break;
+            }
+            return strValue;
+        }
+
+        public static string GetJobClassification(int id)
+        {
+            string strValue = "";
+            switch (id)
+            {
+                case 1:
+                    strValue = "ASO2";
+                    break;
+                case 2:
+                    strValue = "ASO3";
+                    break;
+                case 3:
+                    strValue = "ASO4";
+                    break;
+                case 4:
+                    strValue = "ASO5";
+                    break;
+                case 5:
+                    strValue = "ASO6/ MAS1";
+                    break;
+                case 6:
+                    strValue = "ASO7/ MAS2";
+                    break;
+                case 7:
+                    strValue = "ASO8/ MAS3";
+                    break;
+                case 8:
+                    strValue = "EX";
+                    break;
+                case 9:
+                    strValue = "Other (e.g. technical grades)";
+                    break;
+                default:
+                    strValue = "No Value Selected";
+                    break;
+            }
+            return strValue;
+        }
+
+        public static string GetExperience(int id)
+        {
+            string strValue = "";
+            switch (id)
+            {
+                case 1:
+                    strValue = "Less than 1 year";
+                    break;
+                case 2:
+                    strValue = "1 to 3 years";
+                    break;
+                case 3:
+                    strValue = "3 to 5 years";
+                    break;
+                case 4:
+                    strValue = "5 to 10 years";
+                    break;
+                case 5:
+                    strValue = "10 to 15 years";
+                    break;
+                case 6:
+                    strValue = "15 to 20 years";
+                    break;
+                case 7:
+                    strValue = "More than 20 years";
+                    break;
+                default:
+                    strValue = "No Value Selected";
+                    break;
+            }
+            return strValue;
+        }
+
+        public static string GetWorkingHours(int id)
+        {
+            string strValue = "";
+            switch (id)
+            {
+                case 1:
+                    strValue = "Full-time";
+                    break;
+                case 2:
+                    strValue = "Part-time less than 50%";
+                    break;
+                case 3:
+                    strValue = "Part-time greater than 50%";
+                    break;
+                default:
+                    strValue = "No Value Selected";
+                    break;
+            }
+            return strValue;
+        }
+        public static string GetNature(int id)
+        {
+            string strValue = "";
+            switch (id)
+            {
+                case 1:
+                    strValue = "General Goods and Services";
+                    break;
+                case 2:
+                    strValue = "ICT";
+                    break;
+                case 3:
+                    strValue = "Medical / Health";
+                    break;
+                case 4:
+                    strValue = "Social Services";
+                    break;
+                case 5:
+                    strValue = "Transport Infrastructure & Services";
+                    break;
+                case 6:
+                    strValue = "Building Construction and Maintenance";
+                    break;              
+                default:
+                    strValue = "No Value Selected";
+                    break;
+            }
+            return strValue;
+        }
+
+        public static string GetSize(int id)
+        {
+            string strValue = "";
+            switch (id)
+            {
+                case 1:
+                    strValue = "$1 billion or more";
+                    break;
+                case 2:
+                    strValue = "$500 million to $999.9 million";
+                    break;
+                case 3:
+                    strValue = "$100 million to $499.9 million";
+                    break;
+                case 4:
+                    strValue = "$50 million to $99.9 million";
+                    break;
+                case 5:
+                    strValue = "$20 million to $49.9 million";
+                    break;
+                case 6:
+                    strValue = "$10 million to $19.9 million";
+                    break;
+                case 7:
+                    strValue = "$5 million to $9.9 million";
+                    break;
+                case 8:
+                    strValue = "$2.5 million to $4.9 million";
+                    break;
+                case 9:
+                    strValue = "$1 million to $2.49 million";
+                    break;
+                case 10:
+                    strValue = "$500,000 to $999.999";
+                    break;
+                case 11:
+                    strValue = "Less than $500,000";
+                    break;
+                case 12:
+                    strValue = "Not Applicable";
+                    break;
+                default:
+                    strValue = "No Value Selected";
+                    break;
+            }
+            return strValue;
+        }
+
+        public static string GetNoOfContracts(int id)
+        {
+            string strValue = "";
+            switch (id)
+            {
+                case 1:
+                    strValue = "1 to 5";
+                    break;
+                case 2:
+                    strValue = "5 to 10";
+                    break;
+                case 3:
+                    strValue = "10 to 20";
+                    break;
+                case 4:
+                    strValue = "20 plus";
+                    break;
+                case 5:
+                    strValue = "Not relevant";
+                    break;
+                default:
+                    strValue = "No Value Selected";
+                    break;
+            }
+            return strValue;
+        }
+
+        public static string GetRange(int id)
+        {
+            string strValue = "";
+            switch (id)
+            {
+                case 1:
+                    strValue = "Operational tasks like routing non-matched invoices or other administrative tasks";
+                    break;
+                case 2:
+                    strValue = "Managing contracts and dealing with operational problems that arise";
+                    break;
+                case 3:
+                    strValue = "Operational procurement tasks like raising purchase orders for end users";
+                    break;
+                case 4:
+                    strValue = "Tactical procurement activities, like issuing and evaluating quotes for simple acquisitions";
+                    break;
+                case 5:
+                    strValue = "Strategic procurement activities, like managing procurement projects for complex and/or high value acquisitions";
+                    break;
+                case 6:
+                    strValue = "Managing significant contracts and ensuring that outcomes are realised";
+                    break;
+                case 7:
+                    strValue = "Policy, governance or other managerial tasks, such as supporting governance bodies and/or reporting";
+                    break;
+                case 8:
+                    strValue = "Procurement leadership, setting goals and direction and leading a team of procurement practitioners";
+                    break;
+              
+                default:
+                    strValue = "Not relevant";
                     break;
             }
             return strValue;

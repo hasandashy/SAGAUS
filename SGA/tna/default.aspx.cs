@@ -1,4 +1,6 @@
-﻿using DataTier;
+﻿using CookComputing.XmlRpc;
+using DataTier;
+using InfusionSoftDotNet;
 using SGA.App_Code;
 using System;
 using System.Data;
@@ -112,13 +114,13 @@ namespace SGA.tna
                 {
                     if (dsPermission.Tables.Count > 0 && dsPermission.Tables[0].Rows.Count > 0)
                     {
-                       
+
                         switch (System.Convert.ToInt32(dsPermission.Tables[0].Rows[0]["jobrole"].ToString()))
                         {
                             case 1:
                                 this.pnlTNA.Visible = true;
                                 this.pnlCAA.Visible = true;
-                                if(!isTnaComplete)
+                                if (!isTnaComplete)
                                 {
                                     this.hylCAA.Text = "Currently locked.<br />Want more info?<span>Your access to this assessment is locked. If you require access to the assessment, please complete Procurement self assesment first.</span>";
                                     this.hylCAA.ToolTip = "Locked";
@@ -171,7 +173,7 @@ namespace SGA.tna
                                     this.hylSga.NavigateUrl = "#";
 
                                 }
-                                if(!isPkeComplete)
+                                if (!isPkeComplete)
                                 {
                                     this.hylCAA.Text = "Currently locked.<br />Want more info?<span>Your access to this assessment is locked. If you require access to the assessment, please complete Procurement Knowledge Evaluation first.</span>";
                                     this.hylCAA.ToolTip = "Locked";
@@ -239,9 +241,8 @@ namespace SGA.tna
                                 break;
                         }
                     }
-                }
+                }               
                
-
             }
         }
     }

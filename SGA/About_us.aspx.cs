@@ -306,8 +306,7 @@ namespace SGA
                         if (resultFound.Length > 0)
                         {
                             int userId = System.Convert.ToInt32(resultFound[0]["Id"].ToString());
-                            bool isAdded = isdnAPI.addToGroup(userId, 2044);
-                            isdnAPI.optIn(email, "Sending emails is allowed");
+                            
                             isdnAPI.dsUpdate("Contact", userId, new XmlRpcStruct
                             {
                                 {
@@ -317,10 +316,6 @@ namespace SGA
                                 {
                                     "LastName",
                                     lname
-                                },
-                                {
-                                    "Email",
-                                    email
                                 },
                                 {
                                     "OwnerID",
@@ -343,6 +338,8 @@ namespace SGA
                                     email
                                 }
                             });
+                            bool isAdded = isdnAPI.addToGroup(userId, 2044);
+                            isdnAPI.optIn(email, "Sending emails is allowed");
                         }
                         else
                         {

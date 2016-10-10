@@ -383,6 +383,11 @@ namespace SGA.tna
                 }
             }
             this.testId = 0;
+           // SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spRestrictTest", new SqlParameter[]
+           //{
+           //     new SqlParameter("@flag", "0"),
+           //     new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
+           //});
             base.ClientScript.RegisterStartupScript(this.Page.GetType(), "time", "timeOut();", true);
             base.Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
         }

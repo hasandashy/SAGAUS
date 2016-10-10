@@ -67,24 +67,6 @@ namespace SGA.webadmin {
         protected global::System.Web.UI.WebControls.TextBox txtSSALevel;
         
         /// <summary>
-        /// txtSSAScale control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSSAScale;
-        
-        /// <summary>
-        /// txtSSAScore control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSSAScore;
-        
-        /// <summary>
         /// txtSSARecommendation control.
         /// </summary>
         /// <remarks>
@@ -328,303 +310,6 @@ namespace SGA.webadmin {
         protected global::System.Web.UI.WebControls.ImageButton imgSSACancel;
         
         /// <summary>
-        /// pnlBAList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlBAList;
-        
-        /// <summary>
-        /// grdBASuggestions control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DataGrid grdBASuggestions;
-        
-        /// <summary>
-        /// pnlBAEdit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlBAEdit;
-        
-        /// <summary>
-        /// txtBALevel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBALevel;
-        
-        /// <summary>
-        /// txtBAScale control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBAScale;
-        
-        /// <summary>
-        /// txtBAScore control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBAScore;
-        
-        /// <summary>
-        /// txtBARecommendation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FredCK.FCKeditorV2.FCKeditor txtBARecommendation;
-        
-        /// <summary>
-        /// lblBATopic1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBATopic1;
-        
-        /// <summary>
-        /// txtBATopicText1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FredCK.FCKeditorV2.FCKeditor txtBATopicText1;
-        
-        /// <summary>
-        /// hdBAId1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdBAId1;
-        
-        /// <summary>
-        /// lblBATopic2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBATopic2;
-        
-        /// <summary>
-        /// txtBATopicText2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FredCK.FCKeditorV2.FCKeditor txtBATopicText2;
-        
-        /// <summary>
-        /// hdBAId2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdBAId2;
-        
-        /// <summary>
-        /// lblBATopic3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBATopic3;
-        
-        /// <summary>
-        /// txtBATopicText3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FredCK.FCKeditorV2.FCKeditor txtBATopicText3;
-        
-        /// <summary>
-        /// hdBAId3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdBAId3;
-        
-        /// <summary>
-        /// lblBATopic4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBATopic4;
-        
-        /// <summary>
-        /// txtBATopicText4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FredCK.FCKeditorV2.FCKeditor txtBATopicText4;
-        
-        /// <summary>
-        /// hdBAId4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdBAId4;
-        
-        /// <summary>
-        /// lblBATopic5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBATopic5;
-        
-        /// <summary>
-        /// txtBATopicText5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FredCK.FCKeditorV2.FCKeditor txtBATopicText5;
-        
-        /// <summary>
-        /// hdBAId5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdBAId5;
-        
-        /// <summary>
-        /// lblBATopic6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBATopic6;
-        
-        /// <summary>
-        /// txtBATopicText6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FredCK.FCKeditorV2.FCKeditor txtBATopicText6;
-        
-        /// <summary>
-        /// hdBAId6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdBAId6;
-        
-        /// <summary>
-        /// lblBATopic7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBATopic7;
-        
-        /// <summary>
-        /// txtBATopicText7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FredCK.FCKeditorV2.FCKeditor txtBATopicText7;
-        
-        /// <summary>
-        /// hdBAId7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdBAId7;
-        
-        /// <summary>
-        /// lblBATopic8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBATopic8;
-        
-        /// <summary>
-        /// txtBATopicText8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FredCK.FCKeditorV2.FCKeditor txtBATopicText8;
-        
-        /// <summary>
-        /// hdBAId8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdBAId8;
-        
-        /// <summary>
-        /// imgBAEdit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgBAEdit;
-        
-        /// <summary>
-        /// imgBACancel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgBACancel;
-        
-        /// <summary>
         /// pnlCMAList control.
         /// </summary>
         /// <remarks>
@@ -659,24 +344,6 @@ namespace SGA.webadmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCMALevel;
-        
-        /// <summary>
-        /// txtCMAScale control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCMAScale;
-        
-        /// <summary>
-        /// txtCMAScore control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCMAScore;
         
         /// <summary>
         /// txtCMARecommendation control.
@@ -958,24 +625,6 @@ namespace SGA.webadmin {
         protected global::System.Web.UI.WebControls.TextBox txtNPLevel;
         
         /// <summary>
-        /// txtNPScale control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNPScale;
-        
-        /// <summary>
-        /// txtNPScore control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNPScore;
-        
-        /// <summary>
         /// txtNPRecommendation control.
         /// </summary>
         /// <remarks>
@@ -1120,87 +769,6 @@ namespace SGA.webadmin {
         protected global::System.Web.UI.WebControls.HiddenField hdNPId5;
         
         /// <summary>
-        /// lblNPTopic6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNPTopic6;
-        
-        /// <summary>
-        /// txtNPTopicText6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FredCK.FCKeditorV2.FCKeditor txtNPTopicText6;
-        
-        /// <summary>
-        /// hdNPId6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdNPId6;
-        
-        /// <summary>
-        /// lblNPTopic7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNPTopic7;
-        
-        /// <summary>
-        /// txtNPTopicText7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FredCK.FCKeditorV2.FCKeditor txtNPTopicText7;
-        
-        /// <summary>
-        /// hdNPId7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdNPId7;
-        
-        /// <summary>
-        /// lblNPTopic8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNPTopic8;
-        
-        /// <summary>
-        /// txtNPTopicText8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FredCK.FCKeditorV2.FCKeditor txtNPTopicText8;
-        
-        /// <summary>
-        /// hdNPId8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdNPId8;
-        
-        /// <summary>
         /// imgNPEdit control.
         /// </summary>
         /// <remarks>
@@ -1217,5 +785,563 @@ namespace SGA.webadmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton imgNPCancel;
+        
+        /// <summary>
+        /// pnlProcSuggList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlProcSuggList;
+        
+        /// <summary>
+        /// grdProcSugg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataGrid grdProcSugg;
+        
+        /// <summary>
+        /// pnlProcSuggEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlProcSuggEdit;
+        
+        /// <summary>
+        /// txtProcSugglevel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtProcSugglevel;
+        
+        /// <summary>
+        /// txtProcSuggRecommendation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtProcSuggRecommendation;
+        
+        /// <summary>
+        /// lblProcSuggTopic1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProcSuggTopic1;
+        
+        /// <summary>
+        /// txtProcSuggTxt1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtProcSuggTxt1;
+        
+        /// <summary>
+        /// hdProcSuggId1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdProcSuggId1;
+        
+        /// <summary>
+        /// lblProcSuggTopic2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProcSuggTopic2;
+        
+        /// <summary>
+        /// txtProcSuggTxt2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtProcSuggTxt2;
+        
+        /// <summary>
+        /// hdProcSuggId2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdProcSuggId2;
+        
+        /// <summary>
+        /// lblProcSuggTopic3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProcSuggTopic3;
+        
+        /// <summary>
+        /// txtProcSuggTxt3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtProcSuggTxt3;
+        
+        /// <summary>
+        /// hdProcSuggId3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdProcSuggId3;
+        
+        /// <summary>
+        /// lblProcSuggTopic4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProcSuggTopic4;
+        
+        /// <summary>
+        /// txtProcSuggTxt4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtProcSuggTxt4;
+        
+        /// <summary>
+        /// hdProcSuggId4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdProcSuggId4;
+        
+        /// <summary>
+        /// lblProcSuggTopic5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProcSuggTopic5;
+        
+        /// <summary>
+        /// txtProcSuggTxt5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtProcSuggTxt5;
+        
+        /// <summary>
+        /// hdProcSuggId5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdProcSuggId5;
+        
+        /// <summary>
+        /// lblProcSuggTopic6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProcSuggTopic6;
+        
+        /// <summary>
+        /// txtProcSuggTxt6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtProcSuggTxt6;
+        
+        /// <summary>
+        /// hdProcSuggId6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdProcSuggId6;
+        
+        /// <summary>
+        /// lblProcSuggTopic7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProcSuggTopic7;
+        
+        /// <summary>
+        /// txtProcSuggTxt7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtProcSuggTxt7;
+        
+        /// <summary>
+        /// hdProcSuggId7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdProcSuggId7;
+        
+        /// <summary>
+        /// lblProcSuggTopic8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProcSuggTopic8;
+        
+        /// <summary>
+        /// txtProcSuggTxt8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtProcSuggTxt8;
+        
+        /// <summary>
+        /// hdProcSuggId8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdProcSuggId8;
+        
+        /// <summary>
+        /// ImgProcSgEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgProcSgEdit;
+        
+        /// <summary>
+        /// ImgProcSgCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImgProcSgCancel;
+        
+        /// <summary>
+        /// pnlCMSuggList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlCMSuggList;
+        
+        /// <summary>
+        /// grdCMSugg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataGrid grdCMSugg;
+        
+        /// <summary>
+        /// pnlCMSuggEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlCMSuggEdit;
+        
+        /// <summary>
+        /// txtCMSuggLevel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCMSuggLevel;
+        
+        /// <summary>
+        /// txtCMSuggRecommendation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtCMSuggRecommendation;
+        
+        /// <summary>
+        /// lblCMSuggTopic1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCMSuggTopic1;
+        
+        /// <summary>
+        /// txtCMSuggTxt1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtCMSuggTxt1;
+        
+        /// <summary>
+        /// hdCMSuggId1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdCMSuggId1;
+        
+        /// <summary>
+        /// lblCMSuggTopic2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCMSuggTopic2;
+        
+        /// <summary>
+        /// txtCMSuggTxt2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtCMSuggTxt2;
+        
+        /// <summary>
+        /// hdCMSuggId2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdCMSuggId2;
+        
+        /// <summary>
+        /// lblCMSuggTopic3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCMSuggTopic3;
+        
+        /// <summary>
+        /// txtCMSuggTxt3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtCMSuggTxt3;
+        
+        /// <summary>
+        /// hdCMSuggId3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdCMSuggId3;
+        
+        /// <summary>
+        /// lblCMSuggTopic4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCMSuggTopic4;
+        
+        /// <summary>
+        /// txtCMSuggTxt4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtCMSuggTxt4;
+        
+        /// <summary>
+        /// hdCMSuggId4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdCMSuggId4;
+        
+        /// <summary>
+        /// lblCMSuggTopic5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCMSuggTopic5;
+        
+        /// <summary>
+        /// txtCMSuggTxt5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtCMSuggTxt5;
+        
+        /// <summary>
+        /// hdCMSuggId5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdCMSuggId5;
+        
+        /// <summary>
+        /// lblCMSuggTopic6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCMSuggTopic6;
+        
+        /// <summary>
+        /// txtCMSuggTxt6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtCMSuggTxt6;
+        
+        /// <summary>
+        /// hdCMSuggId6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdCMSuggId6;
+        
+        /// <summary>
+        /// lblCMSuggTopic7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCMSuggTopic7;
+        
+        /// <summary>
+        /// txtCMSuggTxt7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtCMSuggTxt7;
+        
+        /// <summary>
+        /// hdCMSuggId7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdCMSuggId7;
+        
+        /// <summary>
+        /// lblCMSuggTopic8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCMSuggTopic8;
+        
+        /// <summary>
+        /// txtCMSuggTxt8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FredCK.FCKeditorV2.FCKeditor txtCMSuggTxt8;
+        
+        /// <summary>
+        /// hdCMSuggId8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdCMSuggId8;
+        
+        /// <summary>
+        /// imgCMSgEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgCMSgEdit;
+        
+        /// <summary>
+        /// imgCMSgCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgCMSgCancel;
     }
 }

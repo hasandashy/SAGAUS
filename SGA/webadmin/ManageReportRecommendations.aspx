@@ -43,16 +43,17 @@
                                     <div id="tabs">
                                         <ul >
                                             <li><a href="#tabs-1">Procurement Recomm</a></li>
-                                            <li><a href="#tabs-2">Leadership Recomm</a></li>
                                             <li><a href="#tabs-3">CMA Recomm</a></li>
-                                            <li><a href="#tabs-4">NP Recomm</a></li>
+                                            <li><a href="#tabs-4">CAA Recomm</a></li>
+                                             <li><a href="#tabs-5">Procure Suggest</a></li>
+                                            <li><a href="#tabs-6">CMA Suggest</a></li>
                                         </ul>
                                         
                                         <div id="tabs-1">
                                             <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
                                                 <tr>
                                                     <td class="hd20">
-                                                        MANAGE Procurement Assessment Recommendations,Score and Rating Level
+                                                        MANAGE Procurement Assessment Recommendations
                                                     </td>
                                                 </tr>
                                                 <asp:Panel ID="pnlSSAList" runat="server">
@@ -67,16 +68,11 @@
                                                 <Columns>
                                                     <asp:BoundColumn DataField="level" HeaderText="Level" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="10%" HeaderStyle-Width="10%" >
                                                     </asp:BoundColumn>
-                                                    <asp:BoundColumn DataField="ratingScale" HeaderText="Rating scale" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="10%" HeaderStyle-Width="10%" >
-                                                    </asp:BoundColumn>
-                                                    <asp:BoundColumn DataField="score" HeaderText="Score" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="8%" HeaderStyle-Width="8%" >
-                                                    </asp:BoundColumn>
-                                                    <asp:BoundColumn DataField="test" HeaderText="Test type" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="14%" HeaderStyle-Width="14%" >
-                                                    </asp:BoundColumn>
-
-                                                    <asp:BoundColumn DataField="recommendation" HeaderText="Recommendation" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="60%" HeaderStyle-Width="60%" >
-                                                    </asp:BoundColumn> 
-                                                    
+                                                                                                   
+                                                      <asp:BoundColumn DataField="openingStatement" HeaderText="Opening Statement" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="60%" HeaderStyle-Width="60%" >
+                                                    </asp:BoundColumn>                                         
+                                                  
+                                                 
                                                     <asp:TemplateColumn HeaderText="Edit" ItemStyle-width="8%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="8%">
                                                         <ItemTemplate>
                                                             <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" CommandArgument='<%#Eval("Id") %>' CommandName="Edit" ImageUrl="~/webadmin/images/edit.png" />
@@ -102,25 +98,7 @@
                                                                     <asp:TextBox ID="txtSSALevel" CssClass="txtBig" runat="server" MaxLength="250" ValidationGroup="ssa"></asp:TextBox>
                                                                 </td>
                                                                 
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    Rating Scale
-                                                                </td>
-                                                                <td>
-                                                                    <asp:TextBox ID="txtSSAScale" CssClass="txtBig" runat="server" MaxLength="250" ValidationGroup="ssa"></asp:TextBox>
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    Score
-                                                                </td>
-                                                                <td>
-                                                                    <asp:TextBox ID="txtSSAScore" CssClass="txtBig" runat="server" MaxLength="4" ValidationGroup="ssa"></asp:TextBox>
-                                                                </td>
-                                                                
-                                                            </tr>
+                                                            </tr>                                                           
                                                             <tr>
                                                                 <td colspan="2" >&nbsp;</td>
                                                             </tr>
@@ -251,217 +229,12 @@
                                                 </tr>
                                                 </asp:Panel>
                                             </table>
-                                        </div>
-                                        <div id="tabs-2">
-                                            <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
-                                                <tr>
-                                                    <td class="hd20">
-                                                        MANAGE Leadership Assessment Recommendations,Score and Rating Level
-                                                    </td>
-                                                </tr>
-                                                <asp:Panel ID="pnlBAList" runat="server">
-                                                <tr>
-                                                    <td>
-                                                        <asp:DataGrid ID="grdBASuggestions" runat="server" AllowPaging="false" AllowSorting="false"
-                                                AutoGenerateColumns="False" CssClass="grdMain" OnItemCommand="grdBASuggestions_ItemCommand" 
-                                                Width="100%" GridLines="None" PageSize="10">
-                                                <HeaderStyle CssClass="gridHeader" />
-                                                <PagerStyle Mode="NumericPages"  CssClass="pager" HorizontalAlign="Center"  />
-                                                <ItemStyle CssClass="gridItem"  />
-                                                <Columns>
-                                                   
-                                                    <asp:BoundColumn DataField="level" HeaderText="Level" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="10%" HeaderStyle-Width="10%" >
-                                                    </asp:BoundColumn>
-                                                    <asp:BoundColumn DataField="ratingScale" HeaderText="Rating scale" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="10%" HeaderStyle-Width="10%" >
-                                                    </asp:BoundColumn>
-                                                    <asp:BoundColumn DataField="score" HeaderText="Score" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="8%" HeaderStyle-Width="8%" >
-                                                    </asp:BoundColumn>
-                                                    <asp:BoundColumn DataField="test" HeaderText="Test type" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="14%" HeaderStyle-Width="14%" >
-                                                    </asp:BoundColumn>
-
-                                                    <asp:BoundColumn DataField="recommendation" HeaderText="Recommendation" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="60%" HeaderStyle-Width="60%" >
-                                                    </asp:BoundColumn> 
-                                                    
-                                                    <asp:TemplateColumn HeaderText="Edit" ItemStyle-width="8%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="8%">
-                                                        <ItemTemplate>
-                                                            <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" CommandArgument='<%#Eval("Id") %>' CommandName="Edit" ImageUrl="~/webadmin/images/edit.png" />
-                                                        </ItemTemplate>
-                                                    </asp:TemplateColumn>
-                                                </Columns>
-                                            </asp:DataGrid>
-                                                    </td>
-                                                </tr>
-                                                </asp:Panel>
-                                                <tr>
-                                                    <td>&nbsp;</td>
-                                                </tr>
-                                                <asp:Panel ID="pnlBAEdit" runat="server" Visible="false">
-                                                <tr>
-                                                    <td class="grybox">
-                                                        <table width="100%" border="0" cellspacing="1" cellpadding="1" class="tform">
-                                                             <tr>
-                                                                <td class="txtrht">
-                                                                    Level
-                                                                </td>
-                                                                <td>
-                                                                    <asp:TextBox ID="txtBALevel" CssClass="txtBig" runat="server" MaxLength="250" ValidationGroup="ba"></asp:TextBox>
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    Rating Scale
-                                                                </td>
-                                                                <td>
-                                                                    <asp:TextBox ID="txtBAScale" CssClass="txtBig" runat="server" MaxLength="250" ValidationGroup="ba"></asp:TextBox>
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    Score
-                                                                </td>
-                                                                <td>
-                                                                    <asp:TextBox ID="txtBAScore" CssClass="txtBig" runat="server" MaxLength="4" ValidationGroup="ba"></asp:TextBox>
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="2" >&nbsp;</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    Recommendations
-                                                                </td>
-                                                                <td>
-                                                                    <FCKeditorV2:FCKeditor ID="txtBARecommendation" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    <asp:Label ID="lblBATopic1" runat="server"></asp:Label>
-                                                                </td>
-                                                                <td>
-                                                                    <FCKeditorV2:FCKeditor ID="txtBATopicText1" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
-                                                                    <asp:HiddenField ID="hdBAId1" runat="server" />
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="2" >&nbsp;</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    <asp:Label ID="lblBATopic2" runat="server"></asp:Label>
-                                                                </td>
-                                                                <td>
-                                                                    <FCKeditorV2:FCKeditor ID="txtBATopicText2" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
-                                                                    <asp:HiddenField ID="hdBAId2" runat="server" />
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="2" >&nbsp;</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    <asp:Label ID="lblBATopic3" runat="server"></asp:Label>
-                                                                </td>
-                                                                <td>
-                                                                    <FCKeditorV2:FCKeditor ID="txtBATopicText3" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
-                                                                    <asp:HiddenField ID="hdBAId3" runat="server" />
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="2" >&nbsp;</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    <asp:Label ID="lblBATopic4" runat="server"></asp:Label>
-                                                                </td>
-                                                                <td>
-                                                                    <FCKeditorV2:FCKeditor ID="txtBATopicText4" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
-                                                                    <asp:HiddenField ID="hdBAId4" runat="server" />
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="2" >&nbsp;</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    <asp:Label ID="lblBATopic5" runat="server"></asp:Label>
-                                                                </td>
-                                                                <td>
-                                                                    <FCKeditorV2:FCKeditor ID="txtBATopicText5" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
-                                                                    <asp:HiddenField ID="hdBAId5" runat="server" />
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="2" >&nbsp;</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    <asp:Label ID="lblBATopic6" runat="server"></asp:Label>
-                                                                </td>
-                                                                <td>
-                                                                    <FCKeditorV2:FCKeditor ID="txtBATopicText6" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
-                                                                    <asp:HiddenField ID="hdBAId6" runat="server" />
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="2" >&nbsp;</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    <asp:Label ID="lblBATopic7" runat="server"></asp:Label>
-                                                                </td>
-                                                                <td>
-                                                                    <FCKeditorV2:FCKeditor ID="txtBATopicText7" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
-                                                                    <asp:HiddenField ID="hdBAId7" runat="server" />
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="2" >&nbsp;</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    <asp:Label ID="lblBATopic8" runat="server"></asp:Label>
-                                                                </td>
-                                                                <td>
-                                                                    <FCKeditorV2:FCKeditor ID="txtBATopicText8" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
-                                                                    <asp:HiddenField ID="hdBAId8" runat="server" />
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="2" >&nbsp;</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>&nbsp;</td>
-                                                                <td colspan="2">
-                                                                    <asp:ImageButton ID="imgBAEdit" runat="server" OnClick="imgBAEdit_Click" ValidationGroup="ba" ImageUrl="~/webadmin/images/save.png"  />
-                                                                    <asp:ImageButton ID="imgBACancel" runat="server" OnClick="imgBACancel_Click" ImageUrl="~/webadmin/images/close.png"  CausesValidation="false" />
-                                                                    
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                </asp:Panel>
-                                            </table>
-                                        </div>
-                                        
+                                        </div>  
                                         <div id="tabs-3">
                                             <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
                                                 <tr>
                                                     <td class="hd20">
-                                                        MANAGE Contract Management Assessment Recommendations,Score and Rating Level
+                                                        MANAGE Contract Management Recommendations
                                                     </td>
                                                 </tr>
                                                 <asp:Panel ID="pnlCMAList" runat="server">
@@ -474,18 +247,13 @@
                                                 <PagerStyle Mode="NumericPages"  CssClass="pager" HorizontalAlign="Center"  />
                                                 <ItemStyle CssClass="gridItem"  />
                                                 <Columns>
-                                                    <asp:BoundColumn DataField="level" HeaderText="Level" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="10%" HeaderStyle-Width="10%" >
+                                                   <asp:BoundColumn DataField="level" HeaderText="Level" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="10%" HeaderStyle-Width="10%" >
                                                     </asp:BoundColumn>
-                                                    <asp:BoundColumn DataField="ratingScale" HeaderText="Rating scale" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="10%" HeaderStyle-Width="10%" >
-                                                    </asp:BoundColumn>
-                                                    <asp:BoundColumn DataField="score" HeaderText="Score" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="8%" HeaderStyle-Width="8%" >
-                                                    </asp:BoundColumn>
-                                                    <asp:BoundColumn DataField="test" HeaderText="Test type" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="14%" HeaderStyle-Width="14%" >
-                                                    </asp:BoundColumn>
-
-                                                    <asp:BoundColumn DataField="recommendation" HeaderText="Recommendation" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="60%" HeaderStyle-Width="60%" >
-                                                    </asp:BoundColumn> 
-                                                    
+                                                                                                    
+                                                      <asp:BoundColumn DataField="openingStatement" HeaderText="Opening Statement" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="60%" HeaderStyle-Width="60%" >
+                                                    </asp:BoundColumn>                                         
+                                                  
+                                                  
                                                     <asp:TemplateColumn HeaderText="Edit" ItemStyle-width="8%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="8%">
                                                         <ItemTemplate>
                                                             <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" CommandArgument='<%#Eval("Id") %>' CommandName="Edit" ImageUrl="~/webadmin/images/edit.png" />
@@ -512,24 +280,7 @@
                                                                 </td>
                                                                 
                                                             </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    Rating Scale
-                                                                </td>
-                                                                <td>
-                                                                    <asp:TextBox ID="txtCMAScale" CssClass="txtBig" runat="server" MaxLength="250" ValidationGroup="cma"></asp:TextBox>
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    Score
-                                                                </td>
-                                                                <td>
-                                                                    <asp:TextBox ID="txtCMAScore" CssClass="txtBig" runat="server" MaxLength="4" ValidationGroup="cma"></asp:TextBox>
-                                                                </td>
-                                                                
-                                                            </tr>
+                                                          
                                                             <tr>
                                                                 <td colspan="2" >&nbsp;</td>
                                                             </tr>
@@ -665,7 +416,7 @@
                                             <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
                                                 <tr>
                                                     <td class="hd20">
-                                                        MANAGE Negotiation Profile Recommendations,Score and Rating Level
+                                                        MANAGE Commercial Awareness Recommendations
                                                     </td>
                                                 </tr>
                                                 <asp:Panel ID="pnlNPList" runat="server">
@@ -681,16 +432,11 @@
                                                    
                                                     <asp:BoundColumn DataField="level" HeaderText="Level" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="10%" HeaderStyle-Width="10%" >
                                                     </asp:BoundColumn>
-                                                    <asp:BoundColumn DataField="ratingScale" HeaderText="Rating scale" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="10%" HeaderStyle-Width="10%" >
-                                                    </asp:BoundColumn>
-                                                    <asp:BoundColumn DataField="score" HeaderText="Score" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="8%" HeaderStyle-Width="8%" >
-                                                    </asp:BoundColumn>
-                                                    <asp:BoundColumn DataField="test" HeaderText="Test type" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="14%" HeaderStyle-Width="14%" >
-                                                    </asp:BoundColumn>
-
-                                                    <asp:BoundColumn DataField="recommendation" HeaderText="Recommendation" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="60%" HeaderStyle-Width="60%" >
-                                                    </asp:BoundColumn> 
-                                                    
+                                                                                                 
+                                                      <asp:BoundColumn DataField="openingStatement" HeaderText="Opening Statement" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="60%" HeaderStyle-Width="60%" >
+                                                    </asp:BoundColumn>                                         
+                                                  
+                                               
                                                     <asp:TemplateColumn HeaderText="Edit" ItemStyle-width="8%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="8%">
                                                         <ItemTemplate>
                                                             <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" CommandArgument='<%#Eval("Id") %>' CommandName="Edit" ImageUrl="~/webadmin/images/edit.png" />
@@ -717,24 +463,7 @@
                                                                 </td>
                                                                 
                                                             </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    Rating Scale
-                                                                </td>
-                                                                <td>
-                                                                    <asp:TextBox ID="txtNPScale" CssClass="txtBig" runat="server" MaxLength="250" ValidationGroup="ba"></asp:TextBox>
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    Score
-                                                                </td>
-                                                                <td>
-                                                                    <asp:TextBox ID="txtNPScore" CssClass="txtBig" runat="server" MaxLength="4" ValidationGroup="ba"></asp:TextBox>
-                                                                </td>
-                                                                
-                                                            </tr>
+                                                         
                                                             <tr>
                                                                 <td colspan="2" >&nbsp;</td>
                                                             </tr>
@@ -809,53 +538,372 @@
                                                                 </td>
                                                                 
                                                             </tr>
-                                                            <tr>
-                                                                <td colspan="2" >&nbsp;</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    <asp:Label ID="lblNPTopic6" runat="server"></asp:Label>
-                                                                </td>
-                                                                <td>
-                                                                    <FCKeditorV2:FCKeditor ID="txtNPTopicText6" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
-                                                                    <asp:HiddenField ID="hdNPId6" runat="server" />
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="2" >&nbsp;</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    <asp:Label ID="lblNPTopic7" runat="server"></asp:Label>
-                                                                </td>
-                                                                <td>
-                                                                    <FCKeditorV2:FCKeditor ID="txtNPTopicText7" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
-                                                                    <asp:HiddenField ID="hdNPId7" runat="server" />
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="2" >&nbsp;</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="txtrht">
-                                                                    <asp:Label ID="lblNPTopic8" runat="server"></asp:Label>
-                                                                </td>
-                                                                <td>
-                                                                    <FCKeditorV2:FCKeditor ID="txtNPTopicText8" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
-                                                                    <asp:HiddenField ID="hdNPId8" runat="server" />
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="2" >&nbsp;</td>
-                                                            </tr>
+                                                          
                                                             <tr>
                                                                 <td>&nbsp;</td>
                                                                 <td colspan="2">
                                                                     <asp:ImageButton ID="imgNPEdit" runat="server" OnClick="imgNPEdit_Click" ValidationGroup="ba" ImageUrl="~/webadmin/images/save.png"  />
                                                                     <asp:ImageButton ID="imgNPCancel" runat="server" OnClick="imgNPCancel_Click" ImageUrl="~/webadmin/images/close.png"  CausesValidation="false" />
+                                                                    
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                </asp:Panel>
+                                            </table>
+                                        </div>
+                                        <div id="tabs-5">
+                                            <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td class="hd20">
+                                                        MANAGE Procurement Suggestions
+                                                    </td>
+                                                </tr>
+                                                <asp:Panel ID="pnlProcSuggList" runat="server">
+                                                <tr>
+                                                    <td>
+                                                        <asp:DataGrid ID="grdProcSugg" runat="server" AllowPaging="false" AllowSorting="false"
+                                                AutoGenerateColumns="False" CssClass="grdMain" OnItemCommand="grrdProcSugg_ItemCommand" 
+                                                Width="100%" GridLines="None" PageSize="10">
+                                                <HeaderStyle CssClass="gridHeader" />
+                                                <PagerStyle Mode="NumericPages"  CssClass="pager" HorizontalAlign="Center"  />
+                                                <ItemStyle CssClass="gridItem"  />
+                                                <Columns>
+                                                   
+                                                    <asp:BoundColumn DataField="level" HeaderText="Level" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="10%" HeaderStyle-Width="10%" >
+                                                    </asp:BoundColumn>
+                                                                                                 
+                                                      <asp:BoundColumn DataField="openingStatement" HeaderText="Opening Statement" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="60%" HeaderStyle-Width="60%" >
+                                                    </asp:BoundColumn>                                         
+                                                  
+                                               
+                                                    <asp:TemplateColumn HeaderText="Edit" ItemStyle-width="8%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="8%">
+                                                        <ItemTemplate>
+                                                            <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" CommandArgument='<%#Eval("Id") %>' CommandName="Edit" ImageUrl="~/webadmin/images/edit.png" />
+                                                        </ItemTemplate>
+                                                    </asp:TemplateColumn>
+                                                </Columns>
+                                            </asp:DataGrid>
+                                                    </td>
+                                                </tr>
+                                                </asp:Panel>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <asp:Panel ID="pnlProcSuggEdit" runat="server" Visible="false">
+                                                <tr>
+                                                    <td class="grybox">
+                                                        <table width="100%" border="0" cellspacing="1" cellpadding="1" class="tform">
+                                                             <tr>
+                                                                <td class="txtrht">
+                                                                    Level
+                                                                </td>
+                                                                <td>
+                                                                    <asp:TextBox ID="txtProcSugglevel" CssClass="txtBig" runat="server" MaxLength="250" ValidationGroup="ba"></asp:TextBox>
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                         
+                                                            <tr>
+                                                                <td colspan="2" >&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="txtrht">
+                                                                    Recommendations
+                                                                </td>
+                                                                <td>
+                                                                    <FCKeditorV2:FCKeditor ID="txtProcSuggRecommendation" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="txtrht">
+                                                                    <asp:Label ID="lblProcSuggTopic1" runat="server"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <FCKeditorV2:FCKeditor ID="txtProcSuggTxt1" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
+                                                                    <asp:HiddenField ID="hdProcSuggId1" runat="server" />
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" >&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="txtrht">
+                                                                    <asp:Label ID="lblProcSuggTopic2" runat="server"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <FCKeditorV2:FCKeditor ID="txtProcSuggTxt2" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
+                                                                    <asp:HiddenField ID="hdProcSuggId2" runat="server" />
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" >&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="txtrht">
+                                                                    <asp:Label ID="lblProcSuggTopic3" runat="server"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <FCKeditorV2:FCKeditor ID="txtProcSuggTxt3" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
+                                                                    <asp:HiddenField ID="hdProcSuggId3" runat="server" />
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" >&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="txtrht">
+                                                                    <asp:Label ID="lblProcSuggTopic4" runat="server"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <FCKeditorV2:FCKeditor ID="txtProcSuggTxt4" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
+                                                                    <asp:HiddenField ID="hdProcSuggId4" runat="server" />
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" >&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="txtrht">
+                                                                    <asp:Label ID="lblProcSuggTopic5" runat="server"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <FCKeditorV2:FCKeditor ID="txtProcSuggTxt5" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
+                                                                    <asp:HiddenField ID="hdProcSuggId5" runat="server" />
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                              <tr>
+                                                                <td colspan="2" >&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="txtrht">
+                                                                    <asp:Label ID="lblProcSuggTopic6" runat="server"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <FCKeditorV2:FCKeditor ID="txtProcSuggTxt6" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
+                                                                    <asp:HiddenField ID="hdProcSuggId6" runat="server" />
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" >&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="txtrht">
+                                                                    <asp:Label ID="lblProcSuggTopic7" runat="server"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <FCKeditorV2:FCKeditor ID="txtProcSuggTxt7" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
+                                                                    <asp:HiddenField ID="hdProcSuggId7" runat="server" />
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" >&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="txtrht">
+                                                                    <asp:Label ID="lblProcSuggTopic8" runat="server"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <FCKeditorV2:FCKeditor ID="txtProcSuggTxt8" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
+                                                                    <asp:HiddenField ID="hdProcSuggId8" runat="server" />
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                          
+                                                            <tr>
+                                                                <td>&nbsp;</td>
+                                                                <td colspan="2">
+                                                                    <asp:ImageButton ID="ImgProcSgEdit" runat="server" OnClick="ImgProcSgEdit_Click" ValidationGroup="ba" ImageUrl="~/webadmin/images/save.png"  />
+                                                                    <asp:ImageButton ID="ImgProcSgCancel" runat="server" OnClick="ImgProcSgCancel_Click" ImageUrl="~/webadmin/images/close.png"  CausesValidation="false" />
+                                                                    
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                </asp:Panel>
+                                            </table>
+                                        </div>
+                                        <div id="tabs-6">
+                                            <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td class="hd20">
+                                                        MANAGE Contact Management Suggestions
+                                                    </td>
+                                                </tr>
+                                                <asp:Panel ID="pnlCMSuggList" runat="server">
+                                                <tr>
+                                                    <td>
+                                                        <asp:DataGrid ID="grdCMSugg" runat="server" AllowPaging="false" AllowSorting="false"
+                                                AutoGenerateColumns="False" CssClass="grdMain" OnItemCommand="grdCMSugg_ItemCommand" 
+                                                Width="100%" GridLines="None" PageSize="10">
+                                                <HeaderStyle CssClass="gridHeader" />
+                                                <PagerStyle Mode="NumericPages"  CssClass="pager" HorizontalAlign="Center"  />
+                                                <ItemStyle CssClass="gridItem"  />
+                                                <Columns>
+                                                   
+                                                    <asp:BoundColumn DataField="level" HeaderText="Level" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="10%" HeaderStyle-Width="10%" >
+                                                    </asp:BoundColumn>
+                                                                                                 
+                                                      <asp:BoundColumn DataField="openingStatement" HeaderText="Opening Statement" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="60%" HeaderStyle-Width="60%" >
+                                                    </asp:BoundColumn>                                         
+                                                  
+                                               
+                                                    <asp:TemplateColumn HeaderText="Edit" ItemStyle-width="8%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="8%">
+                                                        <ItemTemplate>
+                                                            <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" CommandArgument='<%#Eval("Id") %>' CommandName="Edit" ImageUrl="~/webadmin/images/edit.png" />
+                                                        </ItemTemplate>
+                                                    </asp:TemplateColumn>
+                                                </Columns>
+                                            </asp:DataGrid>
+                                                    </td>
+                                                </tr>
+                                                </asp:Panel>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <asp:Panel ID="pnlCMSuggEdit" runat="server" Visible="false">
+                                                <tr>
+                                                    <td class="grybox">
+                                                        <table width="100%" border="0" cellspacing="1" cellpadding="1" class="tform">
+                                                             <tr>
+                                                                <td class="txtrht">
+                                                                    Level
+                                                                </td>
+                                                                <td>
+                                                                    <asp:TextBox ID="txtCMSuggLevel" CssClass="txtBig" runat="server" MaxLength="250" ValidationGroup="ba"></asp:TextBox>
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                         
+                                                            <tr>
+                                                                <td colspan="2" >&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="txtrht">
+                                                                    Recommendations
+                                                                </td>
+                                                                <td>
+                                                                    <FCKeditorV2:FCKeditor ID="txtCMSuggRecommendation" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="txtrht">
+                                                                    <asp:Label ID="lblCMSuggTopic1" runat="server"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <FCKeditorV2:FCKeditor ID="txtCMSuggTxt1" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
+                                                                    <asp:HiddenField ID="hdCMSuggId1" runat="server" />
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" >&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="txtrht">
+                                                                    <asp:Label ID="lblCMSuggTopic2" runat="server"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <FCKeditorV2:FCKeditor ID="txtCMSuggTxt2" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
+                                                                    <asp:HiddenField ID="hdCMSuggId2" runat="server" />
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" >&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="txtrht">
+                                                                    <asp:Label ID="lblCMSuggTopic3" runat="server"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <FCKeditorV2:FCKeditor ID="txtCMSuggTxt3" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
+                                                                    <asp:HiddenField ID="hdCMSuggId3" runat="server" />
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" >&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="txtrht">
+                                                                    <asp:Label ID="lblCMSuggTopic4" runat="server"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <FCKeditorV2:FCKeditor ID="txtCMSuggTxt4" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
+                                                                    <asp:HiddenField ID="hdCMSuggId4" runat="server" />
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" >&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="txtrht">
+                                                                    <asp:Label ID="lblCMSuggTopic5" runat="server"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <FCKeditorV2:FCKeditor ID="txtCMSuggTxt5" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
+                                                                    <asp:HiddenField ID="hdCMSuggId5" runat="server" />
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                               <tr>
+                                                                <td colspan="2" >&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="txtrht">
+                                                                    <asp:Label ID="lblCMSuggTopic6" runat="server"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <FCKeditorV2:FCKeditor ID="txtCMSuggTxt6" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
+                                                                    <asp:HiddenField ID="hdCMSuggId6" runat="server" />
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" >&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="txtrht">
+                                                                    <asp:Label ID="lblCMSuggTopic7" runat="server"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <FCKeditorV2:FCKeditor ID="txtCMSuggTxt7" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
+                                                                    <asp:HiddenField ID="hdCMSuggId7" runat="server" />
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" >&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="txtrht">
+                                                                    <asp:Label ID="lblCMSuggTopic8" runat="server"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <FCKeditorV2:FCKeditor ID="txtCMSuggTxt8" runat="server" Height="400px" Width="603px"></FCKeditorV2:FCKeditor>
+                                                                    <asp:HiddenField ID="hdCMSuggId8" runat="server" />
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                          
+                                                            <tr>
+                                                                <td>&nbsp;</td>
+                                                                <td colspan="2">
+                                                                    <asp:ImageButton ID="imgCMSgEdit" runat="server" OnClick="imgCMSgEdit_Click" ValidationGroup="ba" ImageUrl="~/webadmin/images/save.png"  />
+                                                                    <asp:ImageButton ID="imgCMSgCancel" runat="server" OnClick="imgCMSgCancel_Click" ImageUrl="~/webadmin/images/close.png"  CausesValidation="false" />
                                                                     
                                                                 </td>
                                                             </tr>

@@ -28,7 +28,7 @@
                     <div class="clear pt10"></div>
                     <b class="bold">1. Privacy & Security</b>
                     <div class="clear pt10"></div>
-                    <p>Comprara's privacy policy may be viewed at <a href="http://www.skillsgapanalysis.com/privacy.aspx">http://www.skillsgapanalysis.com/privacy.aspx</a> Comprara reserves the right to modify its privacy and security policies in its reasonable discretion from time to time. 
+                    <p>Comprara's privacy policy may be viewed at <a href="privacy.aspx">http://www.sagov.skillsgapanalysis.com/privacy.aspx</a> Comprara reserves the right to modify its privacy and security policies in its reasonable discretion from time to time. 
                     </p>
                     <p>Comprara acts in accordance with the Privacy Principles in the Information Privacy Principles Instruction (SA) or the Australian Privacy Principles in the Privacy Act 1988 (Commonwealth) as appropriate to agency. </p>
                     <div class="clear pt10"></div>

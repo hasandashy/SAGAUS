@@ -13,7 +13,6 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="Styles/style.css" type="text/css" media="screen">
     <link rel="stylesheet" href="Styles/mediaquery.css" type="text/css" media="screen" />
-    <link href="Styles/jquery.loadmask.css" rel="stylesheet" type="text/css" />
     <!--[if lt IE 9]>
 			<script src="Scripts/html5.js"></script>
 		<![endif]-->
@@ -31,7 +30,6 @@
     <script type="text/javascript" src="Scripts/jquery.colorbox.js"></script>
 
     <script type="text/javascript" src="Scripts/custom.js"></script>
-    <script type='text/javascript' src='Scripts/jquery.loadmask.min.js'></script>
     <script type="text/javascript" src="Scripts/iphone-menu.js"></script>
     <link rel="stylesheet" href="Styles/responsive-new.css" type="text/css" media="screen" />
 
@@ -66,9 +64,7 @@
             width: "492px",
             height: "300px",
             onComplete: function () {
-                $("#login").unmask();
                 if (loginHtml == 's') {
-
                     window.location.href = 'index.aspx';
                 } else {
                     $('#title').text("Unsuccessful login");
@@ -100,7 +96,6 @@
                 $('#colorbox').css({ "display": "block" });
                 loginHtml = 'Please enter ' + emptyFields.join(', ');
             } else {
-                $("#login").mask("Processing ...");
                 $.ajax({
                     type: "POST",
                     async: false,

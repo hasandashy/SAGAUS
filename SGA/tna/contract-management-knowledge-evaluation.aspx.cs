@@ -92,13 +92,13 @@ namespace SGA.tna
             if (!base.IsPostBack)
             {
                 DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spInitalizeCMKTest", new SqlParameter[]
-				{
-					new SqlParameter("@userId", SGACommon.LoginUserInfo.userId),
-					new SqlParameter("@testDate", System.DateTime.UtcNow.ToString()),
+                {
+                    new SqlParameter("@userId", SGACommon.LoginUserInfo.userId),
+                    new SqlParameter("@testDate", System.DateTime.UtcNow.ToString()),
                     new SqlParameter("@startDate", System.DateTime.UtcNow.ToString()),
                     new SqlParameter("@endDate", System.DateTime.UtcNow.ToString()),
                     new SqlParameter("@sessionId", this.Session.SessionID)
-				});
+                });
                 this.testId = System.Convert.ToInt32(ds.Tables[0].Rows[0]["testId"].ToString());
                 this.Cronometro1.Duracion = new System.TimeSpan(0, System.Convert.ToInt32(ds.Tables[0].Rows[0]["time"].ToString()), 0);
                 this.LoadAllTopics();
@@ -177,13 +177,13 @@ namespace SGA.tna
                 int questionId = System.Convert.ToInt32(DataBinder.Eval(e.Item.DataItem, "questionid"));
                 RadioButtonList rdb = (RadioButtonList)e.Item.FindControl("RadioButtonList1");
                 string strQuery = string.Concat(new object[]
-				{
-					"SELECT isNull(optionId,'') from  tblCMKOptions where optionId = (select replyId from tblCMKQuestionReply where testId=",
-					this.testId,
-					" and questionId=",
-					questionId,
-					")"
-				});
+                {
+                    "SELECT isNull(optionId,'') from  tblCMKOptions where optionId = (select replyId from tblCMKQuestionReply where testId=",
+                    this.testId,
+                    " and questionId=",
+                    questionId,
+                    ")"
+                });
                 object strOption = SqlHelper.ExecuteScalar(CommandType.Text, strQuery);
                 if (strOption != null)
                 {
@@ -208,9 +208,9 @@ namespace SGA.tna
                     this.lblTopic.Text = lnkButton.Text.Replace("<br />", " ");
                     this.BindTopicsQuestions(System.Convert.ToInt32(lnkButton.CommandArgument));
                     SqlParameter[] param = new SqlParameter[]
-					{
-						new SqlParameter("@topicId", System.Convert.ToInt32(lnkButton.CommandArgument))
-					};
+                    {
+                        new SqlParameter("@topicId", System.Convert.ToInt32(lnkButton.CommandArgument))
+                    };
                     //this.lblDescription.Text = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetCMKTopicDetail", param).ToString();
                 }
                 else
@@ -223,9 +223,9 @@ namespace SGA.tna
         private void BindTopicsQuestions(int topicId)
         {
             DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCMKQuestions", new SqlParameter[]
-			{
-				new SqlParameter("@topicId", topicId)
-			});
+            {
+                new SqlParameter("@topicId", topicId)
+            });
             this.parentRepeater.DataSource = ds;
             this.parentRepeater.DataBind();
             this.hdCount.Value = this.parentRepeater.Items.Count.ToString();
@@ -368,9 +368,9 @@ namespace SGA.tna
                 }
             }
             string[] strField = new string[]
-						{
-							"Id"
-						};
+                        {
+                            "Id"
+                        };
             XmlRpcStruct[] resultFound = isdnAPI.findByEmail(SGACommon.LoginUserInfo.name, strField);
             int userId;
             //XmlRpcStruct Contact = new XmlRpcStruct();
@@ -388,10 +388,10 @@ namespace SGA.tna
             //}
             this.testId = 0;
             SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spRestrictTest", new SqlParameter[]
-			{
-				new SqlParameter("@flag", "3"),
-				new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
-			});
+            {
+                new SqlParameter("@flag", "3"),
+                new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
+            });
             base.Response.Redirect("~/tna/my-results-bar-graph-cmk.aspx", false);
         }
 
@@ -452,6 +452,11 @@ namespace SGA.tna
                 }
             }
             this.testId = 0;
+         //   SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spRestrictTest", new SqlParameter[]
+         //{
+         //       new SqlParameter("@flag", "3"),
+         //       new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
+         //});
             base.ClientScript.RegisterStartupScript(this.Page.GetType(), "time", "timeOut();", true);
             base.Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
         }

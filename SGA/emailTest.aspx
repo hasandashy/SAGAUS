@@ -8,11 +8,8 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    <asp:TextBox ID="TextBox1" runat="server" Width="350px"></asp:TextBox>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" 
-            Text="Send Email Test" />
-        <asp:ImageButton ID="imb" runat="server" 
+        <asp:Label id="lblUserId" runat="server"></asp:Label>
+          <asp:ImageButton ID="imb" runat="server" 
             ImageUrl="~/Images/btn-register-here.png" onclick="imb_Click" />
     </div>
     </form>

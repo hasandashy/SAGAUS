@@ -21,7 +21,7 @@
                     </p>
                     <div class="clear pt10"></div>
                     <p>
-                        "Personal information" is information we hold which is identifiable as being about you. 
+                        "Personal information" is information we hold which is identifiable as being about you.
                     </p>
                     <div class="clear pt10"></div>
                     <p>
@@ -50,7 +50,7 @@
                     <div class="clear pt10"></div>
                     <b class="bold">HOW WE COLLECT YOUR PERSONAL INFORMATION</b>
                     <p>
-                        We collect personal information from you in a variety of ways, including: when you interact with us electronically or in person; when you access our website; and when we provide our services to you. 
+                        We collect personal information from you in a variety of ways, including: when you interact with us electronically or in person; when you access our website; and when we provide our services to you.
                     </p>
                     
                     <div class="clear pt10"></div>
@@ -68,24 +68,16 @@
                             <!--<li>comply with our reporting obligations under the Standing Offer Arrangement with Queensland Government (SOA)</li>
                             <li>provide your Skills Gap Test and Training Needs Analysis results to your employer and to the Principal of the SOA (currently Department of Housing and Public Works, Procurement Transformation Division)</li>-->
                             <li>provide required services and reporting under the scope of our Agreement with the State Procurement Board (SA)</li>
-                            <li>provide you (and you alone) with your personalised assessment report and 70:20:10 recommendations (emaiI address only)</li>
+                            <li>provide you (and you alone) with your personalised assessment report and 70:20:10 recommendations (email address only)</li>
                             <li>develop high level across government aggregated analysis and reporting for the State Procurement Board without attribution to individual participants</li>
                             <li>inform planning for future capability development programs in SA assessments under the Skills for Procurement- Assess and Build program</li>
-                           <%-- <li>compile a list of those persons in each agency who have registered for the Skills Gap Test and Training Needs Analysis and their completion status to inform the relevant agency.</li>
-                            <li>aggregate and use for internal review to analyse trends and statistics</li>
-                            <li>process your registration and record your profile information</li>
-                            <li>customise future service offerings, such as procurement training</li>--%>
+                           
                         </ul></div>
                         <br />
                         Comprara may disclose your personal information to:
                         <div  style="padding-left:30px;">
                         <ul>
-                           <%-- <li>your employer or to the Principal of the SOA for the purposes specified in this Privacy Statement</li>
-                            <li>external service providers to whom we have contracted out functions such as printers, mailing houses, information technology companies and marketing and communications agencies</li>
-                            <li>to subpoenas, court orders, or legal process, or to establish or exercise our legal rights or defend against legal claims</li>
-                            <li>respond to subpoenas, court orders, or legal process, or to establish or exercise our legal rights or defend against legal claims</li>
-                            <li>in order to investigate, prevent, or take action regarding illegal activities, suspected fraud, situations involving potential threats to the physical safety of any person, violations of our Terms of Service, or as otherwise required by law</li>
-                      --%>    
+                           
                               <li>overseas third party vendors and hosting partners to provide the necessary hardware, software, networking, storage, and other technology and services required to operate and maintain the Service</li>
                         </ul>
                         </div>
@@ -93,7 +85,7 @@
                     <div class="clear pt10"></div>
                     <b class="bold">SECURITY OF YOUR PERSONAL INFORMATION</b>
                     <p>
-                        We take reasonable steps to protect your personal information. However we are not liable for any unauthorised access to this information. 
+                        We take reasonable steps to protect your personal information. However we are not liable for any unauthorised access to this information.
                     </p>
                     <div class="clear pt10"></div>
                     <b class="bold">ACCESS TO YOUR PERSONAL INFORMATION</b>
@@ -119,7 +111,7 @@
                         <div class="clear pt10"></div>
                         <i>Cookies</i>
                         <div class="clear pt10"></div>
-                        As is very common for companies, we use cookies on our website. Cookies are very small files which a website uses to identify you when you come back to the site and to store details about your use of the site. Cookies are not malicious programs that access or damage your computer. We use cookies to improve the experience of people using our website.     
+                        As is very common for companies, we use cookies on our website. Cookies are very small files which a website uses to identify you when you come back to the site and to store details about your use of the site. Cookies are not malicious programs that access or damage your computer. We use cookies to improve the experience of people using our website.
                         <div class="clear pt10"></div>
                         <i>Third party sites</i>
                        <div class="clear pt10"></div>

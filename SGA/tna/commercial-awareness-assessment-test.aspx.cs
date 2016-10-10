@@ -370,24 +370,51 @@ namespace SGA.tna
                 }
             }
             string[] strField = new string[]
-                        {
+                      {
                             "Id"
-                        };
+                      };
             XmlRpcStruct[] resultFound = isdnAPI.findByEmail(SGACommon.LoginUserInfo.name, strField);
             int userId;
-            //XmlRpcStruct Contact = new XmlRpcStruct();
-            //if (resultFound.Length > 0)
-            //{
-            //    userId = System.Convert.ToInt32(resultFound[0]["Id"].ToString());
-            //    isdnAPI.addToGroup(userId, 1474);
-            //    string Url = "http://" + base.Request.UrlReferrer.Host + "/Contract_Management_Report.aspx?Id=" + DataTier.SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetSessionId", new SqlParameter[]{
-            //        new SqlParameter("@testId",this.testId),
-            //        new SqlParameter("@flag","6")
-            //    }).ToString();
-            //    Contact.Add("_CMAReportURL", Url);
-            //    Contact.Add("ContactType", "Customer");
-            //    isdnAPI.dsUpdate("Contact", userId, Contact);
-            //}
+            XmlRpcStruct Contact = new XmlRpcStruct();
+            if (resultFound.Length > 0)
+            {
+                userId = System.Convert.ToInt32(resultFound[0]["Id"].ToString());
+
+
+                if (resultFound[0]["Id"] != null && resultFound[0]["Id"].ToString() != String.Empty)
+                {
+
+                    SqlParameter[] paramPack = new SqlParameter[]
+      {
+                new SqlParameter("@userId", SqlDbType.Int)
+      };
+                    paramPack[0].Value = SGACommon.LoginUserInfo.userId;
+                    DataSet dsPacks = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetReportIdByUserId", paramPack);
+                    if (dsPacks != null)
+                    {
+                        if (dsPacks.Tables.Count > 0 && dsPacks.Tables[0].Rows.Count > 0)
+                        {
+                            if (dsPacks.Tables[0].Rows[0]["packId"].ToString() == "6")
+                            {
+                                string Url = "http://" + base.Request.UrlReferrer.Host + "/Contract_Management_Report.aspx?Id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
+                                Contact.Add("_SAGovContractManagementUserReportLink", Url);
+                                Contact.Add("ContactType", "Customer");
+                                isdnAPI.dsUpdate("Contact", userId, Contact);
+                            }
+                            else
+                            {
+                                string Url = "http://" + base.Request.UrlReferrer.Host + "/Procurement_Report.aspx?Id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
+                                Contact.Add("_SAGovProcurementUserReportLink", Url);
+                                Contact.Add("ContactType", "Customer");
+                                isdnAPI.dsUpdate("Contact", userId, Contact);
+                            }
+
+                        }
+                    }
+                }
+
+
+            }
             this.testId = 0;
             SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spRestrictTest", new SqlParameter[]
             {
@@ -456,6 +483,11 @@ namespace SGA.tna
                 }
             }
             this.testId = 0;
+           // SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spRestrictTest", new SqlParameter[]
+           //{
+           //     new SqlParameter("@flag", "2"),
+           //     new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
+           //});
             base.ClientScript.RegisterStartupScript(this.Page.GetType(), "time", "timeOut();", true);
             base.Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
         }
