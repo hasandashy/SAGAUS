@@ -424,7 +424,7 @@ namespace SGA.webadmin
                 new SqlParameter("@Id2", this.hdCMSuggId2.Value),
                 new SqlParameter("@Id3", this.hdCMSuggId3.Value),
                 new SqlParameter("@Id4", this.hdCMSuggId4.Value),
-                new SqlParameter("@Id5", this.hdProcSuggId5.Value),
+                new SqlParameter("@Id5", this.hdCMSuggId5.Value),
                 new SqlParameter("@Id6", this.hdCMSuggId6.Value),
                 new SqlParameter("@Id7", this.hdCMSuggId7.Value),
                 new SqlParameter("@Id8", this.hdCMSuggId8.Value),

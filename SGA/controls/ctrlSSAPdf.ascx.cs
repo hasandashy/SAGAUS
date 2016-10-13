@@ -65,6 +65,7 @@ namespace SGA.controls
                 int userId = 0;
                 int testId = 0;
                 int packId = 0;
+                Dictionary<int, decimal> dict = new Dictionary<int, decimal>();
                 DataSet dsTestDetails = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetTestDetailsById", new SqlParameter[]
                 {
                     new SqlParameter("@Id", this.Id),
@@ -121,7 +122,7 @@ namespace SGA.controls
                 try
                 {
                     this.doc.Open();
-                    Image imgBG = Image.GetInstance(this.imagepath + "/mainbg.png");
+                    Image imgBG = Image.GetInstance(this.imagepath + "/reportcoverfront.png");
                     imgBG.ScaleToFit(this.doc.PageSize.Width, this.doc.PageSize.Height);
                     imgBG.Alignment = 8;
                     this.doc.NewPage();
@@ -151,7 +152,7 @@ namespace SGA.controls
                             cb.ShowText(SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["firstname"].ToString()) + " " + SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["lastname"].ToString()));
                             cb.EndText();
                             cb.BeginText();
-                            cb.SetFontAndSize(f_cn, 12f);
+                            cb.SetFontAndSize(FontFactory.GetFont(FontFactory.HELVETICA_BOLD).BaseFont, 12f);
                             cb.SetTextMatrix(80f, 310f);
                             cb.SetRGBColorFill(0, 0, 0);
                             cb.ShowText(Profile.GetJobRole(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["jobRole"].ToString())));
@@ -169,19 +170,19 @@ namespace SGA.controls
                             cb.ShowText("Date completed: ");
                             cb.EndText();
                             cb.BeginText();
-                            cb.SetFontAndSize(f_cn, 12f);
+                            cb.SetFontAndSize(FontFactory.GetFont(FontFactory.HELVETICA_BOLD).BaseFont, 12f);
                             cb.SetTextMatrix(80f, 180f);
                             cb.SetRGBColorFill(0, 0, 0);
                             cb.ShowText(SGACommon.ToAusTimeZone(dtEnd).ToString("dddd, dd MMMM yyyy"));
                             cb.EndText();
                             cb.BeginText();
-                            cb.SetFontAndSize(f_cn, 12f);
+                            cb.SetFontAndSize(FontFactory.GetFont(FontFactory.HELVETICA_BOLD).BaseFont, 12f);
                             cb.SetTextMatrix(80f, 160f);
                             cb.SetRGBColorFill(0, 0, 0);
                             cb.ShowText("Email : " + SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["email"].ToString()));
                             cb.EndText();
                             cb.BeginText();
-                            cb.SetFontAndSize(f_cn, 16f);
+                            cb.SetFontAndSize(FontFactory.GetFont(FontFactory.HELVETICA_BOLD).BaseFont, 16f);
                             cb.SetTextMatrix(80f, 130f);
                             cb.SetRGBColorFill(234, 66, 31);
                             cb.ShowText("www.sagov.skillsgapanalysis.com");
@@ -204,13 +205,14 @@ namespace SGA.controls
                     this.doc.SetMargins(55f, 55f, 55f, 55f);
                     this.doc.NewPage();
                     string str = "Your organisation and you";
-                    this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 24f, 1, new BaseColor(0, 0, 0)));
+                    this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 20f, 1, new BaseColor(0, 0, 0)));
                     this.AddBlankParagraphLowHeight(2);
-                    this.AddParagraph("During your registration process at sagov.skillsgapanalysis.com you provided information to us. This information is displayed below for your reference. ", 0, FontFactory.GetFont("Arial", 10f, 0, new BaseColor(0, 0, 0)));
+                    this.AddParagraph("During your registration process at sagov.skillsgapanalysis.com you provided information to us.", 0, FontFactory.GetFont("Arial", 10f, 0, new BaseColor(0, 0, 0)));
+                    this.AddParagraph("This information is displayed below for your reference. ", 0, FontFactory.GetFont("Arial", 10f, 0, new BaseColor(0, 0, 0)));
                     this.AddBlankParagraph(2);
                     str = "YOUR REGISTRATION INFORMATION";
                     this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 10f, 1, this.hcolor));
-                    this.AddBlankParagraph(1);
+                    this.AddBlankParagraph(2);
                     table = this.GetTable(2);
                     if (dsProfile != null)
                     {
@@ -250,20 +252,19 @@ namespace SGA.controls
                     this.doc.SetMargins(55f, 55f, 55f, 55f);
                     this.doc.NewPage();
                     str = "2. Your assessment results";
-                    this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 24f, 1, this.hcolor));
+                    this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 20f, 1, this.hcolor));
                     this.AddBlankParagraph(1);
                     str = "RESULTS TABLE 1 - PROCUREMENT";
-                    this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 12f, 1, this.hcolor));
-                    this.AddBlankParagraph(1);
+                    this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 10f, 1, this.hcolor));
                     str = "Your results for the Procurement assessment/s taken are displayed below by dimension and level.";
                     this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 10f, 1, new BaseColor(0, 0, 0)));
                     this.AddBlankParagraph(1);
                     table = this.GetTable(3);
                     float[] colwidth = new float[]
                     {
-                        25f,
+                       45f,
                         20f,
-                        55f
+                        35f
                     };
                     table.SetWidths(colwidth);
                     this.AddrowHeader(ref table, "Dimension", "Result", " Level");
@@ -296,8 +297,8 @@ namespace SGA.controls
                     }
                     else
                     {
-                        Dictionary<string, decimal> dict = new Dictionary<string, decimal>();
-                                             
+
+
                         string procName = "spGetSsaGraph";
                         string topicTitle = string.Empty;
                         DataSet dsTest = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetTestIdByUser", new SqlParameter[]
@@ -326,44 +327,36 @@ namespace SGA.controls
                                         {
                                             for (int i = 0; i < dsSummary.Tables[0].Rows.Count; i++)
                                             {
-                                                   if (procName == "spGetSsaGraph")
+                                               if (dict.ContainsKey(i))
                                                 {
-                                                    topicTitle = dsSummary.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
-                                                }
-                                                   else
-                                                {
-                                                    topicTitle = dsSummary.Tables[0].Rows[i]["topicName"].ToString().Replace("<br />", " ");
-                                                }
-                                                    if (dict.ContainsKey(topicTitle))
-                                                {
-                                                    decimal Avgpercentage = (dict[topicTitle] + Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"]))/2;
-                                                    dict[topicTitle] = Avgpercentage;
+                                                    decimal Avgpercentage = (dict[i] + Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"])) / 2;
+                                                    dict[i] = Avgpercentage;
                                                 }
                                                 else
-                                                    dict.Add(topicTitle, Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"]));
+                                                    dict.Add(i, Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"]));
 
 
                                             }
-                                           
+
                                         }
                                     }
                                 }
 
-                              
-                             
 
-                                foreach (KeyValuePair<String, decimal> kvp in dict)
+
+
+                                foreach (KeyValuePair<int, decimal> kvp in dict)
                                 {
                                     string level = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetLevelByPercentage", new SqlParameter[]
                                 {
                         new SqlParameter("@percentage", kvp.Value)
                                 }).ToString();
 
-                                    this.Addrow(ref table, " " + kvp.Key, kvp.Value.ToString("0.00") + "%", "  " + level, false, false, true);
+                                    this.Addrow(ref table, " " + dsSummary.Tables[0].Rows[kvp.Key]["topicTitle"].ToString().Replace("<br />", " "), kvp.Value.ToString("0.00") + "%", "  " + level, false, false, true);
                                 }
                             }
                         }
-                       
+
                     }
                     this.doc.Add(table);
                     //cb.BeginText();
@@ -390,17 +383,16 @@ namespace SGA.controls
                     //this.doc.Add(img);
                     this.AddBlankParagraph(1);
                     str = "RESULTS TABLE 2 - COMMERCIAL AWARENESS";
-                    this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 12f, 1, this.hcolor));
-                    this.AddBlankParagraph(1);
+                    this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 10f, 1, this.hcolor));
                     str = "Your results for the Commercial Awareness assessment, shown by dimension and level.";
                     this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 10f, 1, new BaseColor(0, 0, 0)));
                     this.AddBlankParagraph(1);
                     table = this.GetTable(3);
                     colwidth = new float[]
                     {
-                        25f,
+                        45f,
                         20f,
-                        55f
+                        35f
                     };
                     table.SetWidths(colwidth);
                     this.AddrowHeader(ref table, "Dimension", "Result", " Level");
@@ -418,7 +410,7 @@ namespace SGA.controls
                                 {
                         new SqlParameter("@percentage", dsCAASummary.Tables[0].Rows[i]["percentage"].ToString())
                                 }).ToString();
-                                this.Addrow(ref table, " " + dsCAASummary.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " "), dsCAASummary.Tables[0].Rows[i]["percentage"].ToString() + "%", "  " +level, false, false, true);
+                                this.Addrow(ref table, " " + dsCAASummary.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " "), dsCAASummary.Tables[0].Rows[i]["percentage"].ToString() + "%", "  " + level, false, false, true);
                             }
                         }
                     }
@@ -435,13 +427,24 @@ namespace SGA.controls
                     {
                         if (dsSummary.Tables.Count > 0 && dsSummary.Tables[0].Rows.Count > 0)
                         {
-                         
+                            string level = string.Empty;
+
                             for (int i = 1; i <= dsSummary.Tables[0].Rows.Count; i++)
                             {
-                                string level = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetLevelByPercentage", new SqlParameter[]
-                             {
+                                if (dict.ContainsKey(i-1))
+                                {
+                                    level = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetLevelByPercentage", new SqlParameter[]
+                                 {
+                        new SqlParameter("@percentage", dict[i - 1])
+                                 }).ToString();
+                                }
+                                else
+                                {
+                                    level = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetLevelByPercentage", new SqlParameter[]
+                                 {
                         new SqlParameter("@percentage", dsSummary.Tables[0].Rows[i - 1]["percentage"].ToString())
-                             }).ToString();
+                                 }).ToString();
+                                }
                                 DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetReportRecommendation", new SqlParameter[]
                     {
                         new SqlParameter("@reportType", 1),
@@ -461,15 +464,38 @@ namespace SGA.controls
                     }
                     this.doc.SetMargins(0f, 0f, 0f, 0f);
                     this.doc.NewPage();
-                    imgBG = Image.GetInstance(this.imagepath + "/sizzer_bg.jpg");
+                    imgBG = Image.GetInstance(this.imagepath + "/reportmid.png");
                     imgBG.ScaleToFit(this.doc.PageSize.Width, this.doc.PageSize.Height);
                     imgBG.Alignment = 8;
                     this.doc.Add(imgBG);
-                    img = Image.GetInstance(this.imagepath + "/SaGovLogo.png");
-                    img.ScaleToFit(110f, 110f);
-                    img.Alignment = 4;
-                    img.SetAbsolutePosition(230f, 400f);
-                    this.doc.Add(img);
+                    this.AddBlankParagraph(10);
+                    Paragraph title = new Paragraph();
+                    title.Alignment = Element.ALIGN_CENTER;
+                    title.Font= FontFactory.GetFont("Arial", 24f, 1, this.hcolor);
+                    title.Add(SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["firstname"].ToString()) + " " + SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["lastname"].ToString()));
+                    this.doc.Add(title);
+                    this.AddBlankParagraph(3);
+                    title = new Paragraph();
+                    title.Alignment = Element.ALIGN_CENTER;
+                    title.Font = FontFactory.GetFont("Arial", 24f, 1, new BaseColor(0, 0, 0));
+                    title.Add("Personal Development Plan");
+                    this.doc.Add(title);
+                    this.AddBlankParagraph(3);
+                    title = new Paragraph();
+                    title.Alignment = Element.ALIGN_CENTER;
+                    title.Font = FontFactory.GetFont("Arial", 12f, 1, new BaseColor(0, 0, 0));
+                    title.Add(SGACommon.UppercaseFirst("In the pages that follow are suggestions for you to"));
+                    this.doc.Add(title);
+                    title = new Paragraph();
+                    title.Alignment = Element.ALIGN_CENTER;
+                    title.Font = FontFactory.GetFont("Arial", 12f, 1, new BaseColor(0, 0, 0));
+                    title.Add(SGACommon.UppercaseFirst("implement in your work environment."));
+                    this.doc.Add(title);
+                    //img = Image.GetInstance(this.imagepath + "/SaGovLogo.png");
+                    //img.ScaleToFit(110f, 110f);
+                    //img.Alignment = 4;
+                    //img.SetAbsolutePosition(230f, 400f);
+                    //this.doc.Add(img);
                     this.doc.SetMargins(55f, 55f, 55f, 55f);
                     this.doc.NewPage();
                     str = "Commercial Awareness";
@@ -484,6 +510,8 @@ namespace SGA.controls
                     str = "For organisation’s which do not aim to make a profit, or which have adopted a broader suite of objectives than simple economic measures of success, value needs to be defined in terms that are not simply measured in terms of dollars earned or in terms of customer satisfaction results.While most services are delivered in co - operation with other entities, such as suppliers, managers must be capable of engaging with  supply markets in ways that deliver value for the public.";
                     this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 10f, 0, new BaseColor(0, 0, 0)));
                     this.AddBlankParagraph(1);
+                    this.doc.SetMargins(55f, 55f, 55f, 55f);
+                    this.doc.NewPage();
                     this.AddBoldParagraph("SUGGESTIONS FOR YOU TO APPLY IN YOUR WORK ENVIRONMENT");
                     this.AddBlankParagraph(1);
                     if (dsCAASummary != null)
@@ -510,9 +538,8 @@ namespace SGA.controls
 
                       });
                                 str = i.ToString() + ". " + dsCAASummary.Tables[0].Rows[i - 1]["topicTitle"].ToString().Replace("<br />", " ");
-                                this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 12f, 1, this.hcolor));
-                                this.AddBlankParagraph(1);
-                                hw.Parse(new System.IO.StringReader(dsSuggestion.Tables[0].Rows[0]["SuggestionText"].ToString()));
+                                this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 12f, 1, this.hcolor));                               
+                                hw.Parse(new System.IO.StringReader(dsSuggestion.Tables[0].Rows[0]["SuggestionText"].ToString().Replace("@level", level).Replace("@score", dsCAASummary.Tables[0].Rows[i - 1]["percentage"].ToString())));
                                 this.AddBlankParagraph(1);
                                 this.AddBoldParagraph("SUGGESTIONS:");
                                 hw.Parse(new System.IO.StringReader(ds.Tables[0].Rows[0]["dynamicRecommendation"].ToString()));
@@ -532,10 +559,24 @@ namespace SGA.controls
                         {
                             for (int i = 1; i <= dsSummary.Tables[0].Rows.Count; i++)
                             {
-                                string level = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetLevelByPercentage", new SqlParameter[]
-                             {
+                                string level = string.Empty;
+                                string percentage = string.Empty;
+                                if (dict.ContainsKey(i - 1))
+                                {
+                                    percentage = dict[i - 1].ToString("0.00");
+                                    level = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetLevelByPercentage", new SqlParameter[]
+                                 {
+                        new SqlParameter("@percentage", dict[i - 1])
+                                 }).ToString();
+                                }
+                                else
+                                {
+                                    percentage = dsSummary.Tables[0].Rows[i - 1]["percentage"].ToString();
+                                    level = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetLevelByPercentage", new SqlParameter[]
+                                 {
                         new SqlParameter("@percentage", dsSummary.Tables[0].Rows[i - 1]["percentage"].ToString())
-                             }).ToString();
+                                 }).ToString();
+                                }
                                 DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetReportRecommendation", new SqlParameter[]
                     {
                         new SqlParameter("@reportType", 4),
@@ -551,8 +592,8 @@ namespace SGA.controls
                       });
                                 str = i.ToString() + ". " + dsSummary.Tables[0].Rows[i - 1]["topicTitle"].ToString().Replace("<br />", " ");
                                 this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 12f, 1, this.hcolor));
-                                this.AddBlankParagraph(1);
-                                hw.Parse(new System.IO.StringReader(dsSuggestion.Tables[0].Rows[0]["SuggestionText"].ToString()));
+                               
+                                hw.Parse(new System.IO.StringReader(dsSuggestion.Tables[0].Rows[0]["SuggestionText"].ToString().Replace("@level", level).Replace("@score", percentage)));
                                 this.AddBlankParagraph(1);
                                 this.AddBoldParagraph("SUGGESTIONS:");
                                 this.AddBlankParagraph(1);
@@ -790,20 +831,33 @@ namespace SGA.controls
                     {
                         if (dsPages.Tables.Count > 0 && dsPages.Tables[0].Rows.Count > 0)
                         {
-                            img = Image.GetInstance(this.imagepath + "/img3_grey_bg.jpg");
+                            img = Image.GetInstance(this.imagepath + "/reportcoverback.png");
                             img.ScaleToFit(this.doc.PageSize.Width, this.doc.PageSize.Height);
                             img.Alignment = 8;
                             img.SetAbsolutePosition(1f, 3f);
                             this.doc.Add(img);
-                            img = Image.GetInstance(this.imagepath + "/compraralogo.png");
-                            img.SetAbsolutePosition(170f, 610f);
-                            img.ScaleToFit(222f, 108f);
-                            img.Alignment = 5;
-                            this.doc.Add(img);
+                            //img = Image.GetInstance(this.imagepath + "/compraralogo.png");
+                            //img.SetAbsolutePosition(170f, 610f);
+                            //img.ScaleToFit(222f, 108f);
+                            //img.Alignment = 5;
+                            //this.doc.Add(img);
+                            this.AddBlankParagraph(10);
+                            str = "Comprara means ‘to purchase’ and we help organisations to gain more ground.Comprara works with ASX 200 listed companies and Government organisations giving clients insights into how well they are performing against others and in the context of their own unique strategies.With insights gained and roadmaps developed your capacity will grow to do ‘more with less’ or ‘more with the same’.";
+                            this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 10f, 0, new BaseColor(0, 0, 0)));
+                            this.AddBlankParagraph(10);
+                            this.AddParagraph("www.comprara.com.au", 0, FontFactory.GetFont("Arial", 10f, 0, new BaseColor(0, 0, 0)));
+                            this.AddParagraph("www.p-i.com.au", 0, FontFactory.GetFont("Arial", 10f, 0, new BaseColor(0, 0, 0)));
+                            this.AddParagraph("www.academyofprocurement.com", 0, FontFactory.GetFont("Arial", 10f, 0, new BaseColor(0, 0, 0)));
+                            this.AddParagraph("www.skillsgapanalysis.com", 0, FontFactory.GetFont("Arial", 10f, 0, new BaseColor(0, 0, 0)));
+                            this.AddParagraph("www.criticalskillsboost.com", 0, FontFactory.GetFont("Arial", 10f, 0, new BaseColor(0, 0, 0)));
                             this.AddBlankParagraph(15);
-                            //hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page19Address"].ToString()));
-                            this.AddBlankParagraph(15);
-                            // hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["Disclaimer"].ToString()));
+                            title = new Paragraph();
+                            title.Alignment = Element.ALIGN_CENTER;
+                            title.Font = FontFactory.GetFont("Arial", 12f, 1, new BaseColor(0, 0, 0));
+                            title.Add(SGACommon.UppercaseFirst("Disclaimer"));
+                            this.doc.Add(title);
+                            str = "This document is intended to provide the recipient (“Recipient”) with preliminary background information, of a general nature. Each Recipient should conduct and rely on their own investigation and analysis and should seek their own professional advice.To the maximum extent permitted by law, Comprara and its shareholders, advisers, directors, employees and consultants expressly disclaim any and all liability for any loss suffered or incurred by any person in connection with: (a)The provision or use of information in this document to or by the Recipient; (b)any errors or omission from this document; and(c) Any other written or oral communications transmitted to the Recipient in the course of the Recipient’s evaluation of this document. Except for statutory liability, which cannot be disclaimed, the Recipient waives its right to make any claim that it may have against Comprara in relation to this document.";
+                            this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 10f, 0, new BaseColor(0, 0, 0)));
                         }
                     }
                 }
