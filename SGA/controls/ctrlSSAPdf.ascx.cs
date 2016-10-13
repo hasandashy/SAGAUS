@@ -118,6 +118,7 @@ namespace SGA.controls
                 //	new SqlParameter("@flag", "4")
                 //});
                 PdfWriter writer = PdfWriter.GetInstance(this.doc, new System.IO.FileStream(newFile, System.IO.FileMode.Create));
+                writer.PageEvent = new PDFFooter();
                 HTMLWorker hw = new HTMLWorker(this.doc);
                 try
                 {
@@ -327,7 +328,7 @@ namespace SGA.controls
                                         {
                                             for (int i = 0; i < dsSummary.Tables[0].Rows.Count; i++)
                                             {
-                                               if (dict.ContainsKey(i))
+                                                if (dict.ContainsKey(i))
                                                 {
                                                     decimal Avgpercentage = (dict[i] + Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"])) / 2;
                                                     dict[i] = Avgpercentage;
@@ -396,9 +397,10 @@ namespace SGA.controls
                     };
                     table.SetWidths(colwidth);
                     this.AddrowHeader(ref table, "Dimension", "Result", " Level");
+                    String caatestId = SqlHelper.ExecuteScalar(CommandType.Text, "select testid from tblusercaatest where userid=" + userId).ToString();
                     DataSet dsCAASummary = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCaaGraph", new SqlParameter[]
                     {
-                        new SqlParameter("@testId", 19)
+                        new SqlParameter("@testId", caatestId)
                     });
                     if (dsCAASummary != null)
                     {
@@ -428,11 +430,12 @@ namespace SGA.controls
                         if (dsSummary.Tables.Count > 0 && dsSummary.Tables[0].Rows.Count > 0)
                         {
                             string level = string.Empty;
-
+                            string percentage = string.Empty;
                             for (int i = 1; i <= dsSummary.Tables[0].Rows.Count; i++)
                             {
-                                if (dict.ContainsKey(i-1))
+                                if (dict.ContainsKey(i - 1))
                                 {
+                                    percentage = dict[i - 1].ToString("0.00");
                                     level = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetLevelByPercentage", new SqlParameter[]
                                  {
                         new SqlParameter("@percentage", dict[i - 1])
@@ -440,6 +443,7 @@ namespace SGA.controls
                                 }
                                 else
                                 {
+                                    percentage = dsSummary.Tables[0].Rows[i - 1]["percentage"].ToString();
                                     level = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetLevelByPercentage", new SqlParameter[]
                                  {
                         new SqlParameter("@percentage", dsSummary.Tables[0].Rows[i - 1]["percentage"].ToString())
@@ -452,9 +456,20 @@ namespace SGA.controls
                         new SqlParameter("@topicId", i)
 
                     });
+                                DataSet dsSuggestion = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSuggestionByTopic", new SqlParameter[]
+                      {
+                        new SqlParameter("@suggestionType", 1),
+                        new SqlParameter("@topicId", i)
+
+                      });
                                 str = i.ToString() + ". " + dsSummary.Tables[0].Rows[i - 1]["topicTitle"].ToString().Replace("<br />", " ");
                                 this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 12f, 1, this.hcolor));
+
+                                hw.Parse(new System.IO.StringReader(dsSuggestion.Tables[0].Rows[0]["SuggestionText"].ToString().Replace("@level", level).Replace("@score", percentage)));
                                 this.AddBlankParagraph(1);
+                                this.AddBoldParagraph("OBSERVATIONS:");
+                                //this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 12f, 1, this.hcolor));
+                                //this.AddBlankParagraph(1);
                                 hw.Parse(new System.IO.StringReader(ds.Tables[0].Rows[0]["openingStatement"].ToString()));
                                 this.AddBlankParagraph(1);
                                 hw.Parse(new System.IO.StringReader(ds.Tables[0].Rows[0]["dynamicRecommendation"].ToString()));
@@ -471,7 +486,7 @@ namespace SGA.controls
                     this.AddBlankParagraph(10);
                     Paragraph title = new Paragraph();
                     title.Alignment = Element.ALIGN_CENTER;
-                    title.Font= FontFactory.GetFont("Arial", 24f, 1, this.hcolor);
+                    title.Font = FontFactory.GetFont("Arial", 24f, 1, this.hcolor);
                     title.Add(SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["firstname"].ToString()) + " " + SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["lastname"].ToString()));
                     this.doc.Add(title);
                     this.AddBlankParagraph(3);
@@ -538,12 +553,12 @@ namespace SGA.controls
 
                       });
                                 str = i.ToString() + ". " + dsCAASummary.Tables[0].Rows[i - 1]["topicTitle"].ToString().Replace("<br />", " ");
-                                this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 12f, 1, this.hcolor));                               
+                                this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 12f, 1, this.hcolor));
                                 hw.Parse(new System.IO.StringReader(dsSuggestion.Tables[0].Rows[0]["SuggestionText"].ToString().Replace("@level", level).Replace("@score", dsCAASummary.Tables[0].Rows[i - 1]["percentage"].ToString())));
                                 this.AddBlankParagraph(1);
                                 this.AddBoldParagraph("SUGGESTIONS:");
                                 hw.Parse(new System.IO.StringReader(ds.Tables[0].Rows[0]["dynamicRecommendation"].ToString()));
-                                this.AddBlankParagraph(3);
+                                this.AddBlankParagraph(2);
                             }
                         }
                     }
@@ -592,7 +607,7 @@ namespace SGA.controls
                       });
                                 str = i.ToString() + ". " + dsSummary.Tables[0].Rows[i - 1]["topicTitle"].ToString().Replace("<br />", " ");
                                 this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 12f, 1, this.hcolor));
-                               
+
                                 hw.Parse(new System.IO.StringReader(dsSuggestion.Tables[0].Rows[0]["SuggestionText"].ToString().Replace("@level", level).Replace("@score", percentage)));
                                 this.AddBlankParagraph(1);
                                 this.AddBoldParagraph("SUGGESTIONS:");
@@ -1151,5 +1166,96 @@ namespace SGA.controls
             base.Response.Flush();
             base.Response.Clear();
         }
+
     }
 }
+
+class PDFFooter : PdfPageEventHelper
+{
+    PdfContentByte moCB;
+    BaseFont moBF;
+    PdfTemplate moTemplate;
+
+    public override void OnCloseDocument(iTextSharp.text.pdf.PdfWriter writer, iTextSharp.text.Document document)
+    {
+
+        moTemplate.BeginText();
+        moTemplate.SetFontAndSize(moBF, 8);
+        moTemplate.ShowText((writer.PageNumber - 1).ToString());
+        moTemplate.EndText();
+    }
+
+    public override void OnEndPage(iTextSharp.text.pdf.PdfWriter writer, iTextSharp.text.Document document)
+    {
+
+       setFooter(writer, document);
+    }
+
+    public override void OnOpenDocument(iTextSharp.text.pdf.PdfWriter writer, iTextSharp.text.Document document)
+    {
+        try
+        {
+            moBF = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            moCB = writer.DirectContent;
+            moTemplate = moCB.CreateTemplate(50, 50);
+
+
+        }
+        catch (DocumentException de)
+        {
+
+        }
+        catch (IOException ioe)
+        {
+        }
+    }
+
+    public void setFooter(iTextSharp.text.pdf.PdfWriter oWriter, iTextSharp.text.Document oDocument)
+    {
+       
+        //three columns at bottom of page
+        string sText = null;
+        float fLen = 0;
+
+        //---Column 1: Disclaimer
+        sText = "Skills for Procurement - Assess and build";
+        fLen = moBF.GetWidthPoint(sText, 8);
+
+        moCB.BeginText();
+        moCB.SetFontAndSize(moBF, 8);
+        moCB.SetTextMatrix(30, 30);
+        moCB.ShowText(sText);
+        moCB.EndText();
+
+        //---Column 2: 
+        sText = "Individual Report";
+        fLen = moBF.GetWidthPoint(sText, 8);
+
+        moCB.BeginText();
+        moCB.SetFontAndSize(moBF, 8);
+        moCB.SetTextMatrix(oDocument.PageSize.Width / 2 - fLen / 2, 30);
+        moCB.ShowText(sText);
+        moCB.EndText();
+
+        //---Column 3: Page Number
+        int iPageNumber = oWriter.PageNumber;
+        sText = "Page " + iPageNumber + " of ";
+        fLen = moBF.GetWidthPoint(sText, 8);
+
+        moCB.BeginText();
+        moCB.SetFontAndSize(moBF, 8);
+        moCB.SetTextMatrix(oDocument.PageSize.Width - 90, 30);
+        moCB.ShowText(sText);
+        moCB.EndText();
+
+        moCB.AddTemplate(moTemplate, oDocument.PageSize.Width - 90 + fLen, 30);
+        moCB.BeginText();
+        moCB.SetFontAndSize(moBF, 8);
+        moCB.SetTextMatrix(280, 820);
+        moCB.EndText();     
+
+    }
+}
+
+
+

@@ -371,9 +371,10 @@ namespace SGA.controls
                     };
                     table.SetWidths(colwidth);
                     this.AddrowHeader(ref table, "Dimension", "Result", " Level");
+                    String caatestId = SqlHelper.ExecuteScalar(CommandType.Text, "select testid from tblusercaatest where userid=" + userId).ToString();
                     DataSet dsCAASummary = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCaaGraph", new SqlParameter[]
                     {
-                        new SqlParameter("@testId", 19)
+                        new SqlParameter("@testId", caatestId)
                     });
                     if (dsCAASummary != null)
                     {
@@ -405,8 +406,10 @@ namespace SGA.controls
                             for (int i = 1; i <= dsSummary.Tables[0].Rows.Count; i++)
                             {
                                 string level = String.Empty;
+                                string percentage = string.Empty;
                                 if (dict.ContainsKey(i - 1))
                                 {
+                                    percentage = dict[i - 1].ToString("0.00");
                                     level = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetLevelByPercentage", new SqlParameter[]
                                  {
                         new SqlParameter("@percentage", dict[i - 1])
@@ -414,6 +417,7 @@ namespace SGA.controls
                                 }
                                 else
                                 {
+                                    percentage = dsSummary.Tables[0].Rows[i - 1]["percentage"].ToString();
                                     level = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetLevelByPercentage", new SqlParameter[]
                                  {
                         new SqlParameter("@percentage", dsSummary.Tables[0].Rows[i - 1]["percentage"].ToString())
@@ -426,9 +430,19 @@ namespace SGA.controls
                         new SqlParameter("@topicId", i)
 
                     });
+                                DataSet dsSuggestion = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSuggestionByTopic", new SqlParameter[]
+                      {
+                        new SqlParameter("@suggestionType", 1),
+                        new SqlParameter("@topicId", i)
+
+                      });
                                 str = i.ToString() + ". " + dsSummary.Tables[0].Rows[i - 1]["topicTitle"].ToString().Replace("<br />", " ");
                                 this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 12f, 1, this.hcolor));
+
+                                hw.Parse(new System.IO.StringReader(dsSuggestion.Tables[0].Rows[0]["SuggestionText"].ToString().Replace("@level", level).Replace("@score", percentage)));
                                 this.AddBlankParagraph(1);
+                                this.AddBoldParagraph("OBSERVATIONS:");
+                                //this.AddBlankParagraph(1);
                                 hw.Parse(new System.IO.StringReader(ds.Tables[0].Rows[0]["openingStatement"].ToString()));
                                 this.AddBlankParagraph(1);
                                 hw.Parse(new System.IO.StringReader(ds.Tables[0].Rows[0]["dynamicRecommendation"].ToString()));
@@ -513,12 +527,11 @@ namespace SGA.controls
                       });
                                 str = i.ToString() + ". " + dsCAASummary.Tables[0].Rows[i - 1]["topicTitle"].ToString().Replace("<br />", " ");
                                 this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 12f, 1, this.hcolor));
-                                this.AddBlankParagraph(1);
                                 hw.Parse(new System.IO.StringReader(dsSuggestion.Tables[0].Rows[0]["SuggestionText"].ToString().Replace("@level", level).Replace("@score", dsCAASummary.Tables[0].Rows[i - 1]["percentage"].ToString())));
                                 this.AddBlankParagraph(1);
                                 this.AddBoldParagraph("SUGGESTIONS:");
                                 hw.Parse(new System.IO.StringReader(ds.Tables[0].Rows[0]["dynamicRecommendation"].ToString()));
-                                this.AddBlankParagraph(3);
+                                this.AddBlankParagraph(2);
                             }
                         }
                     }
@@ -1128,3 +1141,4 @@ namespace SGA.controls
         }
     }
 }
+
