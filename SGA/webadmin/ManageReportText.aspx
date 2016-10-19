@@ -44,7 +44,7 @@
                                     <div id="tabs">
                                         <ul >
                                             <li><a href="#tabs-1">Procurement Report text</a></li>
-                                          <%--  <li><a href="#tabs-2">CMA Report text</a></li>--%>
+                                            <li><a href="#tabs-2">CAA text</a></li>
                                         </ul>
                                         
                                         <div id="tabs-1">
@@ -76,8 +76,20 @@
                                                                             <td colspan="2">&nbsp;</td>
                                                                          </tr>
                                                                          <tr>
-                                                                            <td class="txtrht">Page 2 text</td>
+                                                                            <td class="txtrht">Page 2 Para 1</td>
                                                                             <td><FCKeditorV2:FCKeditor ID="txtSSA3Text" runat="server" Height="500px" Width="703px"></FCKeditorV2:FCKeditor>
+                                                                            </td>
+                                                                         </tr>
+                                                                         <tr>
+                                                                            <td colspan="2" style="height:5px;"></td>
+                                                                        </tr>                                                                      
+                                                                        <tr>
+                                                                             <tr>
+                                                                            <td colspan="2">&nbsp;</td>
+                                                                         </tr>
+                                                                         <tr>
+                                                                            <td class="txtrht">Page 2 Para 2</td>
+                                                                            <td><FCKeditorV2:FCKeditor ID="txtSSA4Text" runat="server" Height="500px" Width="703px"></FCKeditorV2:FCKeditor>
                                                                             </td>
                                                                          </tr>
                                                                          <tr>
@@ -100,11 +112,11 @@
                                         </div>
                                         
                                         
-                                       <%-- <div id="tabs-2">
+                                        <div id="tabs-2">
                                             <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
                                                 <tr>
                                                     <td class="hd20">
-                                                        MANAGE CONTRACT MANAGEMENT ASSESSMENT REPORT TEXT
+                                                        MANAGE COMMERCIAL AWARENESS ASSESSMENT TEXT
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -119,7 +131,7 @@
                                                                 <td class="grybox">
                                                                     <table width="100%" border="0" cellspacing="1" cellpadding="1" class="tform">
                                                                         <tr>
-                                                                            <td class="txtrht">Page 3 heading</td>
+                                                                            <td class="txtrht">Page heading</td>
                                                                             <td><asp:TextBox ID="txtCMAheading" runat="server" ValidationGroup="cma" MaxLength="200" CssClass="txtBig"></asp:TextBox>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="cma" ControlToValidate="txtCMAheading" ErrorMessage="Enter Page 3 heading" SetFocusOnError="true" ></asp:RequiredFieldValidator>
                                                                             </td>
@@ -129,172 +141,12 @@
                                                                             <td colspan="2">&nbsp;</td>
                                                                          </tr>
                                                                          <tr>
-                                                                            <td class="txtrht">Page 3 text</td>
+                                                                            <td class="txtrht">Page text</td>
                                                                             <td><FCKeditorV2:FCKeditor ID="txtCMA3Text" runat="server" Height="500px" Width="703px"></FCKeditorV2:FCKeditor>
                                                                             </td>
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td colspan="2" style="height:5px;"></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="txtrht">Page 5 text</td>
-                                                                            <td><FCKeditorV2:FCKeditor ID="txtCMA5Text" runat="server" Height="500px" Width="703px"></FCKeditorV2:FCKeditor>
-                                                                            </td>
-    
-                                                                        </tr>
-                                                                         <tr>
-                                                                            <td colspan="2">&nbsp;</td>
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td class="txtrht">Page 14 heading</td>
-                                                                            <td><asp:TextBox ID="txtCMA14Heading" runat="server" MaxLength="200" ValidationGroup="cma" CssClass="txtBig"></asp:TextBox>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtCMA14Heading" ValidationGroup="cma" ErrorMessage="Enter Page 14 heading" SetFocusOnError="true" ></asp:RequiredFieldValidator>
-                                                                            </td>
-    
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td colspan="2">&nbsp;</td>
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td class="txtrht">Page 14 text</td>
-                                                                            <td><FCKeditorV2:FCKeditor ID="txtCMA14Text" runat="server" Height="500px" Width="703px"></FCKeditorV2:FCKeditor>
-                                                                            </td>
-                                                                         </tr>
-                                                                          <tr>
-                                                                            <td colspan="2">&nbsp;</td>
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td class="txtrht">Page 16 heading</td>
-                                                                            <td><asp:TextBox ID="txtCMA16Heading" runat="server" ValidationGroup="cma" MaxLength="200" CssClass="txtBig"></asp:TextBox>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ValidationGroup="cma" ControlToValidate="txtCMA16Heading" ErrorMessage="Enter Page 16 heading" SetFocusOnError="true" ></asp:RequiredFieldValidator>
-                                                                            </td>
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td colspan="2">&nbsp;</td>
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td class="txtrht">Page 16 text</td>
-                                                                            <td><FCKeditorV2:FCKeditor ID="txtCMA16Text" runat="server" Height="500px" Width="703px"></FCKeditorV2:FCKeditor>
-                                                                            </td>
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td colspan="2" style="height:5px;"></td>
-                                                                        </tr>
-                                                                         <tr>
-                                                                            <td class="txtrht">Page 17 heading</td>
-                                                                            <td><asp:TextBox ID="txtCMA17Heading" runat="server" MaxLength="200" ValidationGroup="cma" CssClass="txtBig"></asp:TextBox>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ValidationGroup="cma" ControlToValidate="txtCMA17Heading" ErrorMessage="Enter Page 17 heading" SetFocusOnError="true" ></asp:RequiredFieldValidator>
-                                                                            </td>
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td colspan="2">&nbsp;</td>
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td class="txtrht">Page 17 text</td>
-                                                                            <td><FCKeditorV2:FCKeditor ID="txtCMA17Text" runat="server" Height="500px" Width="703px"></FCKeditorV2:FCKeditor>
-                                                                            </td>
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td colspan="2" style="height:5px;"></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="txtrht">Page 18 heading</td>
-                                                                            <td><asp:TextBox ID="txtCMA18Heading" runat="server" MaxLength="200" ValidationGroup="cma" CssClass="txtBig"></asp:TextBox>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ValidationGroup="cma" ControlToValidate="txtCMA18Heading" ErrorMessage="Enter Page 18 heading" SetFocusOnError="true" ></asp:RequiredFieldValidator>
-                                                                            </td>
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td colspan="2" style="height:5px;"></td>
-                                                                        </tr>
-                                                                         <tr>
-                                                                            <td class="txtrht">Page 18 sub paragraph 1</td>
-                                                                            <td><FCKeditorV2:FCKeditor ID="txtCMA18Para1" runat="server" Height="500px" Width="703px"></FCKeditorV2:FCKeditor>
-                                                                            </td>
-    
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td colspan="2" style="height:5px;"></td>
-                                                                        </tr>
-                                                                         <tr>
-                                                                            <td class="txtrht">Page 18 sub paragraph 2</td>
-                                                                            <td><FCKeditorV2:FCKeditor ID="txtCMA18Para2" runat="server" Height="500px" Width="703px"></FCKeditorV2:FCKeditor>
-                                                                            </td>
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td colspan="2" style="height:5px;"></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="txtrht">Page 20 heading</td>
-                                                                            <td><asp:TextBox ID="txtCMA20Heading" runat="server" MaxLength="200" ValidationGroup="cma" CssClass="txtBig"></asp:TextBox>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ValidationGroup="cma" ControlToValidate="txtCMA20Heading" ErrorMessage="Enter Page 20 heading" SetFocusOnError="true" ></asp:RequiredFieldValidator>
-                                                                            </td>
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td colspan="2" style="height:5px;"></td>
-                                                                        </tr>
-                                                                         <tr>
-                                                                            <td class="txtrht">Page 20 paragraph</td>
-                                                                            <td><FCKeditorV2:FCKeditor ID="txtCMA20Text" runat="server" Height="500px" Width="703px"></FCKeditorV2:FCKeditor>
-                                                                            </td>
-    
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td colspan="2" style="height:5px;"></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="txtrht">IFPSM page heading</td>
-                                                                            <td><asp:TextBox ID="txtIfpsmCMAHeading" runat="server" MaxLength="100" ValidationGroup="ssa" CssClass="txtBig"></asp:TextBox>
-                                                                            
-                                                                            </td>
-    
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td colspan="2">&nbsp;</td>
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td class="txtrht">IFPSM page text</td>
-                                                                            <td><FCKeditorV2:FCKeditor ID="txtIfpsmCMAText" runat="server" Height="500px" Width="703px"></FCKeditorV2:FCKeditor>
-                                                                            </td>
-                                                                         </tr>
-                                                                        <tr>
-                                                                            <td colspan="2" style="height:5px;"></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="txtrht">Page 21 heading</td>
-                                                                            <td><asp:TextBox ID="txtCMA21Heading" runat="server" MaxLength="200" ValidationGroup="cma" CssClass="txtBig"></asp:TextBox>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ValidationGroup="cma" ControlToValidate="txtCMA20Heading" ErrorMessage="Enter Page 20 heading" SetFocusOnError="true" ></asp:RequiredFieldValidator>
-                                                                            </td>
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td colspan="2" style="height:5px;"></td>
-                                                                        </tr>
-                                                                         <tr>
-                                                                            <td class="txtrht">Page 21 paragraph</td>
-                                                                            <td><FCKeditorV2:FCKeditor ID="txtCMA21Text" runat="server" Height="500px" Width="703px"></FCKeditorV2:FCKeditor>
-                                                                            </td>
-    
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td colspan="2" style="height:5px;"></td>
-                                                                        </tr>
-                                                                         <tr>
-                                                                            <td class="txtrht">Page 22 Address</td>
-                                                                            <td><FCKeditorV2:FCKeditor ID="txtCMAAddress" runat="server" Height="300px" Width="703px"></FCKeditorV2:FCKeditor>
-                                                                            </td>
-    
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td colspan="2" style="height:5px;"></td>
-                                                                        </tr>
-                                                                         <tr>
-                                                                            <td class="txtrht">Disclaimer</td>
-                                                                            <td><FCKeditorV2:FCKeditor ID="txtCMADisclaimer" runat="server" Height="300px" Width="703px"></FCKeditorV2:FCKeditor>
-                                                                            </td>
-                                                                         </tr>
-                                                                         <tr>
-                                                                            <td colspan="2">&nbsp;</td>
-                                                                        </tr>
-                                                                        <tr>
+                                                                         </tr>                                                                      
+                                                                    
+                                                                       <tr>
     
                                                                         <td colspan="2" align="center">
                                                                         <asp:ImageButton ID="iBtnSaveCMA" runat="server" CommandArgument="0" ValidationGroup="cma" ImageUrl="images/save.png" 
@@ -308,7 +160,7 @@
                                                     </td>
                                                 </tr>
                                             </table>
-                                        </div>--%>
+                                        </div>
                                         
                                     </div>
                                 </td>

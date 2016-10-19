@@ -180,7 +180,7 @@ namespace SGA.webadmin
 				new SqlParameter("@dynamicRecommendation7", this.txtSSATopicText7.Value),
 				new SqlParameter("@dynamicRecommendation8", this.txtSSATopicText8.Value)
 			});
-            this.BindGrid(0, this.grdSSASuggestions, 2);
+            this.BindGrid(0, this.grdSSASuggestions, 1);
         }
 
         protected void imgSSACancel_Click(object sender, ImageClickEventArgs e)
@@ -437,7 +437,7 @@ namespace SGA.webadmin
                 new SqlParameter("@dynamicRecommendation7", this.txtCMSuggTxt7.Value),
                 new SqlParameter("@dynamicRecommendation8", this.txtCMSuggTxt8.Value)
             });
-            this.BindGrid(0, this.grdCMSugg, 4);
+            this.BindGrid(0, this.grdCMSugg, 5);
         }
 
         protected void grdCMSugg_ItemCommand(object source, DataGridCommandEventArgs e)

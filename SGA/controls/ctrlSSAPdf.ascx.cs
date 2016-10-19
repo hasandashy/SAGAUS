@@ -88,15 +88,19 @@ namespace SGA.controls
                 string newFile = base.Server.MapPath(string.Concat(new object[]
                 {
                     pdfPath,
-                    SGACommon.GetName(userId),
-                    "_",
-                    packId,
-                    "_procurementreport.pdf"
+                    "SkillsForProcurement_IndividualReport-Proc-",
+                    packId + "_",
+                    SGACommon.GetFullName(userId).Replace(" ",""),
+                    ".pdf"
                 }));
                 DataSet dsPages = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageProcurementText", new SqlParameter[]
                 {
                     new SqlParameter("@flag", 2)
                 });
+                DataSet dsCAAPage = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageCMAText", new SqlParameter[]
+             {
+                    new SqlParameter("@flag", 2)
+             });
                 SqlParameter[] param = new SqlParameter[]
                 {
                     new SqlParameter("@userId", SqlDbType.Int)
@@ -198,15 +202,23 @@ namespace SGA.controls
                     {
                         if (dsPages.Tables.Count > 0 && dsPages.Tables[0].Rows.Count > 0)
                         {
-                            this.AddParagraph(dsPages.Tables[0].Rows[0]["page2Heading"].ToString(), 0, FontFactory.GetFont("Arial", 24f, 1, this.hcolor));
+                            this.AddParagraph(dsPages.Tables[0].Rows[0]["page2Heading"].ToString(), 0, FontFactory.GetFont("Helvetica", 24f, 1, this.hcolor));
                             this.AddBlankParagraphLowHeight(1);
                             hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page2Text"].ToString()));
+                            this.AddBlankParagraphLowHeight(1);
+                            img = Image.GetInstance(this.imagepath + "/PastedGraphic-3.png");
+                            //img.SetAbsolutePosition(170f, 610f);
+                            //img.ScaleToFit(222f, 108f);
+                            //img.Alignment = 5;
+                            this.doc.Add(img);
+                            this.AddBlankParagraphLowHeight(1);
+                            hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page2para2"].ToString()));
                         }
                     }
                     this.doc.SetMargins(55f, 55f, 55f, 55f);
                     this.doc.NewPage();
                     string str = "Your organisation and you";
-                    this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 20f, 1, new BaseColor(0, 0, 0)));
+                    this.AddParagraph(str, 0, FontFactory.GetFont("Helvetica", 20f, 1, new BaseColor(0, 0, 0)));
                     this.AddBlankParagraphLowHeight(2);
                     this.AddParagraph("During your registration process at sagov.skillsgapanalysis.com you provided information to us.", 0, FontFactory.GetFont("Arial", 10f, 0, new BaseColor(0, 0, 0)));
                     this.AddParagraph("This information is displayed below for your reference. ", 0, FontFactory.GetFont("Arial", 10f, 0, new BaseColor(0, 0, 0)));
@@ -252,8 +264,8 @@ namespace SGA.controls
                     };
                     this.doc.SetMargins(55f, 55f, 55f, 55f);
                     this.doc.NewPage();
-                    str = "2. Your assessment results";
-                    this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 20f, 1, this.hcolor));
+                    str = "Your assessment results";
+                    this.AddParagraph(str, 0, FontFactory.GetFont("Helvetica", 24f, 1, this.hcolor));
                     this.AddBlankParagraph(1);
                     str = "RESULTS TABLE 1 - PROCUREMENT";
                     this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 10f, 1, this.hcolor));
@@ -302,6 +314,7 @@ namespace SGA.controls
 
                         string procName = "spGetSsaGraph";
                         string topicTitle = string.Empty;
+                        decimal scaledMarks = 0.00M;
                         DataSet dsTest = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetTestIdByUser", new SqlParameter[]
                         {
                         new SqlParameter("@userId", userId)
@@ -328,15 +341,25 @@ namespace SGA.controls
                                         {
                                             for (int i = 0; i < dsSummary.Tables[0].Rows.Count; i++)
                                             {
+                                                if(procName == "spGetSgaGraph")
+                                                {
+                                                    scaledMarks = GetPercentage(Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"]),1);
+                                                }
+                                                else
+                                                {
+                                                    scaledMarks = Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"]);
+                                                }
                                                 if (dict.ContainsKey(i))
                                                 {
-                                                    decimal Avgpercentage = (dict[i] + Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"])) / 2;
+                                                    //decimal Avgpercentage = (dict[i] + Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"])) / 2;
+                                                    decimal Avgpercentage = (dict[i] + scaledMarks) / 2;
                                                     dict[i] = Avgpercentage;
                                                 }
                                                 else
-                                                    dict.Add(i, Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"]));
-
-
+                                                {
+                                                    //dict.Add(i, Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"]));
+                                                    dict.Add(i, scaledMarks);
+                                                }
                                             }
 
                                         }
@@ -360,28 +383,7 @@ namespace SGA.controls
 
                     }
                     this.doc.Add(table);
-                    //cb.BeginText();
-                    //cb.SetFontAndSize(f_cn, 10f);
-                    //cb.SetTextMatrix(55f, 320f);
-                    //cb.SetRGBColorFill(0, 0, 0);
-                    //cb.ShowText("Note");
-                    //cb.EndText();
-                    //cb.BeginText();
-                    //cb.SetFontAndSize(f_cn, 10f);
-                    //cb.SetTextMatrix(55f, 300f);
-                    //cb.SetRGBColorFill(0, 0, 0);
-                    //cb.ShowText("The level column describes the average rating received and aligns to the wording of the assessment scale");
-                    //cb.EndText();
-                    //cb.BeginText();
-                    //cb.SetFontAndSize(f_cn, 10f);
-                    //cb.SetTextMatrix(55f, 280f);
-                    //cb.SetRGBColorFill(0, 0, 0);
-                    //cb.ShowText("below");
-                    //cb.EndText();
-                    //img = Image.GetInstance(this.imagepath + "/scoringguide.jpg");
-                    //img.ScaleToFit(800f, 116f);
-                    //img.SetAbsolutePosition(0f, 150f);
-                    //this.doc.Add(img);
+                   
                     this.AddBlankParagraph(1);
                     str = "RESULTS TABLE 2 - COMMERCIAL AWARENESS";
                     this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 10f, 1, this.hcolor));
@@ -417,10 +419,14 @@ namespace SGA.controls
                         }
                     }
                     this.doc.Add(table);
+                    this.AddBlankParagraphLowHeight(1);
+                    this.AddBoldParagraph("Scoring Notes:");
+                    str = "The diagnoses for each functional activity are calibrated for that activity. So the self-assessment for each activity (contract management and procurement) is calibrated to align with the knowledge assessment for that activity.This allows the combination of the result of the self - assessment with the result for the underpinning knowledge for each activity. Each assessment has merit individually, and also when combined into a consolidated overall result. Your self - assessment of your own capability is enhanced by an objective calibration of the underpinning knowledge that you bring to the performance of your duties.The results are specific to each functional activity. The self - assessment and knowledge evaluations for the same functional activity can be compared and consolidated, but cannot be compared with another functional activity.The community of practitioners for contract management and for procurement share some common characteristics, but the differences between the practitioners are such that a particular result for a contract management diagnostic is not directly comparable to the same result for a procurement diagnostic.Diagnoses are only part of the assessment of your capability, and this feedback report should serve as the basis for a conversation between you and your supervisor.";
+                    this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 9f, 0, new BaseColor(0, 0, 0)));
                     this.doc.SetMargins(55f, 55f, 55f, 55f);
                     this.doc.NewPage();
-                    str = "3. Observations of your results";
-                    this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 24f, 1, this.hcolor));
+                    str = "Observations of your results";
+                    this.AddParagraph(str, 0, FontFactory.GetFont("Helvetica", 20f, 1, this.hcolor));
                     this.AddBlankParagraph(1);
                     str = "Ideas for development can be found in the next section.";
                     this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 12f, 1, new BaseColor(0, 0, 0)));
@@ -462,8 +468,9 @@ namespace SGA.controls
                         new SqlParameter("@topicId", i)
 
                       });
+                               
                                 str = i.ToString() + ". " + dsSummary.Tables[0].Rows[i - 1]["topicTitle"].ToString().Replace("<br />", " ");
-                                this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 12f, 1, this.hcolor));
+                                this.AddParagraph(str, 0, FontFactory.GetFont("Helvetica", 14f, 1, this.hcolor));
 
                                 hw.Parse(new System.IO.StringReader(dsSuggestion.Tables[0].Rows[0]["SuggestionText"].ToString().Replace("@level", level).Replace("@score", percentage)));
                                 this.AddBlankParagraph(1);
@@ -473,7 +480,9 @@ namespace SGA.controls
                                 hw.Parse(new System.IO.StringReader(ds.Tables[0].Rows[0]["openingStatement"].ToString()));
                                 this.AddBlankParagraph(1);
                                 hw.Parse(new System.IO.StringReader(ds.Tables[0].Rows[0]["dynamicRecommendation"].ToString()));
-                                this.AddBlankParagraph(3);
+                                //this.AddBlankParagraph(3);
+                                this.doc.SetMargins(55f, 55f, 55f, 55f);
+                                this.doc.NewPage();
                             }
                         }
                     }
@@ -513,18 +522,16 @@ namespace SGA.controls
                     //this.doc.Add(img);
                     this.doc.SetMargins(55f, 55f, 55f, 55f);
                     this.doc.NewPage();
-                    str = "Commercial Awareness";
-                    this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 24f, 1, this.hcolor));
-                    this.AddBlankParagraph(1);
-                    str = "The Commercial Awareness Assessment is designed to diagnose commercial awareness across the Government of South Australia to deliver ‘value’ beyond traditional economic measures of value, such as price savings.";
-                    this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 10f, 0, new BaseColor(0, 0, 0)));
-                    this.AddBlankParagraph(1);
-                    str = "The pursuit of value for money in procurement is hampered by the lack of a clear framework to define what is value? We may well be able to define what it is not, for example accepting the lowest priced offer, but we are not always able to define how we may recognise it if we achieved it?";
-                    this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 10f, 0, new BaseColor(0, 0, 0)));
-                    this.AddBlankParagraph(1);
-                    str = "For organisation’s which do not aim to make a profit, or which have adopted a broader suite of objectives than simple economic measures of success, value needs to be defined in terms that are not simply measured in terms of dollars earned or in terms of customer satisfaction results.While most services are delivered in co - operation with other entities, such as suppliers, managers must be capable of engaging with  supply markets in ways that deliver value for the public.";
-                    this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 10f, 0, new BaseColor(0, 0, 0)));
-                    this.AddBlankParagraph(1);
+                    if (dsCAAPage != null)
+                    {
+                        if (dsCAAPage.Tables.Count > 0 && dsCAAPage.Tables[0].Rows.Count > 0)
+                        {
+                            this.AddParagraph(dsCAAPage.Tables[0].Rows[0]["page1Heading"].ToString(), 0, FontFactory.GetFont("Arial", 24f, 1, this.hcolor));
+                            this.AddBlankParagraphLowHeight(1);
+                            hw.Parse(new System.IO.StringReader(dsCAAPage.Tables[0].Rows[0]["page1Text"].ToString()));
+                            this.AddBlankParagraphLowHeight(1);                          
+                        }
+                    }
                     this.doc.SetMargins(55f, 55f, 55f, 55f);
                     this.doc.NewPage();
                     this.AddBoldParagraph("SUGGESTIONS FOR YOU TO APPLY IN YOUR WORK ENVIRONMENT");
@@ -553,12 +560,13 @@ namespace SGA.controls
 
                       });
                                 str = i.ToString() + ". " + dsCAASummary.Tables[0].Rows[i - 1]["topicTitle"].ToString().Replace("<br />", " ");
-                                this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 12f, 1, this.hcolor));
+                                this.AddParagraph(str, 0, FontFactory.GetFont("Helvetica", 14f, 1, this.hcolor));
                                 hw.Parse(new System.IO.StringReader(dsSuggestion.Tables[0].Rows[0]["SuggestionText"].ToString().Replace("@level", level).Replace("@score", dsCAASummary.Tables[0].Rows[i - 1]["percentage"].ToString())));
                                 this.AddBlankParagraph(1);
                                 this.AddBoldParagraph("SUGGESTIONS:");
                                 hw.Parse(new System.IO.StringReader(ds.Tables[0].Rows[0]["dynamicRecommendation"].ToString()));
-                                this.AddBlankParagraph(2);
+                                this.doc.SetMargins(55f, 55f, 55f, 55f);
+                                this.doc.NewPage();
                             }
                         }
                     }
@@ -605,15 +613,18 @@ namespace SGA.controls
                         new SqlParameter("@topicId", i)
 
                       });
+                               
                                 str = i.ToString() + ". " + dsSummary.Tables[0].Rows[i - 1]["topicTitle"].ToString().Replace("<br />", " ");
-                                this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 12f, 1, this.hcolor));
+                                this.AddParagraph(str, 0, FontFactory.GetFont("Helvetica", 14f, 1, this.hcolor));
 
                                 hw.Parse(new System.IO.StringReader(dsSuggestion.Tables[0].Rows[0]["SuggestionText"].ToString().Replace("@level", level).Replace("@score", percentage)));
                                 this.AddBlankParagraph(1);
                                 this.AddBoldParagraph("SUGGESTIONS:");
                                 this.AddBlankParagraph(1);
                                 hw.Parse(new System.IO.StringReader(ds.Tables[0].Rows[0]["dynamicRecommendation"].ToString()));
-                                this.AddBlankParagraph(3);
+                                //this.AddBlankParagraph(3);
+                                this.doc.SetMargins(55f, 55f, 55f, 55f);
+                                this.doc.NewPage();
                             }
                         }
                     }
@@ -1167,6 +1178,16 @@ namespace SGA.controls
             base.Response.Clear();
         }
 
+        private decimal GetPercentage(decimal score, int flag)
+        {
+            score = Convert.ToDecimal(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "getScaledDownPercentage", new SqlParameter[]
+                                 {
+                        new SqlParameter("@score", score),
+                        new SqlParameter("@flag",flag)
+                                 }));
+            return score;
+        }
+
     }
 }
 
@@ -1181,13 +1202,13 @@ class PDFFooter : PdfPageEventHelper
 
         moTemplate.BeginText();
         moTemplate.SetFontAndSize(moBF, 8);
-        moTemplate.ShowText((writer.PageNumber - 1).ToString());
+        moTemplate.ShowText((writer.PageNumber - 2).ToString());
         moTemplate.EndText();
     }
 
     public override void OnEndPage(iTextSharp.text.pdf.PdfWriter writer, iTextSharp.text.Document document)
     {
-
+        if(writer.PageNumber != 1)
        setFooter(writer, document);
     }
 
@@ -1218,7 +1239,7 @@ class PDFFooter : PdfPageEventHelper
         float fLen = 0;
 
         //---Column 1: Disclaimer
-        sText = "Skills for Procurement - Assess and build";
+        sText = "Skills for Procurement - Assess and Build";
         fLen = moBF.GetWidthPoint(sText, 8);
 
         moCB.BeginText();
@@ -1237,8 +1258,9 @@ class PDFFooter : PdfPageEventHelper
         moCB.ShowText(sText);
         moCB.EndText();
 
+
         //---Column 3: Page Number
-        int iPageNumber = oWriter.PageNumber;
+        int iPageNumber = oWriter.PageNumber - 1;
         sText = "Page " + iPageNumber + " of ";
         fLen = moBF.GetWidthPoint(sText, 8);
 

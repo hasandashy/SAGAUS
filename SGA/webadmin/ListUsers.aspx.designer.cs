@@ -121,6 +121,15 @@ namespace SGA.webadmin {
         protected global::AjaxControlToolkit.CalendarExtender CalendarExtender2;
         
         /// <summary>
+        /// ddlDept control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlDept;
+        
+        /// <summary>
         /// lnkSearch control.
         /// </summary>
         /// <remarks>

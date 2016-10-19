@@ -3,16 +3,23 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
 
-        /*function gup(name) {
-            name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-                results = regex.exec(location.search);
-            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-        }
-        var backUrl = gup("id");
-        $("#register").focus();
-        */
-        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        $(document).ready(function () {
+           $('#btnSend').colorbox({
+                  href: "Popup.aspx",
+                  width: "492px",
+                  height: "300px",
+                  onComplete: function () {
+                      $('#title').text("ASSESSMENT PERIOD IS CLOSED");
+                      $('#alertMessage').text(loginHtml);
+                  }
+              });
+              $('#btnSend').click(function () {
+                  $('#colorbox').css({ "display": "block" });
+                  loginHtml = 'Unfortunately the assessment period is now complete. Thank you for your participation. We will be in touch.';
+
+              });
+          });
+        <%-- var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         var alertHtml = '';
         $(document).ready(function () {
 
@@ -137,7 +144,7 @@
                     }
             });
 
-        });
+        });--%>
     </script>
     <!-- Banner start -->
     <div id="banner-home">

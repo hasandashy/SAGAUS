@@ -129,7 +129,7 @@
                                                             <tr>
                                                                 <td class="txtrht">Registration date
                                                                 </td>
-                                                                <td colspan="3">From : 
+                                                                <td>From : 
                                                     <asp:TextBox runat="server" ID="txtFrom" Style="width: 100px"></asp:TextBox>
                                                                     <asp:ImageButton ID="imgStartdate" runat="server" Height="16px" ImageUrl="~/Images/cal.gif"
                                                                         Width="16px" ImageAlign="Bottom" />
@@ -145,6 +145,30 @@
                                                                         PopupButtonID="imgEndDate" TargetControlID="txtTo">
                                                                     </ajaxToolkit:CalendarExtender>
 
+                                                                </td>
+                                                                <td class="txtrht">Department
+                                                                </td>
+                                                                <td>
+                                                                    <asp:DropDownList ID="ddlDept" runat="server">
+                                                                        <asp:ListItem Value="0">Select Organisation</asp:ListItem>
+                                                                        <asp:ListItem Value="1">Attorney-Generals Department</asp:ListItem>
+                                                                        <asp:ListItem Value="2">Courts Administration Authority</asp:ListItem>
+                                                                        <asp:ListItem Value="3">Department for Communities and Social Inclusion</asp:ListItem>
+                                                                        <asp:ListItem Value="4">Department for Correctional Services</asp:ListItem>
+                                                                        <asp:ListItem Value="5">Department for Education and Child Development</asp:ListItem>
+                                                                        <asp:ListItem Value="6">Department of Environment Water and Natural Resources</asp:ListItem>
+                                                                        <asp:ListItem Value="7">Department of Planning Transport and Infrastructure</asp:ListItem>
+                                                                        <asp:ListItem Value="8">Department of State Development</asp:ListItem>
+                                                                        <asp:ListItem Value="9">Department of the Premier and Cabinet </asp:ListItem>
+                                                                        <asp:ListItem Value="10">Department of Treasury and Finance</asp:ListItem>
+                                                                        <asp:ListItem Value="11">Primary Industries and Regions SA</asp:ListItem>
+                                                                        <asp:ListItem Value="12">SA Fire and Emergency Services Commission</asp:ListItem>
+                                                                        <asp:ListItem Value="13">SA Health</asp:ListItem>
+                                                                        <asp:ListItem Value="14">South Australia Police</asp:ListItem>
+                                                                        <asp:ListItem Value="15">South Australian Tourism Commission</asp:ListItem>
+                                                                        <asp:ListItem Value="16">TAFE SA</asp:ListItem>
+
+                                                                    </asp:DropDownList>
                                                                 </td>
 
                                                             </tr>
@@ -254,9 +278,10 @@
                                                             <tr>
                                                                 <td align="right">
                                                                     <asp:HiddenField ID="hdSelectIds" runat="server" />
-                                                                 <%--   <asp:ImageButton ID="ImageButton17" runat="server" OnClick="iBtnLoginReminder_Click" CausesValidation="false" ImageUrl="~/webadmin/images/sendLoginReminder.png" />
+                                                                    <%--   <asp:ImageButton ID="ImageButton17" runat="server" OnClick="iBtnLoginReminder_Click" CausesValidation="false" ImageUrl="~/webadmin/images/sendLoginReminder.png" />
                                                                     <asp:ImageButton ID="iBtnResendEmail" runat="server" OnClick="iBtnResendEmail_Click" CausesValidation="false" ImageUrl="~/webadmin/images/resend_button.png" />
-                                                               --%>     <asp:ImageButton ID="iBtnApproveAll" runat="server" OnClick="iBtnApproveAll_Click" CausesValidation="false" ImageUrl="~/webadmin/images/approve_button.png" />
+                                                                    --%>
+                                                                    <asp:ImageButton ID="iBtnApproveAll" runat="server" OnClick="iBtnApproveAll_Click" CausesValidation="false" ImageUrl="~/webadmin/images/approve_button.png" />
                                                                     <asp:ImageButton ID="iBtnDisApproveAll" runat="server" OnClick="iBtnDisApproveAll_Click" CausesValidation="false" ImageUrl="~/webadmin/images/disapprove_button.png" />
                                                                     <asp:ImageButton ID="iBtnDelete" runat="server" OnClick="iBtnDelete_Click" CausesValidation="false" OnClientClick="javascript:return confirm('Are you sure you want to delete selected users ?');" ImageUrl="~/webadmin/images/delete_button.png" />
                                                                     <asp:ImageButton ID="iBtnSelect" runat="server" OnClick="iBtnSelect_Click" CausesValidation="false" ImageUrl="~/webadmin/images/select_button.png" />
@@ -641,13 +666,13 @@
                                                                     <ItemTemplate>
                                                                         <%#Eval("percentage")%>
                                                                     </ItemTemplate>
-                                                                </asp:TemplateColumn>      
-                                                                
-                                                                 <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
+                                                                </asp:TemplateColumn>
+
+                                                                <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
                                                                     <ItemTemplate>
                                                                         <%#Eval("level")%>
                                                                     </ItemTemplate>
-                                                                </asp:TemplateColumn>                                                            
+                                                                </asp:TemplateColumn>
 
                                                                 <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate" HeaderText="Assesment Date">
                                                                     <ItemTemplate>
@@ -758,11 +783,11 @@
                                                                     </ItemTemplate>
                                                                 </asp:TemplateColumn>
 
-                                                                 <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
+                                                                <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
                                                                     <ItemTemplate>
                                                                         <%#Eval("level")%>
                                                                     </ItemTemplate>
-                                                                </asp:TemplateColumn>    
+                                                                </asp:TemplateColumn>
 
                                                                 <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate" HeaderText="Assesment Date">
                                                                     <ItemTemplate>
@@ -870,11 +895,11 @@
                                                                     </ItemTemplate>
                                                                 </asp:TemplateColumn>
 
-                                                                 <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
+                                                                <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
                                                                     <ItemTemplate>
                                                                         <%#Eval("level")%>
                                                                     </ItemTemplate>
-                                                                </asp:TemplateColumn>    
+                                                                </asp:TemplateColumn>
 
                                                                 <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate" HeaderText="Assesment Date">
                                                                     <ItemTemplate>
@@ -1121,11 +1146,11 @@
                                                                     </ItemTemplate>
                                                                 </asp:TemplateColumn>
 
-                                                                 <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
+                                                                <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
                                                                     <ItemTemplate>
                                                                         <%#Eval("level")%>
                                                                     </ItemTemplate>
-                                                                </asp:TemplateColumn>    
+                                                                </asp:TemplateColumn>
 
                                                                 <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate" HeaderText="Assesment Date">
                                                                     <ItemTemplate>
@@ -1226,17 +1251,17 @@
 
                                                                 <asp:BoundColumn DataField="email" HeaderText="Email" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="email"></asp:BoundColumn>
 
-                                                                 <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Percentage" HeaderText="Percentage">
+                                                                <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Percentage" HeaderText="Percentage">
                                                                     <ItemTemplate>
                                                                         <%#Eval("percentage")%>
                                                                     </ItemTemplate>
-                                                                </asp:TemplateColumn>    
-                                                                
-                                                                 <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
+                                                                </asp:TemplateColumn>
+
+                                                                <asp:TemplateColumn ItemStyle-Width="8%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
                                                                     <ItemTemplate>
                                                                         <%#Eval("level")%>
                                                                     </ItemTemplate>
-                                                                </asp:TemplateColumn>     
+                                                                </asp:TemplateColumn>
 
                                                                 <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate" HeaderText="Assesment Date">
                                                                     <ItemTemplate>

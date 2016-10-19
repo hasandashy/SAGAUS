@@ -291,7 +291,8 @@ namespace SGA.webadmin
 				new SqlParameter("@lastname", this.txtLname.Value.Trim()),
 				new SqlParameter("@email", this.txtEmail.Value.Trim()),
 				new SqlParameter("@dateFrom", this.txtFrom.Text.Trim()),
-				new SqlParameter("@dateTo", this.txtTo.Text.Trim()),
+                new SqlParameter("@department", this.ddlDept.SelectedValue),
+                new SqlParameter("@dateTo", this.txtTo.Text.Trim()),
 				new SqlParameter("@userCondition", this.ddlOrder.SelectedValue),
 				new SqlParameter("@orderBy", strOrderBy),
 				new SqlParameter("@roleId", 2)
@@ -1505,7 +1506,8 @@ namespace SGA.webadmin
 				new SqlParameter("@lastname", this.txtLname.Value.Trim()),
 				new SqlParameter("@email", this.txtEmail.Value.Trim()),
 				new SqlParameter("@dateFrom", this.txtFrom.Text.Trim()),
-				new SqlParameter("@dateTo", this.txtTo.Text.Trim()),
+                new SqlParameter("@department",  this.ddlDept.SelectedValue),
+                new SqlParameter("@dateTo", this.txtTo.Text.Trim()),
 				new SqlParameter("@userCondition", this.ddlOrder.SelectedValue),
 				new SqlParameter("@orderBy", " id desc ")
 			});

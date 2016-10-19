@@ -431,6 +431,18 @@ namespace SGA.App_Code
             return SGACommon.ToTitleCase(name);
         }
 
+        public static string GetFullName(int userId)
+        {
+            string name = "";
+           
+                name = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetFullName", new SqlParameter[]
+                {
+                    new SqlParameter("@Id", userId)
+                }).ToString();
+           
+            return SGACommon.ToTitleCase(name);
+        }
+
         public static string GetCompanyName()
         {
             string name = "";
@@ -1211,65 +1223,53 @@ namespace SGA.App_Code
             switch (agencyId)
             {
                 case 1:
-                    strValue = "Premier and Cabinet";
+                    strValue = "Attorney-Generals Department";
                     break;
                 case 2:
-                    strValue = "Aboriginal and Torres Strait Islander Partnerships";
+                    strValue = "Courts Administration Authority";
                     break;
                 case 3:
-                    strValue = "Agriculture and Fisheries";
+                    strValue = "Department for Communities and Social Inclusion";
                     break;
                 case 4:
-                    strValue = "Communities, Child Safety and Disability Services";
+                    strValue = "Department for Correctional Services";
                     break;
                 case 5:
-                    strValue = "Education and Training";
+                    strValue = "Department for Education and Child Development";
                     break;
                 case 6:
-                    strValue = "Energy and Water Supply";
+                    strValue = "Department of Environment Water and Natural Resources";
                     break;
                 case 7:
-                    strValue = "Environment and Heritage Protection";
+                    strValue = "Department of Planning Transport and Infrastructure";
                     break;
                 case 8:
-                    strValue = "Health";
+                    strValue = "Department of State Development";
                     break;
                 case 9:
-                    strValue = "Housing and Public Works";
+                    strValue = "Department of the Premier and Cabinet";
                     break;
                 case 10:
-                    strValue = "Infrastructure, Local Government and Planning";
+                    strValue = "Department of Treasury and Finance";
                     break;
                 case 11:
-                    strValue = "Justice and Attorney-General";
+                    strValue = "Primary Industries and Regions SA";
                     break;
                 case 12:
-                    strValue = "National Parks, Sport and Racing";
+                    strValue = "SA Fire and Emergency Services Commission";
                     break;
                 case 13:
-                    strValue = "Natural Resources and Mines";
+                    strValue = "SA Health";
                     break;
                 case 14:
-                    strValue = "Police, Fire and Emergency Services";
+                    strValue = "South Australia Police";
                     break;
                 case 15:
-                    strValue = "Science, Information Technology and Innovation";
+                    strValue = "South Australian Tourism Commission";
                     break;
                 case 16:
-                    strValue = "State Development";
-                    break;
-                case 17:
-                    strValue = "Transport and Main Roads";
-                    break;
-                case 18:
-                    strValue = "Treasury";
-                    break;
-                case 19:
-                    strValue = "Tourism, Major Events, Small Business and the Commonwealth Games";
-                    break;
-                case 20:
-                    strValue = "Other";
-                    break;
+                    strValue = "TAFE SA";
+                    break;              
             }
             return strValue;
         }

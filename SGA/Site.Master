@@ -35,6 +35,23 @@
 
 </head>
 <script type="text/javascript">
+    $(document).ready(function () {
+        <%--$('#<%=btnSubmit.ClientID %>').colorbox({
+            href: "Popup.aspx",
+            width: "492px",
+            height: "300px",
+            onComplete: function () {
+                $('#title').text("ASSESSMENT PERIOD IS CLOSED");
+                $('#alertMessage').text(loginHtml);
+            }
+        });
+        $('#<%=btnSubmit.ClientID %>').click(function () {
+
+            $('#colorbox').css({ "display": "block" });
+            loginHtml = 'Unfortunately the assessment period is now complete. Thank you for your participation. We will be in touch.';
+
+        });--%>
+    });
     //window.onload = checkCookie;
     $(function () {
 
@@ -67,7 +84,13 @@
                 if (loginHtml == 's') {
                     window.location.href = 'index.aspx';
                 } else {
-                    $('#title').text("Unsuccessful login");
+                    if ($('#<%=txtUserName.ClientID %>').val() == 'info@skilssgapanalysis.com') {
+                        $('#title').text("Unsuccessful login");
+                    }
+                    else
+                    {
+                        $('#title').text("ASSESSMENT PERIOD IS CLOSED");
+                    }
                     $('#alertMessage').text(loginHtml);
                 }
             }
@@ -94,36 +117,49 @@
             if (error) {
                 //$("#outer").unmask();
                 $('#colorbox').css({ "display": "block" });
-                loginHtml = 'Please enter ' + emptyFields.join(', ');
+                if (uname == 'info@skillsgapanalysis.com') {
+                    loginHtml = 'Please enter ' + emptyFields.join(', ');
+                }
+                else
+                {
+                    loginHtml = 'Unfortunately the assessment period is now complete. Thank you for your participation. We will be in touch.';
+                }
             } else {
-                $.ajax({
-                    type: "POST",
-                    async: false,
-                    url: "About_Us.aspx/Login",
-                    data: JSON.stringify({ 'username': uname, 'password': password, 'rememberMe': checked }),
-                    dataType: "json",
-                    contentType: "application/json; charset=utf-8",
-                    success: function (data) {
+                if (uname == 'info@skillsgapanalysis.com') {
+                    $.ajax({
+                        type: "POST",
+                        async: false,
+                        url: "About_Us.aspx/Login",
+                        data: JSON.stringify({ 'username': uname, 'password': password, 'rememberMe': checked }),
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
 
-                        if (data.d == 's') {
-                            if (checked == true) {
-                                Set_Cookie('logindetails', uname + ':' + password, '', '/', '', '');
-                            } else {
-                                Delete_Cookie('logindetails', '/', '');
+                            if (data.d == 's') {
+                                if (checked == true) {
+                                    Set_Cookie('logindetails', uname + ':' + password, '', '/', '', '');
+                                } else {
+                                    Delete_Cookie('logindetails', '/', '');
+                                }
+                                loginHtml = 's';
+                            } else if (data.d == 'e') {
+                                $('#colorbox').css({ "display": "block" });
+                                loginHtml = 'Your account has expired; email Comprara Learning & Development Team at info@comprara.com.au requesting your account reactivation.';
+                            } else if (data.d == 'i') {
+                                $('#colorbox').css({ "display": "block" });
+                                loginHtml = 'Your username and/or password was entered incorrectly. If you cannot remember these details, click \'Reset password\' on the homepage and we will resend them to you. ';
+                            } else if (data.d == 'u') {
+                                $('#colorbox').css({ "display": "block" });
+                                loginHtml = 'Your username and/or password was entered incorrectly. If you cannot remember these details, click \'Reset password\' on the homepage and we will resend them to you. ';
                             }
-                            loginHtml = 's';
-                        } else if (data.d == 'e') {
-                            $('#colorbox').css({ "display": "block" });
-                            loginHtml = 'Your account has expired; email Comprara Learning & Development Team at info@comprara.com.au requesting your account reactivation.';
-                        } else if (data.d == 'i') {
-                            $('#colorbox').css({ "display": "block" });
-                            loginHtml = 'Your username and/or password was entered incorrectly. If you cannot remember these details, click \'Reset password\' on the homepage and we will resend them to you. ';
-                        } else if (data.d == 'u') {
-                            $('#colorbox').css({ "display": "block" });
-                            loginHtml = 'Your username and/or password was entered incorrectly. If you cannot remember these details, click \'Reset password\' on the homepage and we will resend them to you. ';
                         }
-                    }
-                });
+                    });
+                }
+                else
+                {
+                    $('#colorbox').css({ "display": "block" });
+                    loginHtml = 'Unfortunately the assessment period is now complete. Thank you for your participation. We will be in touch.';
+                }
             }
         });
     });

@@ -59,7 +59,7 @@ namespace SGA
                                     {
                                         if (dsPacks.Tables[0].Rows[0]["packId"].ToString() == "6")
                                         {
-                                            string Url = "http://" + base.Request.UrlReferrer.Host + "/Contract_Management_Report.aspx?Id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
+                                            string Url = "http://" + base.Request.UrlReferrer.Host + "/IndividualReport/ContractManagement.aspx?Id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
                                             Contact.Add("_SAGovContractManagementUserReportLink", Url);
                                             Contact.Add("ContactType", "Customer");
                                             _sb.Append(Url + ":" + "|");
@@ -67,7 +67,7 @@ namespace SGA
                                         }
                                         else
                                         {                                            
-                                            string Url = "http://" + base.Request.UrlReferrer.Host + "/Procurement_Report.aspx?Id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
+                                            string Url = "http://" + base.Request.UrlReferrer.Host + "/IndividualReport/Procurement.aspx?Id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
                                             Contact.Add("_SAGovProcurementUserReportLink", Url);
                                             Contact.Add("ContactType", "Customer");
                                             isdnAPI.dsUpdate("Contact", userId, Contact);

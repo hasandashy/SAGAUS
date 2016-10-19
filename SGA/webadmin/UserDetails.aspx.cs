@@ -572,9 +572,31 @@ namespace SGA.webadmin
             {
                 base.Response.Redirect("TestChartCAA.aspx?id=" + e.CommandArgument, false);
             }
-            else if (e.CommandName == "drilldown")
+            else if (e.CommandName == "pdf")
             {
-                base.Response.Redirect("/CMKChart/" + e.CommandArgument, false);
+                SqlParameter[] paramPack = new SqlParameter[]
+    {
+                new SqlParameter("@userId", SqlDbType.Int)
+    };
+                paramPack[0].Value = e.CommandArgument;
+                DataSet dsPacks = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetReportIdByUserId", paramPack);
+                if (dsPacks != null)
+                {
+                    if (dsPacks.Tables.Count > 0 && dsPacks.Tables[0].Rows.Count > 0)
+                    {
+                        if (dsPacks.Tables[0].Rows[0]["packId"].ToString() == "6")
+                        {
+                            base.Response.Redirect("showCMApdf.aspx?id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString(), false);
+                        }
+                        else
+                        {
+                            base.Response.Redirect("showSSApdf.aspx?id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString(), false);
+
+                        }
+
+                    }
+                }
+
             }
             else if (e.CommandName == "Edit")
             {
