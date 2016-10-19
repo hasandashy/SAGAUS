@@ -341,9 +341,9 @@ namespace SGA.controls
                                         {
                                             for (int i = 0; i < dsSummary.Tables[0].Rows.Count; i++)
                                             {
-                                                if(procName == "spGetSgaGraph")
+                                                if (procName == "spGetSgaGraph")
                                                 {
-                                                    scaledMarks = GetPercentage(Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"]),1);
+                                                    scaledMarks = GetPercentage(Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"]), 1);
                                                 }
                                                 else
                                                 {
@@ -383,7 +383,7 @@ namespace SGA.controls
 
                     }
                     this.doc.Add(table);
-                   
+
                     this.AddBlankParagraph(1);
                     str = "RESULTS TABLE 2 - COMMERCIAL AWARENESS";
                     this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 10f, 1, this.hcolor));
@@ -458,7 +458,7 @@ namespace SGA.controls
                                 DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetReportRecommendation", new SqlParameter[]
                     {
                         new SqlParameter("@reportType", 1),
-                        new SqlParameter("@level", level),
+                        new SqlParameter("@level", GetLevelForInsert(Convert.ToDecimal(percentage))),
                         new SqlParameter("@topicId", i)
 
                     });
@@ -468,7 +468,7 @@ namespace SGA.controls
                         new SqlParameter("@topicId", i)
 
                       });
-                               
+
                                 str = i.ToString() + ". " + dsSummary.Tables[0].Rows[i - 1]["topicTitle"].ToString().Replace("<br />", " ");
                                 this.AddParagraph(str, 0, FontFactory.GetFont("Helvetica", 14f, 1, this.hcolor));
 
@@ -529,7 +529,7 @@ namespace SGA.controls
                             this.AddParagraph(dsCAAPage.Tables[0].Rows[0]["page1Heading"].ToString(), 0, FontFactory.GetFont("Arial", 24f, 1, this.hcolor));
                             this.AddBlankParagraphLowHeight(1);
                             hw.Parse(new System.IO.StringReader(dsCAAPage.Tables[0].Rows[0]["page1Text"].ToString()));
-                            this.AddBlankParagraphLowHeight(1);                          
+                            this.AddBlankParagraphLowHeight(1);
                         }
                     }
                     this.doc.SetMargins(55f, 55f, 55f, 55f);
@@ -603,7 +603,7 @@ namespace SGA.controls
                                 DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetReportRecommendation", new SqlParameter[]
                     {
                         new SqlParameter("@reportType", 4),
-                        new SqlParameter("@level", level),
+                        new SqlParameter("@level", GetLevelForInsert(Convert.ToDecimal(percentage))),
                         new SqlParameter("@topicId", i)
 
                     });
@@ -613,7 +613,7 @@ namespace SGA.controls
                         new SqlParameter("@topicId", i)
 
                       });
-                               
+
                                 str = i.ToString() + ". " + dsSummary.Tables[0].Rows[i - 1]["topicTitle"].ToString().Replace("<br />", " ");
                                 this.AddParagraph(str, 0, FontFactory.GetFont("Helvetica", 14f, 1, this.hcolor));
 
@@ -1188,6 +1188,32 @@ namespace SGA.controls
             return score;
         }
 
+        private string GetLevelForInsert(decimal score)
+        {
+            string level = string.Empty;
+            if (score <= 21.23M)
+            {
+                level = "Novice";
+            }
+            else if (score <= 35.52M)
+            {
+                level = "Awareness";
+            }
+            else if (score <= 49.80M)
+            {
+                level = "Understanding";
+            }
+            else if (score <= 78.37M)
+            {
+                level = "Practitioner";
+            }
+            else
+            {
+                level = "Expert";
+            }
+            return level;
+        }
+
     }
 }
 
@@ -1208,8 +1234,8 @@ class PDFFooter : PdfPageEventHelper
 
     public override void OnEndPage(iTextSharp.text.pdf.PdfWriter writer, iTextSharp.text.Document document)
     {
-        if(writer.PageNumber != 1)
-       setFooter(writer, document);
+        if (writer.PageNumber != 1)
+            setFooter(writer, document);
     }
 
     public override void OnOpenDocument(iTextSharp.text.pdf.PdfWriter writer, iTextSharp.text.Document document)
@@ -1233,7 +1259,7 @@ class PDFFooter : PdfPageEventHelper
 
     public void setFooter(iTextSharp.text.pdf.PdfWriter oWriter, iTextSharp.text.Document oDocument)
     {
-       
+
         //three columns at bottom of page
         string sText = null;
         float fLen = 0;
@@ -1274,7 +1300,7 @@ class PDFFooter : PdfPageEventHelper
         moCB.BeginText();
         moCB.SetFontAndSize(moBF, 8);
         moCB.SetTextMatrix(280, 820);
-        moCB.EndText();     
+        moCB.EndText();
 
     }
 }
