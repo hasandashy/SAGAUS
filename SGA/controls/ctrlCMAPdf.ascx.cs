@@ -268,7 +268,7 @@ namespace SGA.controls
                     this.AddBlankParagraph(1);
                     str = "RESULTS TABLE 1 - CONTRACT MANAGEMENT";
                     this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 10f, 1, this.hcolor));
-                    str = "Your results for the Procurement assessment/s taken are displayed below by dimension and level.";
+                    str = "Your results for the Contract assessment/s taken are displayed below by dimension and level.";
                     this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 10f, 1, new BaseColor(0, 0, 0)));
                     this.AddBlankParagraph(1);
                     table = this.GetTable(3);

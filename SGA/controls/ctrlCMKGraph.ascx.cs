@@ -75,35 +75,35 @@ namespace SGA.controls
                             switch (i)
                             {
                                 case 0:
-                                    this.topic1mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString());
+                                    this.topic1mark = GetPercentage(System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString()));
                                     this.topic1name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
                                     break;
                                 case 1:
-                                    this.topic2mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString());
+                                    this.topic2mark = GetPercentage(System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString()));
                                     this.topic2name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
                                     break;
                                 case 2:
-                                    this.topic3mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString());
+                                    this.topic3mark = GetPercentage(System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString()));
                                     this.topic3name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
                                     break;
                                 case 3:
-                                    this.topic4mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString());
+                                    this.topic4mark = GetPercentage(System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString()));
                                     this.topic4name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
                                     break;
                                 case 4:
-                                    this.topic5mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString());
+                                    this.topic5mark = GetPercentage(System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString()));
                                     this.topic5name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
                                     break;
                                 case 5:
-                                    this.topic6mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString());
+                                    this.topic6mark = GetPercentage(System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString()));
                                     this.topic6name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
                                     break;
                                 case 6:
-                                    this.topic7mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString());
+                                    this.topic7mark = GetPercentage(System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString()));
                                     this.topic7name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
                                     break;
                                 case 7:
-                                    this.topic8mark = System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString());
+                                    this.topic8mark = GetPercentage(System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString()));
                                     this.topic8name = ds.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " ");
                                     break;
                             }
@@ -111,6 +111,16 @@ namespace SGA.controls
                     }
                 }
             }
+        }
+
+        private decimal GetPercentage(decimal score)
+        {
+            score = Convert.ToDecimal(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "getScaledDownPercentage", new SqlParameter[]
+                                 {
+                        new SqlParameter("@score", score),
+                        new SqlParameter("@flag",2)
+                                 }));
+            return score;
         }
     }
 }

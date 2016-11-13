@@ -80,11 +80,11 @@ namespace SGA.tna
                     //this.hylCMK.Text = (isCmkTest ? "GO" : "Currently locked.<br />Want more info?<span>Your access to this assessment is now locked as you have completed it. If you require access to the assessment again, please contact support@comprara.com.au If you are looking for your results, click 'My Results' at the top of the page.</span>");
                     //this.hylCAA.Text = (isCaaTest ? "GO" : "Currently locked.<br />Want more info?<span>Your access to this assessment is now locked as you have completed it. If you require access to the assessment again, please contact support@comprara.com.au If you are looking for your results, click 'My Results' at the top of the page.</span>");
 
-                    this.hylTna.Text = (isTnaTest ? "GO" : "Assessment completed");
-                    this.hylSga.Text = (isPkeTest ? "GO" : "Assessment completed");
-                    this.hylCMA.Text = (isCMAtest ? "GO" : "Assessment completed");
-                    this.hylCMK.Text = (isCmkTest ? "GO" : "Assessment completed");
-                    this.hylCAA.Text = (isCaaTest ? "GO" : "Assessment completed");
+                    this.hylTna.Text = (isTnaTest ? "GO" : "Assessment completed.<br />Want more info?<span>Your assessment is now locked. Should you want this to be re-opened please contact support@comprara.com.au detailing the reason for your request, e.g. perhaps you have changed Department, or changed role. </span>");
+                    this.hylSga.Text = (isPkeTest ? "GO" : "Assessment completed.<br />Want more info?<span>Your assessment is now locked. Should you want this to be re-opened please contact support@comprara.com.au detailing the reason for your request, e.g. perhaps you have changed Department, or changed role. </span>");
+                    this.hylCMA.Text = (isCMAtest ? "GO" : "Assessment completed.<br />Want more info?<span>Your assessment is now locked. Should you want this to be re-opened please contact support@comprara.com.au detailing the reason for your request, e.g. perhaps you have changed Department, or changed role. </span>");
+                    this.hylCMK.Text = (isCmkTest ? "GO" : "Assessment completed.<br />Want more info?<span>Your assessment is now locked. Should you want this to be re-opened please contact support@comprara.com.au detailing the reason for your request, e.g. perhaps you have changed Department, or changed role. </span>");
+                    this.hylCAA.Text = (isCaaTest ? "GO" : "Assessment completed.<br />Want more info?<span>Your assessment is now locked. Should you want this to be re-opened please contact support@comprara.com.au detailing the reason for your request, e.g. perhaps you have changed Department, or changed role. </span>");
 
 
                     this.hylTna.ToolTip = (isTnaTest ? "Go" : "Locked");
