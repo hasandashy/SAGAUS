@@ -396,6 +396,7 @@ namespace SGA.tna
                         {
                             if (dsPacks.Tables[0].Rows[0]["packId"].ToString() == "6")
                             {
+                                isdnAPI.addToGroup(userId, 2114);
                                 string Url = "http://" + base.Request.UrlReferrer.Host + "/IndividualReport/ContractManagement.aspx?Id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
                                 Contact.Add("_SAGovContractManagementUserReportLink", Url);
                                 Contact.Add("ContactType", "Customer");
@@ -403,6 +404,7 @@ namespace SGA.tna
                             }
                             else
                             {
+                                isdnAPI.addToGroup(userId, 2116);
                                 string Url = "http://" + base.Request.UrlReferrer.Host + "/IndividualReport/Procurement.aspx?Id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
                                 Contact.Add("_SAGovProcurementUserReportLink", Url);
                                 Contact.Add("ContactType", "Customer");

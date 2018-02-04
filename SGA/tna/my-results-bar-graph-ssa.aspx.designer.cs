@@ -58,6 +58,42 @@ namespace SGA.tna {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl spCaa;
         
         /// <summary>
+        /// SpRCMA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SpRCMA;
+        
+        /// <summary>
+        /// cmalink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor cmalink;
+        
+        /// <summary>
+        /// SpRPR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SpRPR;
+        
+        /// <summary>
+        /// procurelink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor procurelink;
+        
+        /// <summary>
         /// graph1 control.
         /// </summary>
         /// <remarks>

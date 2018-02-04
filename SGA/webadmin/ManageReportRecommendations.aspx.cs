@@ -22,6 +22,9 @@ namespace SGA.webadmin
                 this.BindGrid(0, this.grdNPSuggestions, 3);
                 this.BindGrid(0, this.grdProcSugg, 4);
                 this.BindGrid(0, this.grdCMSugg, 5);
+                this.BindGrid(0, this.grdAAsugg, 6);
+                this.BindGrid(0, this.grdSSsugg, 7);
+                this.BindGrid(0, this.grdMDsugg, 8);
             }
         }
 
@@ -400,6 +403,300 @@ namespace SGA.webadmin
                 }
             }
         }
+
+        protected void ImgProcAAEdit_Click(object sender, ImageClickEventArgs e)
+        {
+            this.pnlAASuggEdit.Visible = false;
+            this.pnlAASuggList.Visible = true;
+            SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spManageLevelRecommendations", new SqlParameter[]
+            {
+                new SqlParameter("@Id", this.ImgProcAAEdit.CommandArgument),
+                new SqlParameter("@flag", "1"),
+                new SqlParameter("@level", this.txtAAsuggLevel.Text),
+                new SqlParameter("@openingStatement", this.txtAAsuggRecommendation.Value)
+            });
+            SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateDynamicRecommendation", new SqlParameter[]
+            {
+              new SqlParameter("@Id1", this.hidAASuggId1.Value),
+                new SqlParameter("@Id2", this.hidAASuggId2.Value),
+                new SqlParameter("@Id3", this.hidAASuggId3.Value),
+                new SqlParameter("@Id4", this.hidAASuggId4.Value),
+                new SqlParameter("@Id5", this.hidAASuggId5.Value),
+                new SqlParameter("@Id6", this.hidAASuggId6.Value),
+                new SqlParameter("@Id7", this.hidAASuggId7.Value),
+                new SqlParameter("@Id8", this.hidAASuggId8.Value),
+                new SqlParameter("@dynamicRecommendation1", this.txtAASuggTxt1.Value),
+                new SqlParameter("@dynamicRecommendation2", this.txtAASuggTxt2.Value),
+                new SqlParameter("@dynamicRecommendation3", this.txtAASuggTxt3.Value),
+                new SqlParameter("@dynamicRecommendation4", this.txtAASuggTxt4.Value),
+                new SqlParameter("@dynamicRecommendation5", this.txtAASuggTxt5.Value),
+                new SqlParameter("@dynamicRecommendation6", this.txtAASuggTxt6.Value),
+                new SqlParameter("@dynamicRecommendation7", this.txtAASuggTxt7.Value),
+                new SqlParameter("@dynamicRecommendation8", this.txtAASuggTxt8.Value)
+            });
+            this.BindGrid(0, this.grdAAsugg, 6);
+        }
+
+        protected void ImgProcAACancel_Click(object sender, ImageClickEventArgs e)
+        {
+            this.pnlAASuggEdit.Visible = false;
+            this.pnlAASuggList.Visible = true;
+        }
+        protected void grdAAsugg_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+            if (e.CommandName == "Edit")
+            {
+                this.pnlAASuggEdit.Visible = true;
+                this.pnlAASuggList.Visible = false;
+                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageLevelRecommendations", new SqlParameter[]
+                {
+                    new SqlParameter("@Id", e.CommandArgument),
+                    new SqlParameter("@flag", "2")
+                });
+                if (ds != null)
+                {
+                    if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                    {
+                        this.txtAAsuggLevel.Text = ds.Tables[0].Rows[0]["level"].ToString();
+                        this.txtAAsuggRecommendation.Value = ds.Tables[0].Rows[0]["openingStatement"].ToString();
+                        this.ImgProcAAEdit.CommandArgument = ds.Tables[0].Rows[0]["Id"].ToString();
+                    }
+                }
+                DataSet dsDynamicRecommendation = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetProcAADynamicRecommendation", new SqlParameter[]
+                {
+                    new SqlParameter("@Id", e.CommandArgument)
+                });
+                if (dsDynamicRecommendation != null)
+                {
+                    if (dsDynamicRecommendation.Tables.Count > 0 && dsDynamicRecommendation.Tables[0].Rows.Count > 0)
+                    {
+                        this.lblAASuggTopic1.Text = dsDynamicRecommendation.Tables[0].Rows[0]["topicName"].ToString();
+                        this.lblAASuggTopic2.Text = dsDynamicRecommendation.Tables[0].Rows[1]["topicName"].ToString();
+                        this.lblAASuggTopic3.Text = dsDynamicRecommendation.Tables[0].Rows[2]["topicName"].ToString();
+                        this.lblAASuggTopic4.Text = dsDynamicRecommendation.Tables[0].Rows[3]["topicName"].ToString();
+                        this.lblAASuggTopic5.Text = dsDynamicRecommendation.Tables[0].Rows[4]["topicName"].ToString();
+                        this.lblAASuggTopic6.Text = dsDynamicRecommendation.Tables[0].Rows[5]["topicName"].ToString();
+                        this.lblAASuggTopic7.Text = dsDynamicRecommendation.Tables[0].Rows[6]["topicName"].ToString();
+                        this.lblAASuggTopic8.Text = dsDynamicRecommendation.Tables[0].Rows[7]["topicName"].ToString();
+                        this.txtAASuggTxt1.Value = dsDynamicRecommendation.Tables[0].Rows[0]["dynamicRecommendation"].ToString();
+                        this.txtAASuggTxt2.Value = dsDynamicRecommendation.Tables[0].Rows[1]["dynamicRecommendation"].ToString();
+                        this.txtAASuggTxt3.Value = dsDynamicRecommendation.Tables[0].Rows[2]["dynamicRecommendation"].ToString();
+                        this.txtAASuggTxt4.Value = dsDynamicRecommendation.Tables[0].Rows[3]["dynamicRecommendation"].ToString();
+                        this.txtAASuggTxt5.Value = dsDynamicRecommendation.Tables[0].Rows[4]["dynamicRecommendation"].ToString();
+                        this.txtAASuggTxt6.Value = dsDynamicRecommendation.Tables[0].Rows[5]["dynamicRecommendation"].ToString();
+                        this.txtAASuggTxt7.Value = dsDynamicRecommendation.Tables[0].Rows[6]["dynamicRecommendation"].ToString();
+                        this.txtAASuggTxt8.Value = dsDynamicRecommendation.Tables[0].Rows[7]["dynamicRecommendation"].ToString();
+                        this.hidAASuggId1.Value = dsDynamicRecommendation.Tables[0].Rows[0]["id"].ToString();
+                        this.hidAASuggId2.Value = dsDynamicRecommendation.Tables[0].Rows[1]["id"].ToString();
+                        this.hidAASuggId3.Value = dsDynamicRecommendation.Tables[0].Rows[2]["id"].ToString();
+                        this.hidAASuggId4.Value = dsDynamicRecommendation.Tables[0].Rows[3]["id"].ToString();
+                        this.hidAASuggId5.Value = dsDynamicRecommendation.Tables[0].Rows[4]["id"].ToString();
+                        this.hidAASuggId6.Value = dsDynamicRecommendation.Tables[0].Rows[5]["id"].ToString();
+                        this.hidAASuggId7.Value = dsDynamicRecommendation.Tables[0].Rows[6]["id"].ToString();
+                        this.hidAASuggId8.Value = dsDynamicRecommendation.Tables[0].Rows[7]["id"].ToString();
+                    }
+                }
+            }
+        }
+
+        //---------------------------------------------------------------------------------
+
+        protected void ImgProcSSEdit_Click(object sender, ImageClickEventArgs e)
+        {
+            this.pnlSSSuggEdit.Visible = false;
+            this.pnlSSSuggList.Visible = true;
+            SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spManageLevelRecommendations", new SqlParameter[]
+            {
+                new SqlParameter("@Id", this.imgSSAEdit.CommandArgument),
+                new SqlParameter("@flag", "1"),
+                new SqlParameter("@level", this.txtSSsuggLevel.Text),
+                new SqlParameter("@openingStatement", this.txtSSsuggRecommendation.Value)
+            });
+            SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateDynamicRecommendation", new SqlParameter[]
+            {
+              new SqlParameter("@Id1", this.hidSSSuggId1.Value),
+                new SqlParameter("@Id2", this.hidSSSuggId2.Value),
+                new SqlParameter("@Id3", this.hidSSSuggId3.Value),
+                new SqlParameter("@Id4", this.hidSSSuggId4.Value),
+                new SqlParameter("@Id5", this.hidSSSuggId5.Value),
+                new SqlParameter("@Id6", this.hidSSSuggId6.Value),
+                new SqlParameter("@Id7", this.hidSSSuggId7.Value),
+                new SqlParameter("@Id8", this.hidSSSuggId8.Value),
+                new SqlParameter("@dynamicRecommendation1", this.txtSSSuggTxt1.Value),
+                new SqlParameter("@dynamicRecommendation2", this.txtSSSuggTxt2.Value),
+                new SqlParameter("@dynamicRecommendation3", this.txtSSSuggTxt3.Value),
+                new SqlParameter("@dynamicRecommendation4", this.txtSSSuggTxt4.Value),
+                new SqlParameter("@dynamicRecommendation5", this.txtSSSuggTxt5.Value),
+                new SqlParameter("@dynamicRecommendation6", this.txtSSSuggTxt6.Value),
+                new SqlParameter("@dynamicRecommendation7", this.txtSSSuggTxt7.Value),
+                new SqlParameter("@dynamicRecommendation8", this.txtSSSuggTxt8.Value)
+            });
+            this.BindGrid(0, this.grdSSsugg, 7);
+        }
+
+        protected void ImgProcSSCancel_Click(object sender, ImageClickEventArgs e)
+        {
+            this.pnlSSSuggEdit.Visible = false;
+            this.pnlSSSuggList.Visible = true;
+        }
+        protected void grdSSsugg_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+            if (e.CommandName == "Edit")
+            {
+                this.pnlSSSuggEdit.Visible = true;
+                this.pnlSSSuggList.Visible = false;
+                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageLevelRecommendations", new SqlParameter[]
+                {
+                    new SqlParameter("@Id", e.CommandArgument),
+                    new SqlParameter("@flag", "2")
+                });
+                if (ds != null)
+                {
+                    if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                    {
+                        this.txtSSsuggLevel.Text = ds.Tables[0].Rows[0]["level"].ToString();
+                        this.txtSSsuggRecommendation.Value = ds.Tables[0].Rows[0]["openingStatement"].ToString();
+                        this.ImgProcSSEdit.CommandArgument = ds.Tables[0].Rows[0]["Id"].ToString();
+                    }
+                }
+                DataSet dsDynamicRecommendation = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetProcSSDynamicRecommendation", new SqlParameter[]
+                {
+                    new SqlParameter("@Id", e.CommandArgument)
+                });
+                if (dsDynamicRecommendation != null)
+                {
+                    if (dsDynamicRecommendation.Tables.Count > 0 && dsDynamicRecommendation.Tables[0].Rows.Count > 0)
+                    {
+                        this.lblSSSuggTopic1.Text = dsDynamicRecommendation.Tables[0].Rows[0]["topicName"].ToString();
+                        this.lblSSSuggTopic2.Text = dsDynamicRecommendation.Tables[0].Rows[1]["topicName"].ToString();
+                        this.lblSSSuggTopic3.Text = dsDynamicRecommendation.Tables[0].Rows[2]["topicName"].ToString();
+                        this.lblSSSuggTopic4.Text = dsDynamicRecommendation.Tables[0].Rows[3]["topicName"].ToString();
+                        this.lblSSSuggTopic5.Text = dsDynamicRecommendation.Tables[0].Rows[4]["topicName"].ToString();
+                        this.lblSSSuggTopic6.Text = dsDynamicRecommendation.Tables[0].Rows[5]["topicName"].ToString();
+                        this.lblSSSuggTopic7.Text = dsDynamicRecommendation.Tables[0].Rows[6]["topicName"].ToString();
+                        this.lblSSSuggTopic8.Text = dsDynamicRecommendation.Tables[0].Rows[7]["topicName"].ToString();
+                        this.txtSSSuggTxt1.Value = dsDynamicRecommendation.Tables[0].Rows[0]["dynamicRecommendation"].ToString();
+                        this.txtSSSuggTxt2.Value = dsDynamicRecommendation.Tables[0].Rows[1]["dynamicRecommendation"].ToString();
+                        this.txtSSSuggTxt3.Value = dsDynamicRecommendation.Tables[0].Rows[2]["dynamicRecommendation"].ToString();
+                        this.txtSSSuggTxt4.Value = dsDynamicRecommendation.Tables[0].Rows[3]["dynamicRecommendation"].ToString();
+                        this.txtSSSuggTxt5.Value = dsDynamicRecommendation.Tables[0].Rows[4]["dynamicRecommendation"].ToString();
+                        this.txtSSSuggTxt6.Value = dsDynamicRecommendation.Tables[0].Rows[5]["dynamicRecommendation"].ToString();
+                        this.txtSSSuggTxt7.Value = dsDynamicRecommendation.Tables[0].Rows[6]["dynamicRecommendation"].ToString();
+                        this.txtSSSuggTxt8.Value = dsDynamicRecommendation.Tables[0].Rows[7]["dynamicRecommendation"].ToString();
+                        this.hidSSSuggId1.Value = dsDynamicRecommendation.Tables[0].Rows[0]["id"].ToString();
+                        this.hidSSSuggId2.Value = dsDynamicRecommendation.Tables[0].Rows[1]["id"].ToString();
+                        this.hidSSSuggId3.Value = dsDynamicRecommendation.Tables[0].Rows[2]["id"].ToString();
+                        this.hidSSSuggId4.Value = dsDynamicRecommendation.Tables[0].Rows[3]["id"].ToString();
+                        this.hidSSSuggId5.Value = dsDynamicRecommendation.Tables[0].Rows[4]["id"].ToString();
+                        this.hidSSSuggId6.Value = dsDynamicRecommendation.Tables[0].Rows[5]["id"].ToString();
+                        this.hidSSSuggId7.Value = dsDynamicRecommendation.Tables[0].Rows[6]["id"].ToString();
+                        this.hidSSSuggId8.Value = dsDynamicRecommendation.Tables[0].Rows[7]["id"].ToString();
+                    }
+                }
+            }
+        }
+
+        //----------------------------------------------------------------------------------
+
+        //---------------------------------------------------------------------------------
+
+        protected void ImgProcMDEdit_Click(object sender, ImageClickEventArgs e)
+        {
+            this.pnlMDSuggEdit.Visible = false;
+            this.pnlMDSuggList.Visible = true;
+            SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spManageLevelRecommendations", new SqlParameter[]
+            {
+                new SqlParameter("@Id", this.ImgProcMDEdit.CommandArgument),
+                new SqlParameter("@flag", "1"),
+                new SqlParameter("@level", this.txtMDsuggLevel.Text),
+                new SqlParameter("@openingStatement", this.txtMDsuggRecommendation.Value)
+            });
+            SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateDynamicRecommendation", new SqlParameter[]
+            {
+              new SqlParameter("@Id1", this.hidMDSuggId1.Value),
+                new SqlParameter("@Id2", this.hidMDSuggId2.Value),
+                new SqlParameter("@Id3", this.hidMDSuggId3.Value),
+                new SqlParameter("@Id4", this.hidMDSuggId4.Value),
+                new SqlParameter("@Id5", this.hidMDSuggId5.Value),
+                new SqlParameter("@Id6", this.hidMDSuggId6.Value),
+                new SqlParameter("@Id7", this.hidMDSuggId7.Value),
+                new SqlParameter("@Id8", this.hidMDSuggId8.Value),
+                new SqlParameter("@dynamicRecommendation1", this.txtMDSuggTxt1.Value),
+                new SqlParameter("@dynamicRecommendation2", this.txtMDSuggTxt2.Value),
+                new SqlParameter("@dynamicRecommendation3", this.txtMDSuggTxt3.Value),
+                new SqlParameter("@dynamicRecommendation4", this.txtMDSuggTxt4.Value),
+                new SqlParameter("@dynamicRecommendation5", this.txtMDSuggTxt5.Value),
+                new SqlParameter("@dynamicRecommendation6", this.txtMDSuggTxt6.Value),
+                new SqlParameter("@dynamicRecommendation7", this.txtMDSuggTxt7.Value),
+                new SqlParameter("@dynamicRecommendation8", this.txtMDSuggTxt8.Value)
+            });
+            this.BindGrid(0, this.grdMDsugg, 8);
+        }
+
+        protected void ImgProcMDCancel_Click(object sender, ImageClickEventArgs e)
+        {
+            this.pnlMDSuggEdit.Visible = false;
+            this.pnlMDSuggList.Visible = true;
+        }
+        protected void grdMDsugg_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+            if (e.CommandName == "Edit")
+            {
+                this.pnlMDSuggEdit.Visible = true;
+                this.pnlMDSuggList.Visible = false;
+                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageLevelRecommendations", new SqlParameter[]
+                {
+                    new SqlParameter("@Id", e.CommandArgument),
+                    new SqlParameter("@flag", "2")
+                });
+                if (ds != null)
+                {
+                    if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                    {
+                        this.txtMDsuggLevel.Text = ds.Tables[0].Rows[0]["level"].ToString();
+                        this.txtMDsuggRecommendation.Value = ds.Tables[0].Rows[0]["openingStatement"].ToString();
+                        this.ImgProcMDEdit.CommandArgument = ds.Tables[0].Rows[0]["Id"].ToString();
+                    }
+                }
+                DataSet dsDynamicRecommendation = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetProcMDDynamicRecommendation", new SqlParameter[]
+                {
+                    new SqlParameter("@Id", e.CommandArgument)
+                });
+                if (dsDynamicRecommendation != null)
+                {
+                    if (dsDynamicRecommendation.Tables.Count > 0 && dsDynamicRecommendation.Tables[0].Rows.Count > 0)
+                    {
+                        this.lblMDSuggTopic1.Text = dsDynamicRecommendation.Tables[0].Rows[0]["topicName"].ToString();
+                        this.lblMDSuggTopic2.Text = dsDynamicRecommendation.Tables[0].Rows[1]["topicName"].ToString();
+                        this.lblMDSuggTopic3.Text = dsDynamicRecommendation.Tables[0].Rows[2]["topicName"].ToString();
+                        this.lblMDSuggTopic4.Text = dsDynamicRecommendation.Tables[0].Rows[3]["topicName"].ToString();
+                        this.lblMDSuggTopic5.Text = dsDynamicRecommendation.Tables[0].Rows[4]["topicName"].ToString();
+                        this.lblMDSuggTopic6.Text = dsDynamicRecommendation.Tables[0].Rows[5]["topicName"].ToString();
+                        this.lblMDSuggTopic7.Text = dsDynamicRecommendation.Tables[0].Rows[6]["topicName"].ToString();
+                        this.lblMDSuggTopic8.Text = dsDynamicRecommendation.Tables[0].Rows[7]["topicName"].ToString();
+                        this.txtMDSuggTxt1.Value = dsDynamicRecommendation.Tables[0].Rows[0]["dynamicRecommendation"].ToString();
+                        this.txtMDSuggTxt2.Value = dsDynamicRecommendation.Tables[0].Rows[1]["dynamicRecommendation"].ToString();
+                        this.txtMDSuggTxt3.Value = dsDynamicRecommendation.Tables[0].Rows[2]["dynamicRecommendation"].ToString();
+                        this.txtMDSuggTxt4.Value = dsDynamicRecommendation.Tables[0].Rows[3]["dynamicRecommendation"].ToString();
+                        this.txtMDSuggTxt5.Value = dsDynamicRecommendation.Tables[0].Rows[4]["dynamicRecommendation"].ToString();
+                        this.txtMDSuggTxt6.Value = dsDynamicRecommendation.Tables[0].Rows[5]["dynamicRecommendation"].ToString();
+                        this.txtMDSuggTxt7.Value = dsDynamicRecommendation.Tables[0].Rows[6]["dynamicRecommendation"].ToString();
+                        this.txtMDSuggTxt8.Value = dsDynamicRecommendation.Tables[0].Rows[7]["dynamicRecommendation"].ToString();
+                        this.hidMDSuggId1.Value = dsDynamicRecommendation.Tables[0].Rows[0]["id"].ToString();
+                        this.hidMDSuggId2.Value = dsDynamicRecommendation.Tables[0].Rows[1]["id"].ToString();
+                        this.hidMDSuggId3.Value = dsDynamicRecommendation.Tables[0].Rows[2]["id"].ToString();
+                        this.hidMDSuggId4.Value = dsDynamicRecommendation.Tables[0].Rows[3]["id"].ToString();
+                        this.hidMDSuggId5.Value = dsDynamicRecommendation.Tables[0].Rows[4]["id"].ToString();
+                        this.hidMDSuggId6.Value = dsDynamicRecommendation.Tables[0].Rows[5]["id"].ToString();
+                        this.hidMDSuggId7.Value = dsDynamicRecommendation.Tables[0].Rows[6]["id"].ToString();
+                        this.hidMDSuggId8.Value = dsDynamicRecommendation.Tables[0].Rows[7]["id"].ToString();
+                    }
+                }
+            }
+        }
+
+        //----------------------------------------------------------------------------------
+
 
         protected void ImgProcSgCancel_Click(object sender, ImageClickEventArgs e)
         {

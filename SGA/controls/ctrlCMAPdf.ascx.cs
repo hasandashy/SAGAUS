@@ -441,7 +441,7 @@ namespace SGA.controls
                     });
                                 DataSet dsSuggestion = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSuggestionByTopic", new SqlParameter[]
                       {
-                        new SqlParameter("@suggestionType", 1),
+                        new SqlParameter("@suggestionType", 2),
                         new SqlParameter("@topicId", i)
 
                       });
@@ -578,7 +578,7 @@ namespace SGA.controls
                                 DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetReportRecommendation", new SqlParameter[]
                     {
                         new SqlParameter("@reportType", 5),
-                        new SqlParameter("@level", GetLevelForInsert(Convert.ToDecimal(percentage))),
+                        new SqlParameter("@level", GetLevelForInsertRecoomendation(Convert.ToDecimal(percentage))),
                         new SqlParameter("@topicId", i)
 
                     });
@@ -1160,6 +1160,32 @@ namespace SGA.controls
                         new SqlParameter("@flag",flag)
                                  }));
             return score;
+        }
+
+        private string GetLevelForInsertRecoomendation(decimal score)
+        {
+            string level = string.Empty;
+            if (score <= 14.28M)
+            {
+                level = "Novice";
+            }
+            else if (score <= 28.57M)
+            {
+                level = "Awareness";
+            }
+            else if (score <= 57.14M)
+            {
+                level = "Understanding";
+            }
+            else if (score <= 71.42M)
+            {
+                level = "Practitioner";
+            }
+            else
+            {
+                level = "Expert";
+            }
+            return level;
         }
         private string GetLevelForInsert(decimal score)
         {

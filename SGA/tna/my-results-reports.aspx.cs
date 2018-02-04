@@ -58,6 +58,8 @@ namespace SGA.tna
 
         protected bool isCMAResult = false;
 
+        protected bool isCAAComplete = false;
+
         public int pgNum
         {
             get
@@ -107,9 +109,9 @@ namespace SGA.tna
             if (!base.IsPostBack)
             {
                 DataSet dsPermission = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetPremission", new SqlParameter[]
-				{
-					new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
-				});
+                {
+                    new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
+                });
                 if (dsPermission != null)
                 {
                     if (dsPermission.Tables.Count > 0 && dsPermission.Tables[0].Rows.Count > 0)
@@ -119,7 +121,7 @@ namespace SGA.tna
                         this.isCMAResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCmaResult"].ToString());
                         this.isCmkResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCmkResult"].ToString());
                         this.isCaaResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCaaResult"].ToString());
-
+                        this.isCAAComplete = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["isCaaComplete"].ToString());
                     }
                 }
                 this.spSkills.Attributes["class"] = (this.isTnaResult ? "" : "lock");
@@ -134,14 +136,37 @@ namespace SGA.tna
                 base.Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
                 base.ClientScript.RegisterStartupScript(this.Page.GetType(), "abc", "$(document).ready(function(){\r\nStyleRadio();\r\n});", true);
             }
+            //Report Link
+
+            SqlParameter[] paramPack = new SqlParameter[]
+   {
+                new SqlParameter("@userId", SqlDbType.Int)
+   };
+            paramPack[0].Value = SGACommon.LoginUserInfo.userId;
+            DataSet dsPacks = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetReportIdByUserId", paramPack);
+            if (dsPacks != null)
+            {
+                if (dsPacks.Tables.Count > 0 && dsPacks.Tables[0].Rows.Count > 0)
+                {
+                    if (dsPacks.Tables[0].Rows[0]["packId"].ToString() == "6")
+                    {
+                        cmalink.HRef = "/IndividualReport/ContractManagement.aspx?id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
+                    }
+                    else
+                    {
+                        procurelink.HRef = "/IndividualReport/Procurement.aspx?id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
+                    }
+
+                }
+            }
         }
 
         private void BindResults()
         {
             DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSGATests", new SqlParameter[]
-			{
-				new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
-			});
+            {
+                new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
+            });
             int cnt = ds.Tables[0].Rows.Count;
             PagedDataSource paged = new PagedDataSource();
             paged.DataSource = ds.Tables[0].DefaultView;
@@ -175,21 +200,21 @@ namespace SGA.tna
             if (e.Item.ItemType == ListItemType.AlternatingItem || e.Item.ItemType == ListItemType.Item)
             {
                 Label lblConvertedDate = (Label)e.Item.FindControl("lblConvertedDate");
-               // Label lblTimeTaken = (Label)e.Item.FindControl("lblTimeTaken");
+                // Label lblTimeTaken = (Label)e.Item.FindControl("lblTimeTaken");
                 System.DateTime dtTestdate = System.Convert.ToDateTime(DataBinder.Eval(e.Item.DataItem, "testDate"));
-              //  string timeDiff = DataBinder.Eval(e.Item.DataItem, "diff").ToString();
+                //  string timeDiff = DataBinder.Eval(e.Item.DataItem, "diff").ToString();
                 if (lblConvertedDate != null)
                 {
                     lblConvertedDate.Text = SGACommon.ToAusTimeZone(dtTestdate).ToString("dd/MM/yyyy HH:mm tt");
                 }
-     //           if (lblTimeTaken != null)
-     //           {
-     //               string[] strArr = timeDiff.Split(new char[]
-					//{
-					//	':'
-					//});
-     //               lblTimeTaken.Text = strArr[1] + " min " + strArr[2] + " sec ";
-     //           }
+                //           if (lblTimeTaken != null)
+                //           {
+                //               string[] strArr = timeDiff.Split(new char[]
+                //{
+                //	':'
+                //});
+                //               lblTimeTaken.Text = strArr[1] + " min " + strArr[2] + " sec ";
+                //           }
             }
         }
 
@@ -214,18 +239,18 @@ namespace SGA.tna
             SGACommon.GetEmailTemplate(5, ref emailsubject, ref body);
             testIds = SGACommon.RemoveLastCharacter(testIds);
             string[] strArray = testIds.Split(new char[]
-			{
-				','
-			});
+            {
+                ','
+            });
             if (strArray.Length > 0)
             {
                 for (int i = 0; i < strArray.Length; i++)
                 {
                     string strMail = "";
                     DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSgaGraph", new SqlParameter[]
-					{
-						new SqlParameter("@testId", strArray[i])
-					});
+                    {
+                        new SqlParameter("@testId", strArray[i])
+                    });
                     if (ds != null)
                     {
                         if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -235,12 +260,12 @@ namespace SGA.tna
                                 strMail = strMail + "<tr><td style='font-family: Arial; font-size: 12px;' >" + ds.Tables[0].Rows[j]["TopicName"].ToString().Replace("<br />", " ") + "</td>";
                                 object obj2 = strMail;
                                 strMail = string.Concat(new object[]
-								{
-									obj2,
-									"<td style='font-family: Arial; font-size: 12px;'>",
-									ds.Tables[0].Rows[j]["percentage"],
-									"%</td>"
-								});
+                                {
+                                    obj2,
+                                    "<td style='font-family: Arial; font-size: 12px;'>",
+                                    ds.Tables[0].Rows[j]["percentage"],
+                                    "%</td>"
+                                });
                                 strMail = strMail + "<td style='font-family: Arial; font-size: 12px;'>" + ds.Tables[0].Rows[j]["Level"].ToString() + "</td></tr>";
                             }
                         }
@@ -743,9 +768,9 @@ namespace SGA.tna
         {
             Chunk tc = new Chunk(lefttext, FontFactory.GetFont("Arial", 11f, 0, this.bcolor));
             PdfPCell cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             cell.PaddingBottom = 10f;
@@ -754,9 +779,9 @@ namespace SGA.tna
             tab.AddCell(cell);
             tc = new Chunk(righttext, FontFactory.GetFont("Arial", 11f, 0, this.bcolor));
             cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BorderColor = this.tableborcolor;
             tab.AddCell(cell);
         }
@@ -765,9 +790,9 @@ namespace SGA.tna
         {
             Chunk tc = new Chunk(lefttext, FontFactory.GetFont("Arial", 11f, 0, this.bcolor));
             PdfPCell cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BorderColor = this.wcolor;
             cell.PaddingBottom = 2f;
             cell.PaddingLeft = 5f;
@@ -775,9 +800,9 @@ namespace SGA.tna
             tab.AddCell(cell);
             tc = new Chunk(righttext, FontFactory.GetFont("Arial", 11f, 0, this.bcolor));
             cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BorderColor = this.wcolor;
             tab.AddCell(cell);
         }
@@ -786,9 +811,9 @@ namespace SGA.tna
         {
             Chunk tc = new Chunk(lefttext, FontFactory.GetFont("Arial", 11f, isBold ? 1 : 0, this.bcolor));
             PdfPCell cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BorderColor = this.tableborcolor;
             if (isPadding)
             {
@@ -802,9 +827,9 @@ namespace SGA.tna
             tab.AddCell(cell);
             tc = new Chunk(middletext, FontFactory.GetFont("Arial", 11f, isBold ? 1 : 0, this.bcolor));
             cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BorderColor = this.tableborcolor;
             if (isPadding)
             {
@@ -819,9 +844,9 @@ namespace SGA.tna
             tab.AddCell(cell);
             tc = new Chunk(righttext, FontFactory.GetFont("Arial", 11f, isBold ? 1 : 0, this.bcolor));
             cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BorderColor = this.tableborcolor;
             if (isPadding)
             {
@@ -839,41 +864,41 @@ namespace SGA.tna
         {
             Chunk tc = new Chunk(lefttext1, FontFactory.GetFont("Arial", 11f, 1, this.bcolor));
             PdfPCell cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             tab.AddCell(cell);
             tc = new Chunk(lefttext2, FontFactory.GetFont("Arial", 11f, 1, this.bcolor));
             cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             tab.AddCell(cell);
             tc = new Chunk(middletext, FontFactory.GetFont("Arial", 11f, 1, this.bcolor));
             cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             tab.AddCell(cell);
             tc = new Chunk(righttext1, FontFactory.GetFont("Arial", 11f, 0, this.bcolor));
             cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             tab.AddCell(cell);
             tc = new Chunk(righttext2, FontFactory.GetFont("Arial", 11f, 0, this.bcolor));
             cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             tab.AddCell(cell);
@@ -883,9 +908,9 @@ namespace SGA.tna
         {
             Chunk tc = new Chunk(lefttext, FontFactory.GetFont("Arial", 11f, 1, this.bcolor));
             PdfPCell cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             cell.PaddingBottom = 10f;
@@ -894,9 +919,9 @@ namespace SGA.tna
             tab.AddCell(cell);
             tc = new Chunk(middletext, FontFactory.GetFont("Arial", 11f, 1, this.bcolor));
             cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             cell.PaddingBottom = 10f;
@@ -905,9 +930,9 @@ namespace SGA.tna
             tab.AddCell(cell);
             tc = new Chunk(righttext, FontFactory.GetFont("Arial", 11f, 1, this.bcolor));
             cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             cell.PaddingBottom = 10f;

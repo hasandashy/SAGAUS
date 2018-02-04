@@ -602,8 +602,8 @@ namespace SGA.controls
                                 }
                                 DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetReportRecommendation", new SqlParameter[]
                     {
-                        new SqlParameter("@reportType", 4),
-                        new SqlParameter("@level", GetLevelForInsert(Convert.ToDecimal(percentage))),
+                        new SqlParameter("@reportType", GetReportTypeByJobRole(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["jobRole"].ToString()))),
+                        new SqlParameter("@level", GetLevelForInsertRecoomendation(Convert.ToDecimal(percentage))),
                         new SqlParameter("@topicId", i)
 
                     });
@@ -1212,6 +1212,46 @@ namespace SGA.controls
                 level = "Expert";
             }
             return level;
+        }
+
+        private string GetLevelForInsertRecoomendation(decimal score)
+        {
+            string level = string.Empty;
+            if (score <= 14.28M)
+            {
+                level = "Novice";
+            }
+            else if (score <= 28.57M)
+            {
+                level = "Awareness";
+            }
+            else if (score <= 57.14M)
+            {
+                level = "Understanding";
+            }
+            else if (score <= 71.42M)
+            {
+                level = "Practitioner";
+            }
+            else
+            {
+                level = "Expert";
+            }
+            return level;
+        }
+
+        private int GetReportTypeByJobRole(int roleId)
+        {
+            int lvl = 0;
+            if (roleId == 1 || roleId == 2)
+                lvl = 4;
+            else if (roleId == 3 || roleId == 4)
+                lvl = 6;
+            else if (roleId == 5)
+                lvl = 7;
+            else if (roleId == 7 || roleId == 8)
+                lvl = 8;
+            return lvl;
         }
 
     }

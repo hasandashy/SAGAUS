@@ -1384,6 +1384,9 @@ namespace SGA.App_Code
                 case 3:
                     strValue = "Part-time greater than 50%";
                     break;
+                case 4:
+                    strValue = "Part-time less than 25%";
+                    break;
                 default:
                     strValue = "No Value Selected";
                     break;

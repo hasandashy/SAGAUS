@@ -305,6 +305,7 @@
                             <asp:ListItem Value="1">Full-time</asp:ListItem>
                             <asp:ListItem Value="2">Part-time less than 50%</asp:ListItem>
                             <asp:ListItem Value="3">Part-time greater than 50%</asp:ListItem>
+                            <asp:ListItem Value="4">Part-time less than 25%</asp:ListItem>
                         </asp:DropDownList>
 
                     </div>

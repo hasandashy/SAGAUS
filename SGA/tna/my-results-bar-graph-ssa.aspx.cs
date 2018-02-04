@@ -24,6 +24,8 @@ namespace SGA.tna
 
         protected bool isCMAResult = false;
 
+        protected bool isCAAComplete = false;
+
         protected void Page_Load(object sender, System.EventArgs e)
         {
             SGACommon.IsViewResult("viewTNAResult");
@@ -42,6 +44,7 @@ namespace SGA.tna
                         this.isCaaResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCaaResult"].ToString());
                         this.isCmkResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCmkResult"].ToString());
                         this.isCMAResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCmaResult"].ToString());
+                        this.isCAAComplete = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["isCaaComplete"].ToString());
                     }
                 }
                 this.spSkills.Attributes["class"] = (this.isTnaResult ? "" : "lock");
@@ -63,6 +66,29 @@ namespace SGA.tna
                 else
                 {
                     base.Response.Redirect("my-results-reports-ssa.aspx", false);
+                }
+
+                //Report Link
+
+                SqlParameter[] paramPack = new SqlParameter[]
+       {
+                new SqlParameter("@userId", SqlDbType.Int)
+       };
+                paramPack[0].Value = SGACommon.LoginUserInfo.userId;
+                DataSet dsPacks = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetReportIdByUserId", paramPack);
+                if (dsPacks != null)
+                {
+                    if (dsPacks.Tables.Count > 0 && dsPacks.Tables[0].Rows.Count > 0)
+                    {
+                        if (dsPacks.Tables[0].Rows[0]["packId"].ToString() == "6")
+                        {
+                            cmalink.HRef = "/IndividualReport/ContractManagement.aspx?id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
+                        }
+                        else
+                        {
+                            procurelink.HRef = "/IndividualReport/Procurement.aspx?id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
+                        }
+                    }
                 }
             }
         }
