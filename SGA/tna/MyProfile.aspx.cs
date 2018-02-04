@@ -125,58 +125,58 @@ namespace SGA.tna
 			{
 				"Id"
 			};
-    //        XmlRpcStruct[] resultFound = isdnAPI.findByEmail(SGACommon.LoginUserInfo.name, strField);
-    //        if (resultFound.Length > 0)
-    //        {
-    //            int Id = System.Convert.ToInt32(resultFound[0]["Id"]);
-    //            isdnAPI.dsUpdate("Contact", Id, new XmlRpcStruct
-				//{
-				//	{
-				//		"FirstName",
-				//		fname
-				//	},
-				//	{
-				//		"LastName",
-				//		lname
-				//	},
-				//	{
-				//		"Email",
-				//		SGACommon.LoginUserInfo.name
-				//	},
-				//	{
-				//		"OwnerID",
-				//		"50036"
-				//	},
-    //                {
-				//		"_CSBPassword",
-				//		password
-				//	},
-				//	{
-				//		"_YourOrganisation",
-				//		Profile.GetOrganisation(agencyId)
-				//	},
-				//	{
-				//		"_Location",
-				//		Profile.GetLocation(locationId)
-				//	},
-				//	{
-				//		"_MegaCategory",
-				//		Profile.GetGoodsLevel(goodsId)
-				//	},
-				//	{
-				//		"_OrganisationDivision",
-				//		division
-				//	},
-				//	{
-				//		"JobTitle",
-				//		position
-				//	},
-				//	{
-				//		"_Phone1",
-				//		phone
-				//	}
-				//});
-    //        }
+            XmlRpcStruct[] resultFound = isdnAPI.findByEmail(SGACommon.LoginUserInfo.name, strField);
+            if (resultFound.Length > 0)
+            {
+                int Id = System.Convert.ToInt32(resultFound[0]["Id"]);
+                isdnAPI.dsUpdate("Contact", Id, new XmlRpcStruct
+                {
+                    {
+                        "FirstName",
+                        fname
+                    },
+                    {
+                        "LastName",
+                        lname
+                    },
+                    {
+                        "Email",
+                        SGACommon.LoginUserInfo.name
+                    },
+                    {
+                        "OwnerID",
+                        "50036"
+                    },
+                    {
+                        "_CSBPassword",
+                        password
+                    },
+                    {
+                        "_YourOrganisation",
+                        Profile.GetOrganisation(department)
+                    },
+                    //{
+                    //    "_Location",
+                    //    Profile.GetLocation(locationId)
+                    //},
+                    //{
+                    //    "_MegaCategory",
+                    //    Profile.GetGoodsLevel(goodsId)
+                    //},
+                    //{
+                    //    "_OrganisationDivision",
+                    //    division
+                    //},
+                    {
+                        "JobTitle",
+                        jobTitle
+                    },
+                    {
+                        "_Phone1",
+                        phone
+                    }
+                });
+            }
             return "s";
         }
     }

@@ -126,74 +126,60 @@ namespace SGA.webadmin
 			{
 				"Id"
 			};
-    //        XmlRpcStruct[] resultFound = isdnAPI.findByEmail(SGACommon.LoginUserInfo.name, strField);
-    //        if (resultFound.Length > 0)
-    //        {
-    //            int Id = System.Convert.ToInt32(resultFound[0]["Id"]);
-    //            isdnAPI.dsUpdate("Contact", Id, new XmlRpcStruct
-				//{
-				//	{
-				//		"FirstName",
-				//		fname
-				//	},
-				//	{
-				//		"LastName",
-				//		lname
-				//	},
-				//	{
-				//		"OwnerID",
-				//		"50036"
-				//	},
-				//	{
-				//		"_StudentsManagersFirstName",
-				//		managerFirstname
-				//	},
-				//	{
-				//		"_StudentsManagersLastName",
-				//		managerLastName
-				//	},
-				//	{
-				//		"_StudentsManagersEmail",
-				//		managerEmail
-				//	},
-				//	{
-				//		"_CSBPassword",
-				//		password
-				//	},
-				//	{
-				//		"_YourOrganisation",
-				//		Profile.GetOrganisation(agencyId)
-				//	},
-				//	{
-				//		"_Role",
-				//		Profile.GetJobRole(jobId)
-				//	},
-				//	{
-				//		"_RoleLevel",
-				//		Profile.GetJobLevel(jobLevel)
-				//	},
-				//	{
-				//		"_Location",
-				//		Profile.GetLocation(locationId)
-				//	},
-				//	{
-				//		"_MegaCategory",
-				//		Profile.GetGoodsLevel(goodsId)
-				//	},
-				//	{
-				//		"_OrganisationDivision",
-				//		division
-				//	},
-				//	{
-				//		"JobTitle",
-				//		position
-				//	},
-				//	{
-				//		"_Phone1",
-				//		phone
-				//	}
-				//});
-    //        }
+            XmlRpcStruct[] resultFound = isdnAPI.findByEmail(SGACommon.LoginUserInfo.name, strField);
+            if (resultFound.Length > 0)
+            {
+                int Id = System.Convert.ToInt32(resultFound[0]["Id"]);
+                isdnAPI.dsUpdate("Contact", Id, new XmlRpcStruct
+                {
+                    {
+                        "FirstName",
+                        fname
+                    },
+                    {
+                        "LastName",
+                        lname
+                    },
+                    {
+                        "OwnerID",
+                        "50036"
+                    },
+                
+                    {
+                        "_CSBPassword",
+                        password
+                    },
+                    {
+                        "_YourOrganisation",
+                        Profile.GetOrganisation(agencyId)
+                    },
+                    //{
+                    //    "_Role",
+                    //    Profile.GetJobRole(jobId)
+                    //},
+                    //{
+                    //    "_RoleLevel",
+                    //    Profile.GetJobLevel(jobLevel)
+                    //},
+                    //{
+                    //    "_Location",
+                    //    Profile.GetLocation(locationId)
+                    //},
+               
+                    //{
+                    //    "_OrganisationDivision",
+                    //    division
+                    //},
+                    //{
+                    //    "JobTitle",
+                    //    position
+                    //},
+                    {
+                        "_Phone1",
+                        phone
+                    }
+                });
+            }
         }
 
         public void MarkExpireProfile(bool isExpired)
