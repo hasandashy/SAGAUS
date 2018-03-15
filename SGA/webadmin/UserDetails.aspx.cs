@@ -141,41 +141,39 @@ namespace SGA.webadmin
                         lname
                     },
                     {
+                        "_Email0",
+                        SGACommon.LoginUserInfo.name
+                    },
+                    {
                         "OwnerID",
                         "50036"
                     },
-                
                     {
-                        "_CSBPassword",
+                        "_SAGovPassword",
                         password
                     },
                     {
-                        "_YourOrganisation",
+                        "_SAGovJobRole",
                         Profile.GetOrganisation(agencyId)
                     },
-                    //{
-                    //    "_Role",
-                    //    Profile.GetJobRole(jobId)
-                    //},
-                    //{
-                    //    "_RoleLevel",
-                    //    Profile.GetJobLevel(jobLevel)
-                    //},
                     //{
                     //    "_Location",
                     //    Profile.GetLocation(locationId)
                     //},
-               
+                    //{
+                    //    "_MegaCategory",
+                    //    Profile.GetGoodsLevel(goodsId)
+                    //},
                     //{
                     //    "_OrganisationDivision",
                     //    division
                     //},
                     //{
                     //    "JobTitle",
-                    //    position
+                    //    jobTitle
                     //},
                     {
-                        "_Phone1",
+                        "Phone1",
                         phone
                     }
                 });
@@ -230,7 +228,8 @@ namespace SGA.webadmin
                 HtmlInputCheckBox chkCmktest = (HtmlInputCheckBox)item.FindControl("chkCmktest");
                 HtmlInputCheckBox chkCaatest = (HtmlInputCheckBox)item.FindControl("chkCaatest");
                 HtmlInputCheckBox chkCmatest = (HtmlInputCheckBox)item.FindControl("chkCmatest");
-                if (chkPke != null && chkTna != null && chkCmk != null && chkTna != null && chkCaa != null && chkCMA != null && chkPketest != null && chkTnatest != null && chkCmktest != null && chkCaatest != null && chkCMA != null && chkCmatest != null)
+                HtmlInputCheckBox chkResultLocked = (HtmlInputCheckBox)item.FindControl("chkResultLocked");
+                if (chkPke != null && chkTna != null && chkCmk != null && chkTna != null && chkCaa != null && chkCMA != null && chkPketest != null && chkTnatest != null && chkCmktest != null && chkCaatest != null && chkCMA != null && chkCmatest != null && chkResultLocked != null)
                 {
                     SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateResultPermission", new SqlParameter[]
 					{
@@ -244,8 +243,9 @@ namespace SGA.webadmin
 						new SqlParameter("@tnaTest", chkTnatest.Checked),
 						new SqlParameter("@cmkTest", chkCmktest.Checked),						
 						new SqlParameter("@caaTest", chkCaatest.Checked),
-						new SqlParameter("@cmaTest", chkCmatest.Checked)
-					});
+						new SqlParameter("@cmaTest", chkCmatest.Checked),
+                        new SqlParameter("@resultLocked", chkResultLocked.Checked)
+                    });
                 }
             }
             this.BindPermission();

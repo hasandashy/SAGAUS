@@ -10,7 +10,7 @@
         <section class="welcome-test">
             <p class="title40 floatL orange">Congratulations! <span class="txt20">You have completed your assessment.</span></p>
             <div class="score-ur">
-                <!--<div class="percent">57%</div>
+                <!--<div class="percent">57%</div> 
 							<div class="content">IS YOUR<br />SCORE</div>-->
                 <div class="clear"></div>
             </div>
@@ -27,7 +27,7 @@
                 <p><span class="dark">NOTE:</span> Your Individual Feedback Report will be delivered at the conclusion of the assessment period after you have completed your assigned Assessment Pack.</p>
             </article>
         </section>
-        <section class="my-result-box">
+        <section class="my-result-box" runat="server">
             <article class="breadcrumb">
                 <a href="#">Report Centre</a>&nbsp; &gt; &nbsp;<a href="#">Commercial Awareness Assessment Results</a>&nbsp; <span>&gt; &nbsp;Reports</span>
             </article>
@@ -38,11 +38,13 @@
 
 
                     <% if (isTnaResult)
-                    { %>
-                    <p class="title18"><span id="spSkills" runat="server">Procurement Skills Self 
+                        { %>
+                    <p class="title18">
+                        <span id="spSkills" runat="server">Procurement Skills Self 
                         <br />
-                        Assessment</span></p>
-                    <div class="acrd-menu">
+                            Assessment</span>
+                    </p>
+                    <div class="acrd-menu" runat="server" id="acrdtna">
                         <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
                         <div class="submenu">
                             <ul>
@@ -53,11 +55,13 @@
                     <% } %>
 
                     <% if (isPkeResult)
-                    { %>
-                    <p class="title18"><span id="spPKE" runat="server">Procurement Knowledge  
+                        { %>
+                    <p class="title18">
+                        <span id="spPKE" runat="server">Procurement Knowledge  
                         <br />
-                        Evaluation</span></p>
-                    <div class="acrd-menu">
+                            Evaluation</span>
+                    </p>
+                    <div class="acrd-menu" runat="server" id="acrdpke">
                         <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
                         <div class="submenu">
                             <ul>
@@ -68,12 +72,14 @@
                     <% } %>
 
 
-                    <% if (isCMAResult)
+                    <% if (isCMAResult && isContractPack)
                         { %>
-                    <p class="title18"><span id="spCMA" runat="server">Contract Management Self
+                    <p class="title18">
+                        <span id="spCMA" runat="server">Contract Management Self
                         <br />
-                        Assessment</span></p>
-                    <div class="acrd-menu">
+                            Assessment</span>
+                    </p>
+                    <div class="acrd-menu" runat="server" id="acrdcma">
                         <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
                         <div class="submenu">
                             <ul>
@@ -89,10 +95,12 @@
 
                     <% if (isCmkResult)
                         { %>
-                    <p class="title18"><span id="spCMK" runat="server">Contract Management Knowledge
+                    <p class="title18">
+                        <span id="spCMK" runat="server">Contract Management Knowledge
                         <br />
-                        Evaluation</span></p>
-                    <div class="acrd-menu">
+                            Evaluation</span>
+                    </p>
+                    <div class="acrd-menu" runat="server" id="acrdcmk">
                         <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
                         <div class="submenu">
                             <ul>
@@ -103,10 +111,12 @@
                     <% } %>
                     <% if (isCaaResult)
                         { %>
-                    <p class="title18"><span id="spCaa" runat="server">Commercial Awareness Knowledge
+                    <p class="title18">
+                        <span id="spCaa" runat="server">Commercial Awareness Knowledge
                         <br />
-                        Evaluation</span></p>
-                    <div class="acrd-menu">
+                            Evaluation</span>
+                    </p>
+                    <div class="acrd-menu" runat="server" id="acrdcaa">
                         <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
                         <div class="submenu">
                             <ul>
@@ -114,31 +124,34 @@
                             </ul>
                         </div>
                     </div>
-                    <% if (isCMAResult && isCAAComplete)
-                        { %>
-                    <p class="title18"><span id="Span1" runat="server">Contract Management Pack</span></p>
-                    <div class="acrd-menu">
-                        <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
-                        <div class="submenu">
-                            <ul>
-                                <li><a target="_blank" runat="server" id="cmalink">&bull; Report</a></li>
-                            </ul>
+                    <div id="reportDiv" runat="server">
+                        <% if (isCMAResult && isCAAComplete)
+                            { %>
+                        <p class="title18"><span id="spanCmaReportLink" runat="server">Contract Management Pack</span></p>
+                        <div class="acrd-menu">
+                            <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
+                            <div class="submenu">
+                                <ul>
+                                    <li><a runat="server" href="my-cma-reports.aspx" id="cmalink">&bull; Report</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <%}
-                        else if(isCAAComplete)
-                        { %>
-                    <p class="title18"><span id="Span2" runat="server">Procurement Assessment Pack</span></p>
-                    <div class="acrd-menu">
-                        <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
-                        <div class="submenu">
-                            <ul>
-                                <li><a target="_blank" runat="server" id="procurelink">&bull; Report</a></li>
-                            </ul>
+                        <%}
+                            else if (isCAAComplete)
+                            { %>
+                        <p class="title18"><span id="spanProcureLink" runat="server">Procurement Assessment Pack</span></p>
+                        <div class="acrd-menu">
+                            <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
+                            <div class="submenu">
+                                <ul>
+                                    <li><a runat="server" href="my-procurement-report.aspx" id="procurelink">&bull; Report</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <%}
-                        } %>
+                        <%}     %>                          
+                          
+                     </div>
+                    <%} %>
                 </div>
                 <div class="col-cnt">
                     <div class="wide640">
@@ -190,6 +203,7 @@
                 <p>&nbsp;</p>
             </div>
         </section>
+
         <div class="dot-line">&nbsp;</div>
     </article>
     <!-- Content Area end // -->

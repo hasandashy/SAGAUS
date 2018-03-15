@@ -10,7 +10,7 @@
 namespace SGA.tna {
     
     
-    public partial class my_results_reports_cma {
+    public partial class my_cma_reports {
         
         /// <summary>
         /// spSkills control.
@@ -49,15 +49,6 @@ namespace SGA.tna {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl acrdpke;
         
         /// <summary>
-        /// spCMA control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spCMA;
-        
-        /// <summary>
         /// acrdcma control.
         /// </summary>
         /// <remarks>
@@ -65,6 +56,15 @@ namespace SGA.tna {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl acrdcma;
+        
+        /// <summary>
+        /// spCMA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spCMA;
         
         /// <summary>
         /// spCMK control.
@@ -146,51 +146,6 @@ namespace SGA.tna {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor procurelink;
-        
-        /// <summary>
-        /// heading control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl heading;
-        
-        /// <summary>
-        /// subheading1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl subheading1;
-        
-        /// <summary>
-        /// subheading2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl subheading2;
-        
-        /// <summary>
-        /// btnhome control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl btnhome;
-        
-        /// <summary>
-        /// hyper control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hyper;
         
         /// <summary>
         /// rptSgaTest control.

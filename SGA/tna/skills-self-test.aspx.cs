@@ -3,6 +3,7 @@ using DataTier;
 using InfusionSoftDotNet;
 using SGA.App_Code;
 using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
@@ -103,8 +104,10 @@ namespace SGA.tna
 				{
 					new SqlParameter("@userId", SGACommon.LoginUserInfo.userId),
 					new SqlParameter("@testDate", System.DateTime.UtcNow.ToString()),
-					new SqlParameter("@sessionId", this.Session.SessionID)
-				}));
+					new SqlParameter("@sessionId", this.Session.SessionID),
+                    new SqlParameter("@initYear", ConfigurationManager.AppSettings["initYear"].ToString())
+
+                }));
                 this.dsOptions = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSSAOptions");
                 this.LoadAllTopics();
                 this.SetClass();

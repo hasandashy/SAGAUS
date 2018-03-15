@@ -51,6 +51,8 @@
                         <asp:ListItem Value="14">South Australia Police</asp:ListItem>
                         <asp:ListItem Value="15">South Australian Tourism Commission</asp:ListItem>
                         <asp:ListItem Value="16">TAFE SA</asp:ListItem>
+                        <asp:ListItem Value="17">Department for Child Protection</asp:ListItem>
+                        <asp:ListItem Value="18">SA Water</asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="txtrht">Email Address
@@ -170,7 +172,7 @@
                                 SortExpression="fullName"></asp:BoundColumn>
                             <asp:BoundColumn DataField="email" HeaderText="Email" ItemStyle-HorizontalAlign="Left"
                                 ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="email"></asp:BoundColumn>
-                            <asp:TemplateColumn HeaderText="View PKE Result" Visible="false" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="10%">
+                            <asp:TemplateColumn HeaderText="View PKE Result" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="10%">
                                 <ItemTemplate>
                                     <input type="checkbox" id="chkPke" runat="server" value='<%#Eval("Id") %>' checked='<%#Eval("pkeResult") %>' />
                                 </ItemTemplate>
@@ -190,12 +192,12 @@
                                     <input type="checkbox" id="chkCaa" runat="server" value='<%#Eval("Id") %>' checked='<%#Eval("caaResult") %>' />
                                 </ItemTemplate>
                             </asp:TemplateColumn>
-                            <asp:TemplateColumn HeaderText="View CMA Result" Visible="false" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="10%">
+                            <asp:TemplateColumn HeaderText="View CMA Result"  ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="10%">
                                 <ItemTemplate>
                                     <input type="checkbox" id="chkCma" runat="server" value='<%#Eval("Id") %>' checked='<%#Eval("cmaResult") %>' />
                                 </ItemTemplate>
                             </asp:TemplateColumn>
-                            <asp:TemplateColumn HeaderText="PKE Test" Visible="false" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="10%">
+                            <asp:TemplateColumn HeaderText="PKE Test"  ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="10%">
                                 <ItemTemplate>
                                     <input type="checkbox" id="chkPketest" runat="server" value='<%#Eval("Id") %>' checked='<%#Eval("takePKE") %>' />
                                 </ItemTemplate>
@@ -215,9 +217,14 @@
                                     <input type="checkbox" id="chkCaatest" runat="server" value='<%#Eval("Id") %>' checked='<%#Eval("takeCAA") %>' />
                                 </ItemTemplate>
                             </asp:TemplateColumn>
-                            <asp:TemplateColumn HeaderText="CMA Test" Visible="false" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="10%">
+                            <asp:TemplateColumn HeaderText="CMA Test" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="10%">
                                 <ItemTemplate>
                                     <input type="checkbox" id="chkCmatest" runat="server" value='<%#Eval("Id") %>' checked='<%#Eval("takeCMA") %>' />
+                                </ItemTemplate>
+                            </asp:TemplateColumn>
+                            <asp:TemplateColumn HeaderText="Unlock Result" Visible="true" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="10%">
+                                <ItemTemplate>
+                                    <input type="checkbox" id="chkResultLocked" runat="server" value='<%#Eval("Id") %>' checked='<%#Eval("isResultLocked") %>' />
                                 </ItemTemplate>
                             </asp:TemplateColumn>
                         </Columns>
@@ -262,11 +269,11 @@
                                 </ItemTemplate>
                             </asp:TemplateColumn>
 
-                             <asp:TemplateColumn ItemStyle-Width="10%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
-                                                                    <ItemTemplate>
-                                                                        <%#Eval("level")%>
-                                                                    </ItemTemplate>
-                                                                </asp:TemplateColumn>    
+                            <asp:TemplateColumn ItemStyle-Width="10%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
+                                <ItemTemplate>
+                                    <%#Eval("level")%>
+                                </ItemTemplate>
+                            </asp:TemplateColumn>
                             <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate"
                                 HeaderText="Assesment Date">
                                 <ItemTemplate>
@@ -330,11 +337,11 @@
                                     <%#Eval("Percentage")%>
                                 </ItemTemplate>
                             </asp:TemplateColumn>
-                             <asp:TemplateColumn ItemStyle-Width="10%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
-                                                                    <ItemTemplate>
-                                                                        <%#Eval("level")%>
-                                                                    </ItemTemplate>
-                                                                </asp:TemplateColumn>  
+                            <asp:TemplateColumn ItemStyle-Width="10%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
+                                <ItemTemplate>
+                                    <%#Eval("level")%>
+                                </ItemTemplate>
+                            </asp:TemplateColumn>
                             <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate"
                                 HeaderText="Assesment Date">
                                 <ItemTemplate>
@@ -398,11 +405,11 @@
                                     <%#Eval("Percentage")%>
                                 </ItemTemplate>
                             </asp:TemplateColumn>
-                             <asp:TemplateColumn ItemStyle-Width="10%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
-                                                                    <ItemTemplate>
-                                                                        <%#Eval("level")%>
-                                                                    </ItemTemplate>
-                                                                </asp:TemplateColumn>  
+                            <asp:TemplateColumn ItemStyle-Width="10%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
+                                <ItemTemplate>
+                                    <%#Eval("level")%>
+                                </ItemTemplate>
+                            </asp:TemplateColumn>
                             <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate"
                                 HeaderText="Assesment Date">
                                 <ItemTemplate>
@@ -465,11 +472,11 @@
                                     <%#Eval("Percentage")%>
                                 </ItemTemplate>
                             </asp:TemplateColumn>
-                             <asp:TemplateColumn ItemStyle-Width="10%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
-                                                                    <ItemTemplate>
-                                                                        <%#Eval("level")%>
-                                                                    </ItemTemplate>
-                                                                </asp:TemplateColumn>  
+                            <asp:TemplateColumn ItemStyle-Width="10%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
+                                <ItemTemplate>
+                                    <%#Eval("level")%>
+                                </ItemTemplate>
+                            </asp:TemplateColumn>
                             <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate"
                                 HeaderText="Assesment Date">
                                 <ItemTemplate>
@@ -531,11 +538,11 @@
                                     <%#Eval("percentage")%>
                                 </ItemTemplate>
                             </asp:TemplateColumn>
-                             <asp:TemplateColumn ItemStyle-Width="10%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
-                                                                    <ItemTemplate>
-                                                                        <%#Eval("level")%>
-                                                                    </ItemTemplate>
-                                                                </asp:TemplateColumn>  
+                            <asp:TemplateColumn ItemStyle-Width="10%" HeaderStyle-Width="10%" SortExpression="Level" HeaderText="Level">
+                                <ItemTemplate>
+                                    <%#Eval("level")%>
+                                </ItemTemplate>
+                            </asp:TemplateColumn>
                             <asp:TemplateColumn ItemStyle-Width="20%" HeaderStyle-Width="20%" SortExpression="testdate"
                                 HeaderText="Assesment Date">
                                 <ItemTemplate>

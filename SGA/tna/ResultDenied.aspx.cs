@@ -39,11 +39,11 @@ namespace SGA.tna
                         this.isCaaResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCaaResult"].ToString());
                     }
                 }
-                this.spSkills.Attributes["class"] = (this.isTnaResult ? "" : "lock");
-                this.spCMA.Attributes["class"] = (this.isCMAResult ? "" : "lock");
-                this.spCMK.Attributes["class"] = (this.isCmkResult ? "" : "lock");
-                this.spPKE.Attributes["class"] = (this.isPkeResult ? "" : "lock");
-                this.spCaa.Attributes["class"] = (this.isCaaResult ? "" : "lock");
+                //this.spSkills.Attributes["class"] = (this.isTnaResult ? "" : "lock");
+                //this.spCMA.Attributes["class"] = (this.isCMAResult ? "" : "lock");
+                //this.spCMK.Attributes["class"] = (this.isCmkResult ? "" : "lock");
+                //this.spPKE.Attributes["class"] = (this.isPkeResult ? "" : "lock");
+                //this.spCaa.Attributes["class"] = (this.isCaaResult ? "" : "lock");
             }
         }
     }

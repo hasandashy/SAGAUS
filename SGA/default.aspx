@@ -208,7 +208,7 @@
                         	<li><span>*</span><input type="text" value="Last name" title="Last name" class="txt-field2" id="LName"/></li>
                         	<li><span>*</span><input type="text" value="Email address" title="Email address" class="txt-field2" id="Email"/></li>
                         	<li><span>*</span><asp:DropDownList ID="ddlAgency"  runat="server">
-                            <asp:ListItem Value="0">Your Organisation</asp:ListItem>
+                            <asp:ListItem Value="0">Your Organisation / Department</asp:ListItem>
                           <asp:ListItem Value="1">Attorney-Generals Department</asp:ListItem>
                             <asp:ListItem Value="2">Courts Administration Authority</asp:ListItem>
                             <asp:ListItem Value="3">Department for Communities and Social Inclusion</asp:ListItem>
@@ -225,7 +225,8 @@
                             <asp:ListItem Value="14">South Australia Police</asp:ListItem>
                             <asp:ListItem Value="15">South Australian Tourism Commission</asp:ListItem>
                             <asp:ListItem Value="16">TAFE SA</asp:ListItem>  
-
+                            <asp:ListItem Value="17">Department for Child Protection</asp:ListItem>
+                            <asp:ListItem Value="18">SA Water</asp:ListItem>
                             </asp:DropDownList></li>
                         	
                         	<li><span>*</span><asp:DropDownList ID="ddlJobRole" style="color:Red;"  runat="server">

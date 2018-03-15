@@ -519,7 +519,8 @@ namespace SGA.webadmin
                 HtmlInputCheckBox chkCmktest = (HtmlInputCheckBox)item.FindControl("chkCmktest");
                 HtmlInputCheckBox chkCaatest = (HtmlInputCheckBox)item.FindControl("chkCaatest");
                 HtmlInputCheckBox chkCmatest = (HtmlInputCheckBox)item.FindControl("chkCmatest");
-                if (chkPke != null && chkTna != null && chkCmk != null && chkTna != null && chkCaa != null && chkCMA != null && chkPketest != null && chkTnatest != null && chkCmktest != null && chkCaatest != null && chkCMA != null && chkCmatest != null)
+                HtmlInputCheckBox chkResultLocked = (HtmlInputCheckBox)item.FindControl("chkResultLocked");
+                if (chkPke != null && chkTna != null && chkCmk != null && chkTna != null && chkCaa != null && chkCMA != null && chkPketest != null && chkTnatest != null && chkCmktest != null && chkCaatest != null && chkCMA != null && chkCmatest != null && chkResultLocked!= null)
                 {
                     SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateResultPermission", new SqlParameter[]
 					{
@@ -533,8 +534,9 @@ namespace SGA.webadmin
 						new SqlParameter("@tnaTest", chkTnatest.Checked),
 						new SqlParameter("@cmkTest", chkCmktest.Checked),						
 						new SqlParameter("@caaTest", chkCaatest.Checked),
-						new SqlParameter("@cmaTest", chkCmatest.Checked)
-					});
+						new SqlParameter("@cmaTest", chkCmatest.Checked),
+                        new SqlParameter("@resultLocked", chkResultLocked.Checked)
+                    });
                 }
             }
             this.BindPermission();
@@ -884,10 +886,12 @@ namespace SGA.webadmin
                     param[8].Value = System.Convert.ToInt32(this.ddlJobRole.SelectedValue);
                     param[9] = new SqlParameter("@isAdminAdded", SqlDbType.Bit);
                     param[9].Value = true;
-                    param[10] = new SqlParameter("@jobLevel", SqlDbType.Int);
-                    param[10].Value = System.Convert.ToInt32(1);
-                    param[11] = new SqlParameter("@agencyId", SqlDbType.Int);
-                    param[11].Value = System.Convert.ToInt32(this.ddlAgency.SelectedValue);
+                    //param[10] = new SqlParameter("@jobLevel", SqlDbType.Int);
+                    //param[10].Value = System.Convert.ToInt32(1);
+                    param[10] = new SqlParameter("@agencyId", SqlDbType.Int);
+                    param[10].Value = System.Convert.ToInt32(this.ddlAgency.SelectedValue);
+                    param[11] = new SqlParameter("@initYear", SqlDbType.VarChar);
+                    param[11].Value = ConfigurationManager.AppSettings["initYear"].ToString();
                     int result = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spUserMaster", param));
                     if (result == 0)
                     {
@@ -1118,7 +1122,7 @@ namespace SGA.webadmin
                                         string plainpassword = SGACommon.generatePassword(8);
                                         string passwordSalt = SGACommon.CreateSalt(5);
                                         string passwordHash = SGACommon.CreatePasswordHash(plainpassword, passwordSalt);
-                                        param = new SqlParameter[11];
+                                        param = new SqlParameter[12];
                                         param[0] = new SqlParameter("@action", SqlDbType.VarChar);
                                         param[0].Value = "Insert";
                                         param[1] = new SqlParameter("@password", SqlDbType.VarChar);
@@ -1141,7 +1145,8 @@ namespace SGA.webadmin
                                         param[9].Value = 1;
                                         param[10] = new SqlParameter("@agencyId", SqlDbType.Int);
                                         param[10].Value = agencyId;
-                                     
+                                        param[11] = new SqlParameter("@initYear", SqlDbType.VarChar);
+                                        param[11].Value = ConfigurationManager.AppSettings["initYear"].ToString();
 
                                         int result = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spUserMaster", param));
                                         if (result > 0)
@@ -1150,7 +1155,7 @@ namespace SGA.webadmin
 											{
 												"Id"
 											};
-                                            XmlRpcStruct[] resultFound = isdnAPI.findByEmail(this.txtEmailAddress.Value.Trim(), strField);
+                                            XmlRpcStruct[] resultFound = isdnAPI.findByEmail(email.Trim(), strField);
                                             if (resultFound.Length > 0)
                                             {
                                                 int userId = System.Convert.ToInt32(resultFound[0]["Id"].ToString());
@@ -1179,11 +1184,11 @@ namespace SGA.webadmin
                                                     },
                                                     {
                                                         "_SAGovUsername",
-                                                        this.txtEmailAddress.Value.Trim()
+                                                        email.Trim()
                                                     }
                                                 });
                                                 bool isAdded = isdnAPI.addToGroup(userId, 2044);
-                                                isdnAPI.optIn(this.txtEmailAddress.Value.Trim(), "Sending emails is allowed");
+                                                isdnAPI.optIn(email.Trim(), "Sending emails is allowed");
                                             }
                                             else
                                             {
@@ -1199,7 +1204,7 @@ namespace SGA.webadmin
                                                     },
                                                     {
                                                         "Email",
-                                                        this.txtEmailAddress.Value.Trim()
+                                                        email.Trim()
                                                     },
                                                     {
                                                         "OwnerID",
@@ -1225,7 +1230,7 @@ namespace SGA.webadmin
                                                 if (userId > 0)
                                                 {
                                                     bool isAdded = isdnAPI.addToGroup(userId, 2044);
-                                                    isdnAPI.optIn(this.txtEmailAddress.Value.Trim(), "Sending emails is allowed");
+                                                    isdnAPI.optIn(email.Trim(), "Sending emails is allowed");
                                                 }
                                             }
                                         }

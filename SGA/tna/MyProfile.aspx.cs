@@ -3,6 +3,7 @@ using DataTier;
 using InfusionSoftDotNet;
 using SGA.App_Code;
 using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Services;
@@ -56,9 +57,9 @@ namespace SGA.tna
                     this.fname.Value = ds.Tables[0].Rows[0]["firstname"].ToString();
                     this.lname.Value = ds.Tables[0].Rows[0]["lastname"].ToString();
                     this.email.Value = ds.Tables[0].Rows[0]["email"].ToString();
-                    this.txtPhoneNo.Value = ((ds.Tables[0].Rows[0]["phone"].ToString() == "") ? "Phone" : ds.Tables[0].Rows[0]["phone"].ToString());
-                    this.txtBranch.Value = ((ds.Tables[0].Rows[0]["branch"].ToString() == "") ? "branch" : ds.Tables[0].Rows[0]["branch"].ToString());
-                    this.txtJobTitle.Value = ((ds.Tables[0].Rows[0]["jobTitle"].ToString() == "") ? "jobTitle" : ds.Tables[0].Rows[0]["jobTitle"].ToString());                                
+                    this.txtPhoneNo.Value = ((ds.Tables[0].Rows[0]["phone"].ToString() == "") ? "" : ds.Tables[0].Rows[0]["phone"].ToString());
+                    this.txtBranch.Value = ((ds.Tables[0].Rows[0]["branch"].ToString() == "") ? "" : ds.Tables[0].Rows[0]["branch"].ToString());
+                    this.txtJobTitle.Value = ((ds.Tables[0].Rows[0]["jobTitle"].ToString() == "") ? "" : ds.Tables[0].Rows[0]["jobTitle"].ToString());                                
                     SGACommon.SelectListItem(this.ddlJobRole, ds.Tables[0].Rows[0]["jobrole"].ToString());
                     SGACommon.SelectListItem(this.ddlAgency, ds.Tables[0].Rows[0]["agencyId"].ToString());
                     SGACommon.SelectListItem(this.ddlCentral, ds.Tables[0].Rows[0]["isCentralProcurement"].ToString());
@@ -79,9 +80,10 @@ namespace SGA.tna
         [WebMethod]
         public static string UpdateProfile(string fname, string lname, string phone, string password, int department, int central, int classification, int experience, int qualification, int time, int nature, int size, int noOfContracts, int activities, string branch, string jobTitle )
         {
+            string initYear = ConfigurationManager.AppSettings["initYear"].ToString();
             string passwordSalt = SGACommon.CreateSalt(5);
             string passwordHash = SGACommon.CreatePasswordHash(password, passwordSalt);
-            SqlParameter[] param = new SqlParameter[19];
+            SqlParameter[] param = new SqlParameter[20];
             param[0] = new SqlParameter("@password", SqlDbType.VarChar);
             param[0].Value = password;
             param[1] = new SqlParameter("@firstName", SqlDbType.VarChar);
@@ -120,6 +122,8 @@ namespace SGA.tna
             param[17].Value = activities;
             param[18] = new SqlParameter("@userId", SqlDbType.Int);
             param[18].Value = SGACommon.LoginUserInfo.userId;
+            param[19] = new SqlParameter("@initYear", SqlDbType.VarChar);
+            param[19].Value = initYear;
             int result = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spUpdateProfileSelf", param));
             string[] strField = new string[]
 			{
@@ -140,7 +144,7 @@ namespace SGA.tna
                         lname
                     },
                     {
-                        "Email",
+                        "_Email0",
                         SGACommon.LoginUserInfo.name
                     },
                     {
@@ -148,11 +152,11 @@ namespace SGA.tna
                         "50036"
                     },
                     {
-                        "_CSBPassword",
+                        "_SAGovPassword",
                         password
                     },
                     {
-                        "_YourOrganisation",
+                        "_SAGovJobRole",
                         Profile.GetOrganisation(department)
                     },
                     //{
@@ -172,7 +176,7 @@ namespace SGA.tna
                         jobTitle
                     },
                     {
-                        "_Phone1",
+                        "Phone1",
                         phone
                     }
                 });

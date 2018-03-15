@@ -4,6 +4,7 @@ using InfusionSoftDotNet;
 using SGA.App_Code;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -97,7 +98,8 @@ namespace SGA.tna
                     new SqlParameter("@testDate", System.DateTime.UtcNow.ToString()),
                     new SqlParameter("@startDate", System.DateTime.UtcNow.ToString()),
                     new SqlParameter("@endDate", System.DateTime.UtcNow.ToString()),
-                    new SqlParameter("@sessionId", this.Session.SessionID)
+                    new SqlParameter("@sessionId", this.Session.SessionID),
+                    new SqlParameter("@initYear", ConfigurationManager.AppSettings["initYear"].ToString())
                 });
                 this.testId = System.Convert.ToInt32(ds.Tables[0].Rows[0]["testId"].ToString());
                 this.Cronometro1.Duracion = new System.TimeSpan(0, System.Convert.ToInt32(ds.Tables[0].Rows[0]["time"].ToString()), 0);

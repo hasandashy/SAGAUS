@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
@@ -58,8 +59,9 @@ namespace SGA.tna
 
         protected bool isCMAResult = false;
 
-        protected bool isCAAComplete = false;
+        protected bool isCAAComplete = false; protected bool isCMAComplete = false; protected bool isPKEComplete = false; protected bool isTNAComplete = false; protected bool isCMKComplete = false;
 
+        protected bool isResultLocked = true; protected bool isContractPack = true;
 
         public int pgNum
         {
@@ -110,9 +112,9 @@ namespace SGA.tna
             if (!base.IsPostBack)
             {
                 DataSet dsPermission = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetPremission", new SqlParameter[]
-				{
-					new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
-				});
+                {
+                    new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
+                });
                 if (dsPermission != null)
                 {
                     if (dsPermission.Tables.Count > 0 && dsPermission.Tables[0].Rows.Count > 0)
@@ -123,7 +125,54 @@ namespace SGA.tna
                         this.isCmkResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCmkResult"].ToString());
                         this.isCaaResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCaaResult"].ToString());
                         this.isCAAComplete = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["isCaaComplete"].ToString());
+                        this.isResultLocked = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["isResultLocked"].ToString());
+                        this.isCMAComplete = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["isCmaComplete"].ToString());
+                        this.isCMKComplete = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["isCmkComplete"].ToString());
+                        this.isTNAComplete = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["isTnaComplete"].ToString());
+                        this.isPKEComplete = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["isPkeComplete"].ToString());
+
                     }
+                }
+
+                if (!isCMAComplete)
+                {
+                    this.acrdcma.Visible = false;
+                }
+                if (!isCMKComplete)
+                {
+                    this.acrdcmk.Visible = false;
+                }
+                if (!isTNAComplete)
+                {
+                    this.acrdtna.Visible = false;
+                }
+                if (!isPKEComplete)
+                {
+                    this.acrdpke.Visible = false;
+                }
+                if (!isCAAComplete)
+                {
+                    this.acrdcaa.Visible = false;
+                }
+                if (isResultLocked)
+                {
+                    reportDiv.Visible = false;
+                }
+                int jobRole = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text, "select jobRole from tblusers where Id=" + SGACommon.LoginUserInfo.userId));
+                int[] arr = new int[] { 5, 6, 7, 8 };
+                if (arr.Contains(jobRole))
+                {
+                    this.isTnaResult = false;
+                    this.isContractPack = false;
+                    rptSgaTest.Visible = false;
+                    subheading1.Visible = true;
+                    subheading2.Visible = true;
+                    
+                    btnhome.Visible = true;
+                    spPKE.InnerHtml = "Procurement Technical Assessments";
+                    spCMK.InnerHtml = "Contract Management Assessments";
+                    heading.InnerHtml = "You have completed your first assessment.";
+
                 }
                 this.spSkills.Attributes["class"] = (this.isTnaResult ? "" : "lock");
                 this.spCMA.Attributes["class"] = (this.isCMAResult ? "" : "lock");
@@ -137,35 +186,36 @@ namespace SGA.tna
             }
             //Report Link
 
-            SqlParameter[] paramPack = new SqlParameter[]
-   {
-                new SqlParameter("@userId", SqlDbType.Int)
-   };
-            paramPack[0].Value = SGACommon.LoginUserInfo.userId;
-            DataSet dsPacks = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetReportIdByUserId", paramPack);
-            if (dsPacks != null)
-            {
-                if (dsPacks.Tables.Count > 0 && dsPacks.Tables[0].Rows.Count > 0)
-                {
-                    if (dsPacks.Tables[0].Rows[0]["packId"].ToString() == "6")
-                    {
-                        cmalink.HRef = "/IndividualReport/ContractManagement.aspx?id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
-                    }
-                    else
-                    {
-                        procurelink.HRef = "/IndividualReport/Procurement.aspx?id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
-                    }
+            //         SqlParameter[] paramPack = new SqlParameter[]
+            //{
+            //             new SqlParameter("@userId", SqlDbType.Int)
+            //};
+            //         paramPack[0].Value = SGACommon.LoginUserInfo.userId;
+            //         DataSet dsPacks = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetReportIdByUserId", paramPack);
+            //         if (dsPacks != null)
+            //         {
+            //             if (dsPacks.Tables.Count > 0 && dsPacks.Tables[0].Rows.Count > 0)
+            //             {
+            //                 if (dsPacks.Tables[0].Rows[0]["packId"].ToString() == "6")
+            //                 {
+            //                     cmalink.HRef = "/IndividualReport/ContractManagement.aspx?id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
+            //                 }
+            //                 else
+            //                 {
+            //                     procurelink.HRef = "/IndividualReport/Procurement.aspx?id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
+            //                 }
 
-                }
-            }
+            //             }
+            //         }
         }
 
         private void BindResults()
         {
             DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSSATests", new SqlParameter[]
-			{
-				new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
-			});
+            {
+                new SqlParameter("@userId", SGACommon.LoginUserInfo.userId),
+                  new SqlParameter("@initYear", ConfigurationManager.AppSettings["initYear"].ToString())
+            });
             int cnt = ds.Tables[0].Rows.Count;
             PagedDataSource paged = new PagedDataSource();
             paged.DataSource = ds.Tables[0].DefaultView;
@@ -232,18 +282,18 @@ namespace SGA.tna
             SGACommon.GetEmailTemplate(6, ref emailsubject, ref body);
             testIds = SGACommon.RemoveLastCharacter(testIds);
             string[] strArray = testIds.Split(new char[]
-			{
-				','
-			});
+            {
+                ','
+            });
             if (strArray.Length > 0)
             {
                 for (int i = 0; i < strArray.Length; i++)
                 {
                     string strMail = "";
                     DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSsaGraph", new SqlParameter[]
-					{
-						new SqlParameter("@testId", strArray[i])
-					});
+                    {
+                        new SqlParameter("@testId", strArray[i])
+                    });
                     if (ds != null)
                     {
                         if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -253,20 +303,20 @@ namespace SGA.tna
                                 strMail = strMail + "<tr><td style='font-family: Arial; font-size: 12px;'>" + ds.Tables[0].Rows[j]["topicTitle"].ToString().Replace("<br />", " ") + "</td>";
                                 object obj2 = strMail;
                                 strMail = string.Concat(new object[]
-								{
-									obj2,
-									"<td style='font-family: Arial; font-size: 12px;' >",
-									ds.Tables[0].Rows[j]["marksAvg"],
-									"</td>"
-								});
+                                {
+                                    obj2,
+                                    "<td style='font-family: Arial; font-size: 12px;' >",
+                                    ds.Tables[0].Rows[j]["marksAvg"],
+                                    "</td>"
+                                });
                                 obj2 = strMail;
                                 strMail = string.Concat(new object[]
-								{
-									obj2,
-									"<td style='font-family: Arial; font-size: 12px;' >",
-									ds.Tables[0].Rows[j]["Level"],
-									"</td></tr>"
-								});
+                                {
+                                    obj2,
+                                    "<td style='font-family: Arial; font-size: 12px;' >",
+                                    ds.Tables[0].Rows[j]["Level"],
+                                    "</td></tr>"
+                                });
                             }
                         }
                     }
@@ -284,21 +334,21 @@ namespace SGA.tna
             this.imagepath = base.Server.MapPath("~/pdfBgImages/");
             string pdfPath = "~/pdfReports/";
             string newFile = base.Server.MapPath(string.Concat(new string[]
-			{
-				pdfPath,
-				SGACommon.GetName(SGACommon.LoginUserInfo.userId),
-				"_",
-				testId,
-				"_ssatest.pdf"
-			}));
+            {
+                pdfPath,
+                SGACommon.GetName(SGACommon.LoginUserInfo.userId),
+                "_",
+                testId,
+                "_ssatest.pdf"
+            }));
             DataSet dsPages = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageSSAText", new SqlParameter[]
-			{
-				new SqlParameter("@flag", 2)
-			});
+            {
+                new SqlParameter("@flag", 2)
+            });
             SqlParameter[] param = new SqlParameter[]
-			{
-				new SqlParameter("@userId", SqlDbType.Int)
-			};
+            {
+                new SqlParameter("@userId", SqlDbType.Int)
+            };
             param[0].Value = SGACommon.LoginUserInfo.userId;
             DataSet dsProfile = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetProfileDetails", param);
             System.DateTime dtEnd = System.Convert.ToDateTime(SqlHelper.ExecuteScalar(CommandType.Text, "select testDate from tbluserSsaTest where testId=" + testId));
@@ -310,11 +360,11 @@ namespace SGA.tna
             DataSet dspercentage = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spAvgValuesTests", param);
             this.doc = new Document(PageSize.A4, 0f, 0f, 0f, 0f);
             DataSet dsJob = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageJobRoleSuggestion", new SqlParameter[]
-			{
-				new SqlParameter("@id", System.Convert.ToInt32(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["jobRole"].ToString()))),
-				new SqlParameter("@jobSuggestion", ""),
-				new SqlParameter("@flag", "4")
-			});
+            {
+                new SqlParameter("@id", System.Convert.ToInt32(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["jobRole"].ToString()))),
+                new SqlParameter("@jobSuggestion", ""),
+                new SqlParameter("@flag", "4")
+            });
             PdfWriter writer = PdfWriter.GetInstance(this.doc, new System.IO.FileStream(newFile, System.IO.FileMode.Create));
             HTMLWorker hw = new HTMLWorker(this.doc);
             string result;
@@ -440,11 +490,11 @@ namespace SGA.tna
                 }
                 this.AddBlankParagraph(1);
                 float[] expr_BA4 = new float[]
-				{
-					50f,
-					45f,
-					5f
-				};
+                {
+                    50f,
+                    45f,
+                    5f
+                };
                 this.doc.SetMargins(55f, 55f, 55f, 55f);
                 this.doc.NewPage();
                 str = "Your assessment summary";
@@ -452,17 +502,17 @@ namespace SGA.tna
                 hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page5Text"].ToString().Replace("@v0", dspercentage.Tables[0].Rows[0]["totalValue"].ToString()).Replace("@v1", System.Convert.ToDecimal(dspercentage.Tables[0].Rows[0]["totalAvg"].ToString()).ToString("#.##"))));
                 table = this.GetTable(3);
                 float[] colwidth = new float[]
-				{
-					25f,
-					20f,
-					55f
-				};
+                {
+                    25f,
+                    20f,
+                    55f
+                };
                 table.SetWidths(colwidth);
                 this.AddrowHeader(ref table, "Phase", "Average", " Level");
                 DataSet dsSummary = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSsaGraph", new SqlParameter[]
-				{
-					new SqlParameter("@testId", testId)
-				});
+                {
+                    new SqlParameter("@testId", testId)
+                });
                 if (dsSummary != null)
                 {
                     if (dsSummary.Tables.Count > 0 && dsSummary.Tables[0].Rows.Count > 0)
@@ -498,9 +548,9 @@ namespace SGA.tna
                 this.doc.Add(img);
                 this.AddBlankParagraph(1);
                 DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSuggestions", new SqlParameter[]
-				{
-					new SqlParameter("@flag", "2")
-				});
+                {
+                    new SqlParameter("@flag", "2")
+                });
                 if (ds != null)
                 {
                     if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -724,9 +774,9 @@ namespace SGA.tna
         {
             Chunk tc = new Chunk(lefttext, FontFactory.GetFont("Arial", 10f, 0, this.bcolor));
             PdfPCell cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             cell.PaddingBottom = 10f;
@@ -735,9 +785,9 @@ namespace SGA.tna
             tab.AddCell(cell);
             tc = new Chunk(righttext, FontFactory.GetFont("Arial", 10f, 0, this.bcolor));
             cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BorderColor = this.tableborcolor;
             tab.AddCell(cell);
         }
@@ -746,9 +796,9 @@ namespace SGA.tna
         {
             Chunk tc = new Chunk(lefttext, FontFactory.GetFont("Arial", 10f, 0, this.bcolor));
             PdfPCell cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BorderColor = this.wcolor;
             cell.PaddingBottom = 2f;
             cell.PaddingLeft = 5f;
@@ -756,9 +806,9 @@ namespace SGA.tna
             tab.AddCell(cell);
             tc = new Chunk(righttext, FontFactory.GetFont("Arial", 10f, 0, this.bcolor));
             cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BorderColor = this.wcolor;
             tab.AddCell(cell);
         }
@@ -767,9 +817,9 @@ namespace SGA.tna
         {
             Chunk tc = new Chunk(lefttext, FontFactory.GetFont("Arial", 10f, isBold ? 1 : 0, this.bcolor));
             PdfPCell cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BorderColor = this.tableborcolor;
             if (isPadding)
             {
@@ -783,9 +833,9 @@ namespace SGA.tna
             tab.AddCell(cell);
             tc = new Chunk(middletext, FontFactory.GetFont("Arial", 10f, isBold ? 1 : 0, this.bcolor));
             cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BorderColor = this.tableborcolor;
             if (isPadding)
             {
@@ -800,9 +850,9 @@ namespace SGA.tna
             tab.AddCell(cell);
             tc = new Chunk(righttext, FontFactory.GetFont("Arial", 10f, isBold ? 1 : 0, this.bcolor));
             cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BorderColor = this.tableborcolor;
             if (isPadding)
             {
@@ -820,41 +870,41 @@ namespace SGA.tna
         {
             Chunk tc = new Chunk(lefttext1, FontFactory.GetFont("Arial", 10f, 1, this.bcolor));
             PdfPCell cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             tab.AddCell(cell);
             tc = new Chunk(lefttext2, FontFactory.GetFont("Arial", 10f, 1, this.bcolor));
             cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             tab.AddCell(cell);
             tc = new Chunk(middletext, FontFactory.GetFont("Arial", 10f, 1, this.bcolor));
             cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             tab.AddCell(cell);
             tc = new Chunk(righttext1, FontFactory.GetFont("Arial", 10f, 0, this.bcolor));
             cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             tab.AddCell(cell);
             tc = new Chunk(righttext2, FontFactory.GetFont("Arial", 10f, 0, this.bcolor));
             cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             tab.AddCell(cell);
@@ -864,9 +914,9 @@ namespace SGA.tna
         {
             Chunk tc = new Chunk(lefttext, FontFactory.GetFont("Arial", 11f, 1, this.bcolor));
             PdfPCell cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             cell.PaddingBottom = 10f;
@@ -875,9 +925,9 @@ namespace SGA.tna
             tab.AddCell(cell);
             tc = new Chunk(middletext, FontFactory.GetFont("Arial", 11f, 1, this.bcolor));
             cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             cell.PaddingBottom = 10f;
@@ -886,9 +936,9 @@ namespace SGA.tna
             tab.AddCell(cell);
             tc = new Chunk(righttext, FontFactory.GetFont("Arial", 11f, 1, this.bcolor));
             cell = new PdfPCell(new Phrase
-			{
-				tc
-			});
+            {
+                tc
+            });
             cell.BackgroundColor = this.tablebackcolor;
             cell.BorderColor = this.tableborcolor;
             cell.PaddingBottom = 10f;

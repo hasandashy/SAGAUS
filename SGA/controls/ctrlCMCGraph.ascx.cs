@@ -2,6 +2,7 @@
 using SGA.App_Code;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -79,6 +80,20 @@ namespace SGA.controls
             }
         }
 
+        private int _userId;
+
+        public int userId
+        {
+            get
+            {
+                return this._userId;
+            }
+            set
+            {
+                this._userId = value;
+            }
+        }
+
         public int showCompare
         {
             get
@@ -103,11 +118,71 @@ namespace SGA.controls
 
         private void BindGraph()
         {
-            DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSgaGraph", new SqlParameter[]
+            Dictionary<int, decimal> dict = new Dictionary<int, decimal>();
+            string procName = "spGetSsaGraph";
+            string topicTitle = string.Empty;
+            decimal scaledMarks = 0.00M;
+            DataSet dsTest = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetTestIdByUser", new SqlParameter[]
+            {
+                        new SqlParameter("@userId", SGACommon.LoginUserInfo.userId),
+                        new SqlParameter("@initYear",ConfigurationManager.AppSettings["initYear"].ToString())
+            });
+            if (dsTest != null)
+            {
+                if (dsTest.Tables.Count > 0 && dsTest.Tables[0].Rows.Count > 0)
+                {
+                    for (int j = 0; j < dsTest.Tables[0].Rows.Count; j++)
+                    {
+                        if (dsTest.Tables[0].Rows[j]["testType"].ToString() == "2")
+                        {
+                            procName = "spGetSgaGraph";
+                        }
+                        else
+                        {
+                            procName = "spGetSsaGraph";
+                        }
+                        DataSet dsSummary = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, procName, new SqlParameter[]
+               {
+                        new SqlParameter("@testId", dsTest.Tables[0].Rows[j]["testId"].ToString())
+               });
+                        if (dsSummary != null)
+                        {
+                            if (dsSummary.Tables.Count > 0 && dsSummary.Tables[0].Rows.Count > 0)
+                            {
+                                for (int i = 0; i < dsSummary.Tables[0].Rows.Count; i++)
+                                {
+                                    if (procName == "spGetSgaGraph")
+                                    {
+                                        scaledMarks = GetPercentage(Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"]));
+                                    }
+                                    else
+                                    {
+                                        scaledMarks = Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"]);
+                                    }
+                                    if (dict.ContainsKey(i))
+                                    {
+                                        //decimal Avgpercentage = (dict[i] + Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"])) / 2;
+                                        decimal Avgpercentage =  (dict[i] + scaledMarks) / 2;
+                                        dict[i] = Avgpercentage;
+                                    }
+                                    else
+                                    {
+                                        //dict.Add(i, Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"]));
+                                        dict.Add(i, scaledMarks);
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+                    //--------------------------------------------------
+                    DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSgaGraph", new SqlParameter[]
 			{
 				new SqlParameter("@testId", this.testId)
 			});
-            if (ds != null)
+            if (ds != null && dict.Count > 0)
             {
                 if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
@@ -116,36 +191,36 @@ namespace SGA.controls
                         switch (i)
                         {
                             case 0:
-                                this.topic1mark = GetPercentage(System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString()));
-                                this.topic1name = ds.Tables[0].Rows[i]["topicname"].ToString().Replace("<br />", " ");
+                                this.topic1mark = Math.Truncate(Convert.ToDecimal(dict.Where(k => k.Key == 0).Select(m => m.Value).First()) * 100) / 100;
+                                this.topic1name = ds.Tables[0].Rows[i]["topicName"].ToString().Replace("<br />", " ");
                                 break;
                             case 1:
-                                this.topic2mark = GetPercentage(System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString()));
-                                this.topic2name = ds.Tables[0].Rows[i]["topicname"].ToString().Replace("<br />", " ");
+                                this.topic2mark = Math.Truncate(Convert.ToDecimal(dict.Where(k => k.Key == 1).Select(m => m.Value).First()) * 100) / 100;
+                                this.topic2name = ds.Tables[0].Rows[i]["topicName"].ToString().Replace("<br />", " ");
                                 break;
                             case 2:
-                                this.topic3mark = GetPercentage(System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString()));
-                                this.topic3name = ds.Tables[0].Rows[i]["topicname"].ToString().Replace("<br />", " ");
+                                this.topic3mark = Math.Truncate(Convert.ToDecimal(dict.Where(k => k.Key == 2).Select(m => m.Value).First()) * 100) / 100;
+                                this.topic3name = ds.Tables[0].Rows[i]["topicName"].ToString().Replace("<br />", " ");
                                 break;
                             case 3:
-                                this.topic4mark = GetPercentage(System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString()));
-                                this.topic4name = ds.Tables[0].Rows[i]["topicname"].ToString().Replace("<br />", " ");
+                                this.topic4mark = Math.Truncate(Convert.ToDecimal(dict.Where(k => k.Key == 3).Select(m => m.Value).First()) * 100) / 100;
+                                this.topic4name = ds.Tables[0].Rows[i]["topicName"].ToString().Replace("<br />", " ");
                                 break;
                             case 4:
-                                this.topic5mark = GetPercentage(System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString()));
-                                this.topic5name = ds.Tables[0].Rows[i]["topicname"].ToString().Replace("<br />", " ");
+                                this.topic5mark = Math.Truncate(Convert.ToDecimal(dict.Where(k => k.Key == 4).Select(m => m.Value).First()) * 100) / 100;
+                                this.topic5name = ds.Tables[0].Rows[i]["topicName"].ToString().Replace("<br />", " ");
                                 break;
                             case 5:
-                                this.topic6mark = GetPercentage(System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString()));
-                                this.topic6name = ds.Tables[0].Rows[i]["topicname"].ToString().Replace("<br />", " ");
+                                this.topic6mark = Math.Truncate(Convert.ToDecimal(dict.Where(k => k.Key == 5).Select(m => m.Value).First()) * 100) / 100;
+                                this.topic6name = ds.Tables[0].Rows[i]["topicName"].ToString().Replace("<br />", " ");
                                 break;
                             case 6:
-                                this.topic7mark = GetPercentage(System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString()));
-                                this.topic7name = ds.Tables[0].Rows[i]["topicname"].ToString().Replace("<br />", " ");
+                                this.topic7mark = Math.Truncate(Convert.ToDecimal(dict.Where(k => k.Key == 6).Select(m => m.Value).First()) * 100) / 100;
+                                this.topic7name = ds.Tables[0].Rows[i]["topicName"].ToString().Replace("<br />", " ");
                                 break;
                             case 7:
-                                this.topic8mark = GetPercentage(System.Convert.ToDecimal(ds.Tables[0].Rows[i]["percentage"].ToString()));
-                                this.topic8name = ds.Tables[0].Rows[i]["topicname"].ToString().Replace("<br />", " ");
+                                this.topic8mark = Math.Truncate(Convert.ToDecimal(dict.Where(k => k.Key == 7).Select(m => m.Value).First()) * 100) / 100;
+                                this.topic8name = ds.Tables[0].Rows[i]["topicName"].ToString().Replace("<br />", " ");
                                 break;
                         }
                     }

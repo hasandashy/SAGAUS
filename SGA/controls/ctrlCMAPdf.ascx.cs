@@ -70,6 +70,13 @@ namespace SGA.controls
                     new SqlParameter("@Id", this.Id),
                     new SqlParameter("@flag", "0")
                 });
+
+                
+
+                string initYear = SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetInitYear", new SqlParameter[]
+                                {
+                        new SqlParameter("@reportId", this.Id)
+                                }).ToString();
                 if (dsTestDetails != null)
                 {
                     if (dsTestDetails.Tables.Count > 0 && dsTestDetails.Tables[0].Rows.Count > 0)
@@ -106,7 +113,7 @@ namespace SGA.controls
                 };
                 param[0].Value = userId;
                 DataSet dsProfile = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetProfileDetails", param);
-                System.DateTime dtEnd = System.Convert.ToDateTime(SqlHelper.ExecuteScalar(CommandType.Text, "select testDate from tbluserCmaTest where userId=" + userId));
+                System.DateTime dtEnd = System.Convert.ToDateTime(SqlHelper.ExecuteScalar(CommandType.Text, "select testDate from tbluserCmaTest where userId=" + userId + " and initYear = '" + initYear +"'"));
                 param = new SqlParameter[2];
                 param[0] = new SqlParameter("@userId", SqlDbType.Int);
                 param[0].Value = userId;
@@ -290,7 +297,8 @@ namespace SGA.controls
                     decimal scaledMarks = 0.00M;
                     DataSet dsTest = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetTestIdByUser", new SqlParameter[]
                         {
-                        new SqlParameter("@userId", userId)
+                        new SqlParameter("@userId", userId),
+                        new SqlParameter("@initYear",initYear)
                         });
                         if (dsTest != null)
                         {
@@ -376,7 +384,7 @@ namespace SGA.controls
                     };
                     table.SetWidths(colwidth);
                     this.AddrowHeader(ref table, "Dimension", "Result", " Level");
-                    String caatestId = SqlHelper.ExecuteScalar(CommandType.Text, "select testid from tblusercaatest where userid=" + userId).ToString();
+                    String caatestId = SqlHelper.ExecuteScalar(CommandType.Text, "select testid from tblusercaatest where userid=" + userId + " and initYear = '" + initYear + "'").ToString();
                     DataSet dsCAASummary = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCaaGraph", new SqlParameter[]
                     {
                         new SqlParameter("@testId", caatestId)

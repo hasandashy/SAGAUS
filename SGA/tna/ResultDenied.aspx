@@ -42,7 +42,7 @@
 							<p>&nbsp;</p>
                             <span>Below you will find the results for each assessment you have taken. In the left hand column, you will note the menu where you can easily navigate your bar-graphs. </span>
 							<div class="clear"></div>
-                            <br /><p><span class="dark">NOTE:</span> Your report will be delivered one week after the conclusion of the assessment period. To receive your report you need to complete all assessments assigned to you.</p>
+                            <br /><p><span class="dark">NOTE:</span> Your report will be delivered after the conclusion of the assessment period. To receive your report you need to complete all assessments assigned to you.</p>
 						</article>
 					</section>
 					<section class="my-result-box">
@@ -52,7 +52,7 @@
 						<p>&nbsp;</p>
 						<p>&nbsp;</p>
 						<div class="my-result-container">
-							<div class="col-lft">
+							<%--<div class="col-lft">
 
                               
                                 <% if(isTnaResult) { %>
@@ -80,7 +80,7 @@
                                 <% } %>
                                
                                
-                                <% if (isCMAResult)
+                                <% if (isCMAResult && isContractPack)
                                     { %>
                                  <p class="title18"><span id="spCMA" runat="server">Contract Management Self <br />Assessment</span></p>
                                 <div class="acrd-menu">
@@ -121,7 +121,7 @@
 									</div>
 								</div>
 								<% } %>                         
-							</div>
+							</div>--%>
 							<div class="col-cnt">
 								<div class="wide640">
 									<p class="txt28 orange mrg-bt-5 floatL">Results Restricted</p>

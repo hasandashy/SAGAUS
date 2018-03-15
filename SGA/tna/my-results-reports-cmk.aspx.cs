@@ -4,10 +4,12 @@ using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
 using SGA.App_Code;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
@@ -59,7 +61,10 @@ namespace SGA.tna
 
         protected bool isCMAResult = false;
 
-        protected bool isCAAComplete = false;
+        protected bool isCAAComplete = false; protected bool isCMAComplete = false; protected bool isPKEComplete = false; protected bool isTNAComplete = false; protected bool isCMKComplete = false;
+
+        protected bool isResultLocked = true;protected bool isContractPack = true;
+
         public int pgNum
         {
             get
@@ -122,7 +127,48 @@ namespace SGA.tna
                         this.isCmkResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCmkResult"].ToString());
                         this.isCaaResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCaaResult"].ToString());
                         this.isCAAComplete = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["isCaaComplete"].ToString());
+                        this.isResultLocked = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["isResultLocked"].ToString());
+                        this.isCMAComplete = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["isCmaComplete"].ToString());
+                        this.isCMKComplete = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["isCmkComplete"].ToString());
+                        this.isTNAComplete = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["isTnaComplete"].ToString());
+                        this.isPKEComplete = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["isPkeComplete"].ToString());
+
                     }
+                }
+
+                if (!isCMAComplete)
+                {
+                    this.acrdcma.Visible = false;
+                }
+                if (!isCMKComplete)
+                {
+                    this.acrdcmk.Visible = false;
+                }
+                if (!isTNAComplete)
+                {
+                    this.acrdtna.Visible = false;
+                }
+                if (!isPKEComplete)
+                {
+                    this.acrdpke.Visible = false;
+                }
+                if (!isCAAComplete)
+                {
+                    this.acrdcaa.Visible = false;
+                }
+                if (isResultLocked)
+                {
+                    reportDiv.Visible = false;
+                }
+                int jobRole = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text, "select jobRole from tblusers where Id=" + SGACommon.LoginUserInfo.userId));
+                int[] arr = new int[] { 5, 6, 7, 8 };
+                if (arr.Contains(jobRole))
+                {
+                    this.isTnaResult = false;
+                   this.isContractPack = false;
+
+                    spPKE.InnerHtml = "Procurement Technical Assessments";
+                    spCMK.InnerHtml = "Contract Management Assessments";
                 }
                 this.spSkills.Attributes["class"] = (this.isTnaResult ? "" : "lock");
                 this.spCMA.Attributes["class"] = (this.isCMAResult ? "" : "lock");
@@ -137,34 +183,35 @@ namespace SGA.tna
 
             //Report Link
 
-            SqlParameter[] paramPack = new SqlParameter[]
-   {
-                new SqlParameter("@userId", SqlDbType.Int)
-   };
-            paramPack[0].Value = SGACommon.LoginUserInfo.userId;
-            DataSet dsPacks = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetReportIdByUserId", paramPack);
-            if (dsPacks != null)
-            {
-                if (dsPacks.Tables.Count > 0 && dsPacks.Tables[0].Rows.Count > 0)
-                {
-                    if (dsPacks.Tables[0].Rows[0]["packId"].ToString() == "6")
-                    {
-                        cmalink.HRef = "/IndividualReport/ContractManagement.aspx?id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
-                    }
-                    else
-                    {
-                        procurelink.HRef = "/IndividualReport/Procurement.aspx?id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
-                    }
+            //         SqlParameter[] paramPack = new SqlParameter[]
+            //{
+            //             new SqlParameter("@userId", SqlDbType.Int)
+            //};
+            //         paramPack[0].Value = SGACommon.LoginUserInfo.userId;
+            //         DataSet dsPacks = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetReportIdByUserId", paramPack);
+            //         if (dsPacks != null)
+            //         {
+            //             if (dsPacks.Tables.Count > 0 && dsPacks.Tables[0].Rows.Count > 0)
+            //             {
+            //                 if (dsPacks.Tables[0].Rows[0]["packId"].ToString() == "6")
+            //                 {
+            //                     cmalink.HRef = "/IndividualReport/ContractManagement.aspx?id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
+            //                 }
+            //                 else
+            //                 {
+            //                     procurelink.HRef = "/IndividualReport/Procurement.aspx?id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
+            //                 }
 
-                }
-            }
+            //             }
+            //         }
         }
 
         private void BindResults()
         {
             DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetCMKTests", new SqlParameter[]
             {
-                new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
+                new SqlParameter("@userId", SGACommon.LoginUserInfo.userId),
+                  new SqlParameter("@initYear", ConfigurationManager.AppSettings["initYear"].ToString())
             });
             int cnt = ds.Tables[0].Rows.Count;
             PagedDataSource paged = new PagedDataSource();
@@ -204,6 +251,81 @@ namespace SGA.tna
                 {
                     lblConvertedDate.Text = SGACommon.ToAusTimeZone(dtTestdate).ToString("dd/MM/yyyy HH:mm tt");
                 }
+
+                //-----------------------------------------------------------------------------------------
+                Dictionary<int, decimal> dict = new Dictionary<int, decimal>();
+
+                string procName = "spGetCMAGraph";
+                string topicTitle = string.Empty;
+                decimal scaledMarks = 0.00M;
+                DataSet dsTest = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetTestIdByUser", new SqlParameter[]
+                    {
+                        new SqlParameter("@userId", SGACommon.LoginUserInfo.userId),
+                        new SqlParameter("@initYear",ConfigurationManager.AppSettings["initYear"].ToString())
+                    });
+                if (dsTest != null)
+                {
+                    if (dsTest.Tables.Count > 0 && dsTest.Tables[0].Rows.Count > 0)
+                    {
+                        for (int j = 0; j < dsTest.Tables[0].Rows.Count; j++)
+                        {
+                            if (dsTest.Tables[0].Rows[j]["testType"].ToString() == "4")
+                            { procName = "spGetCMKGraph"; }
+                            else
+                            {
+                                procName = "spGetCMAGraph";
+                            }
+                            DataSet dsSummary = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, procName, new SqlParameter[]
+                   {
+                        new SqlParameter("@testId", dsTest.Tables[0].Rows[j]["testId"].ToString())
+                   });
+                            if (dsSummary != null)
+                            {
+                                if (dsSummary.Tables.Count > 0 && dsSummary.Tables[0].Rows.Count > 0)
+                                {
+                                    for (int i = 0; i < dsSummary.Tables[0].Rows.Count; i++)
+                                    {
+
+
+                                        if (procName == "spGetCMKGraph")
+                                        {
+                                            scaledMarks = GetPercentage(Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"]), 2);
+                                        }
+                                        else
+                                        {
+                                            scaledMarks = Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"]);
+                                        }
+                                        if (dict.ContainsKey(i))
+                                        {
+                                            //decimal Avgpercentage = (dict[i] + Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"])) / 2;
+                                            decimal Avgpercentage = (dict[i] + scaledMarks) / 2;
+                                            dict[i] = Avgpercentage;
+                                        }
+                                        else
+                                        {
+                                            //dict.Add(i, Convert.ToDecimal(dsSummary.Tables[0].Rows[i]["percentage"]));
+                                            dict.Add(i, scaledMarks);
+                                        }
+
+
+                                    }
+
+                                }
+                            }
+                        }
+
+                        Label lblPerc = (Label)e.Item.FindControl("lblPercentage");
+                        
+                        if (lblConvertedDate != null)
+                        {
+                            lblPerc.Text = (dict.Values.Sum() / 8).ToString("0.00") + " %";
+                        }
+
+
+                       
+                      
+                    }
+                }
             }
         }
 
@@ -214,6 +336,17 @@ namespace SGA.tna
         protected void lnkResults_Click(object sender, System.EventArgs e)
         {
         }
+
+        private decimal GetPercentage(decimal score, int flag)
+        {
+            score = Convert.ToDecimal(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "getScaledDownPercentage", new SqlParameter[]
+                                 {
+                        new SqlParameter("@score", score),
+                        new SqlParameter("@flag",flag)
+                                 }));
+            return score;
+        }
+
 
         protected void rptSgaTest_ItemCommand(object source, RepeaterCommandEventArgs e)
         {

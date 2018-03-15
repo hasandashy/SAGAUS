@@ -1269,7 +1269,13 @@ namespace SGA.App_Code
                     break;
                 case 16:
                     strValue = "TAFE SA";
-                    break;              
+                    break;
+                case 17:
+                    strValue = "Department for Child Protection";
+                    break;
+                case 18:
+                    strValue = "SA Water";
+                    break;
             }
             return strValue;
         }

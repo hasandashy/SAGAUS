@@ -171,6 +171,7 @@
 					<!-- Logoin start -->
 					<a id="login-mob" href="#nogo"><span>Login</span></a>
 					<div id="login">
+                        
                      <p><strong>Existing participants login here!</strong></p>
 						<p>
                         <asp:TextBox ID="txtUserName" runat="server"  MaxLength="100" CssClass="txt-field" onfocus="if(this.value==&#39;Username&#39;)this.value=&#39;&#39;" onblur="if(this.value==&#39;&#39;) {this.value = &#39;Username&#39;}" Text="Username" ></asp:TextBox>
@@ -190,9 +191,11 @@
 									
 						<p><a href="/Default.aspx#register" id="registerlink" class="">Haven't registered?</a>  <a href="Reset_password.aspx" id="reset-form" class="example5">Reset password</a></p>
 						
-			
-						
 					</div>
+                    <div style="font-size: 12px;padding: 30px 30px 10px 20px;position: absolute;right: 0;top: 0;width: 195px;">
+			
+						<%--<img src="Images/Login_box.png" /></div>--%>
+                     
 					<!-- Login end // -->
 				</header>
                 <!-- Header end // -->

@@ -47,7 +47,7 @@
 							<p class="title28">Your individual feedback report</p>
 							<p>This report is tailored especially for you and in it you will find suggestions and recommendations that will help you develop skills and knowledge in the areas identified for you.</p>
 							<p></p>
-							<p>Your report will be delivered one week after the conclusion of the assessment period. To receive your report you need to complete all assessments assigned to you.  </p>
+							<p>Your report will be delivered after the conclusion of the assessment period. To receive your report you need to complete all assessments assigned to you.  </p>
 							<p></p>
 							<p><strong>REVIEW</strong> the 70:20:10 recommendations in your report, consider your development priorities and consider how you can apply the suggestions in your workplace. </p>
 							<p>&nbsp;</p>

@@ -14,7 +14,7 @@
     <RootNamespace>SGA</RootNamespace>
     <AssemblyName>SGA</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -77,9 +77,9 @@
     <Reference Include="System.Web.Helpers">
       <HintPath>..\..\..\benproject\dlls\System.Web.Helpers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.Mvc, Version=3.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Projectsource\QldGov\SGA\SGA\bin\System.Web.Mvc.dll</HintPath>
+      <HintPath>..\..\..\System.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Razor">
       <HintPath>..\..\..\benproject\dlls\System.Web.Razor.dll</HintPath>
@@ -108,11 +108,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About_us.aspx" />
+    <Content Include="Commercial_Awareness_Assesment.aspx" />
     <Content Include="Contact_us.aspx" />
     <Content Include="ContractReport.aspx" />
+    <Content Include="Contract_Knowledge_Evaluation.aspx" />
+    <Content Include="Images\Login_box.png" />
+    <Content Include="IndividualReport\ContractManagement.aspx" />
     <Content Include="Contract_Management_TNA.aspx" />
     <Content Include="controls\ctrlBAGraph.ascx" />
     <Content Include="controls\ctrlBAPDF.ascx" />
+    <Content Include="controls\ctrlCAAGraph.ascx" />
     <Content Include="controls\ctrlCMAGraph.ascx" />
     <Content Include="controls\ctrlCMAPdf.ascx" />
     <Content Include="controls\ctrlCMCGraph.ascx" />
@@ -650,6 +655,7 @@
     <Content Include="Images\btn-register-here1.png" />
     <Content Include="Images\btn-submit.png" />
     <Content Include="Images\btnProceesTNA.png" />
+    <Content Include="Images\Businessmen.jpg" />
     <Content Include="Images\bx_loader.gif" />
     <Content Include="Images\cal.gif" />
     <Content Include="Images\captcha-btn.png" />
@@ -829,6 +835,7 @@
     <Content Include="Leadership.aspx" />
     <Content Include="LeadershipAction.aspx" />
     <Content Include="LeadershipReport.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="manager\css\mediaquery.css" />
     <Content Include="manager\css\style.css" />
     <Content Include="manager\Dashboard.aspx" />
@@ -873,9 +880,11 @@
     <Content Include="pdfBgImages\page1img.jpg" />
     <Content Include="pdfBgImages\page20.jpg" />
     <Content Include="pdfBgImages\page21.jpg" />
+    <Content Include="pdfBgImages\PastedGraphic-3.png" />
     <Content Include="pdfBgImages\proleadership.png" />
     <Content Include="pdfBgImages\proleadership_old.jpg" />
     <Content Include="pdfBgImages\QldGov-Logo.png" />
+    <Content Include="pdfBgImages\SAGovLogo.png" />
     <Content Include="pdfBgImages\scoringguide.jpg" />
     <Content Include="pdfBgImages\scoringguide_old.jpg" />
     <Content Include="pdfBgImages\sizzer_bg.jpg" />
@@ -886,6 +895,8 @@
     <Content Include="Popup.aspx" />
     <Content Include="Privacy.aspx" />
     <Content Include="ProcurementReport.aspx" />
+    <Content Include="Procurement_knowledge_evaluation.aspx" />
+    <Content Include="IndividualReport\Procurement.aspx" />
     <Content Include="Procurement_TNA.aspx" />
     <Content Include="Reset_Password.aspx" />
     <Content Include="role_guidelines.aspx" />
@@ -905,37 +916,33 @@
     <Content Include="Styles\style.css" />
     <Content Include="Terms.aspx" />
     <Content Include="testReports.aspx" />
-    <Content Include="tna\ba-assessment-instructions.aspx" />
-    <Content Include="tna\behavioural-assessment-test.aspx" />
+    <Content Include="tna\ca-awareness-instructions.aspx" />
     <Content Include="tna\cma-assessment-instructions.aspx" />
     <Content Include="tna\cma-relationsip-context.aspx" />
     <Content Include="tna\cmk-assessment-instructions.aspx" />
     <Content Include="tna\cmk-relationsip-context.aspx" />
+    <Content Include="tna\commercial-awareness-assessment-test.aspx" />
     <Content Include="tna\contract-management-assessment-test.aspx" />
     <Content Include="tna\contract-management-knowledge-evaluation.aspx" />
     <Content Include="tna\default.aspx" />
     <Content Include="tna\Help.aspx" />
+    <Content Include="tna\my-cma-reports.aspx" />
+    <Content Include="tna\my-procurement-report.aspx" />
     <Content Include="tna\my-result-bar-graph.aspx" />
-    <Content Include="tna\my-results-bar-graph-ba.aspx" />
+    <Content Include="tna\my-results-bar-graph-caa.aspx" />
     <Content Include="tna\my-results-bar-graph-cma.aspx" />
     <Content Include="tna\my-results-bar-graph-cmk.aspx" />
-    <Content Include="tna\my-results-bar-graph-np.aspx" />
     <Content Include="tna\my-results-bar-graph-ssa.aspx" />
-    <Content Include="tna\my-results-reports-ba.aspx" />
+    <Content Include="tna\my-results-reports-caa.aspx" />
     <Content Include="tna\my-results-reports-cma.aspx" />
-    <Content Include="tna\my-results-reports-np.aspx" />
+    <Content Include="tna\my-results-reports-cmk.aspx" />
     <Content Include="tna\my-results-reports-ssa.aspx" />
+    <Content Include="tna\my-results-reports.aspx" />
     <Content Include="tna\MyProfile.aspx" />
-    <Content Include="tna\negotiation-profile-test.aspx" />
-    <Content Include="tna\np-assessment-instructions.aspx" />
     <Content Include="tna\pk-evaluation-instructions.aspx" />
     <Content Include="tna\procurement-knowledge-evaluation-test.aspx" />
     <Content Include="tna\ResultDenied.aspx" />
     <Content Include="tna\share-the-challenge.aspx" />
-    <Content Include="tna\showBAPDF.aspx" />
-    <Content Include="tna\showCMAPdf.aspx" />
-    <Content Include="tna\showNPPdf.aspx" />
-    <Content Include="tna\showSSAPdf.aspx" />
     <Content Include="tna\skills-self-test.aspx" />
     <Content Include="tna\ssa-assessment-instructions.aspx" />
     <Content Include="tna\TestDenied.aspx" />
@@ -959,11 +966,11 @@
     <Content Include="webadmin\css\thickbox.css" />
     <Content Include="webadmin\DashBoard.aspx" />
     <Content Include="webadmin\DownloadReport.aspx" />
-    <Content Include="webadmin\EditBAtest.aspx" />
+    <Content Include="webadmin\EditCAAtest.aspx" />
     <Content Include="webadmin\EditCMAtest.aspx" />
+    <Content Include="webadmin\EditCMKtest.aspx" />
     <Content Include="webadmin\EditCMStest.aspx" />
-    <Content Include="webadmin\EditMPtest.aspx" />
-    <Content Include="webadmin\EditNPtest.aspx" />
+    <Content Include="webadmin\EditSGAtest.aspx" />
     <Content Include="webadmin\EditSSAtest.aspx" />
     <Content Include="webadmin\EditTemplate.aspx" />
     <Content Include="webadmin\EmailTracker.aspx" />
@@ -1038,30 +1045,29 @@
     <Content Include="webadmin\js\simpletabs_1.3.packed.js" />
     <Content Include="webadmin\js\thickbox.js" />
     <Content Include="webadmin\ListUsers.aspx" />
-    <Content Include="webadmin\ManageBA.aspx" />
+    <Content Include="webadmin\ManageCAA.aspx" />
     <Content Include="webadmin\ManageCMA.aspx" />
     <Content Include="webadmin\ManageCMC.aspx" />
+    <Content Include="webadmin\ManageCMK.aspx" />
     <Content Include="webadmin\ManageEmailTemplates.aspx" />
     <Content Include="webadmin\ManageJobSuggestions.aspx" />
-    <Content Include="webadmin\ManageMP.aspx" />
-    <Content Include="webadmin\ManageNP.aspx" />
     <Content Include="webadmin\ManagePlans.aspx" />
     <Content Include="webadmin\ManageReportRecommendations.aspx" />
     <Content Include="webadmin\ManageReportSuggestions.aspx" />
     <Content Include="webadmin\ManageReportText.aspx" />
+    <Content Include="webadmin\ManageSGA.aspx" />
     <Content Include="webadmin\ManageSSA.aspx" />
     <Content Include="webadmin\ManageWorkshop.aspx" />
     <Content Include="webadmin\PlanAndElearningMapping.aspx" />
     <Content Include="webadmin\ReportsDownload.aspx" />
     <Content Include="webadmin\ShareChallenge.aspx" />
-    <Content Include="webadmin\showBAPDF.aspx" />
     <Content Include="webadmin\ShowCMAPdf.aspx" />
-    <Content Include="webadmin\ShowNPPdf.aspx" />
     <Content Include="webadmin\showSSAPdf.aspx" />
     <Content Include="webadmin\TabSample.aspx" />
-    <Content Include="webadmin\TestChartBA.aspx" />
+    <Content Include="webadmin\TestChartCAA.aspx" />
     <Content Include="webadmin\TestChartCMA.aspx" />
-    <Content Include="webadmin\TestChartNP.aspx" />
+    <Content Include="webadmin\TestChartCMK.aspx" />
+    <Content Include="webadmin\TestChartSGA.aspx" />
     <Content Include="webadmin\TestChartSSA.aspx" />
     <Content Include="webadmin\UserDetails.aspx" />
   </ItemGroup>
@@ -1078,6 +1084,13 @@
     <Compile Include="App_Code\SGAMembershipProvider.cs" />
     <Compile Include="App_Code\SGARoleProvider.cs" />
     <Compile Include="App_Code\SqlHelper.cs" />
+    <Compile Include="Commercial_Awareness_Assesment.aspx.cs">
+      <DependentUpon>Commercial_Awareness_Assesment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Commercial_Awareness_Assesment.aspx.designer.cs">
+      <DependentUpon>Commercial_Awareness_Assesment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact_us.aspx.cs">
       <DependentUpon>Contact_us.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1091,6 +1104,20 @@
     </Compile>
     <Compile Include="ContractReport.aspx.designer.cs">
       <DependentUpon>ContractReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_Knowledge_Evaluation.aspx.cs">
+      <DependentUpon>Contract_Knowledge_Evaluation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contract_Knowledge_Evaluation.aspx.designer.cs">
+      <DependentUpon>Contract_Knowledge_Evaluation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IndividualReport\ContractManagement.aspx.cs">
+      <DependentUpon>ContractManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IndividualReport\ContractManagement.aspx.designer.cs">
+      <DependentUpon>ContractManagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contract_Management_TNA.aspx.cs">
       <DependentUpon>Contract_Management_TNA.aspx</DependentUpon>
@@ -1116,6 +1143,13 @@
     </Compile>
     <Compile Include="controls\ctrlBAPDF.ascx.designer.cs">
       <DependentUpon>ctrlBAPDF.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\ctrlCAAGraph.ascx.cs">
+      <DependentUpon>ctrlCAAGraph.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\ctrlCAAGraph.ascx.designer.cs">
+      <DependentUpon>ctrlCAAGraph.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\ctrlCMAGraph.ascx.cs">
       <DependentUpon>ctrlCMAGraph.ascx</DependentUpon>
@@ -1274,6 +1308,13 @@
     <Compile Include="LeadershipReport.aspx.designer.cs">
       <DependentUpon>LeadershipReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ManagerMaster.Master.cs">
       <DependentUpon>ManagerMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1329,6 +1370,20 @@
     </Compile>
     <Compile Include="ProcurementReport.aspx.designer.cs">
       <DependentUpon>ProcurementReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Procurement_knowledge_evaluation.aspx.cs">
+      <DependentUpon>Procurement_knowledge_evaluation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Procurement_knowledge_evaluation.aspx.designer.cs">
+      <DependentUpon>Procurement_knowledge_evaluation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IndividualReport\Procurement.aspx.cs">
+      <DependentUpon>Procurement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IndividualReport\Procurement.aspx.designer.cs">
+      <DependentUpon>Procurement.aspx</DependentUpon>
     </Compile>
     <Compile Include="Procurement_TNA.aspx.cs">
       <DependentUpon>Procurement_TNA.aspx</DependentUpon>
@@ -1387,19 +1442,12 @@
     <Compile Include="tnaMaster.Master.designer.cs">
       <DependentUpon>tnaMaster.Master</DependentUpon>
     </Compile>
-    <Compile Include="tna\ba-assessment-instructions.aspx.cs">
-      <DependentUpon>ba-assessment-instructions.aspx</DependentUpon>
+    <Compile Include="tna\ca-awareness-instructions.aspx.cs">
+      <DependentUpon>ca-awareness-instructions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="tna\ba-assessment-instructions.aspx.designer.cs">
-      <DependentUpon>ba-assessment-instructions.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="tna\behavioural-assessment-test.aspx.cs">
-      <DependentUpon>behavioural-assessment-test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="tna\behavioural-assessment-test.aspx.designer.cs">
-      <DependentUpon>behavioural-assessment-test.aspx</DependentUpon>
+    <Compile Include="tna\ca-awareness-instructions.aspx.designer.cs">
+      <DependentUpon>ca-awareness-instructions.aspx</DependentUpon>
     </Compile>
     <Compile Include="tna\cma-assessment-instructions.aspx.cs">
       <DependentUpon>cma-assessment-instructions.aspx</DependentUpon>
@@ -1429,6 +1477,13 @@
     <Compile Include="tna\cmk-relationsip-context.aspx.designer.cs">
       <DependentUpon>cmk-relationsip-context.aspx</DependentUpon>
     </Compile>
+    <Compile Include="tna\commercial-awareness-assessment-test.aspx.cs">
+      <DependentUpon>commercial-awareness-assessment-test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tna\commercial-awareness-assessment-test.aspx.designer.cs">
+      <DependentUpon>commercial-awareness-assessment-test.aspx</DependentUpon>
+    </Compile>
     <Compile Include="tna\contract-management-assessment-test.aspx.cs">
       <DependentUpon>contract-management-assessment-test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1457,6 +1512,20 @@
     <Compile Include="tna\Help.aspx.designer.cs">
       <DependentUpon>Help.aspx</DependentUpon>
     </Compile>
+    <Compile Include="tna\my-cma-reports.aspx.cs">
+      <DependentUpon>my-cma-reports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tna\my-cma-reports.aspx.designer.cs">
+      <DependentUpon>my-cma-reports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tna\my-procurement-report.aspx.cs">
+      <DependentUpon>my-procurement-report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tna\my-procurement-report.aspx.designer.cs">
+      <DependentUpon>my-procurement-report.aspx</DependentUpon>
+    </Compile>
     <Compile Include="tna\my-result-bar-graph.aspx.cs">
       <DependentUpon>my-result-bar-graph.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1464,12 +1533,12 @@
     <Compile Include="tna\my-result-bar-graph.aspx.designer.cs">
       <DependentUpon>my-result-bar-graph.aspx</DependentUpon>
     </Compile>
-    <Compile Include="tna\my-results-bar-graph-ba.aspx.cs">
-      <DependentUpon>my-results-bar-graph-ba.aspx</DependentUpon>
+    <Compile Include="tna\my-results-bar-graph-caa.aspx.cs">
+      <DependentUpon>my-results-bar-graph-caa.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="tna\my-results-bar-graph-ba.aspx.designer.cs">
-      <DependentUpon>my-results-bar-graph-ba.aspx</DependentUpon>
+    <Compile Include="tna\my-results-bar-graph-caa.aspx.designer.cs">
+      <DependentUpon>my-results-bar-graph-caa.aspx</DependentUpon>
     </Compile>
     <Compile Include="tna\my-results-bar-graph-cma.aspx.cs">
       <DependentUpon>my-results-bar-graph-cma.aspx</DependentUpon>
@@ -1485,13 +1554,6 @@
     <Compile Include="tna\my-results-bar-graph-cmk.aspx.designer.cs">
       <DependentUpon>my-results-bar-graph-cmk.aspx</DependentUpon>
     </Compile>
-    <Compile Include="tna\my-results-bar-graph-np.aspx.cs">
-      <DependentUpon>my-results-bar-graph-np.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="tna\my-results-bar-graph-np.aspx.designer.cs">
-      <DependentUpon>my-results-bar-graph-np.aspx</DependentUpon>
-    </Compile>
     <Compile Include="tna\my-results-bar-graph-ssa.aspx.cs">
       <DependentUpon>my-results-bar-graph-ssa.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1499,12 +1561,12 @@
     <Compile Include="tna\my-results-bar-graph-ssa.aspx.designer.cs">
       <DependentUpon>my-results-bar-graph-ssa.aspx</DependentUpon>
     </Compile>
-    <Compile Include="tna\my-results-reports-ba.aspx.cs">
-      <DependentUpon>my-results-reports-ba.aspx</DependentUpon>
+    <Compile Include="tna\my-results-reports-caa.aspx.cs">
+      <DependentUpon>my-results-reports-caa.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="tna\my-results-reports-ba.aspx.designer.cs">
-      <DependentUpon>my-results-reports-ba.aspx</DependentUpon>
+    <Compile Include="tna\my-results-reports-caa.aspx.designer.cs">
+      <DependentUpon>my-results-reports-caa.aspx</DependentUpon>
     </Compile>
     <Compile Include="tna\my-results-reports-cma.aspx.cs">
       <DependentUpon>my-results-reports-cma.aspx</DependentUpon>
@@ -1513,12 +1575,12 @@
     <Compile Include="tna\my-results-reports-cma.aspx.designer.cs">
       <DependentUpon>my-results-reports-cma.aspx</DependentUpon>
     </Compile>
-    <Compile Include="tna\my-results-reports-np.aspx.cs">
-      <DependentUpon>my-results-reports-np.aspx</DependentUpon>
+    <Compile Include="tna\my-results-reports-cmk.aspx.cs">
+      <DependentUpon>my-results-reports-cmk.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="tna\my-results-reports-np.aspx.designer.cs">
-      <DependentUpon>my-results-reports-np.aspx</DependentUpon>
+    <Compile Include="tna\my-results-reports-cmk.aspx.designer.cs">
+      <DependentUpon>my-results-reports-cmk.aspx</DependentUpon>
     </Compile>
     <Compile Include="tna\my-results-reports-ssa.aspx.cs">
       <DependentUpon>my-results-reports-ssa.aspx</DependentUpon>
@@ -1527,26 +1589,19 @@
     <Compile Include="tna\my-results-reports-ssa.aspx.designer.cs">
       <DependentUpon>my-results-reports-ssa.aspx</DependentUpon>
     </Compile>
+    <Compile Include="tna\my-results-reports.aspx.cs">
+      <DependentUpon>my-results-reports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tna\my-results-reports.aspx.designer.cs">
+      <DependentUpon>my-results-reports.aspx</DependentUpon>
+    </Compile>
     <Compile Include="tna\MyProfile.aspx.cs">
       <DependentUpon>MyProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="tna\MyProfile.aspx.designer.cs">
       <DependentUpon>MyProfile.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="tna\negotiation-profile-test.aspx.cs">
-      <DependentUpon>negotiation-profile-test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="tna\negotiation-profile-test.aspx.designer.cs">
-      <DependentUpon>negotiation-profile-test.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="tna\np-assessment-instructions.aspx.cs">
-      <DependentUpon>np-assessment-instructions.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="tna\np-assessment-instructions.aspx.designer.cs">
-      <DependentUpon>np-assessment-instructions.aspx</DependentUpon>
     </Compile>
     <Compile Include="tna\pk-evaluation-instructions.aspx.cs">
       <DependentUpon>pk-evaluation-instructions.aspx</DependentUpon>
@@ -1575,34 +1630,6 @@
     </Compile>
     <Compile Include="tna\share-the-challenge.aspx.designer.cs">
       <DependentUpon>share-the-challenge.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="tna\showBAPDF.aspx.cs">
-      <DependentUpon>showBAPDF.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="tna\showBAPDF.aspx.designer.cs">
-      <DependentUpon>showBAPDF.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="tna\showCMAPdf.aspx.cs">
-      <DependentUpon>showCMAPdf.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="tna\showCMAPdf.aspx.designer.cs">
-      <DependentUpon>showCMAPdf.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="tna\showNPPdf.aspx.cs">
-      <DependentUpon>showNPPdf.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="tna\showNPPdf.aspx.designer.cs">
-      <DependentUpon>showNPPdf.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="tna\showSSAPdf.aspx.cs">
-      <DependentUpon>showSSAPdf.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="tna\showSSAPdf.aspx.designer.cs">
-      <DependentUpon>showSSAPdf.aspx</DependentUpon>
     </Compile>
     <Compile Include="tna\skills-self-test.aspx.cs">
       <DependentUpon>skills-self-test.aspx</DependentUpon>
@@ -1674,12 +1701,12 @@
     <Compile Include="webadmin\DownloadReport.aspx.designer.cs">
       <DependentUpon>DownloadReport.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webadmin\EditBAtest.aspx.cs">
-      <DependentUpon>EditBAtest.aspx</DependentUpon>
+    <Compile Include="webadmin\EditCAAtest.aspx.cs">
+      <DependentUpon>EditCAAtest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webadmin\EditBAtest.aspx.designer.cs">
-      <DependentUpon>EditBAtest.aspx</DependentUpon>
+    <Compile Include="webadmin\EditCAAtest.aspx.designer.cs">
+      <DependentUpon>EditCAAtest.aspx</DependentUpon>
     </Compile>
     <Compile Include="webadmin\EditCMAtest.aspx.cs">
       <DependentUpon>EditCMAtest.aspx</DependentUpon>
@@ -1688,6 +1715,13 @@
     <Compile Include="webadmin\EditCMAtest.aspx.designer.cs">
       <DependentUpon>EditCMAtest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="webadmin\EditCMKtest.aspx.cs">
+      <DependentUpon>EditCMKtest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webadmin\EditCMKtest.aspx.designer.cs">
+      <DependentUpon>EditCMKtest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="webadmin\EditCMStest.aspx.cs">
       <DependentUpon>EditCMStest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1695,19 +1729,12 @@
     <Compile Include="webadmin\EditCMStest.aspx.designer.cs">
       <DependentUpon>EditCMStest.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webadmin\EditMPtest.aspx.cs">
-      <DependentUpon>EditMPtest.aspx</DependentUpon>
+    <Compile Include="webadmin\EditSGAtest.aspx.cs">
+      <DependentUpon>EditSGAtest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webadmin\EditMPtest.aspx.designer.cs">
-      <DependentUpon>EditMPtest.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webadmin\EditNPtest.aspx.cs">
-      <DependentUpon>EditNPtest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webadmin\EditNPtest.aspx.designer.cs">
-      <DependentUpon>EditNPtest.aspx</DependentUpon>
+    <Compile Include="webadmin\EditSGAtest.aspx.designer.cs">
+      <DependentUpon>EditSGAtest.aspx</DependentUpon>
     </Compile>
     <Compile Include="webadmin\EditSSAtest.aspx.cs">
       <DependentUpon>EditSSAtest.aspx</DependentUpon>
@@ -1737,12 +1764,12 @@
     <Compile Include="webadmin\ListUsers.aspx.designer.cs">
       <DependentUpon>ListUsers.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webadmin\ManageBA.aspx.cs">
-      <DependentUpon>ManageBA.aspx</DependentUpon>
+    <Compile Include="webadmin\ManageCAA.aspx.cs">
+      <DependentUpon>ManageCAA.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webadmin\ManageBA.aspx.designer.cs">
-      <DependentUpon>ManageBA.aspx</DependentUpon>
+    <Compile Include="webadmin\ManageCAA.aspx.designer.cs">
+      <DependentUpon>ManageCAA.aspx</DependentUpon>
     </Compile>
     <Compile Include="webadmin\ManageCMA.aspx.cs">
       <DependentUpon>ManageCMA.aspx</DependentUpon>
@@ -1758,6 +1785,13 @@
     <Compile Include="webadmin\ManageCMC.aspx.designer.cs">
       <DependentUpon>ManageCMC.aspx</DependentUpon>
     </Compile>
+    <Compile Include="webadmin\ManageCMK.aspx.cs">
+      <DependentUpon>ManageCMK.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webadmin\ManageCMK.aspx.designer.cs">
+      <DependentUpon>ManageCMK.aspx</DependentUpon>
+    </Compile>
     <Compile Include="webadmin\ManageEmailTemplates.aspx.cs">
       <DependentUpon>ManageEmailTemplates.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1771,20 +1805,6 @@
     </Compile>
     <Compile Include="webadmin\ManageJobSuggestions.aspx.designer.cs">
       <DependentUpon>ManageJobSuggestions.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webadmin\ManageMP.aspx.cs">
-      <DependentUpon>ManageMP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webadmin\ManageMP.aspx.designer.cs">
-      <DependentUpon>ManageMP.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webadmin\ManageNP.aspx.cs">
-      <DependentUpon>ManageNP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webadmin\ManageNP.aspx.designer.cs">
-      <DependentUpon>ManageNP.aspx</DependentUpon>
     </Compile>
     <Compile Include="webadmin\ManagePlans.aspx.cs">
       <DependentUpon>ManagePlans.aspx</DependentUpon>
@@ -1813,6 +1833,13 @@
     </Compile>
     <Compile Include="webadmin\ManageReportText.aspx.designer.cs">
       <DependentUpon>ManageReportText.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webadmin\ManageSGA.aspx.cs">
+      <DependentUpon>ManageSGA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webadmin\ManageSGA.aspx.designer.cs">
+      <DependentUpon>ManageSGA.aspx</DependentUpon>
     </Compile>
     <Compile Include="webadmin\ManageSSA.aspx.cs">
       <DependentUpon>ManageSSA.aspx</DependentUpon>
@@ -1849,26 +1876,12 @@
     <Compile Include="webadmin\ShareChallenge.aspx.designer.cs">
       <DependentUpon>ShareChallenge.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webadmin\showBAPDF.aspx.cs">
-      <DependentUpon>showBAPDF.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webadmin\showBAPDF.aspx.designer.cs">
-      <DependentUpon>showBAPDF.aspx</DependentUpon>
-    </Compile>
     <Compile Include="webadmin\ShowCMAPdf.aspx.cs">
       <DependentUpon>ShowCMAPdf.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="webadmin\ShowCMAPdf.aspx.designer.cs">
       <DependentUpon>ShowCMAPdf.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webadmin\ShowNPPdf.aspx.cs">
-      <DependentUpon>ShowNPPdf.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webadmin\ShowNPPdf.aspx.designer.cs">
-      <DependentUpon>ShowNPPdf.aspx</DependentUpon>
     </Compile>
     <Compile Include="webadmin\showSSAPdf.aspx.cs">
       <DependentUpon>showSSAPdf.aspx</DependentUpon>
@@ -1884,12 +1897,12 @@
     <Compile Include="webadmin\TabSample.aspx.designer.cs">
       <DependentUpon>TabSample.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webadmin\TestChartBA.aspx.cs">
-      <DependentUpon>TestChartBA.aspx</DependentUpon>
+    <Compile Include="webadmin\TestChartCAA.aspx.cs">
+      <DependentUpon>TestChartCAA.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webadmin\TestChartBA.aspx.designer.cs">
-      <DependentUpon>TestChartBA.aspx</DependentUpon>
+    <Compile Include="webadmin\TestChartCAA.aspx.designer.cs">
+      <DependentUpon>TestChartCAA.aspx</DependentUpon>
     </Compile>
     <Compile Include="webadmin\TestChartCMA.aspx.cs">
       <DependentUpon>TestChartCMA.aspx</DependentUpon>
@@ -1898,12 +1911,19 @@
     <Compile Include="webadmin\TestChartCMA.aspx.designer.cs">
       <DependentUpon>TestChartCMA.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webadmin\TestChartNP.aspx.cs">
-      <DependentUpon>TestChartNP.aspx</DependentUpon>
+    <Compile Include="webadmin\TestChartCMK.aspx.cs">
+      <DependentUpon>TestChartCMK.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webadmin\TestChartNP.aspx.designer.cs">
-      <DependentUpon>TestChartNP.aspx</DependentUpon>
+    <Compile Include="webadmin\TestChartCMK.aspx.designer.cs">
+      <DependentUpon>TestChartCMK.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webadmin\TestChartSGA.aspx.cs">
+      <DependentUpon>TestChartSGA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webadmin\TestChartSGA.aspx.designer.cs">
+      <DependentUpon>TestChartSGA.aspx</DependentUpon>
     </Compile>
     <Compile Include="webadmin\TestChartSSA.aspx.cs">
       <DependentUpon>TestChartSSA.aspx</DependentUpon>
@@ -1920,7 +1940,9 @@
       <DependentUpon>UserDetails.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="App_Browsers\firefox.browser" />
     <Content Include="App_Browsers\ie.browser" />
@@ -2209,12 +2231,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>65429</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost:65445/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

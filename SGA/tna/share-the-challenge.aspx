@@ -125,7 +125,7 @@
 							<p>&nbsp;</p>
                             <span>Below you will find the results for each assessment you have taken. In the left hand column, you will note the menu where you can easily navigate your bar-graphs. </span>
 							<div class="clear"></div>
-                            <br /><p><span class="dark">NOTE:</span> Your report will be delivered one week after the conclusion of the assessment period. To receive your report you need to complete all assessments assigned to you.</p>
+                            <br /><p><span class="dark">NOTE:</span> Your report will be delivered after the conclusion of the assessment period. To receive your report you need to complete all assessments assigned to you.</p>
 						</article>
 					</section>
 					<section class="my-result-box">

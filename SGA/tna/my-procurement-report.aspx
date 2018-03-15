@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/tnaMaster.Master" AutoEventWireup="true" CodeBehind="my-results-reports.aspx.cs" Inherits="SGA.tna.my_results_reports" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/tnaMaster.Master" AutoEventWireup="true" CodeBehind="my-procurement-report.aspx.cs" Inherits="SGA.tna.my_procurement_report" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script type="text/javascript" src="../js/ddaccordion.js"></script>
@@ -24,12 +24,12 @@
                 <span>Below you will find the results for each assessment you have taken. In the left hand column, you will note the menu where you can easily navigate your bar-graphs. </span>
                 <div class="clear"></div>
                 <br />
-                <p><span class="dark">NOTE:</span> Your report will be delivered after the conclusion of the assessment period. To receive your report you need to complete all assessments assigned to you.</p>
+                <p><span class="dark">NOTE:</span> Your Individual Feedback Report will be delivered at the conclusion of the assessment period after you have completed your assigned Assessment Pack.</p>
             </article>
         </section>
-        <section class="my-result-box">
+        <section class="my-result-box" runat="server">
             <article class="breadcrumb">
-                <a href="#">Report Centre</a>&nbsp; &gt; &nbsp;<a href="#">Skills Test Results</a>&nbsp; <span>&gt; &nbsp;Reports</span>
+                <a href="#">Report Centre</a>&nbsp; &gt; &nbsp;<a href="#">Commercial Awareness Assessment Results</a>&nbsp; <span>&gt; &nbsp;Reports</span>
             </article>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -38,10 +38,12 @@
 
 
                     <% if (isTnaResult)
-                    { %>
-                    <p class="title18"><span id="spSkills" runat="server">Procurement Skills Self 
+                        { %>
+                    <p class="title18">
+                        <span id="spSkills" runat="server">Procurement Skills Self 
                         <br />
-                        Assessment</span></p>
+                            Assessment</span>
+                    </p>
                     <div class="acrd-menu" runat="server" id="acrdtna">
                         <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
                         <div class="submenu">
@@ -53,10 +55,12 @@
                     <% } %>
 
                     <% if (isPkeResult)
-                    { %>
-                    <p class="title18"><span id="spPKE" runat="server">Procurement Knowledge  
+                        { %>
+                    <p class="title18">
+                        <span id="spPKE" runat="server">Procurement Knowledge  
                         <br />
-                        Evaluation</span></p>
+                            Evaluation</span>
+                    </p>
                     <div class="acrd-menu" runat="server" id="acrdpke">
                         <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
                         <div class="submenu">
@@ -70,9 +74,11 @@
 
                     <% if (isCMAResult && isContractPack)
                         { %>
-                    <p class="title18"><span id="spCMA" runat="server">Contract Management Self
+                    <p class="title18">
+                        <span id="spCMA" runat="server">Contract Management Self
                         <br />
-                        Assessment</span></p>
+                            Assessment</span>
+                    </p>
                     <div class="acrd-menu" runat="server" id="acrdcma">
                         <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
                         <div class="submenu">
@@ -89,9 +95,11 @@
 
                     <% if (isCmkResult)
                         { %>
-                    <p class="title18"><span id="spCMK" runat="server">Contract Management Knowledge
+                    <p class="title18">
+                        <span id="spCMK" runat="server">Contract Management Knowledge
                         <br />
-                        Evaluation</span></p>
+                            Evaluation</span>
+                    </p>
                     <div class="acrd-menu" runat="server" id="acrdcmk">
                         <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
                         <div class="submenu">
@@ -103,9 +111,11 @@
                     <% } %>
                     <% if (isCaaResult)
                         { %>
-                    <p class="title18"><span id="spCaa" runat="server">Commercial Awareness Knowledge
+                    <p class="title18">
+                        <span id="spCaa" runat="server">Commercial Awareness Knowledge
                         <br />
-                        Evaluation</span></p>
+                            Evaluation</span>
+                    </p>
                     <div class="acrd-menu" runat="server" id="acrdcaa">
                         <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
                         <div class="submenu">
@@ -114,31 +124,31 @@
                             </ul>
                         </div>
                     </div>
-                      <div id="reportDiv" runat="server">
-                  <% if (isCMAResult && isCAAComplete)
-                        { %>
-                    <p class="title18"><span id="spanCmaReportLink" runat="server">Contract Management Pack</span></p>
-                    <div class="acrd-menu">
-                        <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
-                        <div class="submenu">
-                            <ul>
-                                <li><a runat="server" href="my-cma-reports.aspx" id="cmalink">&bull; Report</a></li>
-                            </ul>
+                    <div id="reportDiv" runat="server">
+                        <% if (isCMAResult && isCAAComplete)
+                            { %>
+                        <p class="title18"><span id="spanCmaReportLink" runat="server">Contract Management Pack</span></p>
+                        <div class="acrd-menu">
+                            <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
+                            <div class="submenu">
+                                <ul>
+                                    <li><a runat="server" href="my-cma-reports.aspx" id="cmalink">&bull; Report</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <%}
-                        else if(isCAAComplete)
-                        { %>
-                    <p class="title18"><span id="spanProcureLink" runat="server">Procurement Assessment Pack</span></p>
-                    <div class="acrd-menu">
-                        <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
-                        <div class="submenu">
-                            <ul>
-                                <li><a  runat="server" href="my-procurement-report.aspx" id="procurelink">&bull; Report</a></li>
-                            </ul>
+                        <%}
+                            else if (isCAAComplete)
+                            { %>
+                        <p class="title18"><span id="spanProcureLink" runat="server">Procurement Assessment Pack</span></p>
+                        <div class="acrd-menu">
+                            <p><a href="#" class="menuitem submenuheader">Display Results</a></p>
+                            <div class="submenu">
+                                <ul>
+                                    <li><a runat="server" href="my-procurement-report.aspx" id="procurelink">&bull; Report</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <%}     %>                          
+                     <%}     %>                          
                           
                      </div>
                     <%} %>
@@ -157,18 +167,18 @@
                             <ItemTemplate>
                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
-                                        <td width="40%"><span class="dark">Time stamp</span><br />
+                                       <td width="40%"><span class="dark">Timestamp</span><br />
 
-                                            <asp:Label ID="lblConvertedDate" runat="server"></asp:Label>
-                                            <asp:Label ID="lblDate" runat="server" Visible="false" Text='<%#Eval("testDate")%>' CssClass="adminheader2"></asp:Label>
+                                           
+                                            <asp:Label ID="lblYear" runat="server" CssClass="adminheader2"></asp:Label>
 
                                         </td>
-                                        <td width="30%"><span class="dark">Score</span><br />
-                                            <asp:Label ID="lblPercentage" runat="server"></asp:Label> 
+                                        <td width="30%"><span class="dark">Assisgned Report</span><br />
+                                            <%#Eval("pack") %> 
                                         </td>
 
                                         <td width="10%">
-                                            <asp:ImageButton ID="ibtnGraph" runat="server" CommandArgument='<%#Eval("testId") %>' CommandName="bar" ImageUrl="~/innerimages/img-graph-icon.gif" />
+                                            <asp:ImageButton ID="ibtnGraph" runat="server" CommandArgument='<%#Eval("reportId") %>' CommandName="pdf" ImageUrl="~/innerimages/icon-pdf.gif" />
                                         </td>
 
                                     </tr>
@@ -187,31 +197,13 @@
                     </div>
                     <hr class="divider-line" />
                     <p>&nbsp;</p>
-                    <!--<div class="share-challange-1">
-									<div class="share-cnt-1">
-										<div class="cloud-1"><img src="/innerimages/img-cloud-1.gif" alt="" /></div>
-										<p class="share-title-1">SHARE THE</p>
-										<p class="share-title-2">CHALLENGE</p>
-										<p class="share-title-3">WITH A COLLEAGUE OR PEER!</p>
-										<p>&nbsp;</p>
-										<p>Aggregate data from the challenge will provide an important insight into 'Category Management Capability' in Australia.</p>
-										<p class="txt18-bold">The richer the data - the greater the insights!</p>
-									</div>
-									<div class="share-cnt-2">
-										<div class="cloud-2"><img src="/innerimages/img-cloud-2.gif" alt="" /></div>
-										<p>&nbsp;</p>
-										<p>
-                                        <input type="submit" value="Share" class="btn-share" onclick="window.location.href='share-the-challenge.aspx';return false;">
-                                        
-                                        </p>
-									</div>
-									<div class="clear"></div>
-								</div>-->
+
                 </div>
                 <div class="clear"></div>
                 <p>&nbsp;</p>
             </div>
         </section>
+
         <div class="dot-line">&nbsp;</div>
     </article>
     <!-- Content Area end // -->
@@ -248,29 +240,29 @@
 
             if (error) {
                 $('#colorbox').css({ "display": "block" });
+
                 alertTitle = 'Please select';
                 alertHtml = 'To have your results sent to you be email, please select the results you would like sent by ticking the \'tick-box\'.';
             }
             else {
                 var json =
-               $.ajax({
-                   type: "POST",
-                   async: false,
-                   url: "my-results-reports.aspx/EmailResultBack",
-                   data: JSON.stringify({ 'testIds': specification }),
-                   dataType: "json",
-                   contentType: "application/json; charset=utf-8",
-                   success: function (data) {
-                       if (data.d == 's') {
-                           alertTitle = 'Success!';
-                           $('#colorbox').css({ "display": "block" });
-                           alertHtml = 'Your results have now been sent to you by email. Please check your inbox!';
-                       }
-                   }
-               });
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "my-results-reports-caa.aspx/EmailResultBack",
+                data: JSON.stringify({ 'testIds': specification }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.d == 's') {
+                        alertTitle = 'Success!';
+                        $('#colorbox').css({ "display": "block" });
+                        alertHtml = 'Your results have now been sent to you by email. Please check your inbox!';
+                    }
+                }
+            });
             }
             //$('#colorbox').css({ "display": "block" });
         });
     </script>
 </asp:Content>
-

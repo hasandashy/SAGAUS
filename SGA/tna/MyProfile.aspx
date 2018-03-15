@@ -156,7 +156,9 @@
                 <div class="my-pofile-form">
                     <p class="txt28 orange">We need a little more information before you begin!</p>
                     <p>&nbsp;</p>
-                    <p>Providing this information helps us to support your learning. If you are unsure how to answer, then please choose the answer you think is the 'closest fit' for you. </p>
+                    <p>Providing this information helps us to support your learning. If you are unsure how to answer, then please choose the answer you think is the 'closest fit' for you.</p>
+                    <p>&nbsp;</p>
+                    <p>Since returning participants will have some information that has changed over time please complete this page once again. </p>
                     <p>&nbsp;</p>
                     <p class="txt18-bold">REGISTRATION DETAILS</p>
                     <span class="error"></span>&nbsp;&nbsp;<b>First Name</b><br />
@@ -197,7 +199,7 @@
 
                     <p>&nbsp;</p>
                     <p class="txt18-bold">MY DETAILS</p>
-                    <span class="error"></span>&nbsp;&nbsp;<b>Your Department</b><br />
+                    <span class="error"></span>&nbsp;&nbsp;<b>Your Organisation / Department</b><br />
                     <div class="form-box1">
                         <span class="error"></span>&nbsp;<asp:DropDownList ID="ddlAgency" class="styled" runat="server">
                             <asp:ListItem Value="0">Please Select--</asp:ListItem>
@@ -217,6 +219,8 @@
                             <asp:ListItem Value="14">South Australia Police</asp:ListItem>
                             <asp:ListItem Value="15">South Australian Tourism Commission</asp:ListItem>
                             <asp:ListItem Value="16">TAFE SA</asp:ListItem>
+                            <asp:ListItem Value="17">Department for Child Protection</asp:ListItem>
+                            <asp:ListItem Value="18">SA Water</asp:ListItem>
                         </asp:DropDownList>
 
                     </div>

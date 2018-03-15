@@ -22,6 +22,15 @@ namespace SGA.tna {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl spSkills;
         
         /// <summary>
+        /// acrdtna control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl acrdtna;
+        
+        /// <summary>
         /// spPKE control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace SGA.tna {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl spPKE;
+        
+        /// <summary>
+        /// acrdpke control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl acrdpke;
         
         /// <summary>
         /// spCMA control.
@@ -40,6 +58,15 @@ namespace SGA.tna {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl spCMA;
         
         /// <summary>
+        /// acrdcma control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl acrdcma;
+        
+        /// <summary>
         /// spCMK control.
         /// </summary>
         /// <remarks>
@@ -47,6 +74,15 @@ namespace SGA.tna {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl spCMK;
+        
+        /// <summary>
+        /// acrdcmk control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl acrdcmk;
         
         /// <summary>
         /// spCaa control.
@@ -58,13 +94,31 @@ namespace SGA.tna {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl spCaa;
         
         /// <summary>
-        /// Span1 control.
+        /// acrdcaa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Span1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl acrdcaa;
+        
+        /// <summary>
+        /// reportDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl reportDiv;
+        
+        /// <summary>
+        /// spanCmaReportLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanCmaReportLink;
         
         /// <summary>
         /// cmalink control.
@@ -76,13 +130,13 @@ namespace SGA.tna {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor cmalink;
         
         /// <summary>
-        /// Span2 control.
+        /// spanProcureLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Span2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanProcureLink;
         
         /// <summary>
         /// procurelink control.

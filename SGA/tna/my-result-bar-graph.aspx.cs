@@ -23,7 +23,9 @@ namespace SGA.tna
 
         protected bool isCMAResult = false;
 
-        protected bool isCAAComplete = false;
+        protected bool isCAAComplete = false; protected bool isCMAComplete = false; protected bool isPKEComplete = false; protected bool isTNAComplete = false; protected bool isCMKComplete = false;
+
+        protected bool isResultLocked = true;protected bool isContractPack = true;
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
@@ -42,7 +44,48 @@ namespace SGA.tna
                     this.isCmkResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCmkResult"].ToString());
                     this.isCaaResult = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["viewCaaResult"].ToString());
                     this.isCAAComplete = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["isCaaComplete"].ToString());
+                    this.isResultLocked = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["isResultLocked"].ToString());
+                    this.isCMAComplete = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["isCmaComplete"].ToString());
+                    this.isCMKComplete = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["isCmkComplete"].ToString());
+                    this.isTNAComplete = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["isTnaComplete"].ToString());
+                    this.isPKEComplete = System.Convert.ToBoolean(dsPermission.Tables[0].Rows[0]["isPkeComplete"].ToString());
+
                 }
+            }
+
+            if (!isCMAComplete)
+            {
+                this.acrdcma.Visible = false;
+            }
+            if (!isCMKComplete)
+            {
+                this.acrdcmk.Visible = false;
+            }
+            if (!isTNAComplete)
+            {
+                this.acrdtna.Visible = false;
+            }
+            if (!isPKEComplete)
+            {
+                this.acrdpke.Visible = false;
+            }
+            if (!isCAAComplete)
+            {
+                this.acrdcaa.Visible = false;
+            }
+            if (isResultLocked)
+            {
+                reportDiv.Visible = false;
+            }
+            int jobRole = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text, "select jobRole from tblusers where Id=" + SGACommon.LoginUserInfo.userId));
+            int[] arr = new int[] { 5, 6, 7, 8 };
+            if (arr.Contains(jobRole))
+            {
+                this.isTnaResult = false;
+               this.isContractPack = false;
+
+                spPKE.InnerHtml = "Procurement Technical Assessments";
+                spCMK.InnerHtml = "Contract Management Assessments";
             }
             this.spSkills.Attributes["class"] = (this.isTnaResult ? "" : "lock");
             this.spCMA.Attributes["class"] = (this.isCMAResult ? "" : "lock");
@@ -62,6 +105,7 @@ namespace SGA.tna
                     };
                     //this.lblPercentage.Text = System.Convert.ToDecimal(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spGetPrecentage", param)).ToString("#.##") + " %";
                     this.graph1.testId = System.Convert.ToInt32(this.Session["sgaTestId"].ToString());
+                    this.graph1.userId = SGACommon.LoginUserInfo.userId;
                 }
                 else
                 {
@@ -71,27 +115,27 @@ namespace SGA.tna
 
             //Report Link
 
-            SqlParameter[] paramPack = new SqlParameter[]
-   {
-                new SqlParameter("@userId", SqlDbType.Int)
-   };
-            paramPack[0].Value = SGACommon.LoginUserInfo.userId;
-            DataSet dsPacks = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetReportIdByUserId", paramPack);
-            if (dsPacks != null)
-            {
-                if (dsPacks.Tables.Count > 0 && dsPacks.Tables[0].Rows.Count > 0)
-                {
-                    if (dsPacks.Tables[0].Rows[0]["packId"].ToString() == "6")
-                    {
-                        cmalink.HRef = "/IndividualReport/ContractManagement.aspx?id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
-                    }
-                    else
-                    {
-                        procurelink.HRef = "/IndividualReport/Procurement.aspx?id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
-                    }
+   //         SqlParameter[] paramPack = new SqlParameter[]
+   //{
+   //             new SqlParameter("@userId", SqlDbType.Int)
+   //};
+   //         paramPack[0].Value = SGACommon.LoginUserInfo.userId;
+   //         DataSet dsPacks = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetReportIdByUserId", paramPack);
+   //         if (dsPacks != null)
+   //         {
+   //             if (dsPacks.Tables.Count > 0 && dsPacks.Tables[0].Rows.Count > 0)
+   //             {
+   //                 if (dsPacks.Tables[0].Rows[0]["packId"].ToString() == "6")
+   //                 {
+   //                     cmalink.HRef = "/IndividualReport/ContractManagement.aspx?id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
+   //                 }
+   //                 else
+   //                 {
+   //                     procurelink.HRef = "/IndividualReport/Procurement.aspx?id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
+   //                 }
 
-                }
-            }
+   //             }
+   //         }
         }
 
         protected void lnkLower_Click(object sender, System.EventArgs e)
