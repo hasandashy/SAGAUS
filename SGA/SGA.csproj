@@ -853,6 +853,7 @@
     <Content Include="pdfBgImages\esourcing-group.gif" />
     <Content Include="pdfBgImages\esourcinglogo.jpg" />
     <Content Include="pdfBgImages\esourcinglogo_old.jpg" />
+    <Content Include="pdfBgImages\ExpertReport.jpg" />
     <Content Include="pdfBgImages\ifpsm.png" />
     <Content Include="pdfBgImages\img3_footer.jpg" />
     <Content Include="pdfBgImages\img3_grey_bg.jpg" />

@@ -65,6 +65,8 @@ namespace SGA.controls
                 int userId = 0;
                 int testId = 0;
                 int packId = 0;
+                int jobRole = 0;
+                bool isExpert = false;
                 Dictionary<int, decimal> dict = new Dictionary<int, decimal>();
                 DataSet dsTestDetails = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetTestDetailsById", new SqlParameter[]
                 {
@@ -154,6 +156,7 @@ namespace SGA.controls
                     {
                         if (dsProfile.Tables.Count > 0 && dsProfile.Tables[0].Rows.Count > 0)
                         {
+                            jobRole = System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["jobRole"].ToString());
                             cb.BeginText();
                             cb.SetFontAndSize(f_cn, 24f);
                             cb.SetTextMatrix(80f, 340f);
@@ -308,6 +311,10 @@ namespace SGA.controls
                         {
                         new SqlParameter("@percentage", dsSummary.Tables[0].Rows[i]["percentage"].ToString())
                         }).ToString();
+                                    if(level.ToLower() == "expert")
+                                    {
+                                        isExpert = true;
+                                    }
                                     this.Addrow(ref table, " " + dsSummary.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " "), dsSummary.Tables[0].Rows[i]["percentage"].ToString() + "%", "  " + level, false, false, true);
                                 }
                             }
@@ -381,7 +388,10 @@ namespace SGA.controls
                                 {
                         new SqlParameter("@percentage", kvp.Value)
                                 }).ToString();
-
+                                    if (level.ToLower() == "expert")
+                                    {
+                                        isExpert = true;
+                                    }
                                     this.Addrow(ref table, " " + dsSummary.Tables[0].Rows[kvp.Key]["topicTitle"].ToString().Replace("<br />", " "), kvp.Value.ToString("0.00") + "%", "  " + level, false, false, true);
                                 }
                             }
@@ -420,6 +430,10 @@ namespace SGA.controls
                                 {
                         new SqlParameter("@percentage", dsCAASummary.Tables[0].Rows[i]["percentage"].ToString())
                                 }).ToString();
+                                if (level.ToLower() == "expert")
+                                {
+                                    isExpert = true;
+                                }
                                 this.Addrow(ref table, " " + dsCAASummary.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " "), dsCAASummary.Tables[0].Rows[i]["percentage"].ToString() + "%", "  " + level, false, false, true);
                             }
                         }
@@ -857,6 +871,66 @@ namespace SGA.controls
                     //        this.AddBlankParagraph(1);
                     //    }
                     //}
+                    //new pages
+                    if (jobRole == 8)
+                    {
+                        this.doc.SetMargins(55f, 55f, 25f, 25f);
+                        this.doc.NewPage();
+                        this.AddBlankParagraphLowHeight(4);
+                        this.AddParagraph("Leadership", 0, FontFactory.GetFont("Helvetica", 24f, 1, this.hcolor));
+                        this.AddBlankParagraphLowHeight(4);
+                        str = "As a Procurement Manager/Director or an identified Expert in one or more dimensions you are encouraged to undertake leadership training as part of your ongoing professional development. Here are some suggestions:";
+                        this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 10f, 0, new BaseColor(0, 0, 0)));
+                        this.AddBlankParagraphLowHeight(4);
+                        this.AddParagraph("The Office of the Public Sector:", 0, FontFactory.GetFont("Helvetica", 14f, 1, this.hcolor));
+
+                        str = "<p style='font-size:10px;font-face:Arial'><p><a style='color:#0000EE;text-decoration: underline;' href='https://publicsector.sa.gov.au/people/leadership-development/south-australian-leadership-academy/'>South Australian Leadership Academy</a>&nbsp;&ndash;&nbsp;for managers and executives - provides a range of leadership development programs. Visit the website to view current opportunities.</p><p><a style='color:#0000EE;text-decoration: underline;' href = 'https://publicsector.sa.gov.au/people/leadership-development/jawun-executive-secondments/'> Jawun Executive Secondments</a> &nbsp; &ndash; for executives and aspiring executives - a six week residential placement & nbsp; that benefits the indigenous led organisations, their communities, and the participants.</p><p><a style='color:#0000EE;text-decoration: underline;' href = 'https://publicsector.sa.gov.au/people/leadership-development/public-sector-management-program/'> Public Sector Management Program </a> &nbsp; &ndash; for current and aspiring public sector leaders.Participants who successfully complete the course gain a Graduate Certificate in Business (Public Sector Management).</p><p><a style='color:#0000EE;text-decoration: underline;' href = 'https://publicsector.sa.gov.au/people/leadership-development/south-australian-executive-service/'> South Australian Executive Service(SAES)</a>&nbsp;&ndash; for new and current executives.Provides a charter and competency framework and induction program for new executives.</p><p style='color: white'>linebreak</p><p>The Office of the Public Sector&nbsp;offer three competency frameworks to guide aspiring and current leaders in building their skills and knowledge:</p><p><a style='color:#0000EE;text-decoration: underline;' href = 'https://publicsector.sa.gov.au/wp-content/uploads/20080101-SAES-Competency-Framework.pdf'> SAES Competency Framework(PDF) 802KB&nbsp;</a></p><p><a style='color:#0000EE;text-decoration: underline;' href = 'https://publicsector.sa.gov.au/wp-content/uploads/20120412-First-Line-Manager-Competency-Framework.pdf'> First Line Manager Competency Framework(PDF) 407KB&nbsp;</a></p><p><a style='color:#0000EE;text-decoration: underline;' href = 'https://publicsector.sa.gov.au/wp-content/uploads/20120412-Middle-Manager-Competency-Framework.pdf'> Middle Manager Competency Framework(PDF) 327KB</a></p></p>";
+                        hw.Parse(new System.IO.StringReader(str));
+                        this.AddBlankParagraphLowHeight(4);
+                        this.AddParagraph("Institute of Public Administration Australia (IPAA)", 0, FontFactory.GetFont("Helvetica", 14f, 1, this.hcolor));
+                        str = "<p style='font-size:10px;font-face:Arial'><p><span style='text - decoration: underline; color: #0000ff;'><a style='color: #0000ff; text-decoration: underline;' href='http://www.sa.ipaa.org.au/PD/ExtendedPrograms.asp'>New and Emerging Managers Series</a>;</span> a 4 day program for people coming to grips with leading a team and managing others for the first time.</p><p><span style = 'text-decoration: underline; color: #0000ff;'><a style = 'color:#0000ff; text-decoration: underline;' href = 'http://www.sa.ipaa.org.au/PD/ExtendedPrograms.asp'> Management and Development Series - &nbsp; A Pathway to SAES</a>;</span> a 8 x half day program for public sector employees seeking to enhance and develop management and leadership skills.</p><p><span style = 'text-decoration: underline; color: #0000ff;'><a style='color: #0000ff; text-decoration: underline;' href='http://sa.ipaa.org.au/PD/21stCenturyManager.asp'>21st Century Manager - Core Skills for the new Millennium</a>;</span> a 6 x half day program to equip public sector managers with the requisite skills for survival in the 21st century.&nbsp;</p></p>";
+                        hw.Parse(new System.IO.StringReader(str));
+                        this.AddBlankParagraphLowHeight(4);
+                        this.AddParagraph("Governor’s Leadership Foundation (GLF) Program", 0, FontFactory.GetFont("Helvetica", 14f, 1, this.hcolor));
+                        str = "<p style='font-size:10px;font-face:Arial'><p>A prestigious annual leadership program run by the&nbsp;<span style='text-decoration: underline;'><span style='color: #0000ff; text-decoration: underline;'><a style='color: #0000ff; text-decoration: underline;' href='http://www.leadersinstitute.com.au/programs/governors-leadership-foundation/index.html'>Leaders Institute of South Australia</a>.</span></span> For executives and managers. An intensive 10-month leadership program that&nbsp;stretches participants intellectually and personally and develops practical wisdom. Visit the&nbsp;<span style='text-decoration: underline;'><span style='color: #0000ff;'><a style='color: #0000ff; text-decoration: underline;' href='https://publicsector.sa.gov.au/people/leadership-development/governors-leadership-foundation-program-2018/'>Office of the Public Sector</a></span></span>&nbsp;&nbsp;for GLF scholarship opportunities.</p></p>";
+                        hw.Parse(new System.IO.StringReader(str));
+                        this.AddBlankParagraphLowHeight(4);
+                        this.AddParagraph("Leadership in Action Program", 0, FontFactory.GetFont("Helvetica", 14f, 1, this.hcolor));
+                        this.AddBlankParagraphLowHeight(2);
+                        this.AddParagraph("A key development program for our Procurement and Contract Management leaders.", 0, FontFactory.GetFont("Arial", 10f, 1, this.bcolor));
+                        str = "<p style='font-size:10px;font-face:Arial'>This program will enhances procurement performance across SA Government in the way we lead and engage.&nbsp;These workshops are dedicated to opening pathways so we can perform at our peak. By joining together in these highly focused workshops we will leverage our collective strengths to create a landscape of positive change and deliver ongoing sustainable results to the business.</p>";
+                        hw.Parse(new System.IO.StringReader(str));
+                        this.AddBlankParagraphLowHeight(1);
+                        str = "<p style='font-size:10px;font-face:Arial'><u><strong>Read more</strong></u></p>";
+                        hw.Parse(new System.IO.StringReader(str));
+                        //end
+                    }
+
+                    if (jobRole == 8 || isExpert)
+                    {
+                        //Start expert page
+                        this.doc.SetMargins(55f, 55f, 25f, 25f);
+                        this.doc.NewPage();
+                        this.AddBlankParagraphLowHeight(4);
+                        img = Image.GetInstance(this.imagepath + "/ExpertReport.jpg");
+                        //img.SetAbsolutePosition(170f, 610f);
+                        //img.ScaleToFit(222f, 108f);
+                        //img.Alignment = 5;
+                        this.doc.Add(img);
+                        this.AddBlankParagraphLowHeight(4);
+                        this.AddParagraph("You are an identified expert in one or more dimensions.", 1, FontFactory.GetFont("Helvetica", 14f, 1, this.hcolor));
+                        this.AddBlankParagraphLowHeight(4);
+                        this.AddParagraph("Are you contributing to your organisation by providing on-the-job coaching and sharing your knowledge so that colleagues have the opportunity to learn through experience?", 0, FontFactory.GetFont("Arial", 10f, 1, this.bcolor));
+                        this.AddBlankParagraphLowHeight(2);
+                        this.AddParagraph("Depending on your role, you could adopt one or more of the following approaches directly and/ or through your direct reports to improve learning throughout your procurement operation:", 0, FontFactory.GetFont("Arial", 10f, 0, this.bcolor));
+                        this.AddBlankParagraphLowHeight(2);
+                        str = "<p style='font-size:10px;font-face:Arial'><p>&bull; Encourage additional tasks, giving team members the opportunity to practice new skills and stretch beyond current competencies</p><p>&bull; Describe not only the task but expectations on how to perform it and 'success factors' to describe how one knows when the task is successfully completed</p><p>&bull; Accept that team members will make mistakes and view mistakes as learning opportunities</p><p>&bull; Provide timely and regular feedback</p><p>&bull; Provide space, time and opportunities for communities of skills sharing and to develop</p><p>&bull; Offer one-to-one coaching and mentoring</p><p>&bull; Help identify training for others given that the 10% training remains important since it solidifies theory behind the practice.</p></p>";
+                        hw.Parse(new System.IO.StringReader(str));
+                        this.AddBlankParagraphLowHeight(2);
+                        str = "<p style='font-size:10px;font-face:Arial'>In the pages that follow you will find the same personal development plan structure that your peers receive. Your recommendations should be read through this lens - as an Expert you could be facilitating learning opportunities where you have specialist skills.&nbsp;</p>";
+                        hw.Parse(new System.IO.StringReader(str));
+                        //End
+                    }
                     this.doc.SetMargins(55f, 55f, 55f, 55f);
                     this.doc.NewPage();
                     if (dsPages != null)

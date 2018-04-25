@@ -65,6 +65,7 @@ namespace SGA.controls
                 int userId = 0;
                 int testId = 0;
                 int packId = 0;
+                bool isExpert = false;
                 DataSet dsTestDetails = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetTestDetailsById", new SqlParameter[]
                 {
                     new SqlParameter("@Id", this.Id),
@@ -360,8 +361,11 @@ namespace SGA.controls
                                 {
                         new SqlParameter("@percentage", kvp.Value)
                                 }).ToString();
-
-                                    this.Addrow(ref table, " " + dsSummary.Tables[0].Rows[kvp.Key]["topicTitle"].ToString().Replace("<br />", " "), kvp.Value.ToString("0.00") + "%", "  " + level, false, false, true);
+                                if (level.ToLower() == "expert")
+                                {
+                                    isExpert = true;
+                                }
+                                this.Addrow(ref table, " " + dsSummary.Tables[0].Rows[kvp.Key]["topicTitle"].ToString().Replace("<br />", " "), kvp.Value.ToString("0.00") + "%", "  " + level, false, false, true);
                                 }
                             }
                         }
@@ -399,6 +403,10 @@ namespace SGA.controls
                                 {
                         new SqlParameter("@percentage", dsCAASummary.Tables[0].Rows[i]["percentage"].ToString())
                                 }).ToString();
+                                if (level.ToLower() == "expert")
+                                {
+                                    isExpert = true;
+                                }
                                 this.Addrow(ref table, " " + dsCAASummary.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " "), dsCAASummary.Tables[0].Rows[i]["percentage"].ToString() + "%", "  " + level, false, false, true);
                             }
                         }
@@ -833,6 +841,32 @@ namespace SGA.controls
                     //        this.AddBlankParagraph(1);
                     //    }
                     //}
+
+                    if (isExpert)
+                    {
+                        //Start expert page
+                        this.doc.SetMargins(55f, 55f, 25f, 25f);
+                        this.doc.NewPage();
+                        this.AddBlankParagraphLowHeight(4);
+                        img = Image.GetInstance(this.imagepath + "/ExpertReport.jpg");
+                        //img.SetAbsolutePosition(170f, 610f);
+                        //img.ScaleToFit(222f, 108f);
+                        //img.Alignment = 5;
+                        this.doc.Add(img);
+                        this.AddBlankParagraphLowHeight(4);
+                        this.AddParagraph("You are an identified expert in one or more dimensions.", 1, FontFactory.GetFont("Helvetica", 14f, 1, this.hcolor));
+                        this.AddBlankParagraphLowHeight(4);
+                        this.AddParagraph("Are you contributing to your organisation by providing on-the-job coaching and sharing your knowledge so that colleagues have the opportunity to learn through experience?", 0, FontFactory.GetFont("Arial", 10f, 1, this.bcolor));
+                        this.AddBlankParagraphLowHeight(2);
+                        this.AddParagraph("Depending on your role, you could adopt one or more of the following approaches directly and/ or through your direct reports to improve learning throughout your procurement operation:", 0, FontFactory.GetFont("Arial", 10f, 0, this.bcolor));
+                        this.AddBlankParagraphLowHeight(2);
+                        str = "<p style='font-size:10px;font-face:Arial'><p>&bull; Encourage additional tasks, giving team members the opportunity to practice new skills and stretch beyond current competencies</p><p>&bull; Describe not only the task but expectations on how to perform it and 'success factors' to describe how one knows when the task is successfully completed</p><p>&bull; Accept that team members will make mistakes and view mistakes as learning opportunities</p><p>&bull; Provide timely and regular feedback</p><p>&bull; Provide space, time and opportunities for communities of skills sharing and to develop</p><p>&bull; Offer one-to-one coaching and mentoring</p><p>&bull; Help identify training for others given that the 10% training remains important since it solidifies theory behind the practice.</p></p>";
+                        hw.Parse(new System.IO.StringReader(str));
+                        this.AddBlankParagraphLowHeight(2);
+                        str = "<p style='font-size:10px;font-face:Arial'>In the pages that follow you will find the same personal development plan structure that your peers receive. Your recommendations should be read through this lens - as an Expert you could be facilitating learning opportunities where you have specialist skills.&nbsp;</p>";
+                        hw.Parse(new System.IO.StringReader(str));
+                        //End
+                    }
                     this.doc.SetMargins(55f, 55f, 55f, 55f);
                     this.doc.NewPage();
                     if (dsPages != null)
