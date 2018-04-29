@@ -872,7 +872,7 @@ namespace SGA.controls
                     //    }
                     //}
                     //new pages
-                    if (jobRole == 8)
+                    if (jobRole == 8 || isExpert)
                     {
                         this.doc.SetMargins(55f, 55f, 25f, 25f);
                         this.doc.NewPage();
@@ -906,7 +906,7 @@ namespace SGA.controls
                         //end
                     }
 
-                    if (jobRole == 8 || isExpert)
+                    if (isExpert)
                     {
                         //Start expert page
                         this.doc.SetMargins(55f, 55f, 25f, 25f);
@@ -1309,7 +1309,7 @@ namespace SGA.controls
             {
                 level = "Understanding";
             }
-            else if (score <= 71.42M)
+            else if (score <= 92.66M)
             {
                 level = "Practitioner";
             }

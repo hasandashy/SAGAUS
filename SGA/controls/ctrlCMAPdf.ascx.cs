@@ -844,6 +844,37 @@ namespace SGA.controls
 
                     if (isExpert)
                     {
+                        //new pages
+                        this.doc.SetMargins(55f, 55f, 25f, 25f);
+                        this.doc.NewPage();
+                        this.AddBlankParagraphLowHeight(4);
+                        this.AddParagraph("Leadership", 0, FontFactory.GetFont("Helvetica", 24f, 1, this.hcolor));
+                        this.AddBlankParagraphLowHeight(4);
+                        str = "As a Procurement Manager/Director or an identified Expert in one or more dimensions you are encouraged to undertake leadership training as part of your ongoing professional development. Here are some suggestions:";
+                        this.AddParagraph(str, 0, FontFactory.GetFont("Arial", 10f, 0, new BaseColor(0, 0, 0)));
+                        this.AddBlankParagraphLowHeight(4);
+                        this.AddParagraph("The Office of the Public Sector:", 0, FontFactory.GetFont("Helvetica", 14f, 1, this.hcolor));
+
+                        str = "<p style='font-size:10px;font-face:Arial'><p><a style='color:#0000EE;text-decoration: underline;' href='https://publicsector.sa.gov.au/people/leadership-development/south-australian-leadership-academy/'>South Australian Leadership Academy</a>&nbsp;&ndash;&nbsp;for managers and executives - provides a range of leadership development programs. Visit the website to view current opportunities.</p><p><a style='color:#0000EE;text-decoration: underline;' href = 'https://publicsector.sa.gov.au/people/leadership-development/jawun-executive-secondments/'> Jawun Executive Secondments</a> &nbsp; &ndash; for executives and aspiring executives - a six week residential placement & nbsp; that benefits the indigenous led organisations, their communities, and the participants.</p><p><a style='color:#0000EE;text-decoration: underline;' href = 'https://publicsector.sa.gov.au/people/leadership-development/public-sector-management-program/'> Public Sector Management Program </a> &nbsp; &ndash; for current and aspiring public sector leaders.Participants who successfully complete the course gain a Graduate Certificate in Business (Public Sector Management).</p><p><a style='color:#0000EE;text-decoration: underline;' href = 'https://publicsector.sa.gov.au/people/leadership-development/south-australian-executive-service/'> South Australian Executive Service(SAES)</a>&nbsp;&ndash; for new and current executives.Provides a charter and competency framework and induction program for new executives.</p><p style='color: white'>linebreak</p><p>The Office of the Public Sector&nbsp;offer three competency frameworks to guide aspiring and current leaders in building their skills and knowledge:</p><p><a style='color:#0000EE;text-decoration: underline;' href = 'https://publicsector.sa.gov.au/wp-content/uploads/20080101-SAES-Competency-Framework.pdf'> SAES Competency Framework(PDF) 802KB&nbsp;</a></p><p><a style='color:#0000EE;text-decoration: underline;' href = 'https://publicsector.sa.gov.au/wp-content/uploads/20120412-First-Line-Manager-Competency-Framework.pdf'> First Line Manager Competency Framework(PDF) 407KB&nbsp;</a></p><p><a style='color:#0000EE;text-decoration: underline;' href = 'https://publicsector.sa.gov.au/wp-content/uploads/20120412-Middle-Manager-Competency-Framework.pdf'> Middle Manager Competency Framework(PDF) 327KB</a></p></p>";
+                        hw.Parse(new System.IO.StringReader(str));
+                        this.AddBlankParagraphLowHeight(4);
+                        this.AddParagraph("Institute of Public Administration Australia (IPAA)", 0, FontFactory.GetFont("Helvetica", 14f, 1, this.hcolor));
+                        str = "<p style='font-size:10px;font-face:Arial'><p><span style='text - decoration: underline; color: #0000ff;'><a style='color: #0000ff; text-decoration: underline;' href='http://www.sa.ipaa.org.au/PD/ExtendedPrograms.asp'>New and Emerging Managers Series</a>;</span> a 4 day program for people coming to grips with leading a team and managing others for the first time.</p><p><span style = 'text-decoration: underline; color: #0000ff;'><a style = 'color:#0000ff; text-decoration: underline;' href = 'http://www.sa.ipaa.org.au/PD/ExtendedPrograms.asp'> Management and Development Series - &nbsp; A Pathway to SAES</a>;</span> a 8 x half day program for public sector employees seeking to enhance and develop management and leadership skills.</p><p><span style = 'text-decoration: underline; color: #0000ff;'><a style='color: #0000ff; text-decoration: underline;' href='http://sa.ipaa.org.au/PD/21stCenturyManager.asp'>21st Century Manager - Core Skills for the new Millennium</a>;</span> a 6 x half day program to equip public sector managers with the requisite skills for survival in the 21st century.&nbsp;</p></p>";
+                        hw.Parse(new System.IO.StringReader(str));
+                        this.AddBlankParagraphLowHeight(4);
+                        this.AddParagraph("Governor’s Leadership Foundation (GLF) Program", 0, FontFactory.GetFont("Helvetica", 14f, 1, this.hcolor));
+                        str = "<p style='font-size:10px;font-face:Arial'><p>A prestigious annual leadership program run by the&nbsp;<span style='text-decoration: underline;'><span style='color: #0000ff; text-decoration: underline;'><a style='color: #0000ff; text-decoration: underline;' href='http://www.leadersinstitute.com.au/programs/governors-leadership-foundation/index.html'>Leaders Institute of South Australia</a>.</span></span> For executives and managers. An intensive 10-month leadership program that&nbsp;stretches participants intellectually and personally and develops practical wisdom. Visit the&nbsp;<span style='text-decoration: underline;'><span style='color: #0000ff;'><a style='color: #0000ff; text-decoration: underline;' href='https://publicsector.sa.gov.au/people/leadership-development/governors-leadership-foundation-program-2018/'>Office of the Public Sector</a></span></span>&nbsp;&nbsp;for GLF scholarship opportunities.</p></p>";
+                        hw.Parse(new System.IO.StringReader(str));
+                        this.AddBlankParagraphLowHeight(4);
+                        this.AddParagraph("Leadership in Action Program", 0, FontFactory.GetFont("Helvetica", 14f, 1, this.hcolor));
+                        this.AddBlankParagraphLowHeight(2);
+                        this.AddParagraph("A key development program for our Procurement and Contract Management leaders.", 0, FontFactory.GetFont("Arial", 10f, 1, this.bcolor));
+                        str = "<p style='font-size:10px;font-face:Arial'>This program will enhances procurement performance across SA Government in the way we lead and engage.&nbsp;These workshops are dedicated to opening pathways so we can perform at our peak. By joining together in these highly focused workshops we will leverage our collective strengths to create a landscape of positive change and deliver ongoing sustainable results to the business.</p>";
+                        hw.Parse(new System.IO.StringReader(str));
+                        this.AddBlankParagraphLowHeight(1);
+                        str = "<p style='font-size:10px;font-face:Arial'><u><strong>Read more</strong></u></p>";
+                        hw.Parse(new System.IO.StringReader(str));
+                        //end
                         //Start expert page
                         this.doc.SetMargins(55f, 55f, 25f, 25f);
                         this.doc.NewPage();
@@ -1219,7 +1250,7 @@ namespace SGA.controls
             {
                 level = "Understanding";
             }
-            else if (score <= 71.42M)
+            else if (score <= 92.66M)
             {
                 level = "Practitioner";
             }
