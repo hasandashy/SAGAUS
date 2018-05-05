@@ -57,21 +57,21 @@ namespace SGA
                                 {
                                     if (dsPacks.Tables.Count > 0 && dsPacks.Tables[0].Rows.Count > 0)
                                     {
-                                        if (dsPacks.Tables[0].Rows[0]["packId"].ToString() == "6")
+                                        if (dsPacks.Tables[0].Rows[0]["jobRole"].ToString() == "6")
                                         {
                                             string Url = "http://" + base.Request.UrlReferrer.Host + "/IndividualReport/ContractManagement.aspx?Id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
-                                            Contact.Add("_SAGovContractManagementUserReportLink", Url);
-                                            Contact.Add("ContactType", "Customer");
-                                            _sb.Append(Url + ":" + "|");
-                                            isdnAPI.dsUpdate("Contact", userId, Contact);
+                                            //Contact.Add("_SAGovContractManagement18UserReportLink", Url);
+                                            //Contact.Add("ContactType", "Customer");
+                                            _sb.Append(paramPack[0].Value + " : "+ dsUsers.Tables[0].Rows[i]["email"].ToString() + " : " +Url +" | ");
+                                            //isdnAPI.dsUpdate("Contact", userId, Contact);
                                         }
                                         else
                                         {                                            
                                             string Url = "http://" + base.Request.UrlReferrer.Host + "/IndividualReport/Procurement.aspx?Id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
-                                            Contact.Add("_SAGovProcurementUserReportLink", Url);
-                                            Contact.Add("ContactType", "Customer");
-                                            isdnAPI.dsUpdate("Contact", userId, Contact);
-                                            _sb.Append(Url + ":" + "|");
+                                            //Contact.Add("_SAGovProcurement18UserReportLink", Url);
+                                            //Contact.Add("ContactType", "Customer");
+                                            //isdnAPI.dsUpdate("Contact", userId, Contact);
+                                            _sb.Append(paramPack[0].Value + " : " + dsUsers.Tables[0].Rows[i]["email"].ToString() + " : " + Url + " | ");
                                         }
 
                                     }

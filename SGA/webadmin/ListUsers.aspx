@@ -1284,7 +1284,7 @@
                                                                         &nbsp;
                                                             <asp:ImageButton ID="iBtnEdit" runat="server" CausesValidation="false" AlternateText="Edit" Style="height: 25px; width: 25px;" CommandArgument='<%#Eval("testId") %>' CommandName="Edit" ToolTip="Edit" ImageUrl="~/webadmin/images/edit.png" />
                                                                         &nbsp;
-                                                            <asp:ImageButton ID="iBtnPdf" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 30px; width: 30px;" CommandArgument='<%#Eval("userId") %>' CommandName="pdf" ToolTip="Report" ImageUrl="~/webadmin/images/pdf.png" />
+                                                            <asp:ImageButton ID="iBtnPdf" runat="server" CausesValidation="false" AlternateText="Graph" Style="height: 30px; width: 30px;" CommandArgument='<%#Eval("testId")+","+ Eval("userId") %>' CommandName="pdf" ToolTip="Report" ImageUrl="~/webadmin/images/pdf.png" />
                                                                     </ItemTemplate>
                                                                 </asp:TemplateColumn>
                                                             </Columns>

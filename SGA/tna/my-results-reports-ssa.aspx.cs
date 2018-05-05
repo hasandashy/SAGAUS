@@ -162,7 +162,7 @@ namespace SGA.tna
                 int[] arr = new int[] { 5, 6, 7, 8 };
                 if (arr.Contains(jobRole))
                 {
-                    this.isTnaResult = false;
+                   this.isTnaResult = false;
                     this.isContractPack = false;
                     rptSgaTest.Visible = false;
                     subheading1.Visible = true;

@@ -108,10 +108,23 @@ namespace SGA.tna
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
-            SGACommon.AddPageTitle(this.Page, "Commercial Awareness Assessment Page", "");
+            SGACommon.AddPageTitle(this.Page, "My Reports", "");
             SGACommon.IsViewResult("viewCaaResult");
             if (!base.IsPostBack)
             {
+
+                SqlParameter[] param = new SqlParameter[]
+        {
+                new SqlParameter("@userId", SqlDbType.Int)
+        };
+                param[0].Value = SGACommon.LoginUserInfo.userId;
+                int complete = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spUserProfileComplete", param));
+
+                if (complete == 1)
+                {
+                    Response.Redirect("ResultsRestricted.aspx");
+                }
+
                 DataSet dsPermission = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetPremission", new SqlParameter[]
                 {
                     new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
@@ -171,7 +184,7 @@ namespace SGA.tna
                 int[] arr = new int[] { 5, 6, 7, 8 };
                 if (arr.Contains(jobRole))
                 {
-                    this.isTnaResult = false;
+                   this.isTnaResult = false;
                    this.isContractPack = false;
 
                     spPKE.InnerHtml = "Procurement Technical Assessments";
@@ -262,11 +275,15 @@ namespace SGA.tna
 
         protected void rptSgaTest_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            if (e.CommandName == "pdf")
-            {
-                //this.Session["caaTestId"] = e.CommandArgument;
-                base.Response.Redirect("~/IndividualReport/Procurement.aspx?&id=" + e.CommandArgument.ToString());
+            int jobRole = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text, "select jobRole from tblusers where Id=" + SGACommon.LoginUserInfo.userId));
 
+            if (jobRole == 6)
+            {
+                base.Response.Redirect("~/IndividualReport/ContractManagement.aspx?&id=" + e.CommandArgument.ToString());
+            }
+            else
+            {
+                base.Response.Redirect("~/IndividualReport/Procurement.aspx?&id=" + e.CommandArgument.ToString());
             }
         }
 

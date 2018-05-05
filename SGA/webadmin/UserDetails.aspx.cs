@@ -541,6 +541,22 @@ namespace SGA.webadmin
                     ImageButton imgBt = (ImageButton)e.Item.FindControl("iBtnPdf");
                     imgBt.Visible = false;
                 }
+                else
+                {
+                    SqlParameter[] param = new SqlParameter[]
+       {
+                new SqlParameter("@userId", SqlDbType.Int)
+       };
+                    param[0].Value = Convert.ToInt32(DataBinder.Eval(e.Item.DataItem, "userId"));
+                    int Profilecomplete = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spUserProfileComplete", param));
+
+                    if (Profilecomplete == 1)
+                    {
+                        e.Item.BackColor = Color.FromArgb(255, 156, 255);
+                        ImageButton imgBt = (ImageButton)e.Item.FindControl("iBtnPdf");
+                        imgBt.Visible = false;
+                    }
+                }
             }
         }
 
@@ -560,11 +576,23 @@ namespace SGA.webadmin
             }
             else if (e.CommandName == "pdf")
             {
+                string[] commandArgs = e.CommandArgument.ToString().Split(new char[] { ',' });
+                string testId = commandArgs[0];
+                string userId = commandArgs[1];
+                string initYear = Convert.ToString(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spInitYearByTestId", new SqlParameter[]
+                {
+                    new SqlParameter("@testId", testId)
+                }));
+            
+
+
                 SqlParameter[] paramPack = new SqlParameter[]
     {
-                new SqlParameter("@userId", SqlDbType.Int)
+                new SqlParameter("@userId", SqlDbType.Int),
+                new SqlParameter("@initYear",SqlDbType.VarChar)
     };
-                paramPack[0].Value = e.CommandArgument;
+                paramPack[0].Value = userId;
+                paramPack[1].Value = initYear;
                 DataSet dsPacks = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetReportIdByUserId", paramPack);
                 if (dsPacks != null)
                 {

@@ -61,7 +61,7 @@ namespace SGA.tna
 
         protected bool isCAAComplete = false; protected bool isCMAComplete = false; protected bool isPKEComplete = false; protected bool isTNAComplete = false; protected bool isCMKComplete = false;
 
-        protected bool isResultLocked = true;protected bool isContractPack = true;
+        protected bool isResultLocked = true; protected bool isContractPack = true;
 
 
         public int pgNum
@@ -108,14 +108,29 @@ namespace SGA.tna
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
-            SGACommon.AddPageTitle(this.Page, "Commercial Awareness Assessment Page", "");
+            SGACommon.AddPageTitle(this.Page, "My Reports", "");
             SGACommon.IsViewResult("viewCaaResult");
             if (!base.IsPostBack)
             {
-                DataSet dsPermission = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetPremission", new SqlParameter[]
+
+                SqlParameter[] param = new SqlParameter[]
+          {
+                new SqlParameter("@userId", SqlDbType.Int)
+          };
+                param[0].Value = SGACommon.LoginUserInfo.userId;
+                int complete = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spUserProfileComplete", param));
+
+                if (complete == 1)
                 {
+                    Response.Redirect("ResultsRestricted.aspx");
+                }
+
+
+
+                DataSet dsPermission = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetPremission", new SqlParameter[]
+            {
                     new SqlParameter("@userId", SGACommon.LoginUserInfo.userId)
-                });
+            });
                 if (dsPermission != null)
                 {
                     if (dsPermission.Tables.Count > 0 && dsPermission.Tables[0].Rows.Count > 0)
@@ -170,7 +185,7 @@ namespace SGA.tna
                 if (arr.Contains(jobRole))
                 {
                     this.isTnaResult = false;
-                   this.isContractPack = false;
+                    this.isContractPack = false;
 
                     spPKE.InnerHtml = "Procurement Technical Assessments";
                     spCMK.InnerHtml = "Contract Management Assessments";
@@ -268,7 +283,16 @@ namespace SGA.tna
                 //this.Session["caaTestId"] = e.CommandArgument;
                 //base.Response.Redirect("my-results-bar-graph-caa.aspx", false);
 
-                base.Response.Redirect("~/IndividualReport/ContractManagement.aspx?&id=" + e.CommandArgument.ToString());
+                int jobRole = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text, "select jobRole from tblusers where Id=" + SGACommon.LoginUserInfo.userId));
+
+                if (jobRole == 6)
+                {
+                    base.Response.Redirect("~/IndividualReport/ContractManagement.aspx?&id=" + e.CommandArgument.ToString());
+                }
+                else
+                {
+                    base.Response.Redirect("~/IndividualReport/Procurement.aspx?&id=" + e.CommandArgument.ToString());
+                }
             }
         }
 

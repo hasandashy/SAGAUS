@@ -23,7 +23,7 @@ namespace SGA.webadmin
 {
     public partial class ListUsers : Page
     {
-        
+
 
         protected string _direct = "";
 
@@ -236,7 +236,7 @@ namespace SGA.webadmin
             this.txtCMKTo.Attributes.Add("readonly", "readonly");
             this.txtCAAFrom.Attributes.Add("readonly", "readonly");
             this.txtCAATo.Attributes.Add("readonly", "readonly");
-           // this.txtEditExiryDate.Attributes.Add("readonly", "readonly");
+            // this.txtEditExiryDate.Attributes.Add("readonly", "readonly");
             if (!base.IsPostBack)
             {
                 if (base.Request.QueryString["id"] != null)
@@ -261,9 +261,9 @@ namespace SGA.webadmin
         private void BindUserTestInfo()
         {
             DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spUserTestInformation", new SqlParameter[]
-			{
-				new SqlParameter("@userIds", this.hdSelectIds.Value)
-			});
+            {
+                new SqlParameter("@userIds", this.hdSelectIds.Value)
+            });
             this.grdUserTest.DataSource = ds;
             this.grdUserTest.DataBind();
         }
@@ -271,9 +271,9 @@ namespace SGA.webadmin
         private void BindPermission()
         {
             DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetUserResult", new SqlParameter[]
-			{
-				new SqlParameter("@userIds", this.hdSelectIds.Value)
-			});
+            {
+                new SqlParameter("@userIds", this.hdSelectIds.Value)
+            });
             this.dtgList.DataSource = ds;
             this.dtgList.DataBind();
         }
@@ -286,17 +286,17 @@ namespace SGA.webadmin
                 strOrderBy = (this.SortOrder ? (this.SortExpression + " Asc") : (this.SortExpression + " Desc"));
             }
             DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageUsers", new SqlParameter[]
-			{
-				new SqlParameter("@firstname", this.txtFname.Value.Trim()),
-				new SqlParameter("@lastname", this.txtLname.Value.Trim()),
-				new SqlParameter("@email", this.txtEmail.Value.Trim()),
-				new SqlParameter("@dateFrom", this.txtFrom.Text.Trim()),
+            {
+                new SqlParameter("@firstname", this.txtFname.Value.Trim()),
+                new SqlParameter("@lastname", this.txtLname.Value.Trim()),
+                new SqlParameter("@email", this.txtEmail.Value.Trim()),
+                new SqlParameter("@dateFrom", this.txtFrom.Text.Trim()),
                 new SqlParameter("@department", this.ddlDept.SelectedValue),
                 new SqlParameter("@dateTo", this.txtTo.Text.Trim()),
-				new SqlParameter("@userCondition", this.ddlOrder.SelectedValue),
-				new SqlParameter("@orderBy", strOrderBy),
-				new SqlParameter("@roleId", 2)
-			});
+                new SqlParameter("@userCondition", this.ddlOrder.SelectedValue),
+                new SqlParameter("@orderBy", strOrderBy),
+                new SqlParameter("@roleId", 2)
+            });
             this.grdUsers.DataSource = ds;
             this.grdUsers.DataBind();
         }
@@ -331,8 +331,8 @@ namespace SGA.webadmin
             this.BindCMATest();
             this.grdCAA.CurrentPageIndex = 0;
             this.BindCAATest();
-           
-           // this.LoadProfile();
+
+            // this.LoadProfile();
         }
 
         protected void iBtnDelete_Click(object sender, ImageClickEventArgs e)
@@ -345,9 +345,9 @@ namespace SGA.webadmin
                     if (chkSelect.Checked)
                     {
                         SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spDeleteUser", new SqlParameter[]
-						{
-							new SqlParameter("@userId", chkSelect.Value)
-						});
+                        {
+                            new SqlParameter("@userId", chkSelect.Value)
+                        });
                     }
                 }
             }
@@ -371,9 +371,9 @@ namespace SGA.webadmin
                     if (chkSelect.Checked)
                     {
                         SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUserStatus", new SqlParameter[]
-						{
-							new SqlParameter("@userId", chkSelect.Value)
-						});
+                        {
+                            new SqlParameter("@userId", chkSelect.Value)
+                        });
                         DataTable dt = this.GetUserDetailByUserId(chkSelect.Value);
                         if (dt.Rows.Count > 0)
                         {
@@ -406,9 +406,9 @@ namespace SGA.webadmin
                     if (chkSelect.Checked)
                     {
                         SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUserStatus", new SqlParameter[]
-						{
-							new SqlParameter("@userId", chkSelect.Value)
-						});
+                        {
+                            new SqlParameter("@userId", chkSelect.Value)
+                        });
                         DataTable dt = this.GetUserDetailByUserId(chkSelect.Value);
                         if (dt.Rows.Count > 0)
                         {
@@ -424,7 +424,7 @@ namespace SGA.webadmin
             this.BindGrid();
             this.BindPermission();
             this.BindUserTestInfo();
-            this.BindSSATest();           
+            this.BindSSATest();
             this.BindCMATest();
             this.BindSGATest();
             this.BindCMKTest();
@@ -520,21 +520,21 @@ namespace SGA.webadmin
                 HtmlInputCheckBox chkCaatest = (HtmlInputCheckBox)item.FindControl("chkCaatest");
                 HtmlInputCheckBox chkCmatest = (HtmlInputCheckBox)item.FindControl("chkCmatest");
                 HtmlInputCheckBox chkResultLocked = (HtmlInputCheckBox)item.FindControl("chkResultLocked");
-                if (chkPke != null && chkTna != null && chkCmk != null && chkTna != null && chkCaa != null && chkCMA != null && chkPketest != null && chkTnatest != null && chkCmktest != null && chkCaatest != null && chkCMA != null && chkCmatest != null && chkResultLocked!= null)
+                if (chkPke != null && chkTna != null && chkCmk != null && chkTna != null && chkCaa != null && chkCMA != null && chkPketest != null && chkTnatest != null && chkCmktest != null && chkCaatest != null && chkCMA != null && chkCmatest != null && chkResultLocked != null)
                 {
                     SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUpdateResultPermission", new SqlParameter[]
-					{
-						new SqlParameter("@userId", chkPke.Value),
-						new SqlParameter("@pkeResult", chkPke.Checked),
-						new SqlParameter("@tnaResult", chkTna.Checked),
-						new SqlParameter("@cmkResult", chkCmk.Checked),
+                    {
+                        new SqlParameter("@userId", chkPke.Value),
+                        new SqlParameter("@pkeResult", chkPke.Checked),
+                        new SqlParameter("@tnaResult", chkTna.Checked),
+                        new SqlParameter("@cmkResult", chkCmk.Checked),
                         new SqlParameter("@caaResult", chkCaa.Checked),
                         new SqlParameter("@cmaResult", chkCMA.Checked),
-						new SqlParameter("@pkeTest", chkPketest.Checked),
-						new SqlParameter("@tnaTest", chkTnatest.Checked),
-						new SqlParameter("@cmkTest", chkCmktest.Checked),						
-						new SqlParameter("@caaTest", chkCaatest.Checked),
-						new SqlParameter("@cmaTest", chkCmatest.Checked),
+                        new SqlParameter("@pkeTest", chkPketest.Checked),
+                        new SqlParameter("@tnaTest", chkTnatest.Checked),
+                        new SqlParameter("@cmkTest", chkCmktest.Checked),
+                        new SqlParameter("@caaTest", chkCaatest.Checked),
+                        new SqlParameter("@cmaTest", chkCmatest.Checked),
                         new SqlParameter("@resultLocked", chkResultLocked.Checked)
                     });
                 }
@@ -545,9 +545,9 @@ namespace SGA.webadmin
         public DataTable GetUserDetailByUserId(string userId)
         {
             return SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetProfileDetails", new SqlParameter[]
-			{
-				new SqlParameter("@userId", userId)
-			}).Tables[0];
+            {
+                new SqlParameter("@userId", userId)
+            }).Tables[0];
         }
 
         protected void lnkSearch_Click(object sender, System.EventArgs e)
@@ -603,9 +603,9 @@ namespace SGA.webadmin
             if (e.CommandName == "Delete")
             {
                 SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spDeleteSSATest", new SqlParameter[]
-				{
-					new SqlParameter("@testId", e.CommandArgument)
-				});
+                {
+                    new SqlParameter("@testId", e.CommandArgument)
+                });
                 this.BindSSATest();
             }
             else if (e.CommandName == "Graph")
@@ -708,14 +708,14 @@ namespace SGA.webadmin
                 strOrderBy = (this.SortOrderCMA ? (this.SortExpressionCMA + " Asc") : (this.SortExpressionCMA + " Desc"));
             }
             DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageCMATest", new SqlParameter[]
-			{
-				new SqlParameter("@firstname", this.txtCMAFname.Value.Trim()),
-				new SqlParameter("@lastname", this.txtCMALname.Value.Trim()),
-				new SqlParameter("@userIds", this.hdSelectIds.Value),
-				new SqlParameter("@dateFrom", this.txtCMAFrom.Text.Trim()),
-				new SqlParameter("@dateTo", this.txtCMATo.Text.Trim()),
-				new SqlParameter("@orderBy", strOrderBy)
-			});
+            {
+                new SqlParameter("@firstname", this.txtCMAFname.Value.Trim()),
+                new SqlParameter("@lastname", this.txtCMALname.Value.Trim()),
+                new SqlParameter("@userIds", this.hdSelectIds.Value),
+                new SqlParameter("@dateFrom", this.txtCMAFrom.Text.Trim()),
+                new SqlParameter("@dateTo", this.txtCMATo.Text.Trim()),
+                new SqlParameter("@orderBy", strOrderBy)
+            });
             this.grdCMA.DataSource = ds;
             this.grdCMA.DataBind();
         }
@@ -748,9 +748,9 @@ namespace SGA.webadmin
             if (e.CommandName == "Delete")
             {
                 SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spDeleteCMATest", new SqlParameter[]
-				{
-					new SqlParameter("@testId", e.CommandArgument)
-				});
+                {
+                    new SqlParameter("@testId", e.CommandArgument)
+                });
                 this.BindCMATest();
             }
             else if (e.CommandName == "Graph")
@@ -849,9 +849,9 @@ namespace SGA.webadmin
         protected void imgSave_Click(object sender, ImageClickEventArgs e)
         {
             SqlParameter[] param = new SqlParameter[]
-			{
-				new SqlParameter("@email", SqlDbType.VarChar)
-			};
+            {
+                new SqlParameter("@email", SqlDbType.VarChar)
+            };
             param[0].Value = this.txtEmailAddress.Value.Trim();
             int status = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spCheckUniqueEmail", param));
             if (status > 0)
@@ -900,15 +900,15 @@ namespace SGA.webadmin
                     else
                     {
                         string[] strField = new string[]
-						{
-							"Id"
-						};
+                        {
+                            "Id"
+                        };
 
                         XmlRpcStruct[] resultFound = isdnAPI.findByEmail(this.txtEmailAddress.Value.Trim(), strField);
                         if (resultFound.Length > 0)
                         {
                             int userId = System.Convert.ToInt32(resultFound[0]["Id"].ToString());
-                            
+
                             isdnAPI.dsUpdate("Contact", userId, new XmlRpcStruct
                             {
                                 {
@@ -939,7 +939,8 @@ namespace SGA.webadmin
                             bool isAdded = isdnAPI.addToGroup(userId, 2044);
                             isdnAPI.optIn(this.txtEmailAddress.Value.Trim(), "Sending emails is allowed");
                         }
-                        else {
+                        else
+                        {
                             int userId = isdnAPI.add(new XmlRpcStruct
                             {
                                 {
@@ -981,7 +982,7 @@ namespace SGA.webadmin
                                 isdnAPI.optIn(this.txtEmailAddress.Value.Trim(), "Sending emails is allowed");
                             }
                         }
-                        
+
                         this.lblError.Text = "User added successfully and email sent to him.";
                         this.txtFirstname.Value = "";
                         this.txtLastname.Value = "";
@@ -1016,13 +1017,13 @@ namespace SGA.webadmin
                 {
                     System.IO.FileInfo newFile = new System.IO.FileInfo(filePath);
                     string[] properties = new string[]
-					{
-						"Email address",
-						"First name",
-						"Last name",
-						"Your Organisation ID",
-						"Your Job ROLE ID"
-					};
+                    {
+                        "Email address",
+                        "First name",
+                        "Last name",
+                        "Your Organisation ID",
+                        "Your Job ROLE ID"
+                    };
                     int iRow = 2;
                     using (ExcelPackage xlPackage = new ExcelPackage(newFile))
                     {
@@ -1056,7 +1057,7 @@ namespace SGA.webadmin
                             //string mFirstName = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Manager's First Name")].Value.ToString().Trim();
                             //string mLastName = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Manager's Last Name")].Value.ToString().Trim();
                             //string mEmail = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Manager's Email")].Value.ToString().Trim();
-                           // string phone = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Phone")].Value.ToString().Trim();
+                            // string phone = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Phone")].Value.ToString().Trim();
                             //string division = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Division")].Value.ToString().Trim();
                             //int locationId = System.Convert.ToInt32(worksheet.Cells[iRow, this.GetColumnIndex(properties, "Location ID")].Value.ToString().Trim());
                             if (email.Trim().Length <= 0)
@@ -1102,14 +1103,14 @@ namespace SGA.webadmin
                                 //string mLastName = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Manager's Last Name")].Value.ToString().Trim();
                                 //string mEmail = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Manager's Email")].Value.ToString().Trim();
                                 //string phone = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Phone")].Value.ToString().Trim();
-                               // string division = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Division")].Value.ToString().Trim();
+                                // string division = worksheet.Cells[iRow, this.GetColumnIndex(properties, "Division")].Value.ToString().Trim();
                                 //int locationId = System.Convert.ToInt32(worksheet.Cells[iRow, this.GetColumnIndex(properties, "Location ID")].Value.ToString().Trim());
                                 if (!isEmailError)
                                 {
                                     SqlParameter[] param = new SqlParameter[]
-									{
-										new SqlParameter("@email", SqlDbType.VarChar)
-									};
+                                    {
+                                        new SqlParameter("@email", SqlDbType.VarChar)
+                                    };
                                     param[0].Value = email;
                                     int status = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spCheckUniqueEmail", param));
                                     if (status > 0)
@@ -1152,9 +1153,9 @@ namespace SGA.webadmin
                                         if (result > 0)
                                         {
                                             string[] strField = new string[]
-											{
-												"Id"
-											};
+                                            {
+                                                "Id"
+                                            };
                                             XmlRpcStruct[] resultFound = isdnAPI.findByEmail(email.Trim(), strField);
                                             if (resultFound.Length > 0)
                                             {
@@ -1291,70 +1292,70 @@ namespace SGA.webadmin
             return result;
         }
 
-    //    private void LoadProfile()
-    //    {
-    //        if (this.hdSelectIds.Value.Length > 0)
-    //        {
-    //            string[] strArr = this.hdSelectIds.Value.Split(new char[]
-				//{
-				//	','
-				//});
-    //            if (strArr.Length == 2)
-    //            {
-    //                this.viewUser2.Visible = false;
-    //                this.viewUser1.Visible = true;
-    //                int id = System.Convert.ToInt32(strArr[0]);
-    //                SqlParameter[] param = new SqlParameter[]
-				//	{
-				//		new SqlParameter("@userId", SqlDbType.Int)
-				//	};
-    //                param[0].Value = id;
-    //                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetProfileDetailsAdmin", param);
-    //                if (ds != null)
-    //                {
-    //                    if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-    //                    {                          
-    //                        this.txtEditFname.Text = ds.Tables[0].Rows[0]["firstname"].ToString();
-    //                        this.txtEditLname.Text = ds.Tables[0].Rows[0]["lastname"].ToString();
-    //                        this.txtEditPassword.Text = ds.Tables[0].Rows[0]["plainpassword"].ToString();
-    //                        this.txtEditPhone.Text = ((ds.Tables[0].Rows[0]["Phone"].ToString().Length > 0) ? ds.Tables[0].Rows[0]["Phone"].ToString() : "");
-    //                        this.txtEditExiryDate.Text = System.Convert.ToDateTime(ds.Tables[0].Rows[0]["expiryDate"]).ToShortDateString();
-    //                        this.txtEditPosition.Value = ds.Tables[0].Rows[0]["position"].ToString();
-    //                        this.txtDivision.Text = ds.Tables[0].Rows[0]["division"].ToString();
-    //                        if (System.Convert.ToBoolean(ds.Tables[0].Rows[0]["expired"]))
-    //                        {
-    //                            this.btnEditProfileExpire.Visible = false;
-    //                        }
-    //                        else
-    //                        {
-    //                            this.btnEditProfileExpire.Visible = true;
-    //                        }
-    //                        SGACommon.SelectListItem(this.ddlEditAgency, ds.Tables[0].Rows[0]["agencyId"].ToString());
-    //                        SGACommon.SelectListItem(this.ddlEditJobRole, ds.Tables[0].Rows[0]["jobRole"].ToString());
-    //                        //SGACommon.SelectListItem(this.ddlEditJobLevel, ds.Tables[0].Rows[0]["jobLevel"].ToString());
-    //                        SGACommon.SelectListItem(this.ddlEditLocation, ds.Tables[0].Rows[0]["locationId"].ToString());
-    //                        SGACommon.SelectListItem(this.ddlEditGoods, ds.Tables[0].Rows[0]["goodsId"].ToString());
-    //                        this.txtEditEmailAddress.Text = ds.Tables[0].Rows[0]["email"].ToString();
-    //                        this.lblEditStatus.Text = (System.Convert.ToBoolean(ds.Tables[0].Rows[0]["expired"]) ? "Expired" : "Running");
-    //                    }
-    //                }
-    //            }
-    //            else
-    //            {
-    //                this.viewUser2.Visible = true;
-    //                this.viewUser1.Visible = false;
-    //            }
-    //        }
-    //    }
+        //    private void LoadProfile()
+        //    {
+        //        if (this.hdSelectIds.Value.Length > 0)
+        //        {
+        //            string[] strArr = this.hdSelectIds.Value.Split(new char[]
+        //{
+        //	','
+        //});
+        //            if (strArr.Length == 2)
+        //            {
+        //                this.viewUser2.Visible = false;
+        //                this.viewUser1.Visible = true;
+        //                int id = System.Convert.ToInt32(strArr[0]);
+        //                SqlParameter[] param = new SqlParameter[]
+        //	{
+        //		new SqlParameter("@userId", SqlDbType.Int)
+        //	};
+        //                param[0].Value = id;
+        //                DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetProfileDetailsAdmin", param);
+        //                if (ds != null)
+        //                {
+        //                    if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+        //                    {                          
+        //                        this.txtEditFname.Text = ds.Tables[0].Rows[0]["firstname"].ToString();
+        //                        this.txtEditLname.Text = ds.Tables[0].Rows[0]["lastname"].ToString();
+        //                        this.txtEditPassword.Text = ds.Tables[0].Rows[0]["plainpassword"].ToString();
+        //                        this.txtEditPhone.Text = ((ds.Tables[0].Rows[0]["Phone"].ToString().Length > 0) ? ds.Tables[0].Rows[0]["Phone"].ToString() : "");
+        //                        this.txtEditExiryDate.Text = System.Convert.ToDateTime(ds.Tables[0].Rows[0]["expiryDate"]).ToShortDateString();
+        //                        this.txtEditPosition.Value = ds.Tables[0].Rows[0]["position"].ToString();
+        //                        this.txtDivision.Text = ds.Tables[0].Rows[0]["division"].ToString();
+        //                        if (System.Convert.ToBoolean(ds.Tables[0].Rows[0]["expired"]))
+        //                        {
+        //                            this.btnEditProfileExpire.Visible = false;
+        //                        }
+        //                        else
+        //                        {
+        //                            this.btnEditProfileExpire.Visible = true;
+        //                        }
+        //                        SGACommon.SelectListItem(this.ddlEditAgency, ds.Tables[0].Rows[0]["agencyId"].ToString());
+        //                        SGACommon.SelectListItem(this.ddlEditJobRole, ds.Tables[0].Rows[0]["jobRole"].ToString());
+        //                        //SGACommon.SelectListItem(this.ddlEditJobLevel, ds.Tables[0].Rows[0]["jobLevel"].ToString());
+        //                        SGACommon.SelectListItem(this.ddlEditLocation, ds.Tables[0].Rows[0]["locationId"].ToString());
+        //                        SGACommon.SelectListItem(this.ddlEditGoods, ds.Tables[0].Rows[0]["goodsId"].ToString());
+        //                        this.txtEditEmailAddress.Text = ds.Tables[0].Rows[0]["email"].ToString();
+        //                        this.lblEditStatus.Text = (System.Convert.ToBoolean(ds.Tables[0].Rows[0]["expired"]) ? "Expired" : "Running");
+        //                    }
+        //                }
+        //            }
+        //            else
+        //            {
+        //                this.viewUser2.Visible = true;
+        //                this.viewUser1.Visible = false;
+        //            }
+        //        }
+        //    }
 
         public void UpdateProfile(string fname, string lname, int jobId, int jobLevel, int agencyId, string phone, string division, int locationId, string position, int goodsId, string password, System.DateTime dtExpiryDate, bool isExpired, string email)
         {
             string passwordSalt = SGACommon.CreateSalt(5);
             string passwordHash = SGACommon.CreatePasswordHash(password, passwordSalt);
             int id = System.Convert.ToInt32(this.hdSelectIds.Value.Split(new char[]
-			{
-				','
-			})[0]);
+            {
+                ','
+            })[0]);
             SqlParameter[] param = new SqlParameter[17];
             param[0] = new SqlParameter("@password", SqlDbType.VarChar);
             param[0].Value = password;
@@ -1392,86 +1393,86 @@ namespace SGA.webadmin
             param[16].Value = 2;
             int result = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spUpdateProfileAdmin", param));
             string[] strField = new string[]
-			{
-				"Id"
-			};
-    //        XmlRpcStruct[] resultFound = isdnAPI.findByEmail(email, strField);
-    //        if (resultFound.Length > 0)
-    //        {
-    //            int Id = System.Convert.ToInt32(resultFound[0]["Id"]);
-    //            isdnAPI.dsUpdate("Contact", Id, new XmlRpcStruct
-				//{
-				//	{
-				//		"FirstName",
-				//		fname
-				//	},
-				//	{
-				//		"LastName",
-				//		lname
-				//	},
-				//	{
-				//		"OwnerID",
-				//		"50036"
-				//	},
-				//	{
-				//		"_StudentsManagersFirstName",
-				//		managerFirstname
-				//	},
-				//	{
-				//		"_StudentsManagersLastName",
-				//		managerLastName
-				//	},
-				//	{
-				//		"_StudentsManagersEmail",
-				//		managerEmail
-				//	},
-				//	{
-				//		"_CSBPassword",
-				//		password
-				//	},
-				//	{
-				//		"_YourOrganisation",
-				//		Profile.GetOrganisation(agencyId)
-				//	},
-				//	{
-				//		"_Role",
-				//		Profile.GetJobRole(jobId)
-				//	},
-				//	{
-				//		"_RoleLevel",
-				//		Profile.GetJobLevel(jobLevel)
-				//	},
-				//	{
-				//		"_Location",
-				//		Profile.GetLocation(locationId)
-				//	},
-				//	{
-				//		"_MegaCategory",
-				//		Profile.GetGoodsLevel(goodsId)
-				//	},
-				//	{
-				//		"_OrganisationDivision",
-				//		division
-				//	},
-				//	{
-				//		"JobTitle",
-				//		position
-				//	},
-				//	{
-				//		"_Phone1",
-				//		phone
-				//	}
-				//});
-            }
-        
+            {
+                "Id"
+            };
+            //        XmlRpcStruct[] resultFound = isdnAPI.findByEmail(email, strField);
+            //        if (resultFound.Length > 0)
+            //        {
+            //            int Id = System.Convert.ToInt32(resultFound[0]["Id"]);
+            //            isdnAPI.dsUpdate("Contact", Id, new XmlRpcStruct
+            //{
+            //	{
+            //		"FirstName",
+            //		fname
+            //	},
+            //	{
+            //		"LastName",
+            //		lname
+            //	},
+            //	{
+            //		"OwnerID",
+            //		"50036"
+            //	},
+            //	{
+            //		"_StudentsManagersFirstName",
+            //		managerFirstname
+            //	},
+            //	{
+            //		"_StudentsManagersLastName",
+            //		managerLastName
+            //	},
+            //	{
+            //		"_StudentsManagersEmail",
+            //		managerEmail
+            //	},
+            //	{
+            //		"_CSBPassword",
+            //		password
+            //	},
+            //	{
+            //		"_YourOrganisation",
+            //		Profile.GetOrganisation(agencyId)
+            //	},
+            //	{
+            //		"_Role",
+            //		Profile.GetJobRole(jobId)
+            //	},
+            //	{
+            //		"_RoleLevel",
+            //		Profile.GetJobLevel(jobLevel)
+            //	},
+            //	{
+            //		"_Location",
+            //		Profile.GetLocation(locationId)
+            //	},
+            //	{
+            //		"_MegaCategory",
+            //		Profile.GetGoodsLevel(goodsId)
+            //	},
+            //	{
+            //		"_OrganisationDivision",
+            //		division
+            //	},
+            //	{
+            //		"JobTitle",
+            //		position
+            //	},
+            //	{
+            //		"_Phone1",
+            //		phone
+            //	}
+            //});
+        }
+
 
         public void MarkExpireProfile(bool isExpired)
         {
             SqlParameter[] param = new SqlParameter[3];
             int id = System.Convert.ToInt32(this.hdSelectIds.Value.Split(new char[]
-			{
-				','
-			})[0]);
+            {
+                ','
+            })[0]);
             param[0] = new SqlParameter("@isExpired", SqlDbType.VarChar);
             param[0].Value = isExpired;
             param[1] = new SqlParameter("@flag", SqlDbType.VarChar);
@@ -1492,7 +1493,7 @@ namespace SGA.webadmin
 
         protected void btnEditSaveProfile_Click(object sender, ImageClickEventArgs e)
         {
-           // this.UpdateProfile(this.txtEditFname.Text.Trim(), this.txtEditLname.Text.Trim(), System.Convert.ToInt32(this.ddlEditJobRole.SelectedValue), System.Convert.ToInt32(this.ddlEditJobLevel.SelectedValue),System.Convert.ToInt32(this.ddlEditAgency.SelectedValue), this.txtEditPhone.Text.Trim(), this.txtDivision.Text.Trim(), System.Convert.ToInt32(this.ddlEditLocation.SelectedValue), this.txtEditPosition.Value.Trim(), System.Convert.ToInt32(this.ddlEditGoods.SelectedValue), this.txtEditPassword.Text.Trim(), System.Convert.ToDateTime(this.txtEditExiryDate.Text), false, this.txtEditEmailAddress.Text.Trim());
+            // this.UpdateProfile(this.txtEditFname.Text.Trim(), this.txtEditLname.Text.Trim(), System.Convert.ToInt32(this.ddlEditJobRole.SelectedValue), System.Convert.ToInt32(this.ddlEditJobLevel.SelectedValue),System.Convert.ToInt32(this.ddlEditAgency.SelectedValue), this.txtEditPhone.Text.Trim(), this.txtDivision.Text.Trim(), System.Convert.ToInt32(this.ddlEditLocation.SelectedValue), this.txtEditPosition.Value.Trim(), System.Convert.ToInt32(this.ddlEditGoods.SelectedValue), this.txtEditPassword.Text.Trim(), System.Convert.ToDateTime(this.txtEditExiryDate.Text), false, this.txtEditEmailAddress.Text.Trim());
             //this.LoadProfile();
             this.BindGrid();
         }
@@ -1506,16 +1507,16 @@ namespace SGA.webadmin
         protected void btnExport_Click(object sender, System.EventArgs e)
         {
             DataSet DS = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spExcelExportUsers", new SqlParameter[]
-			{
-				new SqlParameter("@firstname", this.txtFname.Value.Trim()),
-				new SqlParameter("@lastname", this.txtLname.Value.Trim()),
-				new SqlParameter("@email", this.txtEmail.Value.Trim()),
-				new SqlParameter("@dateFrom", this.txtFrom.Text.Trim()),
+            {
+                new SqlParameter("@firstname", this.txtFname.Value.Trim()),
+                new SqlParameter("@lastname", this.txtLname.Value.Trim()),
+                new SqlParameter("@email", this.txtEmail.Value.Trim()),
+                new SqlParameter("@dateFrom", this.txtFrom.Text.Trim()),
                 new SqlParameter("@department",  this.ddlDept.SelectedValue),
                 new SqlParameter("@dateTo", this.txtTo.Text.Trim()),
-				new SqlParameter("@userCondition", this.ddlOrder.SelectedValue),
-				new SqlParameter("@orderBy", " id desc ")
-			});
+                new SqlParameter("@userCondition", this.ddlOrder.SelectedValue),
+                new SqlParameter("@orderBy", " id desc ")
+            });
             this.ExportDataSetToExcel(DS, "UsersList.xls");
         }
 
@@ -1591,9 +1592,9 @@ namespace SGA.webadmin
                     lblStatus.Text = "Not Approved";
                 }
                 string[] strArr = this.hdSelectIds.Value.Split(new char[]
-				{
-					','
-				});
+                {
+                    ','
+                });
                 if (strArr.Length > 0)
                 {
                     for (int i = 0; i < strArr.Length; i++)
@@ -1614,9 +1615,9 @@ namespace SGA.webadmin
             if (e.CommandName.ToLower() == "delete")
             {
                 SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spDeleteUser", new SqlParameter[]
-				{
-					new SqlParameter("@userId", e.CommandArgument)
-				});
+                {
+                    new SqlParameter("@userId", e.CommandArgument)
+                });
                 this.BindGrid();
             }
             if (e.CommandName.ToLower() == "reminder")
@@ -1649,14 +1650,14 @@ namespace SGA.webadmin
                 this.BindSGATest();
                 this.grdCMK.CurrentPageIndex = 0;
                 this.BindCMKTest();
-               // this.LoadProfile();
+                // this.LoadProfile();
             }
             else if (e.CommandName == "deselect")
             {
                 System.Collections.Generic.List<string> Items = (from i in this.hdSelectIds.Value.Split(new char[]
-				{
-					','
-				})
+                {
+                    ','
+                })
                                                                  select i.Trim() into i
                                                                  where i != string.Empty
                                                                  select i).ToList<string>();
@@ -1685,9 +1686,9 @@ namespace SGA.webadmin
             else if (e.CommandName.ToLower() == "approve")
             {
                 SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUserStatus", new SqlParameter[]
-				{
-					new SqlParameter("@userId", e.CommandArgument)
-				});
+                {
+                    new SqlParameter("@userId", e.CommandArgument)
+                });
                 DataTable dt = this.GetUserDetailByUserId(e.CommandArgument.ToString());
                 if (dt.Rows.Count > 0)
                 {
@@ -1702,9 +1703,9 @@ namespace SGA.webadmin
             else if (e.CommandName.ToLower() == "disapprove")
             {
                 SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spUserStatus", new SqlParameter[]
-				{
-					new SqlParameter("@userId", e.CommandArgument)
-				});
+                {
+                    new SqlParameter("@userId", e.CommandArgument)
+                });
                 DataTable dt = this.GetUserDetailByUserId(e.CommandArgument.ToString());
                 if (dt.Rows.Count > 0)
                 {
@@ -1861,18 +1862,18 @@ namespace SGA.webadmin
         protected void lnkSSADownload_Click(object sender, System.EventArgs e)
         {
             base.Response.Redirect(string.Concat(new string[]
-			{
-				"DownloadReport.aspx?id=2&fname=",
-				this.txtSSAFname.Value,
-				"&lname=",
-				this.txtSSALname.Value,
-				"&dfrom=",
-				this.txtSSAFrom.Text,
-				"&dto=",
-				this.txtSSATo.Text,
-				"&userIds=",
-				this.hdSelectIds.Value
-			}));
+            {
+                "DownloadReport.aspx?id=2&fname=",
+                this.txtSSAFname.Value,
+                "&lname=",
+                this.txtSSALname.Value,
+                "&dfrom=",
+                this.txtSSAFrom.Text,
+                "&dto=",
+                this.txtSSATo.Text,
+                "&userIds=",
+                this.hdSelectIds.Value
+            }));
         }
 
         protected void lnkSGADownload_Click(object sender, System.EventArgs e)
@@ -1928,14 +1929,14 @@ namespace SGA.webadmin
                 strOrderBy = (this.SortOrderCMA ? (this.SortExpressionCAA + " Asc") : (this.SortExpressionCAA + " Desc"));
             }
             DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spManageCAATest", new SqlParameter[]
-			{
-				new SqlParameter("@firstname", this.txtCMAFname.Value.Trim()),
-				new SqlParameter("@lastname", this.txtCMALname.Value.Trim()),
-				new SqlParameter("@userIds", this.hdSelectIds.Value),
-				new SqlParameter("@dateFrom", this.txtCMAFrom.Text.Trim()),
-				new SqlParameter("@dateTo", this.txtCMATo.Text.Trim()),
-				new SqlParameter("@orderBy", strOrderBy)
-			});
+            {
+                new SqlParameter("@firstname", this.txtCMAFname.Value.Trim()),
+                new SqlParameter("@lastname", this.txtCMALname.Value.Trim()),
+                new SqlParameter("@userIds", this.hdSelectIds.Value),
+                new SqlParameter("@dateFrom", this.txtCMAFrom.Text.Trim()),
+                new SqlParameter("@dateTo", this.txtCMATo.Text.Trim()),
+                new SqlParameter("@orderBy", strOrderBy)
+            });
             this.grdCAA.DataSource = ds;
             this.grdCAA.DataBind();
         }
@@ -1956,6 +1957,24 @@ namespace SGA.webadmin
                     ImageButton imgBt = (ImageButton)e.Item.FindControl("iBtnPdf");
                     imgBt.Visible = false;
                 }
+                else
+                {
+                    SqlParameter[] param = new SqlParameter[]
+       {
+                new SqlParameter("@userId", SqlDbType.Int)
+       };
+                    param[0].Value = Convert.ToInt32(DataBinder.Eval(e.Item.DataItem, "userId"));
+                    int Profilecomplete = System.Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spUserProfileComplete", param));
+
+                    if (Profilecomplete == 1)
+                    {
+                        e.Item.BackColor = Color.FromArgb(255, 156, 255);
+                        ImageButton imgBt = (ImageButton)e.Item.FindControl("iBtnPdf");
+                        imgBt.Visible = false;
+                    }
+                }
+
+
             }
         }
 
@@ -1970,9 +1989,9 @@ namespace SGA.webadmin
             if (e.CommandName == "Delete")
             {
                 SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, "spDeleteCAATest", new SqlParameter[]
-				{
-					new SqlParameter("@testId", e.CommandArgument)
-				});
+                {
+                    new SqlParameter("@testId", e.CommandArgument)
+                });
                 this.BindCMATest();
             }
             else if (e.CommandName == "Graph")
@@ -1981,11 +2000,23 @@ namespace SGA.webadmin
             }
             else if (e.CommandName == "pdf")
             {
+                string[] commandArgs = e.CommandArgument.ToString().Split(new char[] { ',' });
+                string testId = commandArgs[0];
+                string userId = commandArgs[1];
+                string initYear = Convert.ToString(SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "spInitYearByTestId", new SqlParameter[]
+                {
+                    new SqlParameter("@testId", testId)
+                }));
+
+
+
                 SqlParameter[] paramPack = new SqlParameter[]
     {
-                new SqlParameter("@userId", SqlDbType.Int)
+                new SqlParameter("@userId", SqlDbType.Int),
+                new SqlParameter("@initYear",SqlDbType.VarChar)
     };
-                paramPack[0].Value = e.CommandArgument;
+                paramPack[0].Value = userId;
+                paramPack[1].Value = initYear;
                 DataSet dsPacks = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetReportIdByUserId", paramPack);
                 if (dsPacks != null)
                 {
@@ -1993,7 +2024,7 @@ namespace SGA.webadmin
                     {
                         if (dsPacks.Tables[0].Rows[0]["packId"].ToString() == "6")
                         {
-                             base.Response.Redirect("showCMApdf.aspx?id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString(), false);
+                            base.Response.Redirect("showCMApdf.aspx?id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString(), false);
                         }
                         else
                         {
@@ -2003,7 +2034,7 @@ namespace SGA.webadmin
 
                     }
                 }
-              
+
             }
             else if (e.CommandName == "Edit")
             {

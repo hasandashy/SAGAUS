@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 using System.Web.UI;
 
 namespace SGA.controls
@@ -66,6 +67,7 @@ namespace SGA.controls
                 int testId = 0;
                 int packId = 0;
                 bool isExpert = false;
+                Dictionary<int, decimal> _marks = new Dictionary<int, decimal>();
                 DataSet dsTestDetails = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetTestDetailsById", new SqlParameter[]
                 {
                     new SqlParameter("@Id", this.Id),
@@ -114,7 +116,7 @@ namespace SGA.controls
                 };
                 param[0].Value = userId;
                 DataSet dsProfile = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetProfileDetails", param);
-                System.DateTime dtEnd = System.Convert.ToDateTime(SqlHelper.ExecuteScalar(CommandType.Text, "select testDate from tbluserCmaTest where userId=" + userId + " and initYear = '" + initYear +"'"));
+                System.DateTime dtEnd = System.Convert.ToDateTime(SqlHelper.ExecuteScalar(CommandType.Text, "select testDate from tblusercaatest where userId=" + userId + " and initYear = '" + initYear +"'"));
                 param = new SqlParameter[2];
                 param[0] = new SqlParameter("@userId", SqlDbType.Int);
                 param[0].Value = userId;
@@ -361,6 +363,7 @@ namespace SGA.controls
                                 {
                         new SqlParameter("@percentage", kvp.Value)
                                 }).ToString();
+                                _marks.Add(Convert.ToInt32(dsSummary.Tables[0].Rows[kvp.Key]["topicId"]), kvp.Value);
                                 if (level.ToLower() == "expert")
                                 {
                                     isExpert = true;
@@ -403,10 +406,10 @@ namespace SGA.controls
                                 {
                         new SqlParameter("@percentage", dsCAASummary.Tables[0].Rows[i]["percentage"].ToString())
                                 }).ToString();
-                                if (level.ToLower() == "expert")
-                                {
-                                    isExpert = true;
-                                }
+                                //if (level.ToLower() == "expert")
+                                //{
+                                //    isExpert = true;
+                                //}
                                 this.Addrow(ref table, " " + dsCAASummary.Tables[0].Rows[i]["topicTitle"].ToString().Replace("<br />", " "), dsCAASummary.Tables[0].Rows[i]["percentage"].ToString() + "%", "  " + level, false, false, true);
                             }
                         }
@@ -618,232 +621,42 @@ namespace SGA.controls
                             }
                         }
                     }
-                    //               DataSet ds = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetSuggestions", new SqlParameter[]
-                    //{
-                    //	new SqlParameter("@flag", "1")
-                    //});
-                    //               if (ds != null)
-                    //               {
-                    //                   if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-                    //                   {
-                    //                       for (int j = 0; j < ds.Tables[0].Rows.Count; j++)
-                    //                       {
-                    //                           this.doc.SetMargins(55f, 55f, 55f, 55f);
-                    //                           this.doc.NewPage();
-                    //                           this.AddParagraph(j + 1 + ". " + ds.Tables[0].Rows[j]["topicName"].ToString().Replace("<br />", " "), 0, FontFactory.GetFont("Arial", 24f, 1, new BaseColor(0, 0, 0)));
-                    //                           this.AddBlankParagraph(1);
-                    //                           hw.Parse(new System.IO.StringReader(ds.Tables[0].Rows[j]["SuggestionText"].ToString().Replace("@level", dsSummary.Tables[0].Rows[j]["Level"].ToString()).Replace("@score", dsSummary.Tables[0].Rows[j]["percentage"].ToString() + "%")));
-                    //                           this.AddBlankParagraphLowHeight(1);
-                    //                           this.AddParagraph("RECOMMENDATIONS", 0, FontFactory.GetFont("Arial", 12f, 1, new BaseColor(234, 66, 31)));
-                    //                           this.AddBlankParagraphLowHeight(1);
-                    //                           hw.Parse(new System.IO.StringReader(dsSummary.Tables[0].Rows[j]["training"].ToString()));
-                    //                       }
-                    //                   }
-                    //               }
-                    //this.doc.SetMargins(0f, 0f, 0f, 0f);
-                    //this.doc.NewPage();
-                    //imgBG = Image.GetInstance(this.imagepath + "/sizzer_bg.jpg");
-                    //imgBG.ScaleToFit(this.doc.PageSize.Width, this.doc.PageSize.Height);
-                    //imgBG.Alignment = 8;
-                    //this.doc.Add(imgBG);
-                    //if (dsPages != null)
-                    //{
-                    //    if (dsPages.Tables.Count > 0 && dsPages.Tables[0].Rows.Count > 0)
-                    //    {
-                    //        if (dsProfile != null)
-                    //        {
-                    //            if (dsProfile.Tables.Count > 0 && dsProfile.Tables[0].Rows.Count > 0)
-                    //            {
-                    //                this.AddBlankParagraph(12);
-                    //                hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page14Text"].ToString().Replace("@v0", SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["firstname"].ToString())).Replace("@v1", SGACommon.UppercaseFirst(dsProfile.Tables[0].Rows[0]["lastname"].ToString()))));
-                    //            }
-                    //        }
-                    //    }
-                    //}
-                    //img = Image.GetInstance(this.imagepath + "/emailwelcome.jpg");
-                    //img.SetAbsolutePosition(0f, 0f);
-                    //img.ScaleToFit(600f, 600f);
-                    //img.Alignment = 4;
-                    //img.SetAbsolutePosition(0f, 0f);
-                    //this.doc.Add(img);
+                    //New Page
+                    if (_marks.Count == 8)
+                    {
+                        var myList = _marks.ToList();
 
-                    //img = Image.GetInstance(this.imagepath + "/QldGov-Logo.png");
-                    //img.ScaleToFit(110f, 110f);
-                    //img.Alignment = 4;
-                    //img.SetAbsolutePosition(230f, 400f);
-                    //this.doc.Add(img);
+                        myList.Sort((pair1, pair2) => pair1.Value.CompareTo(pair2.Value));
+                        myList.RemoveRange(3, 5);
 
-                    //DataRow[] foundRows = dsSummary.Tables[0].Select("1=1", "topicMarks asc");
-                    //int k = 0;
-                    //this.doc.SetMargins(55f, 55f, 55f, 55f);
-                    //this.doc.NewPage();
-                    //if (dsPages != null)
-                    //{
-                    //    if (dsPages.Tables.Count > 0 && dsPages.Tables[0].Rows.Count > 0)
-                    //    {
-                    //        this.AddParagraph(dsPages.Tables[0].Rows[0]["page17Heading"].ToString(), 0, FontFactory.GetFont("Arial", 24f, 1, new BaseColor(0, 0, 0)));
-                    //        this.AddBlankParagraph(1);
-                    //        //hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page17Text"].ToString().Replace("@v0", Profile.GetJobRole(System.Convert.ToInt32(dsProfile.Tables[0].Rows[0]["jobRole"].ToString()))).Replace("@v1", dsJob.Tables[0].Rows[0]["page14Para1"].ToString()).Replace("@v2", dsJob.Tables[0].Rows[0]["page14Para2"].ToString())));
-                    //    }
-                    //}
-                    //img = Image.GetInstance(this.imagepath + "/elearning.jpg");
-                    //img.ScaleToFit(600f, 600f);
-                    //img.Alignment = 4;
-                    //img.SetAbsolutePosition(0f, 25f);
-                    //this.doc.Add(img);
+                        this.doc.SetMargins(55f, 55f, 25f, 25f);
+                        this.doc.NewPage();
+                        this.AddBlankParagraphLowHeight(4);
+                        this.AddParagraph("Your Priority Training Recommendations", 0, FontFactory.GetFont("Helvetica", 20f, 1, new BaseColor(0, 0, 0)));
+                        this.AddBlankParagraphLowHeight(4);
 
+                        int p = 1;
+                        foreach (var item in myList)
+                        {
+                            DataSet ds1 = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetElearningRecommendation", new SqlParameter[]
+                      {
+                        new SqlParameter("@reportType", 5),
+                        new SqlParameter("@level", GetLevelForInsertRecoomendation(item.Value)),
+                        new SqlParameter("@topicId", item.Key)
 
+                      });
 
-                    //DataSet dsPlans = DataTier.SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetPlansByPercentageForSSA", new SqlParameter[] {
-                    //    new SqlParameter("@tableType","1"),
-                    //    new SqlParameter("@testId",testId),
-                    //});
-
-                    //if (dsPlans != null) {
-                    //    if (dsPlans.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0) {
-                    //        string strPageCode = dsPlans.Tables[0].Rows[0]["planDetails"].ToString();
-                    //        this.doc.SetMargins(30f, 30f, 30f, 10f);
-                    //        this.doc.NewPage();
-                    //        string[] strArr = dsPlans.Tables[0].Rows[0]["timeweek"].ToString().Split(':');
-                    //        DateTime dt = Convert.ToDateTime(dsPlans.Tables[0].Rows[0]["testDate"].ToString());
-                    //        if (strArr.Length > 0) {
-                    //            for (int i = 0; i < strArr.Length; i++) {
-                    //                int hours = Convert.ToInt32(strArr[i].ToString());
-                    //                double months = (((1.0 / 30.0) * (hours * 60.0)) / 4.0 + 1);
-                    //                dt = dt.AddMonths(Convert.ToInt32(months));
-                    //                strPageCode = strPageCode.Replace("@v" + i.ToString(), dt.ToString("dd MMM yyyy")).Replace("@per", Convert.ToDecimal(dsPlans.Tables[0].Rows[0]["percentage"].ToString()).ToString("#.##") + "%");
-                    //                //strPageCode = strPageCode.Replace("@v" + i.ToString(), Convert.ToDateTime(dsPlans.Tables[0].Rows[0]["testDate"].ToString()).AddMonths(months).ToString("dd/MM/yyyy"));
-
-                    //            }
-                    //        }
-                    //        hw.Parse(new System.IO.StringReader(strPageCode.ToString()));
-                    //    }
-                    //}
-
-                    ////hw.Parse(new System.IO.StringReader(dsJob.Tables[0].Rows[0]["jobSuggestion"].ToString()));
-
-
-                    //this.doc.SetMargins(55f, 55f, 55f, 55f);
-                    //this.doc.NewPage();
-                    //if (dsPages != null)
-                    //{
-                    //    if (dsPages.Tables.Count > 0 && dsPages.Tables[0].Rows.Count > 0)
-                    //    {
-                    //        this.AddParagraph(dsPages.Tables[0].Rows[0]["page16Heading"].ToString(), 0, FontFactory.GetFont("Arial", 24f, 1, new BaseColor(0, 0, 0)));
-                    //        this.AddBlankParagraph(1);
-                    //        hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page16Text"].ToString()));
-                    //        this.AddBlankParagraph(2);
-                    //        DataRow[] array = foundRows;
-                    //        for (int l = 0; l < array.Length; l++)
-                    //        {
-                    //            DataRow dr = array[l];
-                    //            if (k < 3)
-                    //            {
-                    //                if (k == 1)
-                    //                {
-                    //                    this.doc.SetMargins(55f, 55f, 55f, 55f);
-                    //                    this.doc.NewPage();
-                    //                }
-                    //                this.AddParagraph(dr["mgtHeading"].ToString().Replace("<br />", " ").ToUpper(), 0, FontFactory.GetFont("Arial", 12f, 1, new BaseColor(234, 66, 31)));
-                    //                this.AddBlankParagraphLowHeight(1);
-                    //                hw.Parse(new System.IO.StringReader(dr["mgtTraining"].ToString()));
-                    //                this.AddBlankParagraphLowHeight(2);
-                    //                hw.Parse(new System.IO.StringReader("<p style=\"padding-left:140px;\">&nbsp;<a href=\"" + dr["mgtmorelink"] + "\" target=\"_blank\" style=\"font-family:Arial;font-size:12px;color:#FF7C00;\">CLICK HERE TO LEARN MORE ABOUT THIS WORKSHOP ></a></p>"));
-                    //                this.AddBlankParagraphLowHeight(6);
-                    //                k++;
-                    //            }
-                    //        }
-                    //    }
-                    //}
-                    //this.doc.SetMargins(55f, 55f, 55f, 55f);
-                    //this.doc.NewPage();
-                    //img = Image.GetInstance(this.imagepath + "/page20.jpg");
-                    //img.ScaleToFit(530f, 510f);
-                    //img.Alignment = 4;
-                    //img.SetAbsolutePosition(30f, 550f);
-                    //img.Annotation = new Annotation(0f, 0f, 0f, 0f, "http://events.criticalskillsboost.com/booking/");
-                    //this.doc.Add(img);
-                    //if (dsPages != null)
-                    //{
-                    //    if (dsPages.Tables.Count > 0 && dsPages.Tables[0].Rows.Count > 0)
-                    //    {
-                    //        this.AddBlankParagraph(23);
-                    //        this.AddParagraph(dsPages.Tables[0].Rows[0]["page20heading"].ToString(), 0, FontFactory.GetFont("Arial", 20f, 1, new BaseColor(0, 0, 0)));
-                    //        hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page20text"].ToString()));
-                    //        this.AddBlankParagraph(1);
-                    //    }
-                    //}
-                    //this.doc.SetMargins(55f, 55f, 55f, 55f);
-                    //this.doc.NewPage();
-                    //img = Image.GetInstance(this.imagepath + "/page21.jpg");
-                    //img.ScaleToFit(500f, 510f);
-                    //img.Alignment = 4;
-                    //img.SetAbsolutePosition(45f, 350f);
-                    //this.doc.Add(img);
-                    //if (dsPages != null)
-                    //{
-                    //    if (dsPages.Tables.Count > 0 && dsPages.Tables[0].Rows.Count > 0)
-                    //    {
-                    //        this.AddBlankParagraph(2);
-                    //        this.AddParagraph(dsPages.Tables[0].Rows[0]["page21heading"].ToString(), 0, FontFactory.GetFont("Arial", 20f, 1, new BaseColor(234, 67, 32)));
-                    //        hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page21text"].ToString()));
-                    //        this.AddBlankParagraph(1);
-                    //    }
-                    //}
-
-                    //this.doc.SetMargins(55f, 55f, 0f, 0f);
-                    //this.doc.NewPage();
-                    //img = iTextSharp.text.Image.GetInstance(this.imagepath + "/page19banner.png");
-                    //img.ScaleToFit(595f, 710f);
-                    //img.Alignment = 4;
-                    //img.SetAbsolutePosition(0f, 601f);
-                    //this.doc.Add(img);
-
-                    //this.AddBlankParagraph(22);
-                    //this.AddParagraph(dsPages.Tables[0].Rows[0]["ifpsmHeading"].ToString(), 0, FontFactory.GetFont("Arial", 25f, 1, new BaseColor(0, 0, 0)));
-                    //this.AddBlankParagraph(1);
-                    //hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["ifpsmText"].ToString()));
-
-
-                    //this.doc.SetMargins(55f, 55f, 55f, 55f);
-                    //this.doc.NewPage();
-                    ///*imgBG = Image.GetInstance(this.imagepath + "/page18bg.jpg");
-                    //imgBG.ScaleToFit(this.doc.PageSize.Width, this.doc.PageSize.Height);
-                    //imgBG.Alignment = 8;
-                    //imgBG.SetAbsolutePosition(0f, 0f);
-                    //this.doc.Add(imgBG);*/
-                    //img = Image.GetInstance(this.imagepath + "/compraralogo.png");
-                    //img.SetAbsolutePosition(50f, 750f);
-                    //img.ScaleToFit(172f, 58f);
-                    //img.Alignment = 5;
-                    //this.doc.Add(img);
-
-                    //img = Image.GetInstance(this.imagepath + "/QldGov-Logo.png");
-                    //img.SetAbsolutePosition(450f, 750f);
-                    //img.ScaleToFit(110f, 110f);
-                    //img.Alignment = 5;
-                    //this.doc.Add(img);
-
-                    //img = Image.GetInstance(this.imagepath + "/Updatedtagline.jpg");
-                    //img.SetAbsolutePosition(50f, 680f);
-                    //img.ScaleToFit(500f, 520f);
-                    //img.Alignment = 0;
-                    //this.doc.Add(img);
-
-                    //if (dsPages != null)
-                    //{
-                    //    if (dsPages.Tables.Count > 0 && dsPages.Tables[0].Rows.Count > 0)
-                    //    {
-                    //        this.AddBlankParagraph(12);
-                    //        //this.AddParagraph(dsPages.Tables[0].Rows[0]["page18Heading"].ToString(), 0, FontFactory.GetFont("Arial", 24f, 1, new BaseColor(0, 0, 0)));
-                    //        this.AddParagraph("About Comprara", 0, FontFactory.GetFont("Arial", 24f, 1, new BaseColor(255, 124, 0)));
-                    //        hw.Parse(new System.IO.StringReader(dsPages.Tables[0].Rows[0]["page18SubPara1"].ToString()));
-                    //        this.AddBlankParagraph(1);
-                    //    }
-                    //}
-
+                            this.AddParagraph("Priority " + p.ToString(), 0, FontFactory.GetFont("Helvetica", 14f, 1, this.hcolor));
+                            this.AddBlankParagraphLowHeight(1);
+                            hw.Parse(new System.IO.StringReader(ds1.Tables[0].Rows[0]["recommendation"].ToString()));
+                            this.AddBlankParagraphLowHeight(2);
+                            p++;
+                        }
+                    }
+                    //
                     if (isExpert)
                     {
+                        hw = new HTMLWorker(this.doc);
                         //new pages
                         this.doc.SetMargins(55f, 55f, 25f, 25f);
                         this.doc.NewPage();
@@ -872,7 +685,7 @@ namespace SGA.controls
                         str = "<p style='font-size:10px;font-face:Arial'>This program will enhances procurement performance across SA Government in the way we lead and engage.&nbsp;These workshops are dedicated to opening pathways so we can perform at our peak. By joining together in these highly focused workshops we will leverage our collective strengths to create a landscape of positive change and deliver ongoing sustainable results to the business.</p>";
                         hw.Parse(new System.IO.StringReader(str));
                         this.AddBlankParagraphLowHeight(1);
-                        str = "<p style='font-size:10px;font-face:Arial'><u><strong>Read more</strong></u></p>";
+                        str = "<p style='font-size:10px;font-face:Arial'><a href='https://academyofprocurement.com/'><u><strong>Read more</strong></u></a></p>";
                         hw.Parse(new System.IO.StringReader(str));
                         //end
                         //Start expert page

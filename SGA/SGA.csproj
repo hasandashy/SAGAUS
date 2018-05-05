@@ -943,6 +943,7 @@
     <Content Include="tna\pk-evaluation-instructions.aspx" />
     <Content Include="tna\procurement-knowledge-evaluation-test.aspx" />
     <Content Include="tna\ResultDenied.aspx" />
+    <Content Include="tna\ResultsRestricted.aspx" />
     <Content Include="tna\share-the-challenge.aspx" />
     <Content Include="tna\skills-self-test.aspx" />
     <Content Include="tna\ssa-assessment-instructions.aspx" />
@@ -1624,6 +1625,13 @@
     </Compile>
     <Compile Include="tna\ResultDenied.aspx.designer.cs">
       <DependentUpon>ResultDenied.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tna\ResultsRestricted.aspx.cs">
+      <DependentUpon>ResultsRestricted.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tna\ResultsRestricted.aspx.designer.cs">
+      <DependentUpon>ResultsRestricted.aspx</DependentUpon>
     </Compile>
     <Compile Include="tna\share-the-challenge.aspx.cs">
       <DependentUpon>share-the-challenge.aspx</DependentUpon>

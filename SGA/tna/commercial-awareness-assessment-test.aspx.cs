@@ -387,10 +387,12 @@ namespace SGA.tna
                 {
 
                     SqlParameter[] paramPack = new SqlParameter[]
-      {
-                new SqlParameter("@userId", SqlDbType.Int)
-      };
-                    paramPack[0].Value = SGACommon.LoginUserInfo.userId;
+   {
+                new SqlParameter("@userId", SqlDbType.Int),
+                new SqlParameter("@initYear",SqlDbType.VarChar)
+   };
+                    paramPack[0].Value = SGACommon.LoginUserInfo.userId ;
+                    paramPack[1].Value = ConfigurationManager.AppSettings["initYear"].ToString();
                     DataSet dsPacks = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "spGetReportIdByUserId", paramPack);
                     if (dsPacks != null)
                     {
@@ -400,7 +402,7 @@ namespace SGA.tna
                             {
                                 isdnAPI.addToGroup(userId, 2114);
                                 string Url = "http://" + base.Request.UrlReferrer.Host + "/IndividualReport/ContractManagement.aspx?Id=" + dsPacks.Tables[0].Rows[0]["reportId"].ToString();
-                                Contact.Add("_SAGovContractManagementUserReportLink", Url);
+                                Contact.Add("_SAGovProcurement18UserReportLink", Url);
                                 Contact.Add("ContactType", "Customer");
                                 isdnAPI.dsUpdate("Contact", userId, Contact);
                             }
